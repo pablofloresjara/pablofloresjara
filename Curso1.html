@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategias Didácticas para la Educación Superior</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Harmony -->
+    <!-- Application Structure Plan: Se ha diseñado una SPA (Single-Page Application) con navegación superior fija que permite tanto el desplazamiento secuencial como el acceso directo a las secciones clave: Paradigma, Competencias, Gamificación y Herramientas. Esta estructura transforma la presentación lineal en un recurso explorable y modular. Se prioriza la interactividad a través de elementos clicables (diagramas, tarjetas expandibles) para fomentar el descubrimiento activo en lugar del consumo pasivo de información. La elección de esta arquitectura se basa en facilitar la consulta rápida y la comprensión profunda de cada concepto de forma independiente, lo cual es más útil para un docente ocupado. -->
+    <!-- Visualization & Content Choices: 1. Paradigma Educativo (Info -> Comparar -> Columnas con Iconos -> Hover para resaltar -> Justificación: Visualiza el contraste de forma clara y directa). 2. Elementos de Gamificación (Info -> Organizar/Relacionar -> Diagrama HTML/CSS interactivo -> Clic para mostrar descripción -> Justificación: Transforma una lista estática en una herramienta de exploración que clarifica la jerarquía y relación entre conceptos. Se usa JS para la interacción, evitando SVG/Mermaid). 3. Motivación (Info -> Comparar -> Gráfico de Barras Horizontales con Chart.js -> Tooltips en hover -> Justificación: Cuantifica y visualiza de forma abstracta la diferencia entre motivación intrínseca y extrínseca, un punto clave del informe). 4. Herramientas (Info -> Organizar -> Grid de tarjetas expandibles -> Clic para ver más -> Justificación: Presenta la información de forma compacta y permite al usuario profundizar solo en las herramientas de su interés). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f4; /* stone-100 */
+            color: #292524; /* stone-800 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+        .nav-link.active {
+            color: #0d9488; /* teal-600 */
+            border-bottom-color: #0d9488;
+        }
+        .gamify-element {
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .gamify-element:hover {
+            transform: translateY(-2px);
+        }
+        .tool-card .details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .tool-card.open .details {
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-xl font-bold text-teal-700">Didáctica Activa</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#paradigma" class="nav-link px-3 py-2 text-sm font-semibold text-stone-600 hover:text-teal-600 border-b-2 border-transparent">Paradigma</a>
+                        <a href="#competencias" class="nav-link px-3 py-2 text-sm font-semibold text-stone-600 hover:text-teal-600 border-b-2 border-transparent">Competencias</a>
+                        <a href="#gamificacion" class="nav-link px-3 py-2 text-sm font-semibold text-stone-600 hover:text-teal-600 border-b-2 border-transparent">Gamificación</a>
+                        <a href="#herramientas" class="nav-link px-3 py-2 text-sm font-semibold text-stone-600 hover:text-teal-600 border-b-2 border-transparent">Herramientas</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <section class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-stone-800 mb-4">Estrategias Didácticas para el Docente del Siglo XXI</h1>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-stone-600">Una guía interactiva para transformar el aprendizaje a través de la innovación y la tecnología.</p>
+        </section>
+
+        <section id="paradigma" class="mb-20 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-2 text-teal-700">1. El Nuevo Paradigma de la Educación</h2>
+            <p class="text-center text-stone-600 mb-10 max-w-2xl mx-auto">Nuestros estudiantes han cambiado, el mundo ha cambiado y nuestra enseñanza también debe hacerlo. Compara el modelo tradicional con el enfoque actual centrado en el estudiante.</p>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-stone-200">
+                    <h3 class="text-2xl font-semibold mb-4 text-stone-700">De un modelo centrado en el docente...</h3>
+                    <ul class="space-y-3 text-stone-600">
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 text-xl">✗</span> El profesor como única fuente de conocimiento.</li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 text-xl">✗</span> Aprendizaje pasivo y memorístico.</li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 text-xl">✗</span> Evaluación sumativa al final del proceso.</li>
+                    </ul>
+                </div>
+                <div class="bg-teal-50 p-6 rounded-xl shadow-md border border-teal-200">
+                    <h3 class="text-2xl font-semibold mb-4 text-teal-800">...a un modelo centrado en el estudiante.</h3>
+                    <ul class="space-y-3 text-teal-900">
+                        <li class="flex items-start"><span class="text-teal-600 mr-3 text-xl">✓</span> El profesor como <strong>facilitador y guía</strong>.</li>
+                        <li class="flex items-start"><span class="text-teal-600 mr-3 text-xl">✓</span> Aprendizaje <strong>activo, práctico y colaborativo</strong>.</li>
+                        <li class="flex items-start"><span class="text-teal-600 mr-3 text-xl">✓</span> El estudiante como protagonista de su propio aprendizaje.</li>
+                        <li class="flex items-start"><span class="text-teal-600 mr-3 text-xl">✓</span> Foco en el desarrollo de <strong>competencias</strong> para la vida real.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="competencias" class="mb-20 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-2 text-teal-700">2. El Enfoque por Competencias</h2>
+             <p class="text-center text-stone-600 mb-10 max-w-3xl mx-auto">Una competencia es la capacidad de aplicar conocimientos, habilidades y actitudes para resolver problemas en contextos reales. Esto implica un cambio fundamental en cómo planificamos y evaluamos.</p>
+            <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-stone-200 text-center">
+                    <div class="text-3xl mb-4">🎨</div>
+                    <h3 class="text-xl font-bold mb-2 text-stone-800">Diseñar Experiencias</h3>
+                    <p class="text-stone-600">Pasar de "cubrir temas" a crear situaciones donde los estudiantes *hagan* algo con el conocimiento.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-stone-200 text-center">
+                    <div class="text-3xl mb-4">📈</div>
+                    <h3 class="text-xl font-bold mb-2 text-stone-800">Evaluar de Forma Auténtica</h3>
+                    <p class="text-stone-600">Utilizar proyectos, estudios de caso y simulaciones que reflejen los desafíos profesionales reales.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-stone-200 text-center">
+                    <div class="text-3xl mb-4">🧭</div>
+                    <h3 class="text-xl font-bold mb-2 text-stone-800">Fomentar la Autonomía</h3>
+                    <p class="text-stone-600">Guiar a los estudiantes en su proceso de "aprender a aprender", haciéndolos responsables de su camino.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gamificacion" class="mb-20 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-2 text-teal-700">3. Gamificación: Motivando a través del Juego</h2>
+            <p class="text-center text-stone-600 mb-10 max-w-3xl mx-auto">La gamificación no es simplemente jugar en clase. Consiste en aplicar elementos y lógicas de diseño de juegos en contextos no lúdicos para aumentar la motivación y el compromiso. Haz clic en los elementos del diagrama para explorarlos.</p>
+            
+            <div class="lg:grid lg:grid-cols-3 lg:gap-8 items-start">
+                <div class="lg:col-span-2">
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-lg text-amber-700 mb-2">Dinámicas (El Panorama General)</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <button data-target="dinamicas-narrativa" class="gamify-element bg-amber-100 text-amber-800 px-4 py-2 rounded-lg shadow-sm font-semibold">Narrativa</button>
+                                <button data-target="dinamicas-retos" class="gamify-element bg-amber-100 text-amber-800 px-4 py-2 rounded-lg shadow-sm font-semibold">Retos y Misiones</button>
+                            </div>
+                        </div>
+                        <div class="pl-4 border-l-2 border-stone-300">
+                             <h4 class="font-bold text-lg text-sky-700 mb-2">Mecánicas (Las Reglas del Juego)</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <button data-target="mecanicas-puntos" class="gamify-element bg-sky-100 text-sky-800 px-4 py-2 rounded-lg shadow-sm font-semibold">Puntos y Recompensas</button>
+                                <button data-target="mecanicas-niveles" class="gamify-element bg-sky-100 text-sky-800 px-4 py-2 rounded-lg shadow-sm font-semibold">Niveles</button>
+                                <button data-target="mecanicas-feedback" class="gamify-element bg-sky-100 text-sky-800 px-4 py-2 rounded-lg shadow-sm font-semibold">Feedback</button>
+                            </div>
+                        </div>
+                        <div class="pl-8 border-l-2 border-stone-300">
+                             <h4 class="font-bold text-lg text-violet-700 mb-2">Componentes (Los Elementos Visibles)</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <button data-target="componentes-insignias" class="gamify-element bg-violet-100 text-violet-800 px-4 py-2 rounded-lg shadow-sm font-semibold">Insignias (Badges)</button>
+                                <button data-target="componentes-rankings" class="gamify-element bg-violet-100 text-violet-800 px-4 py-2 rounded-lg shadow-sm font-semibold">Rankings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="gamify-info" class="mt-8 lg:mt-0 p-6 bg-white rounded-xl shadow-lg border border-stone-200 min-h-[180px]">
+                    <h3 id="gamify-title" class="text-xl font-bold text-stone-800 mb-2">Selecciona un elemento</h3>
+                    <p id="gamify-description" class="text-stone-600">Haz clic en cualquier botón de la izquierda para ver su descripción y cómo puedes aplicarlo en tu curso.</p>
+                </div>
+            </div>
+
+            <div class="mt-16">
+                 <h3 class="text-2xl font-bold text-center mb-2 text-stone-800">El Poder de la Motivación</h3>
+                 <p class="text-center text-stone-600 mb-8 max-w-2xl mx-auto">La gamificación funciona porque apela a motivadores tanto intrínsecos (satisfacción personal) como extrínsecos (recompensas externas), impulsando un compromiso más profundo.</p>
+                <div class="chart-container bg-white p-4 rounded-xl shadow-md border border-stone-200">
+                    <canvas id="motivationChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="herramientas" class="mb-12 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-2 text-teal-700">4. Herramientas Tecnológicas para Innovar</h2>
+            <p class="text-center text-stone-600 mb-10 max-w-3xl mx-auto">La tecnología es nuestra gran aliada. Aquí tienes algunas herramientas potentes y fáciles de usar para implementar estas estrategias y dinamizar tus clases. Haz clic para expandir y conocer más.</p>
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="tool-card bg-white rounded-xl shadow-md border border-stone-200 overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-stone-800">Genially</h3>
+                        <p class="text-stone-500 mb-3">Contenido interactivo y gamificado.</p>
+                        <div class="details">
+                            <p class="text-stone-600 text-sm">Ideal para presentaciones, infografías y pequeños juegos educativos interactivos sin necesidad de saber programar. Transforma tu material estático en una experiencia memorable.</p>
+                        </div>
+                        <button class="toggle-details font-semibold text-teal-600 text-sm mt-2">Ver más</button>
+                    </div>
+                </div>
+                <div class="tool-card bg-white rounded-xl shadow-md border border-stone-200 overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-stone-800">Quizizz</h3>
+                        <p class="text-stone-500 mb-3">Evaluación divertida.</p>
+                        <div class="details">
+                            <p class="text-stone-600 text-sm">Transforma cuestionarios y repasos en competencias en vivo o tareas asincrónicas. Su formato de juego, con avatares y power-ups, engancha a los estudiantes.</p>
+                        </div>
+                        <button class="toggle-details font-semibold text-teal-600 text-sm mt-2">Ver más</button>
+                    </div>
+                </div>
+                <div class="tool-card bg-white rounded-xl shadow-md border border-stone-200 overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-stone-800">Miro</h3>
+                        <p class="text-stone-500 mb-3">Colaboración visual.</p>
+                        <div class="details">
+                             <p class="text-stone-600 text-sm">Una pizarra digital infinita perfecta para lluvias de ideas, mapas conceptuales y trabajo en equipo en tiempo real, tanto en clases presenciales como a distancia.</p>
+                        </div>
+                         <button class="toggle-details font-semibold text-teal-600 text-sm mt-2">Ver más</button>
+                    </div>
+                </div>
+                <div class="tool-card bg-white rounded-xl shadow-md border border-stone-200 overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-stone-800">Trello</h3>
+                        <p class="text-stone-500 mb-3">Gestión de proyectos y tareas.</p>
+                        <div class="details">
+                            <p class="text-stone-600 text-sm">Organiza proyectos de curso en tableros visuales (estilo Kanban), permitiendo a los estudiantes (y al docente) ver el progreso de cada tarea de forma clara y ordenada.</p>
+                        </div>
+                         <button class="toggle-details font-semibold text-teal-600 text-sm mt-2">Ver más</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-stone-200">
+        <div class="container mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-stone-500">
+            <p>"El objetivo no es ser el 'sabio en el escenario', sino el 'guía a su lado'".</p>
+            <p class="text-sm mt-2">&copy; 2025 Didáctica Activa. Inspirado en la innovación docente.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.4
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            navLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            const gamifyData = {
+                'dinamicas-narrativa': { title: 'Narrativa', description: 'Crea una historia o un hilo conductor para tu materia. ¿Son tus estudiantes exploradores, detectives, aprendices de un gremio que deben dominar ciertas artes?' },
+                'dinamicas-retos': { title: 'Retos y Misiones', description: 'Transforma las tareas y trabajos prácticos en desafíos a superar. En lugar de "Tarea 1", podría ser "Misión 1: Descifra el código genético".' },
+                'mecanicas-puntos': { title: 'Puntos y Recompensas', description: 'Otorga puntos (XP o Puntos de Experiencia) por completar tareas, participar en clase o ayudar a otros. Estos puntos pueden desbloquear recompensas.' },
+                'mecanicas-niveles': { title: 'Niveles', description: 'Permite que los estudiantes avancen de "Novato" a "Experto" o "Maestro" a medida que acumulan puntos, desbloqueando nuevo contenido o privilegios.' },
+                'mecanicas-feedback': { title: 'Feedback Constante', description: 'Usa barras de progreso o insignias para mostrar a los estudiantes su avance en tiempo real. Esto les permite saber siempre dónde están y qué les falta.' },
+                'componentes-insignias': { title: 'Insignias (Badges)', description: 'Son reconocimientos visuales por logros específicos. Ej: "Maestro del Debate", "Experto en Citas APA", "Colaborador Destacado".' },
+                'componentes-rankings': { title: 'Tablas de Clasificación', description: 'Fomentan una competencia sana y pueden ser opcionales o por equipos para no desmotivar. Muestran a los mejores en una tarea o en el puntaje general.' }
+            };
+
+            const gamifyElements = document.querySelectorAll('.gamify-element');
+            const gamifyTitle = document.getElementById('gamify-title');
+            const gamifyDescription = document.getElementById('gamify-description');
+
+            gamifyElements.forEach(el => {
+                el.addEventListener('click', () => {
+                    const target = el.dataset.target;
+                    if (gamifyData[target]) {
+                        gamifyTitle.textContent = gamifyData[target].title;
+                        gamifyDescription.textContent = gamifyData[target].description;
+                    }
+                });
+            });
+
+            const toolCards = document.querySelectorAll('.tool-card');
+            toolCards.forEach(card => {
+                const button = card.querySelector('.toggle-details');
+                button.addEventListener('click', () => {
+                    card.classList.toggle('open');
+                    button.textContent = card.classList.contains('open') ? 'Ver menos' : 'Ver más';
+                });
+            });
+
+            const ctx = document.getElementById('motivationChart');
+            if(ctx) {
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Maestría', 'Autonomía', 'Propósito', 'Puntos', 'Insignias', 'Rankings'],
+                        datasets: [{
+                            label: 'Impacto Motivacional Percibido',
+                            data: [90, 85, 80, 70, 65, 60],
+                            backgroundColor: [
+                                'rgba(13, 148, 136, 0.6)', // teal-600
+                                'rgba(13, 148, 136, 0.6)',
+                                'rgba(13, 148, 136, 0.6)',
+                                'rgba(251, 146, 60, 0.6)', // orange-400
+                                'rgba(251, 146, 60, 0.6)',
+                                'rgba(251, 146, 60, 0.6)'
+                            ],
+                            borderColor: [
+                                'rgba(13, 148, 136, 1)',
+                                'rgba(13, 148, 136, 1)',
+                                'rgba(13, 148, 136, 1)',
+                                'rgba(251, 146, 60, 1)',
+                                'rgba(251, 146, 60, 1)',
+                                'rgba(251, 146, 60, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        maintainAspectRatio: false,
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Comparativa: Motivadores Intrínsecos (verde) vs. Extrínsecos (naranja)'
+                            },
+                             tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.x !== null) {
+                                            label += context.parsed.x + ' / 100';
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

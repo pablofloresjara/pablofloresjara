@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso CSS Moderno - Ingeniería de Sistemas</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de Tailwind y Fuentes -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    typography: (theme) => ({
+                        DEFAULT: {
+                            css: {
+                                color: theme('colors.gray.300'),
+                                h1: {
+                                    color: theme('colors.white'),
+                                    fontWeight: '700',
+                                    marginBottom: theme('spacing.6'),
+                                },
+                                h2: {
+                                    color: theme('colors.lime.400'),
+                                    fontWeight: '600',
+                                    borderLeft: `4px solid ${theme('colors.lime.400')}`,
+                                    paddingLeft: theme('spacing.4'),
+                                    fontSize: '1.75rem',
+                                },
+                                h3: {
+                                    color: theme('colors.lime.300'),
+                                    fontWeight: '600',
+                                    marginTop: theme('spacing.10'),
+                                },
+                                h4: {
+                                    color: theme('colors.gray.200'),
+                                    fontWeight: '600',
+                                    marginTop: theme('spacing.6'),
+                                },
+                                strong: {
+                                    color: theme('colors.lime.400'),
+                                },
+                                a: {
+                                    color: theme('colors.lime.400'),
+                                    transition: 'color 0.3s ease',
+                                    '&:hover': {
+                                        color: theme('colors.lime.200'),
+                                    },
+                                },
+                                pre: {
+                                    backgroundColor: theme('colors.gray.900'),
+                                    color: theme('colors.gray.200'),
+                                    borderRadius: theme('borderRadius.md'),
+                                    padding: theme('spacing.4'),
+                                    overflowX: 'auto',
+                                    border: `1px solid ${theme('colors.gray.700')}`
+                                },
+                                code: {
+                                    color: theme('colors.pink.400'),
+                                    fontWeight: 'normal',
+                                    padding: '0.2em 0.4em',
+                                    backgroundColor: theme('colors.gray.700/50'),
+                                    borderRadius: '0.25rem',
+                                },
+                                'pre code': {
+                                    color: 'inherit',
+                                    padding: '0',
+                                    backgroundColor: 'transparent',
+                                    borderRadius: '0',
+                                },
+                                ul: {
+                                    listStyleType: 'disc',
+                                    paddingLeft: theme('spacing.5'),
+                                },
+                                li: {
+                                    marginTop: theme('spacing.1'),
+                                    marginBottom: theme('spacing.1'),
+                                },
+                                'li::marker': {
+                                    color: theme('colors.lime.400'),
+                                },
+                                blockquote: {
+                                    color: theme('colors.gray.400'),
+                                    borderLeftColor: theme('colors.lime.500'),
+                                },
+                            },
+                        },
+                    }),
+                },
+            },
+            plugins: [
+                /* El plugin de tipografía ya está incluido en el script CDN de Tailwind. */
+            ],
+        };
+    </script>
+    <!-- Importar fuente Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Estilos para la barra de scroll */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712; /* bg-gray-950 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #a3e635; /* bg-lime-400 */
+            border-radius: 20px;
+            border: 3px solid #030712; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #bef264; /* bg-lime-300 */
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-indigo-950 text-gray-200 antialiased">
+
+    <!-- Header -->
+    <header class="bg-gray-900/70 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b border-gray-700/50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <h1 class="text-xl font-bold text-white">CSS Moderno - <span class="text-lime-400">Ingeniería de Sistemas</span></h1>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="prose prose-lg max-w-none">
+            
+            <h1>Temario del Curso</h1>
+            <p class="text-xl text-gray-400">Un curso de CSS diseñado para estudiantes de Ingeniería de Sistemas, enfocado en la arquitectura, el rendimiento y las buenas prácticas.</p>
+
+            <!-- Módulo 1 -->
+            <div class="bg-gray-800/50 rounded-xl shadow-2xl p-6 sm:p-10 mb-12 backdrop-blur-sm border border-gray-700/50">
+                <section id="modulo-1">
+                    <h2>Módulo 1: Fundamentos y Conceptos Centrales</h2>
+                    <p>Este módulo establece el "modelo mental" de CSS. Para un ingeniero, entender <em>por qué</em> algo funciona es tan importante como <em>cómo</em> funciona.</p>
+
+                    <article>
+                        <h3>1.1 ¿Qué es CSS?</h3>
+                        <p><strong>Concepto (Teoría):</strong> CSS (Cascading Style Sheets - Hojas de Estilo en Cascada) es el lenguaje declarativo que controla la presentación visual de un documento web. Su principio fundamental es la <strong>Separación de Responsabilidades (Separation of Concerns - SoC)</strong>, un pilar de la ingeniería de software.</p>
+                        <ul>
+                            <li><strong>HTML:</strong> Define la estructura y el <em>significado</em> (semántica) del contenido.</li>
+                            <li><strong>CSS:</strong> Define la <em>presentación</em> (colores, fuentes, layout).</li>
+                            <li><strong>JavaScript:</strong> Define el <em>comportamiento</em> (interactividad, lógica).</li>
+                        </ul>
+                        <p><strong>Autores (Historia):</strong> El concepto fue propuesto por <strong>Håkon Wium Lie</strong> en 1994. <strong>Bert Bos</strong> fue co-creador y juntos publicaron la primera especificación (CSS 1) en 1996 bajo el auspicio del <strong>W3C (World Wide Web Consortium)</strong>, que sigue siendo el organismo de estandarización.</p>
+                        <p><strong>Sintaxis Básica:</strong></p>
+                        <ul>
+                            <li><strong>Selector:</strong> El patrón que "apunta" al elemento HTML.</li>
+                            <li><strong>Declaración:</strong> El par <code>propiedad: valor</code>.</li>
+                            <li><strong>Regla:</strong> El conjunto de selector y bloque de declaraciones.</li>
+                        </ul>
+                        
+                        <h4>Ejemplo Práctico:</h4>
+                        <pre><code class="language-html">&lt;!-- index.html --&gt;
+&lt;p class="error-message"&gt;Error: No se pudo conectar al servidor.&lt;/p&gt;</code></pre>
+                        <pre><code class="language-css">/* style.css */
+/* Esto es una regla CSS */
+.error-message { /* Esto es el Selector (apunta a la clase 'error-message') */
+  color: #f472b6;         /* rosa */
+  font-weight: bold;  
+  border: 1px solid #f472b6;
+  background: rgba(244, 114, 182, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+}</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>1.2 Formas de Incluir CSS</h3>
+                        <p><strong>Concepto (Teoría):</strong> Existen tres métodos, pero solo uno es escalable. La elección impacta directamente el rendimiento (caching) y la mantenibilidad.</p>
+                        <ol>
+                            <li><strong>CSS Externo (Recomendado):</strong> Un archivo <code>.css</code> separado, enlazado en el <code>&lt;head&gt;</code>.
+                                <ul><li><strong>Ventaja:</strong> El navegador lo guarda en <strong>caché</strong>. Si el usuario visita 10 páginas que usan el mismo <code>.css</code>, solo lo descarga una vez. Máxima mantenibilidad.</li></ul>
+                            </li>
+                            <li><strong>CSS Interno:</strong> Usando la etiqueta <code>&lt;style&gt;</code> dentro del <code>&lt;head&gt;</code>.
+                                <ul><li><strong>Ventaja:</strong> Útil para estilos que <em>solo</em> aplican a una página específica o para prototipado rápido.</li></ul>
+                            </li>
+                            <li><strong>CSS En Línea:</strong> Usando el atributo <code>style</code> directamente en la etiqueta HTML.
+                                <ul><li><strong>Desventaja:</strong> Rompe la Separación de Responsabilidades. Tiene la máxima especificidad (ver 1.4), lo que lo hace muy difícil de sobrescribir. <strong>Considerado una mala práctica</strong> en el desarrollo de aplicaciones.</li></ul>
+                            </li>
+                        </ol>
+                        
+                        <h4>Ejemplo Práctico:</h4>
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;!-- 1. CSS Externo (Mejor práctica) --&gt;
+  &lt;link rel="stylesheet" href="estilos.css"&gt;
+
+  &lt;!-- 2. CSS Interno --&gt;
+  &lt;style&gt;
+    body {
+      background-color: #f0f0f0; /* Estilo solo para esta página */
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- 3. CSS En Línea (Mala práctica) --&gt;
+  &lt;h1 style="color: blue; font-size: 30px;"&gt;
+    Este título rompe la SoC
+  &lt;/h1&gt;
+  &lt;p&gt;Este párrafo usará los estilos de 'estilos.css' y el fondo del CSS interno.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>1.3 Selectores: El Arte de Apuntar</h3>
+                        <p><strong>Concepto (Teoría):</strong> Los selectores son el "lenguaje de consulta" de CSS. Su eficiencia impacta el rendimiento del renderizado. El navegador evalúa los selectores de <em>derecha a izquierda</em>. Por eso, un selector <code>body .menu-item</code> es menos eficiente que <code>.menu-item</code>.</p>
+                        
+                        <h4>Ejemplos Prácticos (Tipos):</h4>
+                        <pre><code class="language-html">&lt;div id="main-content"&gt;
+  &lt;p class="highlight"&gt;Texto destacado.&lt;/p&gt;
+  &lt;p&gt;Texto normal.&lt;/p&gt;
+  &lt;a href="https://google.com" target="_blank"&gt;Google&lt;/a&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="/"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="language-css">/* 1. Selector de Tipo (Elemento) */
+p { font-family: Arial, sans-serif; }
+
+/* 2. Selector de Clase (El más usado y recomendado) */
+.highlight { background-color: rgba(163, 230, 53, 0.2); } /* lime-400 con opacidad */
+
+/* 3. Selector de ID (Muy específico, usar con moderación) */
+#main-content { max-width: 800px; }
+
+/* 4. Selector de Atributo */
+a[target="_blank"] { /* Solo enlaces que abren en pestaña nueva */
+  /* background-image: url('external-link.svg'); */
+  /* Usamos un pseudo-elemento para un look más moderno */
+  position: relative;
+  padding-right: 1.2em;
+}
+
+a[target="_blank"]::after {
+    content: '↗'; /* O un SVG */
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 0.8em;
+    color: #a3e635; /* lime-400 */
+}
+
+/* 5. Combinador Descendiente (espacio) */
+#main-content p { /* Cualquier 'p' dentro de '#main-content' */
+  line-height: 1.6;
+}
+
+/* 6. Combinador de Hijo Directo (&gt;) */
+nav > ul { /* Solo 'ul' que es hijo directo de 'nav' */
+  list-style-type: none;
+}
+
+/* 7. Combinador Adyacente Siguiente (+) */
+.highlight + p { /* El 'p' que viene INMEDIATAMENTE después de '.highlight' */
+  margin-top: 20px;
+}</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>1.4 La Cascada, Especificidad y Herencia</h3>
+                        <p>Esta es la <strong>teoría de algoritmos</strong> fundamental de CSS.</p>
+                        <p><strong>Concepto (La Cascada):</strong> Es el algoritmo que decide qué regla CSS aplicar cuando hay un conflicto. El orden de prioridad es:</p>
+                        <ol>
+                            <li><strong>Importancia:</strong> Las declaraciones con <code>!important</code> ganan (casi) siempre. (Usar <code>!important</code> es una mala práctica, es "ganar por la fuerza" y genera deudas técnicas).</li>
+                            <li><strong>Origen:</strong> De dónde viene el CSS. El orden es: Autor (nuestro <code>.css</code>) &gt; Usuario (configuración del navegador) &gt; <em>User-Agent</em> (estilos por defecto del navegador).</li>
+                            <li><strong>Especificidad:</strong> Qué selector es "más específico" (ver abajo).</li>
+                            <li><strong>Orden de Fuente:</strong> Si todo lo demás es igual, la última regla declarada en el código gana.</li>
+                        </ol>
+
+                        <p><strong>Concepto (Especificidad):</strong> Es el sistema de "puntos" para calcular el peso de un selector. Se puede pensar como una tupla de 4 números: <code>(Inline, ID, Clase, Elemento)</code>.</p>
+                        <ul>
+                            <li><strong>Estilos en Línea (Inline):</strong> (1, 0, 0, 0) - El más alto.</li>
+                            <li><strong>IDs:</strong> (0, 1, 0, 0)</li>
+                            <li><strong>Clases, Pseudo-clases, Atributos:</strong> (0, 0, 1, 0)</li>
+                            <li><strong>Elementos, Pseudo-elementos:</strong> (0, 0, 0, 1)</li>
+                        </ul>
+                        
+                        <h4>Ejemplo Práctico (Especificidad):</h4>
+                        <pre><code class="language-html">&lt;div id="app"&gt;
+  &lt;p class="text-primary"&gt;Hola Mundo&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="language-css">/* Especificidad: (0,0,0,1) */
+p {
+  color: red;
+}
+
+/* Especificidad: (0,0,1,1) -> Gana a la anterior */
+p.text-primary {
+  color: blue;
+}
+
+/* Especificidad: (0,1,0,1) -> Gana a la anterior */
+#app p {
+  color: green;
+}
+
+/* Especificidad: (0,1,1,1) -> Gana a la anterior */
+#app p.text-primary {
+  color: purple; /* &lt;-- Este es el color que se aplicará */
+}
+
+/* ¡El orden no importa si la especificidad es mayor! */
+p {
+  color: orange; /* Sigue perdiendo, aunque esté al final */
+}</code></pre>
+
+                        <p><strong>Concepto (Herencia):</strong> Propiedades que fluyen "hacia abajo" en el árbol DOM.</p>
+                        <ul>
+                            <li><strong>Heredan:</strong> Propiedades de texto (<code>color</code>, <code>font-family</code>, <code>font-size</code>, <code>line-height</code>, <code>text-align</code>).</li>
+                            <li><strong>No Heredan:</strong> Propiedades del modelo de caja (<code>padding</code>, <code>margin</code>, <code>border</code>, <code>width</code>, <code>height</code>) y fondos (<code>background</code>).</li>
+                        </ul>
+
+                        <h4>Ejemplo Práctico (Herencia):</h4>
+                        <pre><code class="language-html">&lt;div class="container"&gt;
+  Soy el padre.
+  &lt;p&gt;Soy el hijo.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="language-css">.container {
+  color: #a3e635;         /* lime-400 (Heredable) */
+  border: 1px solid #f472b6; /* pink-400 (No heredable) */
+}
+/*
+Resultado:
+- El 'div.container' tendrá borde rosa y texto verde.
+- El 'p' (hijo) tendrá texto verde (heredado), pero NO tendrá borde.
+*/</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>1.5 El Modelo de Caja (The Box Model)</h3>
+                        <p><strong>Concepto (Teoría):</strong> Es el modelo de renderizado fundamental del navegador. Cada elemento HTML es una caja rectangular. Esta caja se compone de cuatro capas, de adentro hacia afuera:</p>
+                        <ol>
+                            <li><strong>Content:</strong> El contenido (texto, imagen).</li>
+                            <li><strong>Padding:</strong> Relleno interno (espacio entre contenido y borde).</li>
+                            <li><strong>Border:</strong> El borde.</li>
+                            <li><strong>Margin:</strong> El margen externo (espacio entre esta caja y las cajas vecinas).</li>
+                        </ol>
+
+                        <p><strong>Concepto (<code>box-sizing</code>):</strong> Esta propiedad define <em>cómo</em> se calcula el <code>width</code> y <code>height</code> de la caja.</p>
+                        <ul>
+                            <li><code>content-box</code> (default antiguo): <code>width</code> = <em>solo</em> el contenido. El <code>padding</code> y <code>border</code> se <em>suman</em> al ancho total.</li>
+                            <li><code>border-box</code> (estándar moderno): <code>width</code> = contenido + padding + borde. Es el modelo más intuitivo y fácil de gestionar. <strong>Paul Irish</strong> fue uno de los grandes promotores de su adopción generalizada.</li>
+                        </ul>
+
+                        <h4>Ejemplo Práctico (<code>border-box</code> vs <code>content-box</code>):</h4>
+                        <pre><code class="language-html">&lt;div class="box content-box"&gt;Content Box&lt;/div&gt;
+&lt;div class="box border-box"&gt;Border Box&lt;/div&gt;</code></pre>
+                        <pre><code class="language-css">/* Un "reset" común que facilita la vida */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.box {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid #a3e635; /* lime-400 */
+  margin: 10px;
+  background: #1f2937; /* bg-gray-800 */
+  color: white;
+}
+
+.content-box {
+  /* Este 'box-sizing' es el default, lo forzamos para el ejemplo */
+  box-sizing: content-box;
+  /*
+  Ancho Total Calculado:
+  width (200px) + padding (20px*2) + border (5px*2) = 250px
+  */
+}
+
+.border-box {
+  /*
+  Ancho Total Calculado:
+  El width (200px) YA INCLUYE el padding y el borde.
+  El área de contenido se reduce automáticamente a 150px.
+  El ancho total sigue siendo 200px.
+  */
+}</code></pre>
+                    </article>
+                </section>
+            </div>
+
+            <!-- Módulo 2 -->
+            <div class="bg-gray-800/50 rounded-xl shadow-2xl p-6 sm:p-10 mb-12 backdrop-blur-sm border border-gray-700/50">
+                <section id="modulo-2">
+                    <h2>Módulo 2: Propiedades Esenciales y Tipografía</h2>
+                    <p>Construir los "átomos" de la interfaz.</p>
+
+                    <article>
+                        <h3>2.1 Unidades y Valores</h3>
+                        <p><strong>Concepto (Teoría):</strong> Las unidades definen cómo se mide un valor. Se dividen en Absolutas (fijas) y Relativas (flexibles).</p>
+                        <ul>
+                            <li><strong>Absolutas:</strong> <code>px</code> (Píxeles). Bueno para elementos que <em>nunca</em> deben cambiar (ej. un <code>border-width</code> de 1px).</li>
+                            <li><strong>Relativas (al Viewport):</strong> <code>vw</code> (1% del ancho del viewport), <code>vh</code> (1% del alto del viewport).</li>
+                            <li><strong>Relativas (a la Tipografía):</strong>
+                                <ul>
+                                    <li><code>%</code>: Relativo al mismo valor en el elemento padre.</li>
+                                    <li><code>em</code>: Relativo al <code>font-size</code> del <em>elemento padre</em>. Puede causar anidamiento complejo (efecto "compuesto").</li>
+                                    <li><code>rem</code> (<strong>Root EM</strong>): Relativo al <code>font-size</code> del elemento raíz (<code>&lt;html&gt;</code>). Es la unidad <strong>preferida para la escalabilidad y accesibilidad</strong>, ya que todo el layout y tipografía pueden escalar uniformemente si el usuario cambia el tamaño de fuente base en su navegador.</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h4>Ejemplo Práctico (<code>rem</code> vs <code>em</code>):</h4>
+                        <pre><code class="language-html">&lt;html&gt; &lt;!-- font-size: 16px (default) --&gt;
+&lt;body&gt;
+  &lt;div class="padre-em" style="font-size: 1.2em;"&gt; &lt;!-- 16px * 1.2 = 19.2px --&gt;
+    &lt;p style="font-size: 1.2em;"&gt; &lt;!-- 19.2px * 1.2 = 23.04px (complicado) --&gt;
+      Texto con 'em'
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="padre-rem"&gt;
+    &lt;p style="font-size: 1.2rem;"&gt; &lt;!-- 16px * 1.2 = 19.2px (predecible) --&gt;
+      Texto con 'rem'
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        <pre><code class="language-css">/*
+Usar 'rem' para márgenes, paddings y tipografía permite que toda
+la UI escale si el usuario necesita texto más grande.
+*/
+.componente {
+  padding: 1rem; /* 16px */
+  margin-bottom: 0.5rem; /* 8px */
+  font-size: 1.1rem; /* 17.6px */
+}</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>2.2 Colores y Fondos</h3>
+                        <p><strong>Concepto (Teoría):</strong> Definición de color.</p>
+                        <ul>
+                            <li><strong>Formatos:</strong>
+                                <ul>
+                                    <li><code>HEX</code>: <code>#FF0000</code> (RRGGBB).</li>
+                                    <li><code>RGB</code>: <code>rgb(255, 0, 0)</code>.</li>
+                                    <li><code>RGBA</code>: <code>rgba(255, 0, 0, 0.5)</code> (El canal "A" es <em>Alpha</em> o transparencia, de 0 a 1).</li>
+                                    <li><code>HSL</code>: <code>hsl(0, 100%, 50%)</code> (Hue, Saturation, Lightness - Tono, Saturación, Luminosidad). Más intuitivo para ajustes humanos. <code>HSLA</code> añade transparencia.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Propiedades de <code>background</code>:</strong> Permiten un control granular sobre el fondo.</li>
+                        </ul>
+                        
+                        <h4>Ejemplo Práctico (Fondo complejo):</h4>
+                        <pre><code class="language-html">&lt;div class="hero-section"&gt;
+  &lt;h1&gt;Bienvenido&lt;/h1&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="language-css">.hero-section {
+  /* Cargar una imagen (placeholder de un servicio externo) */
+  background-image: url('https://placehold.co/1200x400/333/eee?text=Hero+Image');
+
+  /* Asegurar que la imagen cubra todo el contenedor */
+  background-size: cover;
+
+  /* Centrar la imagen */
+  background-position: center center;
+
+  /* Evitar que la imagen se repita */
+  background-repeat: no-repeat;
+
+  /* (Atajo para todo lo anterior)
+  background: url('...') center/cover no-repeat;
+  */
+
+  /* Añadir un color semi-transparente SOBRE la imagen para legibilidad */
+  /* Esta vez un gradiente de moda */
+  background-image:
+    linear-gradient(to right, rgba(163, 230, 53, 0.4), rgba(236, 72, 153, 0.4)),
+    url('https://placehold.co/1200x400/333/eee?text=Hero+Image');
+
+  height: 400px;
+  color: white; /* Texto blanco para contraste */
+  
+  /* Centrar el h1 (usando flexbox) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>2.3 Tipografía Web</h3>
+                        <p><strong>Concepto (Teoría):</strong> El control sobre el texto es clave para la Usabilidad y Accesibilidad (UX/UI).</p>
+                        <ul>
+                            <li><code>font-family</code>: Lista de fuentes (stack). Termina con una genérica (ej. <code>sans-serif</code> o <code>serif</code>).</li>
+                            <li><code>@font-face</code>: La regla CSS que permite cargar archivos de fuentes personalizadas (ej. <code>.woff2</code>, <code>.ttf</code>) alojados en nuestro servidor.</li>
+                            <li><code>line-height</code>: (Altura de línea). Crucial para la legibilidad. Se recomienda usar valores sin unidad (ej. <code>line-height: 1.6;</code>), que son un múltiplo del <code>font-size</code> del propio elemento.</li>
+                        </ul>
+
+                        <h4>Ejemplo Práctico (Google Fonts y legibilidad):</h4>
+                        <pre><code class="language-html">&lt;!-- 1. Cargar Google Fonts en el &lt;head&gt; --&gt;
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora&display=swap" rel="stylesheet"&gt;
+
+&lt;article&gt;
+  &lt;h2&gt;Título del Artículo&lt;/h2&gt;
+  &lt;p&gt;Este es un párrafo de texto...&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+                        <pre><code class="language-css">body {
+  /* Fuente 'sans-serif' para legibilidad general */
+  font-family: 'Roboto', Arial, sans-serif;
+  line-height: 1.6; /* 160% del font-size */
+  font-size: 16px;
+}
+
+h2 {
+  /* Fuente 'serif' para títulos (contraste) */
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700; /* Negrita */
+  line-height: 1.2; /* Títulos tienen menos altura de línea */
+  text-transform: uppercase; /* Mayúsculas */
+}
+
+p {
+  text-align: justify; /* Justificado (cuidado con ríos de texto) */
+  letter-spacing: 0.5px; /* Espaciado entre letras */
+}</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>2.4 El Flujo del Documento (Propiedad <code>display</code>)</h3>
+                        <p><strong>Concepto (Teoría):</strong> Es el concepto más básico de layout. Todo elemento tiene un valor <code>display</code> por defecto que define cómo interactúa con sus vecinos.</p>
+                        <ul>
+                            <li><strong><code>display: block</code>:</strong>
+                                <ul>
+                                    <li>Ocupa todo el ancho disponible.</li>
+                                    <li>Crea un salto de línea antes y después.</li>
+                                    <li>Respeta <code>width</code>, <code>height</code>, <code>margin</code> y <code>padding</code>.</li>
+                                    <li>(Ej: <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;section&gt;</code>)</li>
+                                </ul>
+                            </li>
+                            <li><strong><code>display: inline</code>:</strong>
+                                <ul>
+                                    <li>Ocupa solo el ancho de su contenido.</li>
+                                    <li>Fluye con el texto, no crea saltos de línea.</li>
+                                    <li><strong>Ignora</strong> <code>width</code>, <code>height</code>, y <code>margin-top/bottom</code>.</li>
+                                    <li>(Ej: <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>)</li>
+                                </ul>
+                            </li>
+                            <li><strong><code>display: inline-block</code>:</strong>
+                                <ul>
+                                    <li>El "híbrido". Fluye con el texto (como <code>inline</code>), pero respeta <code>width</code>, <code>height</code>, <code>margin</code> y <code>padding</code> (como <code>block</code>).</li>
+                                </ul>
+                            </li>
+                            <li><strong><code>display: none</code>:</strong>
+                                <ul>
+                                    <li>Elimina el elemento del DOM. No ocupa espacio y no es visible. (Diferente de <code>visibility: hidden</code>, que lo oculta pero <em>reserva</em> su espacio).</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h4>Ejemplo Práctico:</h4>
+                        <pre><code class="language-html">&lt;a href="#" class="btn-block"&gt;Botón Block&lt;/a&gt;
+&lt;a href="#" class="btn-block"&gt;Botón Block&lt;/a&gt;
+
+&lt;span class="etiqueta-inline"&gt;Etiqueta 1&lt;/span&gt;
+&lt;span class="etiqueta-inline"&gt;Etiqueta 2&lt;/span&gt;
+
+&lt;a href="#" class="btn-inline-block"&gt;Botón IB&lt;/a&gt;
+&lt;a href="#" class="btn-inline-block"&gt;Botón IB&lt;/a&gt;</code></pre>
+                        <pre><code class="language-css">.btn-block {
+  display: block;
+  background: #a3e635; /* bg-lime-400 */
+  color: #1f2937; /* bg-gray-800 */
+  font-weight: 600;
+  margin: 10px 0; /* Se apilan verticalmente */
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.etiqueta-inline {
+  display: inline;
+  background: #ec4899; /* bg-pink-500 */
+  color: white;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+.btn-inline-block {
+  display: inline-block;
+  background: #6366f1; /* bg-indigo-500 */
+  color: white;
+  margin: 10px; /* Respeta márgenes en todas direcciones */
+  padding: 10px; /* Respeta padding */
+  width: 150px; /* Respeta width */
+  text-align: center;
+  border-radius: 5px;
+}</code></pre>
+                    </article>
+                </section>
+            </div>
+
+            <!-- Módulo 3 -->
+            <div class="bg-gray-800/50 rounded-xl shadow-2xl p-6 sm:p-10 mb-12 backdrop-blur-sm border border-gray-700/50">
+                <section id="modulo-3">
+                    <h2>Módulo 3: Layouts Modernos (Flexbox y Grid)</h2>
+                    <p>El abandono de técnicas antiguas (como <code>float</code>) para maquetar.</p>
+
+                    <article>
+                        <h3>3.1 Position: El Layout Clásico</h3>
+                        <p><strong>Concepto (Teoría):</strong> La propiedad <code>position</code> permite sacar elementos del "flujo normal" del documento.</p>
+                        <ul>
+                            <li><code>static</code>: El valor por defecto. El elemento sigue el flujo normal.</li>
+                            <li><code>relative</code>: El elemento sigue en el flujo, pero ahora podemos "moverlo" con <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> <em>relativo a su posición original</em>. Lo más importante: <strong>crea un contexto de posicionamiento</strong> para sus hijos <code>absolute</code>.</li>
+                            <li><code>absolute</code>: El elemento se saca <em>completamente</em> del flujo. Se posiciona (con <code>top</code>, <code>left</code>, etc.) relativo a su <strong>ancestro posicionado más cercano</strong> (cualquier ancestro que no sea <code>position: static</code>). Si no encuentra ninguno, se posiciona relativo al <code>&lt;body&gt;</code>.</li>
+                            <li><code>fixed</code>: Se saca del flujo. Se posiciona relativo al <em>viewport</em> (la ventana del navegador). No se mueve al hacer scroll.</li>
+                            <li><code>sticky</code>: Un híbrido. Se comporta como <code>relative</code> hasta que el <em>scroll</em> llega a un punto (definido por <code>top</code>, <code>bottom</code>, etc.), y entonces se "pega" y actúa como <code>fixed</code>.</li>
+                        </ul>
+
+                        <h4>Ejemplo Práctico (Modal y Header Fijo):</h4>
+                        <pre><code class="language-html">&lt;header class="header-sticky"&gt;Header Fijo&lt;/header&gt;
+&lt;div class="modal-backdrop"&gt;
+  &lt;div class="modal-content"&gt;
+    &lt;!-- 'position: relative' en el padre... --&gt;
+    &lt;button class="modal-close-btn"&gt;X&lt;/button&gt; &lt;!-- ...para posicionar este hijo 'absolute' --&gt;
+    &lt;p&gt;Contenido del modal&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div style="height: 1000px; background: rgba(31, 41, 55, 0.3);"&gt;&lt;!-- Contenido de relleno --&gt;&lt;/div&gt;
+</code></pre>
+                        <pre><code class="language-css">.header-sticky {
+  position: sticky;
+  top: 0; /* Se pegará al borde superior cuando el scroll lo alcance */
+  background: rgba(17, 24, 39, 0.7); /* bg-gray-900 con alfa */
+  backdrop-filter: blur(10px); /* Efecto Glassmorphism */
+  color: white;
+  padding: 1rem;
+  z-index: 10; /* Asegura que esté sobre otro contenido */
+  border-bottom: 1px solid rgba(55, 65, 81, 0.5);
+}
+
+.modal-backdrop {
+  position: fixed; /* Ocupa toda la pantalla, no se mueve con scroll */
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 100; /* Sobre todo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  position: relative; /* Contexto para el botón de cerrar */
+  background: #1f2937; /* bg-gray-800 */
+  color: white;
+  width: 90%;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #374151; /* bg-gray-700 */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #9ca3af; /* bg-gray-400 */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.modal-close-btn:hover {
+    color: white;
+}
+</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>3.2 CSS Flexbox (Modelo 1D)</h3>
+                        <p><strong>Autores/Proponentes:</strong> La especificación es del W3C, con <strong>Tab Atkins Jr.</strong> como uno de los editores principales.</p>
+                        <p><strong>Concepto (Teoría):</strong> Es un modelo de layout <strong>unidimensional</strong> (1D). Organiza elementos en una Fila (row) o en una Columna (column), pero no en ambas a la vez. Es ideal para componentes (navbars, listas de tarjetas, botones alineados).</p>
+                        <p><strong>Terminología:</strong></p>
+                        <ul>
+                            <li><strong>Contenedor Flex:</strong> El elemento padre (con <code>display: flex</code>).</li>
+                            <li><strong>Items Flex:</strong> Los hijos directos del contenedor.</li>
+                            <li><strong>Eje Principal (Main Axis):</strong> La dirección del <code>flex-direction</code> (por defecto <code>row</code>).</li>
+                            <li><strong>Eje Transversal (Cross Axis):</strong> El eje perpendicular al principal.</li>
+                        </ul>
+                        <p><strong>Propiedades Clave del Contenedor:</strong></p>
+                        <ul>
+                            <li><code>display: flex</code></li>
+                            <li><code>flex-direction</code>: <code>row</code> (default), <code>column</code>, <code>row-reverse</code>, <code>column-reverse</code>.</li>
+                            <li><code>justify-content</code>: Alineación en el <strong>Eje Principal</strong> (<code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>space-between</code>, <code>space-around</code>).</li>
+                            <li><code>align-items</code>: Alineación en el <strong>Eje Transversal</strong> (<code>stretch</code>, <code>flex-start</code>, <code>flex-end</code>, <code>center</code>).</li>
+                            <li><code>flex-wrap</code>: <code>nowrap</code> (default) o <code>wrap</code> (permite que los items salten a la siguiente línea).</li>
+                        </ul>
+
+                        <h4>Ejemplo Práctico (Navbar y Centrado):</h4>
+                        <pre><code class="language-html">&lt;!-- Ejemplo 1: Navbar --&gt;
+&lt;nav class="navbar"&gt;
+  &lt;div class="logo"&gt;MiLogo&lt;/div&gt;
+  &lt;ul class="nav-links"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;a href="#" class="cta-button"&gt;Login&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;!-- Ejemplo 2: Centrado Perfecto --&gt;
+&lt;div class="centering-container"&gt;
+  &lt;div class="centered-item"&gt;Estoy perfectamente centrado&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="language-css">.navbar {
+  display: flex;
+  flex-direction: row; /* (Default) */
+  justify-content: space-between; /* Eje Principal: separa los grupos */
+  align-items: center; /* Eje Transversal: centra verticalmente */
+  padding: 1rem;
+  background: #1f2937; /* bg-gray-800 */
+  border: 1px solid #374151; /* bg-gray-700 */
+  border-radius: 8px;
+  color: white;
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.nav-links li {
+  margin-left: 1rem;
+}
+.nav-links a, .cta-button {
+  color: white;
+  text-decoration: none;
+}
+.logo {
+  font-weight: bold;
+  color: #a3e635; /* lime-400 */
+}
+.cta-button {
+    background: #a3e635; /* lime-400 */
+    color: #1f2937; /* bg-gray-800 */
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.centering-container {
+  display: flex;
+  height: 300px; /* Necesita altura para centrar verticalmente */
+  border: 1px solid #a3e635; /* border-lime-400 */
+  background: #111827; /* bg-gray-900 */
+  border-radius: 8px;
+
+  /* Centrado en Eje Principal (horizontal) */
+  justify-content: center;
+  /* Centrado en Eje Transversal (vertical) */
+  align-items: center;
+}
+.centered-item {
+    background: #1f2937; /* bg-gray-800 */
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #374151;
+}
+</code></pre>
+
+                        <p><strong>Propiedades Clave de los Items:</strong></p>
+                        <ul>
+                            <li><code>flex-grow</code>: (Número, default 0). Factor de "crecimiento". Si hay espacio extra, ¿cuánto de ese espacio toma este item?</li>
+                            <li><code>flex-shrink</code>: (Número, default 1). Factor de "encogimiento". Si no hay espacio, ¿cuánto se encoge este item?</li>
+                            <li><code>flex-basis</code>: (Unidad, default <code>auto</code>). El tamaño "ideal" o base del item antes de crecer o encogerse.</li>
+                            <li><code>flex</code>: Atajo para <code>flex-grow flex-shrink flex-basis</code>. (Ej. <code>flex: 1 1 auto;</code>).</li>
+                            <li><code>align-self</code>: Sobrescribe el <code>align-items</code> del contenedor solo para este item.</li>
+                        </ul>
+
+                        <h4>Ejemplo Práctico (Layout de 2 columnas):</h4>
+                        <pre><code class="language-html">&lt;div class="container-items"&gt;
+  &lt;main class="content"&gt;Contenido principal...&lt;/main&gt;
+  &lt;aside class="sidebar"&gt;Sidebar&lt;/aside&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="language-css">.container-items {
+  display: flex;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  overflow: hidden; /* Para que el borde redondeado afecte a los hijos */
+}
+.content {
+  /* Crece para tomar el espacio disponible (2),
+  se encoge (1),
+  base de 0 (empezará desde 0 y crecerá) */
+  flex: 2 1 0%;
+  background: #1f2937; /* bg-gray-800 */
+  padding: 1rem;
+}
+.sidebar {
+  /* Crece (1) -> Tomará la mitad de espacio que .content */
+  flex: 1 1 0%;
+  background: #374151; /* bg-gray-700 */
+  padding: 1rem;
+  border-left: 1px solid #4b5563; /* bg-gray-600 */
+}</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>3.3 CSS Grid (Modelo 2D)</h3>
+                        <p><strong>Autores/Proponentes:</strong> <strong>Rachel Andrew</strong> y <strong>Jen Simmons</strong> son las principales educadoras y proponentes de Grid, trabajando de cerca con el W3C.</p>
+                        <p><strong>Concepto (Teoría):</strong> Es un modelo de layout <strong>bidimensional</strong> (2D). Controla Filas y Columnas <em>simultáneamente</em>. Es ideal para la maquetación general de la página (layouts).</p>
+                        <p><strong>Terminología:</strong></p>
+                        <ul>
+                            <li><strong>Contenedor Grid:</strong> El elemento con <code>display: grid</code>.</li>
+                            <li><strong>Tracks:</strong> Las filas (rows) y columnas (columns).</li>
+                            <li><strong>Líneas de Grilla:</strong> Las líneas (horizontales y verticales) que separan los tracks.</li>
+                            <li><strong>Unidad <code>fr</code>:</strong> (Fraccional). Una unidad que representa una fracción del espacio <em>disponible</em>.</li>
+                        </ul>
+                        <p><strong>Propiedades Clave (Definición de Grilla):</strong></p>
+                        <ul>
+                            <li><code>display: grid</code></li>
+                            <li><code>grid-template-columns</code>: Define las columnas. (Ej. <code>1fr 1fr 200px</code> -> 2 columnas fraccionales y una fija de 200px).</li>
+                            <li><code>grid-template-rows</code>: Define las filas. (Ej. <code>auto 1fr auto</code> -> fila 1 y 3 se adaptan al contenido, fila 2 toma el espacio restante).</li>
+                            <li><code>gap</code> (o <code>grid-gap</code>): El espacio (gutter) <em>entre</em> las celdas.</li>
+                        </ul>
+                        <p><strong>Propiedades Clave (Posicionamiento de Items):</strong></p>
+                        <ul>
+                            <li><code>grid-column-start</code> / <code>grid-column-end</code>: Dónde empieza y termina el item (por número de línea).</li>
+                            <li><code>grid-row-start</code> / <code>grid-row-end</code>:</li>
+                            <li>Atajo: <code>grid-column: 1 / 3</code> (Empieza en línea 1, termina en línea 3, ocupando 2 columnas). <code>grid-column: span 2</code> (Ocupa 2 columnas).</li>
+                        </ul>
+                        <h4>Ejemplo Práctico (Layout de Aplicación con <code>grid-template-areas</code>):</h4>
+                        <p><code>grid-template-areas</code>: La forma más "visual" e ingenieril de definir un layout.</p>
+                        <pre><code class="language-html">&lt;div class="app-layout"&gt;
+  &lt;header class="app-header"&gt;Header&lt;/header&gt;
+  &lt;nav class="app-sidebar"&gt;Sidebar&lt;/nav&gt;
+  &lt;main class="app-content"&gt;Content&lt;/main&gt;
+  &lt;footer class="app-footer"&gt;Footer&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="language-css">.app-layout {
+  display: grid;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  
+  /* Definimos las filas: 60px fija, 1fr (flexible), 100px fija */
+  grid-template-rows: 60px 1fr 100px;
+  
+  /*
+  Definimos las columnas Y las "áreas" con nombres.
+  Col 1: 250px (sidebar)
+  Col 2: 1fr (contenido principal)
+  */
+  grid-template-columns: 250px 1fr;
+
+  /*
+  Definimos la plantilla visualmente:
+  - Fila 1 ("header"): Ocupa ambas columnas (header header)
+  - Fila 2 ("main"):   Col 1 es 'sidebar', Col 2 es 'content'
+  - Fila 3 ("footer"): Ocupa ambas columnas (footer footer)
+  */
+  grid-template-areas:
+    "header  header"
+    "sidebar content"
+    "footer  footer";
+  gap: 5px;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Ahora, asignamos cada elemento a su área nombrada */
+.app-header {
+  grid-area: header;
+  background: #374151; /* bg-gray-700 */
+}
+.app-sidebar {
+  grid-area: sidebar;
+  background: #4b5563; /* bg-gray-600 */
+}
+.app-content {
+  grid-area: content;
+  background: #1f2937; /* bg-gray-800 */
+}
+.app-footer {
+  grid-area: footer;
+  background: #374151; /* bg-gray-700 */
+}
+
+/* Estilos comunes para centrar texto */
+.app-layout > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+}
+</code></pre>
+                    </article>
+                </section>
+            </div>
+
+            <!-- Módulo 4 -->
+            <div class="bg-gray-800/50 rounded-xl shadow-2xl p-6 sm:p-10 mb-12 backdrop-blur-sm border border-gray-700/50">
+                <section id="modulo-4">
+                    <h2>Módulo 4: Diseño Responsivo (Responsive Web Design - RWD)</h2>
+                    <p>Asegurar que la aplicación funcione en cualquier tamaño de pantalla.</p>
+
+                    <article>
+                        <h3>4.1 El Viewport Metatag</h3>
+                        <p><strong>Concepto (Teoría):</strong> El <em>viewport</em> es el área visible del navegador. En móviles, los navegadores "mienten" por defecto: simulan un viewport de escritorio (ej. 980px) y luego "alejan" la página para que quepa. Esto hace el texto ilegible.</p>
+                        <p><strong>El Metatag:</strong> Esta etiqueta le dice al navegador: "No mientas. Configura el ancho del viewport para que sea igual al ancho del dispositivo (<code>width=device-width</code>) y empieza sin zoom (<code>initial-scale=1.0</code>)".</p>
+                        
+                        <h4>Ejemplo Práctico (Requerido en el <code>&lt;head&gt;</code> de <em>toda</em> página responsiva):</h4>
+                        <pre><code class="language-html">&lt;head&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;/head&gt;</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>4.2 Media Queries</h3>
+                        <p><strong>Autor (Teoría):</strong> <strong>Ethan Marcotte</strong> acuñó el término "Responsive Web Design" en un artículo de <em>A List Apart</em> en 2010. RWD se basa en 3 pilares:</p>
+                        <ol>
+                            <li>Una grilla fluida (Flexbox/Grid).</li>
+                            <li>Imágenes fluidas.</li>
+                            <li>Media Queries.</li>
+                        </ol>
+                        <p><strong>Concepto:</strong> Son filtros condicionales. Permiten aplicar bloques de CSS <em>solo si</em> se cumplen ciertas condiciones del dispositivo (ancho, alto, orientación, resolución).</p>
+                        
+                        <h4>Ejemplo Práctico:</h4>
+                        <pre><code class="language-css">/* Estilos base (para todos) */
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/*
+Media Query:
+Si el ancho del viewport es 600px O MÁS...
+*/
+@media (min-width: 600px) {
+  .container {
+    width: 80%; /* ...hacemos el contenedor más ancho */
+  }
+}
+
+/*
+Si el ancho del viewport es 1200px O MÁS...
+*/
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px; /* ...le damos un ancho fijo máximo */
+  }
+}
+
+/* Media query para impresión */
+@media print {
+  body {
+    font-family: 'Times New Roman', serif;
+    color: black;
+    background: white;
+  }
+  .navbar, .app-footer, .header-sticky {
+    display: none; /* Oculta navbar y footer al imprimir */
+  }
+}</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>4.3 Estrategia "Mobile First"</h3>
+                        <p><strong>Autor (Teoría):</strong> <strong>Luke Wroblewski</strong> es el principal proponente de esta estrategia.</p>
+                        <p><strong>Concepto:</strong> En lugar de diseñar para escritorio y luego "quitar" cosas para móvil (Desktop-First, usando <code>max-width</code>), diseñamos para la restricción (Móvil) primero, y luego "añadimos" complejidad a medida que la pantalla crece (Mobile-First, usando <code>min-width</code>).</p>
+                        <p><strong>Ventajas:</strong></p>
+                        <ul>
+                            <li>CSS más limpio y menos sobrescrituras.</li>
+                            <li>Mejor rendimiento en móviles (cargan un CSS más simple).</li>
+                            <li>Fuerza a priorizar el contenido esencial.</li>
+                        </ul>
+                        
+                        <h4>Ejemplo Práctico (Layout de Tarjetas):</h4>
+                        <pre><code class="language-html">&lt;div class="card-container"&gt;
+  &lt;div class="card"&gt;Tarjeta 1&lt;/div&gt;
+  &lt;div class="card"&gt;Tarjeta 2&lt;/div&gt;
+  &lt;div class="card"&gt;Tarjeta 3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="language-css">/* 1. Estilos Mobile-First (por defecto) */
+.card-container {
+  /* En móvil, usamos Flexbox en columna */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  background: #1f2937; /* bg-gray-800 */
+  border: 1px solid #374151; /* bg-gray-700 */
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+}
+
+/* 2. Mejora Progresiva para Tablets */
+/* Si la pantalla es 768px o MÁS... */
+@media (min-width: 768px) {
+  .card-container {
+    /* ...usamos Grid para 2 columnas */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* 3. Mejora Progresiva para Desktop */
+/* Si la pantalla es 1024px o MÁS... */
+@media (min-width: 1024px) {
+  .card-container {
+    /* ...cambiamos a 3 columnas */
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>4.4 Imágenes Responsivas</h3>
+                        <p><strong>Concepto (Teoría):</strong> Servir imágenes tiene dos problemas:</p>
+                        <ol>
+                            <li><strong>Layout:</strong> La imagen no debe desbordar su contenedor (la "imagen fluida").</li>
+                            <li><strong>Rendimiento:</strong> No debemos enviar una imagen de 4000px a un teléfono móvil (desperdicio de datos).</li>
+                        </ol>
+                        <p><strong>Práctica (Layout):</strong> La "imagen fluida" es la solución más simple.</p>
+                        <pre><code class="language-css">img {
+  max-width: 100%; /* La imagen nunca será más ancha que su contenedor */
+  height: auto;  /* Mantiene la proporción */
+}</code></pre>
+                        <p><strong>Práctica (Rendimiento):</strong> Usamos HTML (no CSS) para permitir que el navegador <em>elija</em> la mejor imagen.</p>
+                        <ul>
+                            <li><code>srcset</code>: Provee una lista de imágenes y sus anchos (<code>w</code>).</li>
+                            <li><code>sizes</code>: Le dice al navegador qué tan ancha será la imagen en diferentes <em>breakpoints</em> (para que pueda calcular cuál <code>srcset</code> descargar).</li>
+                            <li><code>&lt;picture&gt;</code>: Se usa para <em>dirección de arte</em> (imágenes diferentes, ej. vertical en móvil, horizontal en desktop).</li>
+                        </ul>
+                        <h4>Ejemplo Práctico (HTML para rendimiento):</h4>
+                        <pre><code class="language-html">&lt;!-- Ejemplo con srcset y sizes --&gt;
+&lt;img
+  srcset="https://placehold.co/480x300?text=IMG+PEQ 480w,
+          https://placehold.co/800x500?text=IMG+MED 800w,
+          https://placehold.co/1200x750?text=IMG+GRANDE 1200w"
+  sizes="(min-width: 1024px) 50vw, 100vw"
+  src="https://placehold.co/800x500?text=IMG+MED" &lt;!-- Fallback --&gt;
+  alt="Descripción de la imagen"
+  style="max-width: 100%; height: auto; border-radius: 8px;"&gt;
+
+&lt;!-- Ejemplo para Dirección de Arte --&gt;
+&lt;picture&gt;
+  &lt;!-- Si la pantalla es 768px+, usa la imagen horizontal --&gt;
+  &lt;source media="(min-width: 768px)" srcset="https://placehold.co/800x400?text=Horizontal"&gt;
+  &lt;!-- Si no, usa la imagen vertical --&gt;
+  &lt;source media="(max-width: 767px)" srcset="https://placehold.co/400x600?text=Vertical"&gt;
+  &lt;!-- Fallback --&gt;
+  &lt;img src="https://placehold.co/800x400?text=Horizontal" alt="..." style="max-width: 100%; height: auto; border-radius: 8px;"&gt;
+&lt;/picture&gt;</code></pre>
+                    </article>
+                </section>
+            </div>
+
+            <!-- Módulo 5 -->
+            <div class="bg-gray-800/50 rounded-xl shadow-2xl p-6 sm:p-10 mb-12 backdrop-blur-sm border border-gray-700/50">
+                <section id="modulo-5">
+                    <h2>Módulo 5: Técnicas Avanzadas y Efectos Visuales</h2>
+                    <p>Añadir interactividad y "pulido" (polish) a la UI.</p>
+
+                    <article>
+                        <h3>5.1 Pseudo-clases</h3>
+                        <p><strong>Concepto (Teoría):</strong> Selectores que apuntan a un elemento basado en su <em>estado</em> o <em>posición</em> en el DOM, no en su nombre, clase o ID.</p>
+                        <p><strong>Tipos:</strong></p>
+                        <ul>
+                            <li><strong>Estado de UI:</strong> <code>:hover</code> (cursor encima), <code>:focus</code> (seleccionado con Tab o click, crucial para accesibilidad), <code>:active</code> (click presionado), <code>:disabled</code> (campo de formulario deshabilitado).</li>
+                            <li><strong>Estructurales:</strong> <code>:first-child</code>, <code>:last-child</code>, <code>:nth-child(n)</code> (selecciona el enésimo hijo), <code>:not(selector)</code> (negación).</li>
+                        </ul>
+                        
+                        <h4>Ejemplo Práctico (Tabla "Zebra" y Foco):</h4>
+                        <pre><code class="language-html">&lt;input type="text" placeholder="Tu nombre" class="input-foco"&gt;
+&lt;table class="tabla-zebra"&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Fila 1&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Fila 2&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Fila 3&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Fila 4&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                        <pre><code class="language-css">.input-foco {
+    background-color: #1f2937; /* bg-gray-800 */
+    border: 2px solid #374151; /* bg-gray-700 */
+    padding: 0.5rem;
+    border-radius: 5px;
+    color: white;
+    transition: all 0.3s ease;
+}
+/* Estilo de Foco para Accesibilidad */
+.input-foco:focus {
+  border-color: #a3e635; /* lime-400 */
+  box-shadow: 0 0 10px rgba(163, 230, 53, 0.5);
+  outline: none; /* Quitamos el feo borde por defecto */
+}
+
+.tabla-zebra {
+    width: 100%;
+    border-collapse: collapse;
+}
+.tabla-zebra td {
+    padding: 0.75rem;
+    border: 1px solid #374151; /* bg-gray-700 */
+}
+
+/* Tabla Zebra (Stripe table) */
+.tabla-zebra tr:nth-child(even) { /* Selecciona las filas pares */
+  background-color: #1f2937; /* bg-gray-800 */
+}
+
+/* Resaltado al pasar el cursor */
+.tabla-zebra tr:hover {
+  background-color: #4b5563; /* bg-gray-600 */
+}
+</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>5.2 Pseudo-elementos</h3>
+                        <p><strong>Concepto (Teoría):</strong> Selectores que estilizan una <em>parte específica</em> de un elemento, o que <em>insertan contenido virtual</em> antes o después del contenido real del elemento. Usan doble dos puntos (<code>::</code>) por estándar (aunque <code>:</code> funciona por retrocompatibilidad).</p>
+                        <p><strong>Tipos:</strong></p>
+                        <ul>
+                            <li><code>::before</code> y <code>::after</code>: Crean un "elemento" virtual <em>dentro</em> del elemento seleccionado, antes o después de su <code>content</code>. Requieren la propiedad <code>content</code>.</li>
+                            <li><code>::first-letter</code>: Estiliza la primera letra (ej. capitular).</li>
+                            <li><code>::placeholder</code>: Estiliza el texto de un <code>input</code> placeholder.</li>
+                        </ul>
+
+                        <h4>Ejemplo Práctico (Tooltip y Custom Bullets):</h4>
+                        <pre><code class="language-html">&lt;a href="#" class="tooltip" data-tooltip="Este es el mensaje"&gt;Pasa el cursor&lt;/a&gt;
+
+&lt;ul class="custom-list"&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                        <pre><code class="language-css">.tooltip {
+  position: relative; /* Contexto para el ::after */
+  color: #a3e635; /* lime-400 */
+  border-bottom: 1px dotted #a3e635;
+  text-decoration: none;
+}
+.tooltip:hover::after {
+  /* Usamos el atributo 'data-tooltip' para el contenido */
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%; /* Arriba del elemento */
+  left: 50%;
+  transform: translateX(-50%); /* Centrado */
+  background: #030712; /* bg-gray-950 */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  white-space: nowrap; /* Evita que el texto se rompa */
+  z-index: 20;
+  border: 1px solid #374151;
+  font-size: 0.9rem;
+}
+
+.custom-list {
+  list-style-type: none; /* Quitamos bullets por defecto */
+  padding-left: 0;
+}
+.custom-list li {
+    position: relative;
+    padding-left: 1.75rem; /* Espacio para el bullet */
+}
+.custom-list li::before {
+  content: '⚡'; /* "Vistoso" bullet */
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1rem;
+}</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>5.3 Transiciones (Transitions)</h3>
+                        <p><strong>Concepto (Teoría):</strong> Permiten definir una animación <em>implícita</em> y suave entre dos estados de un elemento (ej. el estado normal y el estado <code>:hover</code>).</p>
+                        <p><strong>Propiedades:</strong></p>
+                        <ul>
+                            <li><code>transition-property</code>: Qué propiedad animar (ej. <code>background-color</code>, <code>opacity</code>, o <code>all</code>).</li>
+                            <li><code>transition-duration</code>: Cuánto debe durar (ej. <code>0.3s</code> o <code>300ms</code>).</li>
+                            <li><code>transition-timing-function</code>: La "curva" de la animación (ej. <code>ease-in</code>, <code>ease-out</code>, <code>linear</code>).</li>
+                            <li><code>transition-delay</code>: Cuánto esperar antes de empezar.</li>
+                            <li><code>transition</code>: El atajo para todas las anteriores.</li>
+                        </ul>
+                        <p><strong>Nota de Rendimiento:</strong> Siempre es mejor animar <code>opacity</code> y <code>transform</code> que propiedades que causan <em>reflow</em> (como <code>width</code>, <code>height</code>, <code>margin</code>).</p>
+
+                        <h4>Ejemplo Práctico (Botón con "fade"):</h4>
+                        <pre><code class="language-html">&lt;a href="#" class="button-transition"&gt;Comprar Ahora&lt;/a&gt;</code></pre>
+                        <pre><code class="language-css">.button-transition {
+  background-color: #a3e635; /* lime-400 */
+  color: #1f2937; /* bg-gray-800 */
+  font-weight: 600;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block; /* Para que el padding funcione bien */
+  border: 2px solid #a3e635;
+
+  /*
+  Definición de la transición:
+  Monitorea 'all' (o 'background-color', 'color', 'transform')
+  dura 0.3 segundos,
+  con una curva 'ease-in-out'
+  */
+  transition: all 0.3s ease-in-out;
+}
+
+.button-transition:hover, .button-transition:focus {
+  background-color: transparent;
+  color: #a3e635; /* Estado final */
+  transform: translateY(-2px); /* Efecto "lift" */
+  box-shadow: 0 5px 15px rgba(163, 230, 53, 0.3);
+}</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>5.4 Transformaciones (Transforms)</h3>
+                        <p><strong>Concepto (Teoría):</strong> Modifican el sistema de coordenadas de un elemento, permitiendo moverlo (<code>translate</code>), rotarlo (<code>rotate</code>), escalarlo (<code>scale</code>) o sesgarlo (<code>skew</code>).</p>
+                        <p><strong>Ventaja de Rendimiento:</strong> Las transformaciones (especialmente <code>translate</code>) <strong>no afectan el flujo del documento</strong>. Mover un elemento con <code>transform: translateX(50px)</code> es mucho más eficiente (acelerado por GPU) que moverlo con <code>margin-left: 50px</code> (que recalcula todo el layout).</p>
+                        
+                        <h4>Ejemplo Práctico (Zoom en Tarjeta):</h4>
+                        <pre><code class="language-html">&lt;div class="card-zoom"&gt;
+  &lt;img src="https://placehold.co/400x300/4b5563/eee?text=Hover+Me" alt="Demo"&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="language-css">.card-zoom {
+  overflow: hidden; /* Oculta lo que se salga de la tarjeta */
+  border-radius: 8px;
+  display: inline-block;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+.card-zoom img {
+  display: block; /* Elimina espacio fantasma bajo la imagen */
+  transition: transform 0.4s ease; /* Transición para la transformación */
+}
+
+.card-zoom:hover img {
+  /* Al hacer hover, escala la imagen 1.1 veces */
+  transform: scale(1.1) rotate(-2deg); /* Más vistoso */
+}</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>5.5 Animaciones (Animations)</h3>
+                        <p><strong>Concepto (Teoría):</strong> Permiten animaciones <em>explícitas</em> y complejas, con múltiples pasos (fotogramas clave).</p>
+                        <p><strong>Teoría:</strong> Se definen en dos partes:</p>
+                        <ol>
+                            <li><code>@keyframes</code>: La regla que define los pasos de la animación (usando <code>from</code>/<code>to</code> o porcentajes <code>0%</code>, <code>50%</code>, <code>100%</code>).</li>
+                            <li><code>animation</code>: La propiedad que <em>aplica</em> los keyframes a un elemento, definiendo duración, repetición (<code>iteration-count</code>), dirección (<code>direction</code>), etc.</li>
+                        </ol>
+                        
+                        <h4>Ejemplo Práctico (Spinner de Carga):</h4>
+                        <pre><code class="language-html">&lt;div class="spinner"&gt;&lt;/div&gt;</code></pre>
+                        <pre><code class="language-css">/* 1. Definir los keyframes de la animación "spin" */
+@keyframes spin {
+  /* Desde (0%) */
+  from {
+    transform: rotate(0deg);
+  }
+  /* Hasta (100%) */
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 2. Aplicar la animación al elemento */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #374151; /* Gris claro (bg-gray-700) */
+  border-top: 5px solid #a3e635; /* Verde (lime-400) */
+  border-radius: 50%; /* Círculo */
+
+  /* Aplicación */
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite; /* Repetir infinitamente */
+}</code></pre>
+                    </article>
+                </section>
+            </div>
+
+            <!-- Módulo 6 -->
+            <div class="bg-gray-800/50 rounded-xl shadow-2xl p-6 sm:p-10 mb-12 backdrop-blur-sm border border-gray-700/50">
+                <section id="modulo-6">
+                    <h2>Módulo 6: Arquitectura y CSS Escalable (El Enfoque de Ingeniería)</h2>
+                    <p>Cómo escribir CSS para sistemas grandes y mantenibles.</p>
+
+                    <article>
+                        <h3>6.1 Variables CSS (Custom Properties)</h3>
+                        <p><strong>Concepto (Teoría):</strong> Variables nativas de CSS. Son dinámicas (pueden cambiar en <em>runtime</em>) y respetan la cascada y la herencia (tienen <em>scope</em>). Son la base del <em>theming</em> moderno (ej. Modo Oscuro).</p>
+                        <p><strong>Sintaxis:</strong></p>
+                        <ul>
+                            <li>Definición: <code>--nombre-variable: valor;</code> (usualmente en el selector <code>:root</code> para que sean globales).</li>
+                            <li>Uso: <code>color: var(--nombre-variable);</code></li>
+                        </ul>
+                        
+                        <h4>Ejemplo Práctico (Theming Modo Oscuro):</h4>
+                        <p><em>(Este ejemplo requeriría JS para añadir/quitar la clase <code>.dark-mode</code> al <code>&lt;body&gt;</code>. Aquí solo mostramos el CSS.)</em></p>
+                        <pre><code class="language-css">/* 1. Definición de variables globales (Tema Claro por defecto) */
+:root {
+  --color-fondo: #FFFFFF;
+  --color-texto: #333333;
+  --color-primario: #a3e635; /* lime-400 */
+}
+
+/* 2. Redefinición de variables para el Tema Oscuro */
+body.dark-mode {
+  --color-fondo: #111827; /* bg-gray-900 */
+  --color-texto: #d1d5db; /* bg-gray-300 */
+  --color-primario: #bef264; /* lime-300 */
+}
+
+/* 3. Uso de las variables */
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button {
+  background-color: var(--color-primario);
+  --color-btn-texto: #111827; /* Texto oscuro para botón claro */
+  color: var(--color-btn-texto);
+}
+
+/* Si está en dark-mode, el botón puede necesitar texto claro */
+body.dark-mode .button {
+    --color-btn-texto: #111827;
+}
+</code></pre>
+                        <p><em>(Nota: Esta página ya usa un tema oscuro por defecto, pero el principio de variables es el mismo).</em></p>
+                    </article>
+
+                    <article>
+                        <h3>6.2 Metodologías de Nomenclatura: BEM</h3>
+                        <p><strong>Autor (Teoría):</strong> Desarrollado por el equipo de <strong>Yandex</strong>.</p>
+                        <p><strong>Concepto:</strong> BEM (Block, Element, Modifier) no es un framework, es una <strong>convención de nomenclatura</strong> estricta para las clases de CSS.</p>
+                        <p><strong>Objetivo:</strong> Evitar colisiones de nombres y problemas de especificidad en proyectos grandes. Produce CSS "plano" (sin anidamiento) y modular.</p>
+                        <p><strong>Reglas:</strong></p>
+                        <ul>
+                            <li><strong>Block:</strong> El componente padre, auto-contenido (ej. <code>.card</code>, <code>.menu</code>).</li>
+                            <li><strong>Element:</strong> Una parte <em>dentro</em> del bloque (ej. <code>.card__title</code>, <code>.menu__item</code>). Se denota con doble guion bajo (<code>__</code>). Un elemento <em>no puede</em> vivir fuera de su bloque.</li>
+                            <li><strong>Modifier:</strong> Una variación de un bloque o un elemento (ej. <code>.card--featured</code>, <code>.menu__item--active</code>). Se denota con doble guion (<code>--</code>).</li>
+                        </ul>
+                        
+                        <h4>Ejemplo Práctico (Componente Card):</h4>
+                        <pre><code class="language-html">&lt;!-- BLOQUE: .card --&gt;
+&lt;article class="card-bem"&gt;
+  &lt;!-- ELEMENTO: .card-bem__image --&gt;
+  &lt;img class="card-bem__image" src="https://placehold.co/400x200" alt=""&gt;
+  &lt;!-- ELEMENTO: .card-bem__content --&gt;
+  &lt;div class="card-bem__content"&gt;
+    &lt;!-- ELEMENTO: .card-bem__title --&gt;
+    &lt;h3 class="card-bem__title"&gt;Título del Card&lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+&lt;!-- BLOQUE con MODIFICADOR: .card-bem--featured --&gt;
+&lt;article class="card-bem card-bem--featured"&gt;
+  &lt;img class="card-bem__image" src="https://placehold.co/400x200" alt=""&gt;
+  &lt;div class="card-bem__content"&gt;
+    &lt;h3 class="card-bem__title"&gt;Card Destacado&lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+                        <pre><code class="language-css">/*
+Notar que no hay anidamiento de selectores.
+Cada selector tiene la especificidad baja de una sola clase.
+*/
+
+/* BLOQUE */
+.card-bem {
+  border: 1px solid #374151; /* bg-gray-700 */
+  border-radius: 5px;
+  background: #1f2937; /* bg-gray-800 */
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+/* ELEMENTOS */
+.card-bem__image {
+  width: 100%;
+}
+.card-bem__content {
+  padding: 1rem;
+}
+.card-bem__title {
+  font-size: 1.2rem;
+  margin: 0;
+  color: white; /* Sobrescribir estilos base de 'prose' */
+}
+
+/* MODIFICADOR */
+.card-bem--featured {
+  border: 2px solid #a3e635; /* lime-400 */
+  box-shadow: 0 4px 10px rgba(163, 230, 53, 0.3);
+}</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>6.3 Preprocesadores: SASS (SCSS)</h3>
+                        <p><strong>Autor (Teoría):</strong> <strong>Hampton Catlin</strong> creó SASS (Syntactically Awesome StyleSheets).</p>
+                        <p><strong>Concepto:</strong> Un preprocesador es un lenguaje de <em>scripting</em> que <em>compila</em> a CSS. No se ejecuta en el navegador. Añade características de lenguaje de programación a CSS (variables, anidamiento, funciones, mixins).</p>
+                        <p><strong>Sintaxis:</strong> Usaremos SCSS, que es un <em>super-set</em> de CSS (todo CSS válido es SCSS válido).</p>
+                        
+                        <h4>Ejemplo Práctico (SCSS):</h4>
+                        <pre><code class="language-scss">/* styles.scss (Este archivo se compila a styles.css) */
+
+/* 1. Variables ($) */
+$primary-color: #a3e635; /* lime-400 */
+$dark-text: #111827;
+$font-stack: 'Roboto', sans-serif;
+
+/* 2. Anidamiento (Nesting) */
+.navbar-scss {
+  background-color: $primary-color;
+  padding: 1rem;
+
+  ul { /* Se compila a: .navbar-scss ul */
+    display: flex;
+    list-style: none;
+  }
+
+  li { /* Se compila a: .navbar-scss li */
+    margin-left: 1rem;
+  }
+
+  a { /* Se compila a: .navbar-scss a */
+    color: $dark-text;
+    text-decoration: none;
+
+    /* Referencia al padre (&) */
+    &:hover { /* Se compila a: .navbar-scss a:hover */
+      text-decoration: underline;
+    }
+  }
+}
+
+/* 3. Mixins (Bloques de código reusables) */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+.button-scss {
+  background: $primary-color;
+  color: $dark-text;
+  font-weight: 600;
+  @include border-radius(5px); /* Usamos el mixin */
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+}
+</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>6.4 Optimización y Rendimiento</h3>
+                        <p><strong>Concepto (Teoría):</strong> El CSS es un recurso que <strong>bloquea el renderizado</strong> (<em>Render-Blocking Resource</em>). El navegador no mostrará <em>nada</em> en pantalla hasta que haya descargado y parseado <em>todo</em> el CSS del <code>&lt;head&gt;</code>.</p>
+                        <p><strong>El Camino Crítico de Renderizado (Critical Rendering Path):</strong> Es la secuencia de pasos que el navegador sigue para pintar la página.</p>
+                        <p><strong>Estrategia:</strong></p>
+                        <ol>
+                            <li><strong>Minificar y Concatenar:</strong> Reducir el tamaño del CSS (quitando espacios en blanco) y combinar múltiples archivos <code>.css</code> en uno solo (para reducir peticiones HTTP). (Herramientas como Webpack o Vite hacen esto automáticamente).</li>
+                            <li><strong>CSS Crítico (Critical CSS):</strong> Identificar el CSS <em>mínimo</em> necesario para renderizar la parte <em>above-the-fold</em> (lo que se ve sin hacer scroll).</li>
+                            <li><strong>Implementación:</strong>
+                                <ul>
+                                    <li>Poner el CSS Crítico <em>en línea</em> (<code>&lt;style&gt;...css crítico...&lt;/style&gt;</code>) en el <code>&lt;head&gt;</code>.</li>
+                                    <li>Cargar el resto del CSS (el no-crítico) de forma <strong>asíncrona</strong> para que no bloquee el renderizado.</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <h4>Ejemplo Práctico (Carga Asíncrona):</h4>
+                        <pre><code class="language-html">&lt;head&gt;
+  &lt;!-- 1. CSS Crítico (para el header y layout base) en línea --&gt;
+  &lt;style&gt;
+    body { margin: 0; font-family: sans-serif; background: #111827; }
+    .header { background: #1f2937; color: white; padding: 1rem; }
+    /* ...otros estilos críticos... */
+  &lt;/style&gt;
+
+  &lt;!--
+  2. Carga del CSS completo (No bloqueante)
+  rel="preload" le dice al navegador que lo descargue pronto.
+  as="style" le dice qué es.
+  onload="..." lo aplica a la página UNA VEZ que se ha cargado.
+  -->
+  &lt;link rel="preload" href="full-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"&gt;
+
+  &lt;!-- Fallback para navegadores sin JS --&gt;
+  &lt;noscript&gt;&lt;link rel="stylesheet" href="full-styles.css"&gt;&lt;/noscript&gt;
+&lt;/head&gt;</code></pre>
+                    </article>
+                </section>
+            </div>
+
+            <!-- Módulo 7 -->
+            <div class="bg-gray-800/50 rounded-xl shadow-2xl p-6 sm:p-10 mb-12 backdrop-blur-sm border border-gray-700/50">
+                <section id="modulo-7">
+                    <h2>Módulo 7: El Ecosistema Moderno y Futuro de CSS</h2>
+                    <p>Cómo se integra CSS en el <em>stack</em> de desarrollo front-end.</p>
+
+                    <article>
+                        <h3>7.1 Frameworks CSS: La Decisión</h3>
+                        <p><strong>Concepto (Teoría):</strong> Herramientas que proveen CSS (y a veces JS) pre-escrito para acelerar el desarrollo.</p>
+                        
+                        <h4>Tipo 1: Frameworks Basados en Componentes (Ej. Bootstrap)</h4>
+                        <ul>
+                            <li><strong>Autor:</strong> Creado por <strong>Twitter</strong>.</li>
+                            <li><strong>Filosofía:</strong> Provee componentes listos para usar (<code>.card</code>, <code>.modal</code>, <code>.navbar</code>).</li>
+                            <li><strong>Pros:</strong> Prototipado extremadamente rápido. Buena documentación.</li>
+                            <li><strong>Contras:</strong> Las webs terminan pareciéndose entre sí. Alta especificidad, lo que dificulta la personalización (mucho <em>override</em>).</li>
+                        </ul>
+                        <h5>Ejemplo (Bootstrap):</h5>
+                        <pre><code class="language-html">&lt;!-- Esto requeriría el CSS de Bootstrap para funcionar --&gt;
+&lt;button type="button" class="btn btn-primary"&gt;
+  Botón Primario de Bootstrap
+&lt;/button&gt;</code></pre>
+
+                        <h4>Tipo 2: Frameworks Utility-First (Ej. Tailwind CSS)</h4>
+                        <ul>
+                            <li><strong>Autor:</strong> Creado por <strong>Adam Wathan</strong>.</li>
+                            <li><strong>Filosofía:</strong> No provee componentes. Provee clases "atómicas" de bajo nivel (<code>.pt-4</code>, <code>.flex</code>, <code>.text-lg</code>, <code>.bg-blue-500</code>). Los componentes se construyen <em>componiendo</em> estas utilidades en el HTML.</li>
+                            <li><strong>Pros:</strong> Altamente personalizable. Sin colisiones de nombres. El CSS final es muy pequeño (usando <em>purging</em>). Muy popular en el desarrollo de aplicaciones modernas.</li>
+                            <li><strong>Contras:</strong> El HTML se vuelve "sucio" (lleno de clases). Requiere un <em>build step</em> (compilación). (Esta página usa Tailwind).</li>
+                        </ul>
+                        <h5>Ejemplo (Tailwind CSS):</h5>
+                        <pre><code class="language-html">&lt;!-- Este botón usa las clases de Tailwind cargadas en esta página --&gt;
+&lt;button class="
+  bg-lime-500      
+  hover:bg-lime-600 
+  text-gray-900    /* Texto oscuro para contraste */
+  font-bold        
+  py-2             
+  px-4             
+  rounded          
+  transition-all
+  duration-300
+  transform
+  hover:scale-105
+"&gt;
+  Botón de Tailwind
+&lt;/button&gt;</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>7.2 CSS-in-JS</h3>
+                        <p><strong>Concepto (Teoría):</strong> Una técnica, popularizada por el ecosistema <strong>React</strong>, donde el CSS se escribe directamente en los archivos JavaScript del componente.</p>
+                        <ul>
+                            <li><strong>Autor/Ejemplo:</strong> <strong>Styled Components</strong> (creado por Max Stoiber y Glen Maddern).</li>
+                            <li><strong>Filosofía:</strong> Elimina la brecha entre JS y CSS. El CSS tiene <em>scope</em> automático al componente (no hay colisiones globales). Permite lógica JS (props) directamente en el CSS.</li>
+                            <li><strong>Pros:</strong> Mantenibilidad a escala de componente. Sin clases globales.</li>
+                            <li><strong>Contras:</strong> Requiere JS para funcionar (problemas de FOUC - Flash of Unstyled Content). Curva de aprendizaje.</li>
+                        </ul>
+                        
+                        <h4>Ejemplo Práctico (React con Styled Components):</h4>
+                        <pre><code class="language-javascript">// Button.js (Un componente de React)
+import React from 'react';
+import styled from 'styled-components'; // Importa la librería
+
+// Crea un componente &lt;Button&gt; que es un &lt;button&gt; HTML
+// con estilos adjuntos (usando Template Literals)
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid #a3e635; /* lime-400 */
+  color: #a3e635;
+  margin: 0.5em 1em;
+  padding: 0.25em 1em;
+  transition: all 0.3s ease;
+
+  /* Podemos usar 'props' de React para lógica */
+  background: ${props => props.primary ? '#a3e635' : 'transparent'};
+  color: ${props => props.primary ? '#111827' : '#a3e635'};
+  
+  &:hover {
+      background: ${props => props.primary ? '#bef264' : 'rgba(163, 230, 53, 0.1)'};
+  }
+`;
+
+// Uso:
+// &lt;Button&gt;Botón Normal&lt;/Button&gt;
+// &lt;Button primary&gt;Botón Primario&lt;/Button&gt;
+</code></pre>
+                    </article>
+
+                    <article>
+                        <h3>7.3 El Futuro: ¿Qué viene?</h3>
+                        <p><strong>Concepto (Teoría):</strong> El CSS evoluciona constantemente. Las siguientes características ya son (o están siendo) implementadas en navegadores modernos.</p>
+                        
+                        <h4>1. Container Queries (<code>@container</code>)</h4>
+                        <ul>
+                            <li><strong>Teoría:</strong> El "santo grial" del RWD. En lugar de que un componente responda al <em>viewport</em> (<code>@media</code>), responde al tamaño de su <em>contenedor padre</em>.</li>
+                            <li><strong>Caso de uso:</strong> Una tarjeta (<code>.card</code>) que se ve "vertical" si su contenedor es estrecho, y "horizontal" si su contenedor es ancho, <em>independientemente</em> del ancho de la página.</li>
+                        </ul>
+                        <h5>Ejemplo Práctico (<code>@container</code>):</h5>
+                        <pre><code class="language-css">.card-container {
+  /* Le dice al navegador que monitoree el ancho de este elemento */
+  container-type: inline-size;
+  container-name: card-container;
+}
+
+/*
+Aplica estos estilos al .card
+SI su contenedor llamado 'card-container'
+tiene al menos 400px de ancho.
+*/
+@container card-container (min-width: 400px) {
+  .card {
+    display: flex; /* Cambia a layout horizontal */
+  }
+}</code></pre>
+
+                        <h4>2. Selector <code>:has()</code></h4>
+                        <ul>
+                            <li><strong>Teoría:</strong> El tan esperado "selector de padre" (<em>parent selector</em>). Permite estilizar un elemento basado en los <em>hijos que contiene</em>.</li>
+                            <li><strong>Caso de uso:</strong> Cambiar el fondo de un <code>&lt;div&gt;</code> si <em>contiene</em> una imagen.</li>
+                        </ul>
+                        <h5>Ejemplo Práctico (<code>:has()</code>):</h5>
+                        <pre><code class="language-css">/* Selecciona cualquier 'figure' QUE CONTENGA un 'figcaption' */
+figure:has(figcaption) {
+  border: 1px solid #374151;
+  padding: 10px;
+  background: rgba(17, 24, 39, 0.5);
+}
+
+/* Selecciona un .card QUE CONTENGA un .badge-nuevo
+   y le pone un borde destacado */
+.card:has(.badge-nuevo) {
+  border-left: 5px solid #a3e635; /* lime-400 */
+}
+
+/* Selecciona un 'label' cuyo 'input' siguiente esté :checked */
+label:has(+ input:checked) {
+  font-weight: bold;
+  color: #a3e635; /* lime-400 */
+}</code></pre>
+
+                        <h4>3. Nuevos Espacios de Color (ej. LCH)</h4>
+                        <ul>
+                            <li><strong>Teoría:</strong> <code>rgb()</code> es limitado y no es "perceptualmente uniforme" (cambiar el valor de "azul" en 10 tiene un impacto visual diferente si es oscuro o claro).</li>
+                            <li><code>lch()</code> (Lightness, Chroma, Hue) es un espacio de color moderno que se alinea con la percepción humana, permitiendo colores más vibrantes y transiciones de color más suaves y predecibles.</li>
+                        </ul>
+
+                    </article>
+                </section>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-transparent mt-16 border-t border-gray-700/50">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+            <p>&copy; 2025 Curso de CSS Moderno. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de HTML para Ingenieros de Sistemas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Estilos para el scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        pre[class*="language-"] {
+            padding: 1rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            overflow: auto;
+            border-radius: 0.375rem; /* rounded-md */
+            background-color: #282c34; /* Un fondo oscuro */
+            color: #abb2bf; /* Un color de texto claro */
+        }
+        code {
+            font-family: 'Menlo', 'Monaco', 'Consolas', "Courier New", monospace;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased">
+
+    <!-- Encabezado del Curso -->
+    <header class="bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <h1 class="text-4xl font-bold text-gray-900">🏛️ Curso: HTML5 – De la Semántica a la Integración Web</h1>
+            <p class="mt-2 text-lg text-gray-600">Dirigido a: Estudiantes de Ingeniería de Sistemas</p>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row py-8">
+
+        <!-- Navegación / Índice -->
+        <aside class="w-full md:w-1/4 lg:w-1/5 md:sticky md:top-8 md:self-start mb-8 md:mb-0">
+            <nav class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-xl font-bold mb-4 text-gray-900">Contenido del Curso</h2>
+                <ul class="space-y-2">
+                    <li><a href="#modulo1" class="text-blue-600 hover:text-blue-800 hover:underline">Módulo 1: Fundamentos</a></li>
+                    <li><a href="#modulo2" class="text-blue-600 hover:text-blue-800 hover:underline">Módulo 2: Semántica Estructural</a></li>
+                    <li><a href="#modulo3" class="text-blue-600 hover:text-blue-800 hover:underline">Módulo 3: El DOM</a></li>
+                    <li><a href="#modulo4" class="text-blue-600 hover:text-blue-800 hover:underline">Módulo 4: Formularios</a></li>
+                    <li><a href="#modulo5" class="text-blue-600 hover:text-blue-800 hover:underline">Módulo 5: Multimedia</a></li>
+                    <li><a href="#modulo6" class="text-blue-600 hover:text-blue-800 hover:underline">Módulo 6: Tablas de Datos</a></li>
+                    <li><a href="#modulo7" class="text-blue-600 hover:text-blue-800 hover:underline">Módulo 7: HTML Avanzado</a></li>
+                    <li><a href="#modulo8" class="text-blue-600 hover:text-blue-800 hover:underline">Módulo 8: Proyecto Final</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Contenido Principal del Curso -->
+        <main class="w-full md:w-3/4 lg:w-4/5 md:pl-8">
+            <div class="bg-white p-8 rounded-lg shadow-lg space-y-12">
+
+                <!-- Módulo 1 -->
+                <section id="modulo1" class="space-y-6">
+                    <h2 class="text-3xl font-bold border-b-2 border-blue-500 pb-2 text-gray-900">🏛️ Módulo 1: Fundamentos y Contexto (El "Por Qué")</h2>
+                    <p>El objetivo es situar a HTML dentro de la arquitectura de sistemas que el estudiante ya conoce (o está aprendiendo).</p>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 1: El Ecosistema Web</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (El Modelo Cliente-Servidor):</strong> La Web opera bajo un modelo de solicitud-respuesta (Request/Response) sobre el protocolo HTTP (Hypertext Transfer Protocol). El <strong>Cliente</strong> (usualmente un navegador web) solicita un recurso (ej. una página HTML) a un <strong>Servidor</strong> (una máquina que aloja el recurso). El servidor procesa la solicitud y envía una respuesta, que incluye el documento HTML.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (La Separación de Responsabilidades):</strong> El desarrollo web moderno se basa en un principio clave de ingeniería: la <strong>Separación de Responsabilidades</strong> (Separation of Concerns).</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>HTML (Estructura):</strong> Es la capa de datos y estructura. Define <em>qué</em> contenido hay (un título, un párrafo, un formulario). Es el "sustantivo".</li>
+                                <li><strong>CSS (Presentación):</strong> Es la capa de presentación. Define <em>cómo</em> se ve el contenido (colores, fuentes, layout). Es el "adjetivo".</li>
+                                <li><strong>JavaScript (Comportamiento):</strong> Es la capa de lógica. Define <em>cómo</em> interactúa el contenido (validar un formulario, mostrar un pop-up, cargar datos asincrónicamente). Es el "verbo".</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Autoría (Estándares Web):</strong> El "autor" de HTML no es una sola persona.</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>Tim Berners-Lee:</strong> Se le atribuye la invención de la World Wide Web y la creación del HTML original (c. 1990) como un lenguaje para compartir documentos científicos en el CERN.</li>
+                                <li><strong>W3C (World Wide Web Consortium):</strong> Históricamente, fue el cuerpo de estandarización que definía las especificaciones de HTML (ej. HTML 4.01).</li>
+                                <li><strong>WHATWG (Web Hypertext Application Technology Working Group):</strong> Actualmente, es el grupo (compuesto por Google, Apple, Mozilla, Microsoft) que mantiene el <strong>Estándar Vivo (Living Standard)</strong> de HTML5. Para un ingeniero, esto es clave: HTML no es un estándar estático, sino uno que evoluciona continuamente.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Flujo de Solicitud):</strong></p>
+                            <ol class="list-decimal list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>Usuario</strong> escribe <code>www.miuniversidad.edu</code> en el navegador.</li>
+                                <li><strong>Navegador (Cliente)</strong> envía una <code>HTTP GET /</code> request al servidor de <code>miuniversidad.edu</code>.</li>
+                                <li><strong>Servidor</strong> localiza el archivo (ej. <code>index.html</code>), lo lee y lo empaqueta en una <code>HTTP Response</code>.</li>
+                                <li><strong>Respuesta (Payload):</strong> <code>HTTP/1.1 200 OK</code> (código de estado) seguido de <code>Content-Type: text/html</code> y el código HTML.</li>
+                                <li><strong>Navegador</strong> recibe el texto HTML, lo <em>parsea</em> y comienza a construir el DOM. Si encuentra <code>&lt;link rel="stylesheet" href="style.css"&gt;</code>, hace <em>otra</em> solicitud HTTP para obtener ese archivo.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 2: Anatomía de un Documento HTML</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (El Documento Mínimo):</strong> Un documento HTML es un archivo de texto plano que sigue una estructura jerárquica específica, interpretada por el navegador.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Modos del Navegador):</strong> La primera línea, <code>&lt;!DOCTYPE html&gt;</code>, no es una etiqueta HTML. Es una <strong>instrucción</strong> (un "preámbulo") para el navegador.</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li>Su presencia activa el <strong>"Modo Estándar" (Standards Mode)</strong>, donde el navegador intenta renderizar la página siguiendo las especificaciones del W3C/WHATWG al pie de la letra.</li>
+                                <li>Su ausencia o una declaración incorrecta (ej. de HTML 4) puede activar el <strong>"Modo Quirks" (Quirks Mode)</strong>, un modo de compatibilidad hacia atrás que imita errores de navegadores antiguos. Un ingeniero <em>siempre</em> debe evitar el Modo Quirks.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (La Estructura de Nodos):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><code>&lt;html&gt;</code>: El nodo raíz del documento.</li>
+                                <li><code>&lt;head&gt;</code>: Contiene <strong>metadatos</strong> (datos sobre el documento). No es visible para el usuario.
+                                    <ul class="list-circle list-inside pl-6 mt-1 space-y-1">
+                                        <li><code>&lt;meta charset="UTF-8"&gt;</code>: Declara la <strong>codificación de caracteres</strong>. Es vital para la correcta visualización de tildes, 'ñ' y otros caracteres (evita "mojibake"). UTF-8 es el estándar de facto.</li>
+                                        <li><code>&lt;meta name="viewport" ...&gt;</code>: Instrucción para navegadores móviles sobre cómo escalar la página (fundamental para el diseño responsive).</li>
+                                        <li><code>&lt;title&gt;</code>: El título que aparece en la pestaña del navegador. Es crucial para el SEO y la accesibilidad.</li>
+                                        <li><code>&lt;link&gt;</code>: Para vincular recursos externos (ej. CSS, favicons).</li>
+                                    </ul>
+                                </li>
+                                <li><code>&lt;body&gt;</code>: Contiene el <strong>contenido visible</strong> para el usuario.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Plantilla de Inicio):</strong></p>
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt; &lt;!-- lang="es" es crucial para accesibilidad y SEO --&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    
+    &lt;!-- Título para la pestaña del navegador y SEO --&gt;
+    &lt;title&gt;Página de Ejemplo - Ingeniería de Sistemas&lt;/title&gt;
+    
+    &lt;!-- Vinculación a la hoja de estilos CSS --&gt;
+    &lt;link rel="stylesheet" href="css/estilos.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Contenido visible aquí --&gt;
+    &lt;h1&gt;Mi Primera Página Web&lt;/h1&gt;
+    &lt;p&gt;Este es un párrafo.&lt;/p&gt;
+    
+    &lt;!-- Vinculación a JavaScript (usualmente al final) --&gt;
+    &lt;script src="js/app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <!-- Fin Módulo 1 -->
+
+                <!-- Módulo 2 -->
+                <section id="modulo2" class="space-y-6 pt-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-blue-500 pb-2 text-gray-900">🏛️ Módulo 2: Semántica Estructural (El "Esqueleto")</h2>
+                    <p>El enfoque aquí es la diferencia crítica entre <code>&lt;div&gt;</code> y las etiquetas semánticas. Esto es vital para la accesibilidad y el SEO.</p>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 1: Texto y Contenido</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (Jerarquía de Información):</strong> Los encabezados (<code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>) no son para definir tamaños de fuente. Son para definir la <strong>estructura y jerarquía</strong> del documento.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (El "Outline" del Documento):</strong> El navegador y los motores de búsqueda usan estos encabezados para construir un "índice" o "outline" del contenido.</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li>Debe haber <strong>uno y solo un <code>&lt;h1&gt;</code></strong> por página, que representa el título principal (correlacionado con el <code>&lt;title&gt;</code>).</li>
+                                <li>La jerarquía no debe saltarse (ej. un <code>&lt;h2&gt;</code> no debe ir seguido de un <code>&lt;h4&gt;</code> sin un <code>&lt;h3&gt;</code> intermedio).</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Concepto (Importancia vs. Estilo):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><code>&lt;b&gt;</code> (Bold) y <code>&lt;i&gt;</code> (Italic): Son etiquetas de estilo visual. La especificación de HTML5 les ha dado un significado leve (ej. <code>&lt;i&gt;</code> para términos técnicos o en otro idioma), pero su uso principal es visual. Generalmente, esto debería hacerse con CSS.</li>
+                                <li><code>&lt;strong&gt;</code> (Importancia) y <code>&lt;em&gt;</code> (Énfasis): Son etiquetas <strong>semánticas</strong>.
+                                    <ul class="list-circle list-inside pl-6 mt-1 space-y-1">
+                                        <li><code>&lt;strong&gt;</code>: Indica que el contenido tiene una <strong>gran importancia, seriedad o urgencia</strong>. Los lectores de pantalla lo pueden anunciar con una entonación diferente.</li>
+                                        <li><code>&lt;em&gt;</code>: Indica un <strong>énfasis</strong> en el texto, cambiando el significado de la frase.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <p><strong class="font-medium text-gray-900">Autoría (Especificación WHATWG):</strong> La especificación define <code>&lt;strong&gt;</code> como "contenido de gran importancia" y <code>&lt;b&gt;</code> como "texto al que se llama la atención sin implicar importancia adicional".</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Texto Semántico):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>Incorrecto (Visual):</strong> <code>&lt;b&gt;Atención:&lt;/b&gt; El examen es el &lt;i&gt;lunes&lt;/i&gt;.</code></li>
+                                <li><strong>Correcto (Semántico):</strong> <code>&lt;strong&gt;Atención:&lt;/strong&gt; El examen es el &lt;em&gt;lunes&lt;/em&gt;.</code> (El énfasis cambia el significado; no es el martes, es el <em>lunes</em>).</li>
+                                <li><strong>Correcto (Uso de <code>&lt;i&gt;</code>):</strong> El término <code>&lt;i&gt;Hypertext&lt;/i&gt;</code> fue acuñado por Ted Nelson.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 2: Listas y Enlaces</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (Hipervínculo):</strong> La etiqueta <code>&lt;a&gt;</code> (ancla) es el pilar de la "H" en HTML (Hypertext). Convierte un documento en parte de una red.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Atributos de <code>&lt;a&gt;</code>):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><code>href</code>: (Hypertext Reference) El atributo más importante. Define el <strong>destino</strong> del enlace.</li>
+                                <li><code>target="_blank"</code>: Instruye al navegador para abrir el enlace en una nueva pestaña.</li>
+                                <li><strong>Implicación de Seguridad (para Ingenieros):</strong> Cuando se usa <code>target="_blank"</code>, la nueva página tiene acceso (limitado) a la página original vía <code>window.opener</code>. Un atacante podría cambiar la página original (ej. a un sitio de phishing). Para prevenir esto, <em>siempre</em> se debe agregar <code>rel="noopener noreferrer"</code>.
+                                    <ul class="list-circle list-inside pl-6 mt-1 space-y-1">
+                                        <li><code>noopener</code>: Evita el acceso a <code>window.opener</code>.</li>
+                                        <li><code>noreferrer</code>: Evita que se envíe la cabecera <code>Referer</code> (de dónde vienes).</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Enlaces Seguros):</strong></p>
+<pre class="language-html"><code>&lt;!-- 1. Enlace externo seguro --&gt;
+&lt;a href="https://www.google.com" target="_blank" rel="noopener noreferrer"&gt;
+  Ir a Google
+&lt;/a&gt;
+
+&lt;!-- 2. Enlace interno (Ancla a un ID) --&gt;
+&lt;a href="#seccion-formularios"&gt;Ir a Formularios&lt;/a&gt;
+...
+&lt;h2 id="seccion-formularios"&gt;Sección de Formularios&lt;/h2&gt;
+
+&lt;!-- 3. Enlace de Email --&gt;
+&lt;a href="mailto:profesor@universidad.edu"&gt;Contactar al Profesor&lt;/a&gt;
+
+&lt;!-- 4. Enlace de Teléfono (para móviles) --&gt;
+&lt;a href="tel:+59177712345"&gt;Llamar a Soporte&lt;/a&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 3: El Diseño Semántico (HTML5 Layout)</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto ("Div Soup"):</strong> Antes de HTML5, las páginas se estructuraban usando contenedores genéricos <code>&lt;div&gt;</code> con IDs (ej. <code>&lt;div id="header"&gt;</code>, <code>&lt;div id="menu"&gt;</code>, <code>&lt;div id="footer"&gt;</code>). Esto es "Div Soup" (Sopa de Divs).</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (El "Por Qué" Semántico):</strong> La "Div Soup" no tiene significado para las máquinas.</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>Accesibilidad (A11y):</strong> Un lector de pantalla no puede "saltar al contenido principal" si todo son <code>&lt;div&gt;</code>s.</li>
+                                <li><strong>SEO:</strong> Un motor de búsqueda no puede diferenciar fácilmente el contenido principal de la publicidad en <code>&lt;aside&gt;</code>.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Etiquetas de Layout HTML5):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><code>&lt;header&gt;</code>: Contenedor para la cabecera (logo, título del sitio, <code>&lt;nav&gt;</code>).</li>
+                                <li><code>&lt;nav&gt;</code>: Contenedor para la <strong>navegación principal</strong> (menú).</li>
+                                <li><code>&lt;main&gt;</code>: Define el <strong>contenido principal y único</strong> de la página. Debe haber solo uno. Es crucial para que los lectores de pantalla puedan "saltar" directamente aquí.</li>
+                                <li><code>&lt;article&gt;</code>: Define un contenido <strong>autocontenido e independiente</strong> (un post de blog, una noticia, un producto). Debe tener sentido por sí solo si se sindica (RSS).</li>
+                                <li><code>&lt;section&gt;</code>: Define una <strong>agrupación temática</strong> de contenido. Usualmente tiene un encabezado (<code>&lt;h2&gt;</code>).</li>
+                                <li><code>&lt;aside&gt;</code>: Define contenido <strong>tangencialmente relacionado</strong> (barra lateral, publicidad, biografías).</li>
+                                <li><code>&lt;footer&gt;</code>: Define el pie de página (info de contacto, copyright, enlaces secundarios).</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Layout Semántico):</strong></p>
+<pre class="language-html"><code>&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Logo y Título del Sitio&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/cursos"&gt;Cursos&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;h2&gt;Título del Artículo Principal&lt;/h2&gt;
+      &lt;p&gt;Contenido del artículo...&lt;/p&gt;
+      &lt;section&gt;
+        &lt;h3&gt;Comentarios&lt;/h3&gt;
+        &lt;p&gt;Comentario 1...&lt;/p&gt;
+      &lt;/section&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+
+  &lt;aside&gt;
+    &lt;h3&gt;Cursos Relacionados&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Curso de CSS&lt;/li&gt;
+      &lt;li&gt;Curso de JavaScript&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/aside&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;&amp;copy; 2025 Mi Universidad. Todos los derechos reservados.&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <!-- Fin Módulo 2 -->
+
+                <!-- Módulo 3 -->
+                <section id="modulo3" class="space-y-6 pt-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-blue-500 pb-2 text-gray-900">🏛️ Módulo 3: El Document Object Model (DOM)</h2>
+                    <p>Para ingenieros, el DOM es el concepto más importante. Es la estructura de datos que manipularán.</p>
+                
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 1: ¿Qué es el DOM?</h3>
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Concepto (El DOM no es HTML):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>HTML:</strong> Es un archivo de texto (un <em>string</em>).</li>
+                                <li><strong>DOM (Document Object Model):</strong> Es la <strong>representación en memoria</strong> de ese documento. Es una <strong>API</strong> (Interfaz de Programación de Aplicaciones) que el navegador crea <em>después</em> de <em>parsear</em> (analizar) el HTML.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Una Estructura de Datos en Árbol):</strong> El DOM es una <strong>estructura de datos en árbol (Tree)</strong>.</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li>Se alinea perfectamente con la teoría de grafos y estructuras de datos que un Ingeniero de Sistemas estudia.</li>
+                                <li>El <code>&lt;html&gt;</code> es el <strong>nodo raíz</strong> (root node).</li>
+                                <li><code>&lt;head&gt;</code> y <code>&lt;body&gt;</code> son <strong>nodos hijos</strong> (child nodes) de <code>&lt;html&gt;</code>.</li>
+                                <li><code>&lt;h1&gt;</code> y <code>&lt;p&gt;</code> son <strong>nodos hermanos</strong> (sibling nodes) dentro de <code>&lt;body&gt;</code>.</li>
+                                <li>El texto dentro de un <code>&lt;p&gt;</code> es un <strong>nodo de texto</strong> (text node), hijo del nodo <code>&lt;p&gt;</code>.</li>
+                            </ul>
+                        </div>
+                        
+                        <p><strong class="font-medium text-gray-900">Autoría (W3C DOM Specification):</strong> El DOM es un estándar del W3C, diseñado para ser independiente del lenguaje (aunque se usa mayormente con JavaScript). Define interfaces como <code>Node</code>, <code>Element</code>, <code>Document</code>.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Visualización del Árbol):</strong></p>
+                            <p class="mt-2"><strong>HTML (Texto):</strong></p>
+<pre class="language-html"><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Título&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Encabezado&lt;/h1&gt;
+    &lt;p&gt;Hola&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            <p class="mt-2"><strong>DOM (Árbol en Memoria):</strong></p>
+<pre class="language-text"><code>[Document]
+  └── [html]
+      ├── [head]
+      │   └── [title]
+      │       └── [text "Título"]
+      └── [body]
+          ├── [h1]
+          │   └── [text "Encabezado"]
+          └── [p]
+              └── [text "Hola"]</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 2: El DOM y su Relación con CSS y JS</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (DOM como API):</strong> El DOM es el "puente" que conecta todo.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (El Proceso de Renderizado):</strong></p>
+                            <ol class="list-decimal list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li>El navegador descarga el HTML.</li>
+                                <li><strong>Parseo de HTML:</strong> El navegador lee el HTML y construye el <strong>DOM Tree</strong>.</li>
+                                <li><strong>Parseo de CSS:</strong> Paralelamente, si encuentra un <code>&lt;link rel="stylesheet"&gt;</code>, descarga el CSS y construye el <strong>CSSOM</strong> (CSS Object Model), otra estructura de árbol.</li>
+                                <li><strong>Render Tree:</strong> El navegador combina el DOM y el CSSOM para crear el <strong>Árbol de Renderizado</strong> (Render Tree). Este árbol solo contiene lo que se va a <em>visualizar</em> (omite cosas como <code>&lt;head&gt;</code> o elementos con <code>display: none;</code>).</li>
+                                <li><strong>Layout (Reflow):</strong> El navegador calcula el tamaño y la posición exacta de cada elemento en el Render Tree (ej. "este <code>&lt;div&gt;</code> mide 300px y está a 20px del borde").</li>
+                                <li><strong>Paint (Repaint):</strong> El navegador "dibuja" los pixeles en la pantalla.</li>
+                            </ol>
+                        </div>
+
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (DOM y JS/CSS):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>CSS usa Selectores</strong> para <em>apuntar</em> a nodos del DOM y aplicarles estilos (del CSSOM). (Ej. <code>h1</code> apunta a todos los nodos <code>[h1]</code>).</li>
+                                <li><strong>JavaScript usa la API del DOM</strong> para <em>leer y manipular</em> esos nodos. (Ej. <code>document.getElementById("mi-id")</code> es un método de la API del DOM).</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (El DOM en Acción):</strong></p>
+                            <p class="mt-2"><strong>HTML:</strong></p>
+                            <pre class="language-html"><code>&lt;h1 id="titulo"&gt;Hola&lt;/h1&gt;</code></pre>
+                            
+                            <p class="mt-2"><strong>CSS (Selecciona el nodo):</strong></p>
+<pre class="language-css"><code>#titulo {
+  color: blue; /* Apunta al nodo [h1#titulo] y le aplica estilo */
+}</code></pre>
+
+                            <p class="mt-2"><strong>JavaScript (Manipula el nodo):</strong></p>
+<pre class="language-javascript"><code>// 1. Selecciona el nodo usando la API del DOM
+const miTitulo = document.getElementById("titulo");
+
+// 2. Manipula el nodo (cambia su contenido)
+// Esto provocará un "Reflow" y "Repaint"
+miTitulo.textContent = "¡Adiós!";</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <!-- Fin Módulo 3 -->
+
+                <!-- Módulo 4 -->
+                <section id="modulo4" class="space-y-6 pt-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-blue-500 pb-2 text-gray-900">🏛️ Módulo 4: Formularios – La Interfaz con el Backend</h2>
+                    <p>Esta es la conexión directa entre el frontend y los sistemas del lado del servidor que un ingeniero construirá.</p>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 1: La Etiqueta <code>&lt;form&gt;</code></h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (El Contenedor de Datos):</strong> La etiqueta <code>&lt;form&gt;</code> agrupa un conjunto de controles de entrada que envían datos a un servidor.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Atributos Clave):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><code>action</code>: Especifica la <strong>URL del endpoint</strong> en el servidor que recibirá y procesará los datos (ej. <code>/api/login</code>, <code>/registrar.php</code>).</li>
+                                <li><code>method</code>: Especifica el <strong>Método HTTP</strong> a usar para la solicitud.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (GET vs. POST):</strong> Esta es una decisión de arquitectura de sistemas.</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-2 text-gray-700">
+                                <li><strong><code>method="GET"</code>:</strong>
+                                    <ul class="list-circle list-inside pl-6 mt-1 space-y-1">
+                                        <li><strong>Cómo envía:</strong> Los datos del formulario se <strong>codifican en la URL</strong> (Query String).</li>
+                                        <li><strong>Ejemplo:</strong> <code>/buscar?q=html&amp;lang=es</code></li>
+                                        <li><strong>Propiedades:</strong> Es <strong>idempotente</strong> (múltiples solicitudes idénticas tienen el mismo efecto), es <strong>cacheable</strong>, es visible en el historial y en los logs del servidor (¡<strong>NUNCA USAR PARA DATOS SENSIBLES</strong> como contraseñas!), y tiene un límite de longitud.</li>
+                                        <li><strong>Uso:</strong> Búsquedas, filtros, paginación.</li>
+                                    </ul>
+                                </li>
+                                <li><strong><code>method="POST"</code>:</strong>
+                                    <ul class="list-circle list-inside pl-6 mt-1 space-y-1">
+                                        <li><strong>Cómo envía:</strong> Los datos se envían en el <strong>cuerpo (Body)</strong> de la solicitud HTTP.</li>
+                                        <li><strong>Propiedades:</strong> No es idempotente (enviar dos veces puede crear dos registros), no es cacheable, los datos no son visibles en la URL (más seguro para datos sensibles), y no tiene límite de tamaño.</li>
+                                        <li><strong>Uso:</strong> Inicios de sesión, registros de usuario, crear nuevos datos.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Formulario de Login):</strong></p>
+<pre class="language-html"><code>&lt;!-- 
+Esta solicitud se enviará como un HTTP POST
+a la URL "https://api.miuniversidad.edu/v1/login"
+--&gt;
+&lt;form action="https://api.miuniversidad.edu/v1/login" method="POST"&gt;
+  &lt;!-- Controles (inputs) van aquí --&gt;
+&lt;/form&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 2: Controles de Formulario (Inputs)</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (Key-Value Pair):</strong> El objetivo de un formulario es construir un conjunto de pares <strong>clave-valor</strong> (key-value) para enviar al servidor.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (El Atributo <code>name</code>):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li>El atributo <code>id</code> es para vincular el <code>&lt;label&gt;</code> y para JS/CSS.</li>
+                                <li>El atributo <code>name</code> es la <strong>clave (key)</strong> que usará el servidor. <strong>Si un input no tiene <code>name</code>, su valor NO se envía al servidor.</strong></li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (La Importancia de <code>&lt;label&gt;</code>):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li>El <code>&lt;label&gt;</code> es crucial por dos razones:
+                                    <ol class="list-decimal list-inside pl-6 mt-1 space-y-1">
+                                        <li><strong>Accesibilidad (A11y):</strong> Vincula semánticamente el texto con el control. Un lector de pantalla leerá el <code>label</code> cuando el usuario enfoque el <code>input</code>.</li>
+                                        <li><strong>Usabilidad (UX):</strong> El usuario puede hacer clic en el texto del <code>label</code> para enfocar o activar el <code>input</code>.</li>
+                                    </ol>
+                                </li>
+                                <li>Se vincula usando el atributo <code>for</code> del <code>label</code> con el <code>id</code> del <code>input</code>.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Campos de Registro):</strong></p>
+<pre class="language-html"><code>&lt;form action="/registro" method="POST"&gt;
+  &lt;!-- 
+  Se enviará como: "usuario=john.doe"
+  --&gt;
+  &lt;div&gt;
+    &lt;label for="user"&gt;Nombre de Usuario:&lt;/label&gt;
+    &lt;input type="text" id="user" name="usuario"&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- 
+  Se enviará como: "clave=abc123"
+  type="password" enmascara la entrada
+  --&gt;
+  &lt;div&gt;
+    &lt;label for="pass"&gt;Contraseña:&lt;/label&gt;
+    &lt;input type="password" id="pass" name="clave"&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- 
+  Se enviará como: "curso=sistemas"
+  El 'value' del 'option' seleccionado
+  --&gt;
+  &lt;div&gt;
+    &lt;label for="carrera"&gt;Carrera:&lt;/label&gt;
+    &lt;select id="carrera" name="curso"&gt;
+      &lt;option value="sistemas"&gt;Ing. de Sistemas&lt;/option&gt;
+      &lt;option value="civil"&gt;Ing. Civil&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- 
+  Se enviará (o no) como: "terminos=on"
+  --&gt;
+  &lt;div&gt;
+    &lt;input type="checkbox" id="terms" name="terminos"&gt;
+    &lt;label for="terms"&gt;Acepto los términos&lt;/label&gt;
+  &lt;/div&gt;
+  
+  &lt;button type="submit"&gt;Enviar Registro&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 3: Formularios Avanzados (HTML5)</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (Validación del Lado del Cliente):</strong> HTML5 introdujo atributos para que el <em>navegador</em> valide los datos <em>antes</em> de enviarlos.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Validación: Cliente vs. Servidor):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>Validación de Cliente (HTML5):</strong> Es una <strong>mejora de UX (Experiencia de Usuario)</strong>. Ahorra tiempo al usuario y reduce solicitudes innecesarias al servidor. (Ej. <code>required</code>, <code>type="email"</code>, <code>pattern="[a-z]+"</code>, <code>minlength="8"</code>).</li>
+                                <li><strong>Validación de Servidor (Backend):</strong> Es una <strong>medida de SEGURIDAD</strong>. Es <strong>obligatoria e innegociable</strong>. Un usuario malicioso puede saltarse <em>fácilmente</em> la validación de HTML (editando el DOM o enviando una solicitud con <code>curl</code> o Postman). El servidor <em>siempre</em> debe desconfiar del cliente y re-validar todos los datos.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Validación de Cliente):</strong></p>
+<pre class="language-html"><code>&lt;form action="/api/v1/usuarios" method="POST"&gt;
+  &lt;!-- 
+  - required: El navegador no enviará el form si está vacío.
+  - type="email": El navegador validará el formato básico.
+  --&gt;
+  &lt;div&gt;
+    &lt;label for="email_inst"&gt;Email Institucional:&lt;/label&gt;
+    &lt;input type="email" id="email_inst" name="email" required&gt;
+  &lt;/div&gt;
+  
+  &lt;!--
+  - minlength="8": Requiere al menos 8 caracteres.
+  - pattern=".*[0-9].*": (Expresión Regular) Requiere al menos un número.
+  - title: Muestra un tooltip con la ayuda si el patrón falla.
+  --&gt;
+  &lt;div&gt;
+    &lt;label for="pass"&gt;Contraseña (mín 8 car, 1 num):&lt;/label&gt;
+    &lt;input type="password" id="pass" name="password" 
+           required minlength="8" 
+           pattern=".*[0-9].*"
+           title="Debe tener 8+ caracteres y al menos 1 número."&gt;
+  &lt;/div&gt;
+  
+  &lt;button type="submit"&gt;Crear Cuenta&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <!-- Fin Módulo 4 -->
+
+                <!-- Módulo 5 -->
+                <section id="modulo5" class="space-y-6 pt-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-blue-500 pb-2 text-gray-900">🏛️ Módulo 5: Multimedia y Contenido Embebido</h2>
+                    
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 1: Imágenes</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (Imágenes y Contenido):</strong> <code>&lt;img&gt;</code> es una etiqueta "vacía" (no tiene cierre) que reserva un espacio para una imagen.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (El Atributo <code>alt</code>):</strong> El <code>alt</code> (texto alternativo) es el atributo más importante.</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>No es un tooltip</strong> (para eso es <code>title</code>).</li>
+                                <li>Es el <strong>contenido equivalente</strong> si la imagen no carga (ruta rota, mala conexión).</li>
+                                <li>Es lo que los <strong>lectores de pantalla</strong> leen a usuarios con discapacidad visual.</li>
+                            </ul>
+                        </div>
+                        
+                        <p><strong class="font-medium text-gray-900">Teoría (Ingeniería):</strong> Si la imagen es <em>decorativa</em> (un borde, un fondo), el <code>alt</code> debe estar presente pero vacío (<code>alt=""</code>). Esto le dice al lector de pantalla que la ignore. Si la imagen transmite <em>información</em> (un gráfico, un diagrama), el <code>alt</code> debe describir esa información.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Rendimiento y <code>srcset</code>):</strong> Enviar una imagen de 4000px a un móvil es mala ingeniería (desperdicia datos y batería).</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li>El atributo <code>srcset</code> permite al navegador <strong>elegir</strong> la imagen más apropiada según el tamaño de la pantalla (viewport) y la densidad de píxeles (ej. pantallas Retina).</li>
+                                <li>El navegador (el cliente) toma la decisión; el HTML solo le da las opciones.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (<code>&lt;img&gt;</code> Responsiva):</strong></p>
+<pre class="language-html"><code>&lt;!-- 1. Imagen simple con buen 'alt' --&gt;
+&lt;img src="diagrama-cliente-servidor.png" 
+     alt="Diagrama de flujo mostrando un cliente (navegador) 
+          haciendo una solicitud HTTP a un servidor, 
+          y el servidor enviando una respuesta HTML."
+     width="500" height="300"&gt;
+     
+&lt;!-- 2. Imagen responsiva con srcset (para rendimiento) --&gt;
+&lt;img 
+  srcset="logo-pequeño-1x.jpg 500w,
+          logo-pequeño-2x.jpg 1000w,
+          logo-grande-1x.jpg 1500w,
+          logo-grande-2x.jpg 3000w"
+  sizes="(max-width: 600px) 500px, 1500px"
+  src="logo-grande-1x.jpg" &lt;!-- Fallback --&gt;
+  alt="Logo de la Universidad"&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 2: Audio y Video</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (Multimedia Nativa):</strong> Antes de HTML5, se requerían <em>plugins</em> (como Flash) para reproducir audio y video, lo cual era un infierno de seguridad y compatibilidad.</p>
+                        
+                        <p><strong class="font-medium text-gray-900">Teoría (APIs Nativas):</strong> <code>&lt;audio&gt;</code> y <code>&lt;video&gt;</code> son interfaces de HTML5 que le dan al navegador control nativo sobre la reproducción.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Múltiples Fuentes):</strong> No todos los navegadores soportan los mismos <strong>codecs</strong> (ej. H.264 vs. WebM vs. AV1).</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li>La etiqueta <code>&lt;source&gt;</code> (hija de <code>&lt;video&gt;</code> o <code>&lt;audio&gt;</code>) permite ofrecer múltiples formatos. El navegador usará el <em>primero</em> que entienda.</li>
+                                <li>Esto es un patrón de diseño de <strong>mejora progresiva (progressive enhancement)</strong>.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Video con Fallback):</strong></p>
+<pre class="language-html"><code>&lt;video controls width="640" height="360" poster="preview.jpg"&gt;
+  &lt;!-- 
+  'poster' es la imagen de vista previa.
+  'controls' muestra los controles nativos.
+  --&gt;
+  
+  &lt;!-- El navegador intentará cargar WebM (preferido por ser abierto) --&gt;
+  &lt;source src="conferencia.webm" type="video/webm"&gt;
+  
+  &lt;!-- Si falla, intentará cargar MP4 (H.264, alta compatibilidad) --&gt;
+  &lt;source src="conferencia.mp4" type="video/mp4"&gt;
+  
+  &lt;!-- Texto para navegadores muy antiguos o si todo falla --&gt;
+  Lo sentimos, tu navegador no soporta video nativo.
+  &lt;a href="conferencia.mp4"&gt;Descarga el video aquí&lt;/a&gt;.
+&lt;/video&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 3: Embebidos Externos</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (<code>&lt;iframe&gt;</code>):</strong> Un "inline frame" o <code>&lt;iframe&gt;</code> incrusta un <strong>contexto de navegación completamente separado</strong> (una página web entera) dentro de la página actual.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Costos y Riesgos):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>Rendimiento:</strong> Cargar un <code>&lt;iframe&gt;</code> es costoso. Es como lanzar un navegador dentro de tu navegador. Bloquea el <code>onload</code> de la página principal.</li>
+                                <li><strong>Seguridad:</strong> Si no se configuran bien, son un vector de ataque para <strong>Clickjacking</strong> (mostrar un sitio malicioso invisible sobre tu sitio para robar clics).</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Atributos de Seguridad y Rendimiento):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><code>sandbox</code>: Restringe fuertemente lo que el <code>&lt;iframe&gt;</code> puede hacer (ej. <code>sandbox="allow-scripts"</code> solo permite scripts, pero no pop-ups ni acceso al DOM padre).</li>
+                                <li><code>loading="lazy"</code>: (Moderno) Instruye al navegador para que <strong>no cargue</strong> el <code>&lt;iframe&gt;</code> (ej. un video de YouTube al final de la página) hasta que el usuario haga scroll cerca de él. Mejora drástica del rendimiento.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Embed de YouTube optimizado):</strong></p>
+<pre class="language-html"><code>&lt;!-- 
+Este es el código que YouTube proporciona, 
+optimizado para rendimiento y seguridad 
+--&gt;
+&lt;iframe 
+  width="560" 
+  height="315" 
+  src="https://www.youtube.com/embed/VIDEO_ID_AQUI" 
+  title="Descripción del video para accesibilidad"
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen
+  loading="lazy"&gt; &lt;!-- Carga diferida --&gt;
+&lt;/iframe&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <!-- Fin Módulo 5 -->
+
+                <!-- Módulo 6 -->
+                <section id="modulo6" class="space-y-6 pt-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-blue-500 pb-2 text-gray-900">🏛️ Módulo 6: Tablas – Solo para Datos Tabulares</h2>
+                    
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 1: La Mala Práctica Histórica</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (Tablas para Layout):</strong> En los 90s y principios de 2000, antes de que CSS (especialmente Flexbox y Grid) madurara, los desarrolladores usaban <code>&lt;table&gt;</code> para definir la estructura de la página (ej. una tabla de 3 columnas para <code>col-izquierda</code>, <code>contenido</code>, <code>col-derecha</code>).</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Por qué es Pésimo):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>Semántica Incorrecta:</strong> Mezcla datos (HTML) con presentación (CSS), rompiendo la "Separación de Responsabilidades".</li>
+                                <li><strong>Accesibilidad Nula:</strong> Un lector de pantalla intentará leer una página web diseñada con tablas de forma lineal (fila por fila, celda por celda), haciendo el contenido incomprensible.</li>
+                                <li><strong>Rendimiento:</strong> Los navegadores deben cargar la tabla <em>entera</em> antes de poder calcular su layout y renderizarla.</li>
+                                <li><strong>Mantenimiento:</strong> Es una pesadilla de <code>colspan</code> y <code>rowspan</code> anidados.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 2: Estructura de Tablas Semánticas</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (Datos Tabulares):</strong> El uso <em>correcto</em> de <code>&lt;table&gt;</code> es para mostrar datos que tienen una relación bidimensional (filas y columnas), como una hoja de cálculo.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Estructura Semántica):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><code>&lt;table&gt;</code>: El contenedor principal.</li>
+                                <li><code>&lt;caption&gt;</code>: Un título para la tabla, crucial para accesibilidad.</li>
+                                <li><code>&lt;thead&gt;</code>: Agrupa el contenido de la <strong>cabecera</strong> de la tabla.</li>
+                                <li><code>&lt;tbody&gt;</code>: Agrupa el <strong>cuerpo</strong> principal de datos.</li>
+                                <li><code>&lt;tfoot&gt;</code>: Agrupa el <strong>pie</strong> de la tabla (ej. totales, sumas).</li>
+                                <li><code>&lt;tr&gt;</code>: (Table Row) Define una fila.</li>
+                                <li><code>&lt;th&gt;</code>: (Table Header) Define una celda de <strong>encabezado</strong>. Es la "clave" de la columna o fila.</li>
+                                <li><code>&lt;td&gt;</code>: (Table Data) Define una celda de <strong>datos</strong>.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Accesibilidad con <code>scope</code>):</strong> El atributo <code>scope</code> le dice explícitamente al lector de pantalla qué datos encabeza el <code>&lt;th&gt;</code>.</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><code>scope="col"</code>: Este <code>&lt;th&gt;</code> es el encabezado de toda la <strong>columna</strong>.</li>
+                                <li><code>scope="row"</code>: Este <code>&lt;th&gt;</code> es el encabezado de toda la <strong>fila</strong>.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Horario de Clases):</strong></p>
+<pre class="language-html"><code>&lt;table border="1"&gt; &lt;!-- border=1 solo para depuración, usar CSS --&gt;
+  &lt;caption&gt;Horario de Clases - Semestre 1&lt;/caption&gt;
+  
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Hora&lt;/th&gt;
+      &lt;th scope="col"&gt;Lunes&lt;/th&gt;
+      &lt;th scope="col"&gt;Martes&lt;/th&gt;
+      &lt;th scope="col"&gt;Miércoles&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;08:00 - 09:30&lt;/th&gt; &lt;!-- Encabezado de fila --&gt;
+      &lt;td&gt;Cálculo I&lt;/td&gt;
+      &lt;td&gt;Álgebra Lineal&lt;/td&gt;
+      &lt;td&gt;Cálculo I&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;09:30 - 11:00&lt;/th&gt;
+      &lt;td&gt;Programación I&lt;/td&gt;
+      &lt;td&gt;Física I&lt;/td&gt;
+      &lt;td&gt;Programación I&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td colspan="4"&gt;Periodo de exámenes: 15-19 de Julio&lt;/td&gt;
+      &lt;!-- 'colspan' indica que esta celda ocupa 4 columnas --&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <!-- Fin Módulo 6 -->
+
+                <!-- Módulo 7 -->
+                <section id="modulo7" class="space-y-6 pt-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-blue-500 pb-2 text-gray-900">🏛️ Módulo 7: HTML Avanzado y Buenas Prácticas</h2>
+                    
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 1: Accesibilidad Web (A11y)</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (A11y):</strong> Acrónimo de "Accessibility" (11 letras entre A e Y). Es la práctica de asegurar que tus aplicaciones web sean <strong>usables por todas las personas</strong>, incluyendo aquellas con discapacidades (visuales, auditivas, motoras, cognitivas). No es una "mejora", es un requisito (a menudo legal).</p>
+                        
+                        <p><strong class="font-medium text-gray-900">Autoría (WCAG):</strong> Las <strong>Web Content Accessibility Guidelines (WCAG)</strong> del W3C son el estándar de oro. Definen niveles de conformidad (A, AA, AAA).</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (WAI-ARIA):</strong> HTML semántico (usar <code>&lt;nav&gt;</code>, <code>&lt;button&gt;</code>, <code>&lt;main&gt;</code>) cubre el 80% de la accesibilidad básica. Pero, ¿qué pasa si creas un componente complejo (ej. un menú desplegable) usando <code>&lt;div&gt;</code>s y JavaScript? Un <code>&lt;div&gt;</code> no tiene semántica.</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>ARIA (Accessible Rich Internet Applications)</strong> es un conjunto de atributos HTML que <em>añaden</em> semántica para los lectores de pantalla.</li>
+                                <li><code>role</code>: Define el "rol" del elemento (ej. <code>role="button"</code> en un <code>&lt;div&gt;</code> le dice al lector "esto es un botón").</li>
+                                <li><code>aria-*</code>: Define estados y propiedades (ej. <code>aria-expanded="true"</code> en un menú, <code>aria-label="Cerrar"</code> en un botón <code>X</code>).</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (La Primera Regla de ARIA):</strong> "No uses ARIA". Es decir, <strong>siempre prefiere usar un elemento nativo de HTML</strong> antes que "parchar" un <code>&lt;div&gt;</code> con ARIA.</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>Mal:</strong> <code>&lt;div role="button" onclick="..."&gt;Click&lt;/div&gt;</code> (No funciona con teclado, no tiene estados focus/hover).</li>
+                                <li><strong>Bien:</strong> <code>&lt;button onclick="..."&gt;Click&lt;/button&gt;</code> (Ya es accesible por defecto).</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (ARIA para un Checkbox Personalizado):</strong></p>
+<pre class="language-html"><code>&lt;!-- 
+Un 'checkbox' personalizado donde el &lt;input&gt; real está oculto
+y se usa un &lt;span&gt; con estilo.
+--&gt;
+&lt;span 
+  role="checkbox" &lt;!-- Le dice al lector de pantalla que es un checkbox --&gt;
+  aria-checked="true" &lt;!-- El estado actual (manejado por JS) --&gt;
+  tabindex="0" &lt;!-- Permite que sea enfocable con el teclado --&gt;
+&gt;
+  Activar notificaciones
+&lt;/span&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 2: HTML y SEO (Search Engine Optimization)</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (SEO):</strong> El proceso de optimizar un sitio web para que los <strong>motores de búsqueda (crawlers, bots)</strong> como Google puedan entenderlo, indexarlo y posicionarlo alto en los resultados.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (El Crawler es un "Usuario" Ciego):</strong> El bot de Google es, en esencia, un usuario ciego y sin CSS. <strong>HTML Semántico es SEO Técnico.</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li>Google usa tu <code>&lt;h1&gt;</code> para entender el tema principal.</li>
+                                <li>Usa los <code>&lt;h2&gt;</code> para las subsecciones.</li>
+                                <li>Usa el <code>alt</code> de las <code>&lt;img&gt;</code> para entender las imágenes.</li>
+                                <li>Entiende que el contenido en <code>&lt;main&gt;</code> es más importante que en <code>&lt;aside&gt;</code>.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Metadatos para Crawlers):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><code>&lt;meta name="description"&gt;</code>: La descripción que aparece bajo tu título en Google. No afecta el <em>ranking</em>, pero sí la <strong>tasa de clics (CTR)</strong>.</li>
+                                <li><code>&lt;meta name="robots"&gt;</code>: Instrucciones para el crawler (ej. <code>nofollow</code>, <code>noindex</code>).</li>
+                            </ul>
+                        </div>
+                        
+                        <p><strong class="font-medium text-gray-900">Teoría (Protocolo Open Graph):</strong> Creado por Facebook, es un conjunto de metadatos <code>meta</code> que controlan cómo se ve tu página cuando se <strong>comparte en redes sociales</strong>.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Un <code>&lt;head&gt;</code> Optimizado):</strong></p>
+<pre class="language-html"><code>&lt;head&gt;
+  &lt;title&gt;Curso de HTML para Ingenieros | Mi Universidad&lt;/title&gt;
+  
+  &lt;!-- SEO Básico --&gt;
+  &lt;meta name="description" content="Aprende HTML5 desde la semántica 
+       hasta la integración, enfocado en estudiantes de ingeniería."&gt;
+  
+  &lt;!-- Open Graph (para Facebook, LinkedIn, etc.) --&gt;
+  &lt;meta property="og:title" content="Curso de HTML para Ingenieros"&gt;
+  &lt;meta property="og:description" content="Enfocado en estructura y backend."&gt;
+  &lt;meta property="og:image" content="https://miuniversidad.edu/img/curso-html.jpg"&gt;
+  &lt;meta property="og:url" content="https://miuniversidad.edu/cursos/html"&gt;
+  &lt;meta property="og:type" content="website"&gt;
+  
+  &lt;!-- Twitter Card (similar a OG) --&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;/head&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 3: Validación y Calidad de Código</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (HTML Válido):</strong> Escribir HTML que se adhiere estrictamente a las especificaciones del WHATWG.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Por qué Validar):</strong> El HTML es un lenguaje <em>permisivo</em>. Si olvidas cerrar una etiqueta, el navegador <em>intentará</em> adivinar lo que quisiste decir (a esto se le llama <strong>"error handling"</strong>).</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>El Problema:</strong> Diferentes navegadores (Chrome, Firefox, Safari) pueden adivinar de formas <em>diferentes</em>.</li>
+                                <li>Esto lleva a que el <strong>DOM Tree sea impredecible</strong>. Un DOM impredecible es imposible de manipular con JS de forma fiable.</li>
+                                <li><strong>Ingeniería:</strong> Un ingeniero busca <strong>sistemas predecibles</strong>. Validar tu HTML (ej. con el <strong>Validador del W3C</strong>) asegura que tu estructura base (el DOM) será la misma en todos los navegadores estándar.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Error Común y Validación):</strong></p>
+                            <p class="mt-2"><strong>HTML Inválido:</strong></p>
+<pre class="language-html"><code>&lt;!-- ERROR: Un elemento 'inline' (&lt;a&gt;) no puede
+     contener un elemento 'block' (&lt;h1&gt;) --&gt;
+&lt;a href="#"&gt;
+  &lt;h1&gt;Ir al Inicio&lt;/h1&gt;
+&lt;/a&gt;
+
+&lt;!-- ERROR: &lt;p&gt; no puede contener otro &lt;p&gt; --&gt;
+&lt;p&gt;Primer párrafo. &lt;p&gt;Segundo párrafo.&lt;/p&gt;&lt;/p&gt;</code></pre>
+
+                            <p class="mt-2"><strong>Resultado del Parseo (Impredecible):</strong> El navegador "corregirá" el segundo error así:</p>
+<pre class="language-html"><code>&lt;p&gt;Primer párrafo. &lt;/p&gt;
+&lt;p&gt;Segundo párrafo.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt; &lt;!-- Un párrafo vacío fantasma --&gt;</code></pre>
+
+                            <p class="mt-2"><strong>HTML Válido (Correcto):</strong></p>
+<pre class="language-html"><code>&lt;h1&gt;
+  &lt;a href="#"&gt;Ir al Inicio&lt;/a&gt;
+&lt;/h1&gt;
+
+&lt;p&gt;Primer párrafo.&lt;/p&gt;
+&lt;p&gt;Segundo párrafo.&lt;/p&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <!-- Fin Módulo 7 -->
+
+                <!-- Módulo 8 -->
+                <section id="modulo8" class="space-y-6 pt-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-blue-500 pb-2 text-gray-900">🏛️ Módulo 8: Proyecto Final y Siguientes Pasos</h2>
+                    
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 1: El Puente a CSS y JavaScript</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (Los "Ganchos" - Hooks):</strong> HTML proporciona los "ganchos" (hooks) para que CSS y JS se "agarren".</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (ID vs. Class):</strong> Esta es la analogía de base de datos para un ingeniero.</p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-2 text-gray-700">
+                                <li><strong><code>id</code> (Identificador):</strong>
+                                    <ul class="list-circle list-inside pl-6 mt-1 space-y-1">
+                                        <li>Debe ser <strong>único</strong> en todo el documento.</li>
+                                        <li>Es una <strong>Clave Primaria (Primary Key)</strong>.</li>
+                                        <li><strong>Usos:</strong>
+                                            <ul class="list-square list-inside pl-6 mt-1 space-y-1">
+                                                <li>CSS: <code>#mi-id</code> (selector de alta especificidad, usar con moderación).</li>
+                                                <li>JS: <code>document.getElementById('mi-id')</code> (la forma más rápida de seleccionar un elemento).</li>
+                                                <li>HTML: Anclas (<code>&lt;a href="#mi-id"&gt;</code>) y <code>&lt;label for="mi-id"&gt;</code>.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><strong><code>class</code> (Clase):</strong>
+                                    <ul class="list-circle list-inside pl-6 mt-1 space-y-1">
+                                        <li>Es <strong>reusable</strong>. Un elemento puede tener múltiples clases (<code>class="btn btn-primary"</code>) y múltiples elementos pueden tener la misma clase.</li>
+                                        <li>Es una <strong>Relación Muchos-a-Muchos</strong> (Many-to-Many).</li>
+                                        <li><strong>Usos:</strong>
+                                            <ul class="list-square list-inside pl-6 mt-1 space-y-1">
+                                                <li>CSS: <code>.mi-clase</code> (el método <em>preferido</em> para estilizar).</li>
+                                                <li>JS: <code>document.querySelectorAll('.mi-clase')</code> (para seleccionar <em>grupos</em> de elementos).</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Ejemplo Práctico (Combinación):</strong></p>
+<pre class="language-html"><code>&lt;!-- 
+'id' es único (para el formulario en sí)
+'class' es reusable (para la apariencia)
+--&gt;
+&lt;form id="form-registro" class="formulario-modal" action="..." method="POST"&gt;
+  
+  &lt;!-- 'class' usada para estilizar todos los inputs iguales --&gt;
+  &lt;label for="user-reg"&gt;Usuario:&lt;/label&gt;
+  &lt;input id="user-reg" name="user" type="text" class="input-text"&gt;
+  
+  &lt;!-- 'class' también usada para variantes (BEM) --&gt;
+  &lt;button class="btn btn--primary"&gt;Registrar&lt;/button&gt;
+  &lt;button class="btn btn--secondary"&gt;Cancelar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Tema 2: El Mundo Real (Generación de HTML)</h3>
+                        <p><strong class="font-medium text-gray-900">Concepto (HTML Estático vs. Dinámico):</strong> Un ingeniero de sistemas rara vez escribirá 50 archivos <code>.html</code> estáticos. El HTML se <em>genera</em> dinámicamente.</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Arquitectura 1: Renderizado en Servidor - SSR):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>Cómo funciona:</strong> El cliente solicita <code>/perfil</code>. El servidor (ej. un backend en <strong>Java/Spring</strong>, <strong>Python/Django</strong>, <strong>PHP/Laravel</strong>, <strong>Node/Express</strong>) recibe la solicitud.</li>
+                                <li>Consulta la base de datos para obtener los datos del usuario.</li>
+                                <li>Usa un <strong>Motor de Plantillas (Template Engine)</strong> (ej. Thymeleaf, Jinja2, Blade, EJS).</li>
+                                <li>Este motor <em>fusiona</em> una plantilla HTML con los datos.</li>
+                                <li><strong>Ejemplo de Plantilla (Blade/Laravel):</strong>
+<pre class="language-html"><code>&lt;h1&gt;Perfil de {{ $usuario-&gt;nombre }}&lt;/h1&gt;
+&lt;p&gt;Email: {{ $usuario-&gt;email }}&lt;/p&gt;</code></pre>
+                                </li>
+                                <li>El servidor envía el <strong>HTML ya renderizado</strong> (HTML puro) al cliente.</li>
+                                <li><strong>Ventajas:</strong> Rápido primer render (FCP), buen SEO.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Teoría (Arquitectura 2: Renderizado en Cliente - CSR / SPAs):</strong></p>
+                            <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>Cómo funciona:</strong> El cliente solicita la app. El servidor envía un <code>index.html</code> <em>casi vacío</em> y un archivo <strong>JavaScript</strong> enorme (ej. <strong>React</strong>, <strong>Vue</strong>, <strong>Angular</strong>).</li>
+                                <li>El navegador ejecuta el JS.</li>
+                                <li>El JS (React) realiza una <strong>solicitud a una API</strong> (ej. <code>GET /api/perfil</code>) que devuelve <strong>JSON</strong>, no HTML.</li>
+                                <li>React usa ese JSON para <strong>construir el DOM dinámicamente</strong> en el navegador del cliente.</li>
+                                <li><strong>Ejemplo (JSX de React):</strong> (Parece HTML, pero es JS)
+<pre class="language-jsx"><code>function Perfil({ usuario }) {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Perfil de {usuario.nombre}&lt;/h1&gt;
+      &lt;p&gt;Email: {usuario.email}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </li>
+                                <li><strong>Ventajas:</strong> Experiencia de "app" fluida, sin recargas de página.</li>
+                            </ul>
+                        </div>
+                        
+                        <p><strong class="font-medium text-gray-900">Conclusión para el Ingeniero:</strong> No importa si usas SSR o CSR, el <strong>resultado final</strong> que el navegador debe entender es <strong>HTML Válido y Semántico</strong>. Los frameworks son solo herramientas para <em>generar</em> ese HTML de manera eficiente.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Proyecto Final</h3>
+                        <p><strong class="font-medium text-gray-900">Consigna:</strong> Crear un <strong>Portafolio de Ingeniero de Sistemas</strong> o la <strong>Landing Page de un Proyecto de Software</strong> (real o imaginario).</p>
+                        
+                        <div>
+                            <p><strong class="font-medium text-gray-900">Requisitos (Checklist de Ingeniería):</strong></p>
+                            <ol class="list-decimal list-inside pl-4 mt-2 space-y-1 text-gray-700">
+                                <li><strong>Validación W3C:</strong> Debe pasar sin errores.</li>
+                                <li><strong>Semántica de Layout:</strong> Debe usar <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code> y al menos un <code>&lt;section&gt;</code> y un <code>&lt;article&gt;</code> (para un proyecto).</li>
+                                <li><strong>Formulario:</strong> Debe incluir un formulario de contacto (<code>&lt;form&gt;</code>) con <code>method="POST"</code>, <code>action</code> (puede ser un placeholder) y validación de cliente (<code>required</code>, <code>type="email"</code>).</li>
+                                <li><strong>Accesibilidad (A11y):</strong>
+                                    <ul class="list-circle list-inside pl-6 mt-1 space-y-1">
+                                        <li>Cada <code>input</code> debe tener un <code>&lt;label&gt;</code> vinculado.</li>
+                                        <li>Todas las <code>&lt;img&gt;</code> deben tener <code>alt</code> (o <code>alt=""</code> si son decorativas).</li>
+                                        <li>Jerarquía de encabezados (<code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>) lógica.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>SEO (Metadatos):</strong> Debe tener un <code>&lt;title&gt;</code> único y un <code>&lt;meta name="description"&gt;</code>.</li>
+                                <li><strong>Multimedia:</strong> Debe incluir al menos una imagen optimizada y un <code>&lt;iframe&gt;</code> (ej. un mapa de ubicación o un video demo).</li>
+                                <li><strong>Siguientes Pasos (Opcional):</strong> Vincular un archivo <code>style.css</code> (Módulo CSS) y un <code>app.js</code> (Módulo JS) aunque estén vacíos, preparando la estructura.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+                <!-- Fin Módulo 8 -->
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="text-center py-6 bg-gray-800 text-gray-300 mt-12">
+        <p>&copy; 2025 Curso de HTML para Ingeniería de Sistemas. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

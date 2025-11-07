@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Excel Avanzado: Nivel Profesional</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de fuente Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Encabezado y Navegación -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold text-blue-700">Excel Avanzado: Nivel Profesional</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#modulo1" class="text-gray-600 hover:bg-gray-100 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Macros y VBA</a>
+                        <a href="#modulo2" class="text-gray-600 hover:bg-gray-100 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Modelos Financieros</a>
+                        <a href="#modulo3" class="text-gray-600 hover:bg-gray-100 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Dashboards</a>
+                        <a href="#modulo4" class="text-gray-600 hover:bg-gray-100 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Integración</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sección de Bienvenida (Hero) -->
+    <div class="bg-blue-800 text-white">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+                Domina Excel a Nivel Profesional
+            </h1>
+            <p class="mt-6 max-w-2xl mx-auto text-xl text-blue-100">
+                Este curso te llevará de ser un usuario competente a un experto en Excel, listo para automatizar tareas, modelar escenarios complejos y crear visualizaciones de datos impactantes.
+            </p>
+        </div>
+    </div>
+
+    <!-- Contenido Principal del Curso -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Módulo 1: Macros con VBA -->
+        <section id="modulo1" class="mb-16">
+            <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
+                <div class="bg-blue-700 p-6">
+                    <h2 class="text-3xl font-bold text-white">Módulo 1: Macros con VBA: Automatización Profesional</h2>
+                </div>
+                <div class="p-8 md:p-10">
+                    
+                    <h3 class="text-2xl font-semibold text-blue-800 mt-4 border-b-2 border-blue-100 pb-2">Conceptos Clave</h3>
+                    <blockquote class="border-l-4 border-blue-500 pl-4 italic text-gray-600 my-5 text-lg">
+                        <strong>Macro:</strong> Una secuencia de comandos e instrucciones que se almacenan para ser ejecutadas de forma automática. Es la solución para cualquier tarea repetitiva.
+                    </blockquote>
+                    <blockquote class="border-l-4 border-blue-500 pl-4 italic text-gray-600 my-5 text-lg">
+                        <strong>VBA (Visual Basic for Applications):</strong> Es el lenguaje de programación *detrás* de las macros. Mientras la grabadora de macros escribe un código básico, con VBA puedes crear lógica compleja, bucles, condicionales y funciones personalizadas que la grabadora no puede.
+                    </blockquote>
+
+                    <h3 class="text-2xl font-semibold text-blue-800 mt-8 border-b-2 border-blue-100 pb-2">Ejemplo 1 (Paso a Paso): Tu Primera Macro Grabada</h3>
+                    <p class="text-lg leading-relaxed my-4">
+                        <strong>Objetivo:</strong> Automatizar la creación de un encabezado de reporte (fondo azul, letra blanca en negrita, bordes).
+                    </p>
+                    <ol class="list-decimal list-inside space-y-3 bg-gray-50 p-6 rounded-lg border border-gray-200 text-lg">
+                        <li><strong>Habilitar la pestaña Programador:</strong> Ve a <em>Archivo > Opciones > Personalizar cinta de opciones</em> y asegúrate de que la casilla "Programador" (o "Developer") esté marcada.</li>
+                        <li><strong>Iniciar la Grabadora:</strong> En la pestaña <em>Programador</em>, haz clic en "Grabar macro". Asigna un nombre (ej. "FormatoEncabezado") y un atajo de teclado (ej. Ctrl+Shift+E).</li>
+                        <li><strong>Ejecutar las Acciones:</strong> Selecciona las celdas A1:E1. Ve a <em>Inicio</em>, aplica un color de relleno azul oscuro, color de fuente blanco, activa la negrita y aplica todos los bordes.</li>
+                        <li><strong>Detener la Grabadora:</strong> Vuelve a la pestaña <em>Programador</em> y haz clic en "Detener grabación".</li>
+                        <li><strong>Probar la Macro:</strong> Borra el formato, selecciona otras celdas y presiona tu atajo (Ctrl+Shift+E). El formato se aplicará instantáneamente.</li>
+                    </ol>
+
+                    <h3 class="text-2xl font-semibold text-blue-800 mt-8 border-b-2 border-blue-100 pb-2">Ejemplo 2 (Paso a Paso): Creando una Función Personalizada con VBA</h3>
+                    <p class="text-lg leading-relaxed my-4">
+                        <strong>Objetivo:</strong> Crear una función que no existe en Excel, como `=CALCULAR_IVA(monto)`.
+                    </p>
+                    <ol class="list-decimal list-inside space-y-3 bg-gray-50 p-6 rounded-lg border border-gray-200 text-lg">
+                        <li><strong>Abrir el Editor de VBA:</strong> Presiona <strong>Alt + F11</strong>. Se abrirá el Editor de Visual Basic.</li>
+                        <li><strong>Insertar un Módulo:</strong> En el panel de la izquierda (Proyecto), haz clic derecho sobre tu archivo (ej. "VBAProject (Libro1)") y selecciona <em>Insertar > Módulo</em>.</li>
+                        <li><strong>Escribir el Código:</strong> En la ventana blanca del módulo, escribe el siguiente código VBA:</li>
+                    </ol>
+                    
+                    <pre class="bg-gray-900 text-white p-5 rounded-lg my-4 overflow-x-auto">
+<code>
+<span class="text-blue-400">Function</span> <span class="text-yellow-300">CALCULAR_IVA</span>(<span class="text-orange-300">monto</span> <span class="text-blue-400">As Double</span>) <span class="text-blue-400">As Double</span>
+    <span class="text-green-400">' Define la tasa de IVA (ej. 21% en España, 16% en México)</span>
+    <span class="text-blue-400">Const</span> TASA_IVA <span class="text-blue-400">As Double</span> = 0.16
+    
+    <span class="text-green-400">' Calcula el IVA</span>
+    CALCULAR_IVA = monto * TASA_IVA
+<span class="text-blue-400">End Function</span>
+</code>
+                    </pre>
+                    
+                    <ol start="4" class="list-decimal list-inside space-y-3 bg-gray-50 p-6 rounded-lg border border-gray-200 text-lg">
+                        <li><strong>Cerrar el Editor:</strong> Simplemente cierra la ventana de VBA (Alt + Q).</li>
+                        <li><strong>Usar la Función:</strong> En cualquier celda de Excel, ahora puedes escribir <code>=CALCULAR_IVA(100)</code>. El resultado será <code>16</code>. ¡Has expandido la funcionalidad de Excel!</li>
+                        <li><strong>Importante:</strong> Para conservar la macro, debes guardar el libro como "Libro de Excel habilitado para macros (.xlsm)".</li>
+                    </ol>
+
+                    <!-- INICIO DE CONTENIDO NUEVO: Ejercicios Módulo 1 -->
+                    <h3 class="text-2xl font-semibold text-blue-800 mt-12 border-b-2 border-blue-100 pb-2">Ejercicios Prácticos Resueltos (VBA)</h3>
+
+                    <!-- Ejercicio 1.1 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 1: Limpiador de Rango</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Crear una macro que borre el contenido (pero no el formato) de un rango específico (ej. "A1:D100").</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Presiona <strong>Alt + F11</strong>, inserta un nuevo <strong>Módulo</strong>.</li>
+                            <li>Escribe el siguiente código. <code>Sub</code> inicia una macro (un procedimiento).</li>
+                            <pre class="bg-gray-900 text-white p-4 rounded-lg my-2 overflow-x-auto text-base">
+<code>
+<span class="text-blue-400">Sub</span> <span class="text-yellow-300">LimpiarDatosReporte</span>()
+    <span class="text-green-400">' Selecciona la hoja específica</span>
+    <span class="text-blue-400">Worksheets</span>("Hoja1").<span class="text-blue-400">Range</span>("A1:D100").<span class="text-blue-400">ClearContents</span>
+<span class="text-blue-400">End Sub</span>
+</code>
+                            </pre>
+                            <li>Cierra el editor (Alt + Q).</li>
+                            <li>Ve a <em>Programador > Macros</em>, selecciona "LimpiarDatosReporte" y haz clic en "Ejecutar". El contenido del rango A1:D100 desaparecerá.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 1.2 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 2: Bucle `For...Next` para Resaltar Celdas</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Analizar una columna de "Ventas" (ej. Columna B) y colorear en rojo el fondo de cualquier celda con un valor superior a 500.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>En un Módulo, escribe este código:</li>
+                            <pre class="bg-gray-900 text-white p-4 rounded-lg my-2 overflow-x-auto text-base">
+<code>
+<span class="text-blue-400">Sub</span> <span class="text-yellow-300">ResaltarVentasAltas</span>()
+    <span class="text-blue-400">Dim</span> celda <span class="text-blue-400">As Range</span>
+    
+    <span class="text-green-400">' Itera sobre cada celda en el rango B2 hasta B50</span>
+    <span class="text-blue-400">For Each</span> celda <span class="text-blue-400">In</span> <span class="text-blue-400">Range</span>("B2:B50")
+        <span class="text-green-400">' Asegura que la celda no esté vacía y sea numérica</span>
+        <span class="text-blue-400">If</span> <span class="text-yellow-300">IsNumeric</span>(celda.<span class="text-blue-400">Value</span>) <span class="text-blue-400">And Not</span> <span class="text-yellow-300">IsEmpty</span>(celda.<span class="text-blue-400">Value</span>) <span class="text-blue-400">Then</span>
+            <span class="text-blue-400">If</span> celda.<span class="text-blue-400">Value</span> > 500 <span class="text-blue-400">Then</span>
+                <span class="text-green-400">' vbRed es una constante de color (Rojo)</span>
+                celda.<span class="text-blue-400">Interior.Color</span> = <span class="text-orange-300">vbRed</span>
+            <span class="text-blue-400">Else</span>
+                <span class="text-green-400">' Resetea el color si no cumple</span>
+                celda.<span class="text-blue-400">Interior.Color</span> = <span class="text-orange-300">xlNone</span>
+            <span class="text-blue-400">End If</span>
+        <span class="text-blue-400">End If</span>
+    <span class="text-blue-400">Next</span> celda
+<span class="text-blue-400">End Sub</span>
+</code>
+                            </pre>
+                            <li>Ejecuta la macro. Verás cómo las celdas en la columna B que superen 500 se pintan de rojo.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 1.3 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 3: Cuadro de Mensaje (`MsgBox`) Interactivo</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Crear una macro que pregunte al usuario si desea ejecutar la limpieza (del Ejercicio 1) y solo proceder si responde "Sí".</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>En un Módulo, escribe este código:</li>
+                            <pre class="bg-gray-900 text-white p-4 rounded-lg my-2 overflow-x-auto text-base">
+<code>
+<span class="text-blue-400">Sub</span> <span class="text-yellow-300">LimpiezaConConfirmacion</span>()
+    <span class="text-blue-400">Dim</span> respuesta <span class="text-blue-400">As Integer</span>
+    
+    <span class="text-green-400">' Muestra un cuadro de mensaje con botones Sí/No</span>
+    respuesta = <span class="text-yellow-300">MsgBox</span>("¿Está seguro de que desea borrar todos los datos del reporte?", <span class="text-orange-300">vbYesNo</span> + <span class="text-orange-300">vbQuestion</span>, "Confirmar Limpieza")
+    
+    <span class="text-green-400">' vbYes es la constante si el usuario presiona "Sí"</span>
+    <span class="text-blue-400">If</span> respuesta = <span class="text-orange-300">vbYes</span> <span class="text-blue-400">Then</span>
+        <span class="text-green-400">' Llama a la otra macro que ya creamos</span>
+        <span class="text-yellow-300">LimpiarDatosReporte</span>
+        <span class="text-yellow-300">MsgBox</span> "Datos limpiados exitosamente.", <span class="text-orange-300">vbInformation</span>
+    <span class="text-blue-400">Else</span>
+        <span class="text-yellow-300">MsgBox</span> "Operación cancelada.", <span class="text-orange-300">vbExclamation</span>
+    <span class="text-blue-400">End If</span>
+<span class="text-blue-400">End Sub</span>
+</code>
+                            </pre>
+                            <li>Ejecuta "LimpiezaConConfirmacion". Aparecerá un cuadro de diálogo profesional pidiendo confirmación antes de actuar.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 1.4 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 4: Copiar Datos entre Hojas</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Automatizar la copia de un resumen de "Ventas" (Rango A1:E10 en "Hoja1") a una hoja de "Historial" (pegándolo en la primera celda vacía).
+                        </p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>En un Módulo, escribe este código:</li>
+                            <pre class="bg-gray-900 text-white p-4 rounded-lg my-2 overflow-x-auto text-base">
+<code>
+<span class="text-blue-400">Sub</span> <span class="text-yellow-300">ArchivarReporte</span>()
+    <span class="text-blue-400">Dim</span> hojaOrigen <span class="text-blue-400">As Worksheet</span>
+    <span class="text-blue-400">Dim</span> hojaDestino <span class="text-blue-400">As Worksheet</span>
+    <span class="text-blue-400">Dim</span> proximaFilaVacia <span class="text-blue-400">As Long</span>
+    
+    <span class="text-green-400">' Asignar las hojas a variables (buena práctica)</span>
+    <span class="text-blue-400">Set</span> hojaOrigen = <span class="text-blue-400">Worksheets</span>("Hoja1")
+    <span class="text-blue-400">Set</span> hojaDestino = <span class="text-blue-400">Worksheets</span>("Historial")
+    
+    <span class="text-green-400">' Encontrar la próxima fila vacía en la Col A de la hoja "Historial"</span>
+    proximaFilaVacia = hojaDestino.<span class="text-blue-400">Cells</span>(hojaDestino.<span class="text-blue-400">Rows.Count</span>, "A").<span class="text-blue-400">End</span>(<span class="text-orange-300">xlUp</span>).<span class="text-blue-400">Row</span> + 1
+    
+    <span class="text-green-400">' Copiar y pegar</span>
+    hojaOrigen.<span class="text-blue-400">Range</span>("A1:E10").<span class="text-blue-400">Copy</span>
+    hojaDestino.<span class="text-blue-400">Cells</span>(proximaFilaVacia, "A").<span class="text-blue-400">PasteSpecial</span> <span class="text-orange-300">xlPasteValues</span>
+    
+    <span class="text-green-400">' Limpiar el portapapeles</span>
+    <span class="text-blue-400">Application.CutCopyMode</span> = <span class="text-blue-400">False</span>
+    <span class="text-yellow-300">MsgBox</span> "Reporte archivado en fila " & proximaFilaVacia, <span class="text-orange-300">vbInformation</span>
+<span class="text-blue-400">End Sub</span>
+</code>
+                            </pre>
+                            <li>Asegúrate de tener una hoja llamada "Historial". Cada vez que ejecutes esta macro, el reporte de "Hoja1" se copiará al final de la lista en "Historial" (pegando solo valores).</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 1.5 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 5: Crear un Botón para Ejecutar Macro</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Hacer la macro "LimpiezaConConfirmacion" accesible para usuarios no técnicos mediante un botón en la hoja de cálculo.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Ve a la pestaña <em>Programador > Insertar > Controles de Formulario > Botón</em>.</li>
+                            <li>Haz clic y arrastra en la hoja de Excel para dibujar el botón.</li>
+                            <li>Al soltar el clic, aparecerá una ventana: "Asignar macro".</li>
+                            <li>Selecciona "LimpiezaConConfirmacion" de la lista y haz clic en "Aceptar".</li>
+                            <li>Haz clic derecho en el botón para "Editar texto" y cámbialo a algo descriptivo, como "Limpiar Reporte".</li>
+                            <li>¡Listo! Ahora cualquier usuario puede hacer clic en ese botón para ejecutar tu macro de forma segura.</li>
+                        </ol>
+                    </div>
+                    <!-- FIN DE CONTENIDO NUEVO: Ejercicios Módulo 1 -->
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulo 2: Modelos Financieros y Simulaciones -->
+        <section id="modulo2" class="mb-16">
+            <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
+                <div class="bg-green-700 p-6">
+                    <h2 class="text-3xl font-bold text-white">Módulo 2: Modelos Financieros y Simulaciones</h2>
+                </div>
+                <div class="p-8 md:p-10">
+                    
+                    <h3 class="text-2xl font-semibold text-green-800 mt-4 border-b-2 border-green-100 pb-2">Conceptos Clave</h3>
+                    <blockquote class="border-l-4 border-green-500 pl-4 italic text-gray-600 my-5 text-lg">
+                        <strong>Modelo Financiero:</strong> Una representación matemática de la realidad financiera de una empresa o proyecto. Se usa para tomar decisiones, valorar activos (ej. un Flujo de Caja Descontado - DCF) o analizar el impacto de diferentes variables.
+                    </blockquote>
+                    <blockquote class="border-l-4 border-green-500 pl-4 italic text-gray-600 my-5 text-lg">
+                        <strong>Simulación:</strong> Es la práctica de "jugar" con el modelo para responder preguntas de tipo "¿Qué pasaría si...?" (What-If Analysis). Excel ofrece herramientas poderosas para esto.
+                    </blockquote>
+
+                    <h3 class="text-2xl font-semibold text-green-800 mt-8 border-b-2 border-green-100 pb-2">Herramienta 1 (Paso a Paso): Buscar Objetivo (Goal Seek)</h3>
+                    <p class="text-lg leading-relaxed my-4">
+                        <strong>Objetivo:</strong> Quieres saber cuántas unidades necesitas vender para alcanzar un punto de equilibrio (ganancia de $0).
+                    </p>
+                    <ul class="list-none space-y-2 mb-4 text-lg">
+                        <li><strong>Planteamiento:</strong></li>
+                        <li>Celda <strong>B1 (Unidades):</strong> <code>100</code> (Variable a cambiar)</li>
+                        <li>Celda <strong>B2 (Precio):</strong> <code>$50</code></li>
+                        <li>Celda <strong>B3 (Costo Unitario):</strong> <code>$30</code></li>
+                        <li>Celda <strong>B4 (Costos Fijos):</strong> <code>$5,000</code></li>
+                        <li>Celda <strong>B5 (Ganancia):</strong> <code>=(B1*B2) - (B1*B3) - B4</code> (Esta es tu celda objetivo)</li>
+                    </ul>
+                    <ol class="list-decimal list-inside space-y-3 bg-gray-50 p-6 rounded-lg border border-gray-200 text-lg">
+                        <li>Ve a la pestaña <em>Datos > Análisis de hipótesis (o Análisis Y si) > Buscar Objetivo</em>.</li>
+                        <li><strong>Definir la celda:</strong> <code>B5</code> (la celda de la Ganancia).</li>
+                        <li><strong>Con el valor:</strong> <code>0</code> (tu objetivo, el punto de equilibrio).</li>
+                        <li><strong>Para cambiar la celda:</strong> <code>B1</code> (la celda de Unidades).</li>
+                        <li>Haz clic en "Aceptar". Excel iterará y encontrará que necesitas vender <strong>250 unidades</strong> para llegar a $0 de ganancia.</li>
+                    </ol>
+
+                    <h3 class="text-2xl font-semibold text-green-800 mt-8 border-b-2 border-green-100 pb-2">Herramienta 2 (Paso a Paso): Administrador de Escenarios</h3>
+                    <p class="text-lg leading-relaxed my-4">
+                        <strong>Objetivo:</strong> Comparar rápidamente el resultado de tu modelo financiero en un escenario "Optimista", "Pesimista" y "Realista".
+                    </p>
+                    <ol class="list-decimal list-inside space-y-3 bg-gray-50 p-6 rounded-lg border border-gray-200 text-lg">
+                        <li>Usa el mismo planteamiento anterior. Las celdas que cambiarán son <strong>B2 (Precio)</strong> y <strong>B3 (Costo Unitario)</strong>.</li>
+                        <li>Ve a <em>Datos > Análisis de hipótesis > Administrador de escenarios</em>.</li>
+                        <li>Haz clic en "Agregar...".</li>
+                        <li><strong>Nombre del escenario:</strong> "Pesimista". <strong>Celdas cambiantes:</strong> <code>$B$2,$B$3</code>.</li>
+                        <li>Introduce los valores pesimistas (ej. Precio: 40, Costo: 35).</li>
+                        <li>Repite el proceso para un escenario "Optimista" (ej. Precio: 60, Costo: 25).</li>
+                        <li>En el Administrador de Escenarios, ahora puedes hacer doble clic en "Pesimista" u "Optimista" para ver cómo cambia tu Ganancia (B5) al instante.</li>
+                        <li>Para un reporte final, haz clic en "Resumen..." y Excel creará una nueva hoja comparando todos los escenarios.</li>
+                    </ol>
+                    
+                    <h3 class="text-2xl font-semibold text-green-800 mt-8 border-b-2 border-green-100 pb-2">Concepto Avanzado: Simulación de Monte Carlo</h3>
+                    <p class="text-lg leading-relaxed my-4">
+                        La Simulación de Monte Carlo lleva esto un paso más allá. En lugar de 3 escenarios, simula 10,000 escenarios usando números aleatorios.
+                    </p>
+                    <p class="text-lg leading-relaxed my-4">
+                        <strong>Ejemplo Conceptual:</strong> En lugar de fijar la demanda, la modelas con una función como <code>=ALEATORIO.ENTRE(80, 120)</code> (demanda entre 80 y 120) o <code>=INV.NORM(ALEATORIO(), 100, 10)</code> (distribución normal con media 100 y desv. est. 10). Luego, usas una "Tabla de Datos" o VBA para recalcular tu ganancia miles de veces y analizar la *probabilidad* de éxito.
+                    </p>
+
+                    <!-- INICIO DE CONTENIDO NUEVO: Ejercicios Módulo 2 -->
+                    <h3 class="text-2xl font-semibold text-green-800 mt-12 border-b-2 border-green-100 pb-2">Ejercicios Prácticos Resueltos (Modelos y Simulación)</h3>
+
+                    <!-- Ejercicio 2.1 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 1: Cálculo del VAN (VPN)</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Determinar si un proyecto es rentable calculando su Valor Actual Neto (VAN o VPN).</p>
+                        <ul class="list-none space-y-2 mb-4 text-lg">
+                            <li><strong>Planteamiento:</strong></li>
+                            <li>Celda <strong>B1 (Tasa Descuento/TMAR):</strong> <code>10%</code></li>
+                            <li>Celda <strong>B2 (Inversión Inicial):</strong> <code>-100000</code> (en negativo)</li>
+                            <li>Celda <strong>B3 (Flujo Año 1):</strong> <code>30000</code></li>
+                            <li>Celda <strong>B4 (Flujo Año 2):</strong> <code>40000</code></li>
+                            <li>Celda <strong>B5 (Flujo Año 3):</strong> <code>50000</code></li>
+                        </ul>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>En una celda (ej. B7), vamos a calcular el VAN.</li>
+                            <li>Escribe la fórmula: <code>=VNA(B1, B3:B5) + B2</code> (En inglés: <code>=NPV(B1, B3:B5) + B2</code>).</li>
+                            <li><strong>Explicación:</strong> La función VNA/NPV descuenta los flujos *futuros* (B3:B5) a la tasa B1. La inversión inicial (B2) se suma *fuera* de la función porque ya está en valor presente (Año 0).</li>
+                            <li><strong>Resultado:</strong> <code>$1,803.16</code>. Como es positivo, el proyecto es rentable.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 2.2 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 2: Cálculo de la TIR</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Encontrar la Tasa Interna de Retorno (TIR) del proyecto anterior (la tasa que hace el VAN = 0).</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Usa el mismo planteamiento del Ejercicio 1.</li>
+                            <li>En una celda (ej. B8), escribe la fórmula: <code>=TIR(B2:B5)</code> (En inglés: <code>=IRR(B2:B5)</code>).</li>
+                            <li><strong>Explicación:</strong> A diferencia de VNA, la función TIR/IRR SÍ debe incluir la inversión inicial (B2) dentro del rango.</li>
+                            <li><strong>Resultado:</strong> <code>12.59%</code>. Como 12.59% (TIR) es mayor que 10% (Tasa de Descuento), el proyecto se acepta.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 2.3 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 3: Tabla de Datos de 1 Variable</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Analizar cómo cambia la "Ganancia" (del modelo de "Buscar Objetivo") si el "Precio" varía de $40 a $60.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Usa el modelo de "Buscar Objetivo": B1=250 (unidades), B2=50 (precio), B3=30 (costo), B4=5000 (fijos), B5=Ganancia (<code>=(B1*B2)-(B1*B3)-B4</code>).</li>
+                            <li>En la celda <strong>D2</strong>, escribe los precios que quieres probar: <code>40</code>.</li>
+                            <li>En <strong>D3</strong>: <code>45</code>. En <strong>D4</strong>: <code>50</code>. En <strong>D5</strong>: <code>55</code>. En <strong>D6</strong>: <code>60</code>.</li>
+                            <li>En la celda <strong>E1</strong> (la celda superior derecha de la tabla), vincula el resultado que quieres observar: <code>=B5</code>.</li>
+                            <li>Selecciona todo el rango de la tabla (<strong>D1:E6</strong>).</li>
+                            <li>Ve a <em>Datos > Análisis de hipótesis > Tabla de Datos</em>.</li>
+                            <li>En el campo "Celda de entrada (Columna)": selecciona <code>$B$2</code> (la celda del Precio en tu modelo original).</li>
+                            <li>Haz clic en Aceptar. Excel llenará automáticamente la columna E mostrando la ganancia para cada precio.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 2.4 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 4: Tabla de Datos de 2 Variables</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Analizar la Ganancia (B5) variando "Precio" (B2) y "Costo Unitario" (B3) al mismo tiempo.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Usa el mismo modelo (B1 a B5).</li>
+                            <li>En la celda <strong>D1</strong> (esquina), vincula el resultado: <code>=B5</code>.</li>
+                            <li>En la <strong>columna D</strong> (D2, D3, D4...), pon los "Precios" a probar (ej. 40, 50, 60).</li>
+                            <li>En la <strong>fila 1</strong> (E1, F1, G1...), pon los "Costos" a probar (ej. 25, 30, 35).</li>
+                            <li>Selecciona todo el rango de la tabla (<strong>D1:G4</strong>).</li>
+                            <li>Ve a <em>Datos > Análisis de hipótesis > Tabla de Datos</em>.</li>
+                            <li>"Celda de entrada (Fila)": <code>$B$3</code> (el Costo Unitario, que está en la fila).</li>
+                            <li>"Celda de entrada (Columna)": <code>$B$2</code> (el Precio, que está en la columna).</li>
+                            <li>Haz clic en Aceptar. Excel creará una matriz mostrando todas las combinaciones de ganancia.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 2.5 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 5: Usando Solver (Optimización)</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Maximizar la ganancia de 2 productos (A y B) con restricciones de producción (ej. horas de máquina).</p>
+                        <ul class="list-none space-y-2 mb-4 text-lg">
+                            <li><strong>Planteamiento:</strong></li>
+                            <li>B1 (Unidades Prod A): <code>10</code> | C1 (Unidades Prod B): <code>10</code> (Celdas a cambiar)</li>
+                            <li>B2 (Ganancia/u Prod A): <code>$20</code> | C2 (Ganancia/u Prod B): <code>$25</code></li>
+                            <li>B3 (Horas/u Prod A): <code>2</code> | C3 (Horas/u Prod B): <code>3</code></li>
+                            <li>B5 (Horas Totales Usadas): <code>=(B1*B3)+(C1*C3)</code></li>
+                            <li>B6 (Horas Disponibles): <code>100</code> (Restricción)</li>
+                            <li>B8 (Ganancia Total): <code>=(B1*B2)+(C1*C2)</code> (Celda Objetivo)</li>
+                        </ul>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Ve a <em>Datos > Solver</em> (si no aparece, ve a <em>Archivo > Opciones > Complementos > Complementos de Excel > Ir...</em> y activa "Solver").</li>
+                            <li><strong>Establecer Objetivo:</strong> <code>$B$8</code>.</li>
+                            <li><strong>Para:</strong> "Max" (Maximizar).</li>
+                            <li><strong>Cambiando las celdas de variables:</strong> <code>$B$1:$C$1</code>.</li>
+                            <li><strong>Sujeto a las restricciones (Clic en "Agregar"):</strong>
+                                <ul>
+                                    <li><code>$B$5 <= $B$6</code> (Horas usadas <= Horas disponibles).</li>
+                                    <li><code>$B$1:$C$1 >= 0</code> (No se pueden producir unidades negativas).</li>
+                                    <li><code>$B$1:$C$1 = entero</code> (Opcional: si solo puedes vender unidades completas).</li>
+                                </ul>
+                            </li>
+                            <li>Método de resolución: "Simplex LP".</li>
+                            <li>Haz clic en "Resolver". Solver encontrará la combinación óptima (ej. 50 de Prod A, 0 de Prod B) para maximizar la ganancia.</li>
+                        </ol>
+                    </div>
+                    <!-- FIN DE CONTENIDO NUEVO: Ejercicios Módulo 2 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulo 3: Dashboards Interactivos -->
+        <section id="modulo3" class="mb-16">
+            <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
+                <div class="bg-purple-700 p-6">
+                    <h2 class="text-3xl font-bold text-white">Módulo 3: Dashboards Interactivos y Visualización Avanzada</h2>
+                </div>
+                <div class="p-8 md:p-10">
+                    
+                    <h3 class="text-2xl font-semibold text-purple-800 mt-4 border-b-2 border-purple-100 pb-2">Conceptos Clave</h3>
+                    <blockquote class="border-l-4 border-purple-500 pl-4 italic text-gray-600 my-5 text-lg">
+                        <strong>Dashboard (Cuadro de Mando):</strong> Es una visualización de los indicadores de rendimiento clave (KPIs) en una sola pantalla, que permite monitorear la salud de un negocio o proyecto de un vistazo.
+                    </blockquote>
+                    <blockquote class="border-l-4 border-purple-500 pl-4 italic text-gray-600 my-5 text-lg">
+                        <strong>Interactivo:</strong> Significa que el usuario (ej. un gerente) puede filtrar la información (por año, por región, por producto) sin "romper" el dashboard, y todos los gráficos se actualizan solos.
+                    </blockquote>
+
+                    <h3 class="text-2xl font-semibold text-purple-800 mt-8 border-b-2 border-purple-100 pb-2">El Pilar del Dashboard: Tablas y Gráficos Dinámicos</h3>
+                    <p class="text-lg leading-relaxed my-4">
+                        La forma más rápida y robusta de crear dashboards en Excel es usando Tablas Dinámicas (PivotTables) como motor de cálculo y Gráficos Dinámicos (PivotCharts) como visualización.
+                    </p>
+                    <ol class="list-decimal list-inside space-y-3 bg-gray-50 p-6 rounded-lg border border-gray-200 text-lg">
+                        <li><strong>Prepara tus Datos:</strong> Asegúrate de que tus datos estén en un formato tabular (columnas con encabezados, sin filas en blanco) y, preferiblemente, formateados como una <strong>Tabla</strong> (<code>Insertar > Tabla</code> o <code>Ctrl+T</code>). Esto hace que se actualice automáticamente.</li>
+                        <li><strong>Crea la Tabla Dinámica:</strong> Selecciona tus datos. Ve a <em>Insertar > Tabla Dinámica</em>.</li>
+                        <li><strong>Define el KPI:</strong> Arrastra "Región" a Filas y "Ventas" a Valores. Ya tienes un resumen de ventas por región.</li>
+                        <li><strong>Crea el Gráfico Dinámico:</strong> Con la tabla dinámica seleccionada, ve a <em>Análisis de tabla dinámica > Gráfico Dinámico</em>. Elige un gráfico de barras.</li>
+                        <li><strong>Limpia el Gráfico:</strong> Haz clic derecho en los botones grises del gráfico (como "Total" o "Región") y selecciona "Ocultar todos los botones de campo en el gráfico" para un look más limpio.</li>
+                    </ol>
+
+                    <h3 class="text-2xl font-semibold text-purple-800 mt-8 border-b-2 border-purple-100 pb-2">Añadiendo Interactividad (Paso a Paso): Segmentación de Datos (Slicers)</h3>
+                    <p class="text-lg leading-relaxed my-4">
+                        Los Slicers son filtros visuales e intuitivos.
+                    </p>
+                    <ol class="list-decimal list-inside space-y-3 bg-gray-50 p-6 rounded-lg border border-gray-200 text-lg">
+                        <li>Haz clic en tu Tabla Dinámica (o Gráfico Dinámico).</li>
+                        <li>Ve a <em>Análisis de tabla dinámica > Insertar segmentación de datos</em>.</li>
+                        <li>Selecciona los campos por los que quieres filtrar (ej. "Año" y "Categoría de Producto").</li>
+                        <li>Aparecerán dos "cajas" con botones (un Slicer para Año, otro para Categoría).</li>
+                        <li><strong>Conectar Múltiples Gráficos:</strong> Si tienes varios gráficos (basados en *diferentes* tablas dinámicas), debes conectarles el mismo slicer.
+                            <ul>
+                                <li>Haz clic derecho en el Slicer > <em>Conexiones de informes</em>.</li>
+                                <li>Marca las casillas de todas las Tablas Dinámicas que quieres que este slicer controle.</li>
+                            </ul>
+                        </li>
+                        <li>¡Listo! Ahora, al hacer clic en "2024" o "Electrónica", todos tus gráficos se actualizarán al mismo tiempo.</li>
+                    </ol>
+                    
+                    <h3 class="text-2xl font-semibold text-purple-800 mt-8 border-b-2 border-purple-100 pb-2">Visualización Avanzada</h3>
+                    <p class="text-lg leading-relaxed my-4">
+                        No te limites a barras y líneas. Explora <em>Insertar > Gráficos</em> para encontrar:
+                        <ul>
+                            <li><strong>Gráficos de Mapa:</strong> Perfecto para datos geográficos (ej. ventas por país o provincia).</li>
+                            <li><strong>Gráficos de Embudo (Funnel):</strong> Ideal para visualizar procesos de ventas o conversión.</li>
+                            <li><strong>Gráficos de Cascada (Waterfall):</strong> Muestra cómo un valor inicial es afectado por valores positivos y negativos (ej. Ganancia Neta).</li>
+                        </ul>
+                    </p>
+
+                    <!-- INICIO DE CONTENIDO NUEVO: Ejercicios Módulo 3 -->
+                    <h3 class="text-2xl font-semibold text-purple-800 mt-12 border-b-2 border-purple-100 pb-2">Ejercicios Prácticos Resueltos (Dashboards y Visualización)</h3>
+                    
+                    <!-- Ejercicio 3.1 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 1: Gráfico de Tendencia (Líneas)</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Crear un gráfico dinámico que muestre la evolución de las ventas a lo largo del tiempo (meses).</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Asegúrate de que tus datos base (Tabla) tengan una columna de "Fecha" (con fechas completas, ej. 01/01/2024).</li>
+                            <li>Crea una nueva Tabla Dinámica (en una hoja separada, ej. "TD_Data").</li>
+                            <li>Arrastra el campo "Fecha" a <strong>Filas</strong>. Excel automáticamente lo agrupará por Años, Trimestres y Meses.</li>
+                            <li>Arrastra "Ventas" a <strong>Valores</strong>.</li>
+                            <li>Haz clic en la Tabla Dinámica, ve a <em>Análisis de tabla dinámica > Gráfico Dinámico</em>.</li>
+                            <li>Elige un gráfico de <strong>Línea con Marcadores</strong>.</li>
+                            <li>Mueve este gráfico (Crtl + X) a tu hoja de "Dashboard" (Crtl + V) y ajústalo.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 3.2 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 2: Insertar una Escala de Tiempo (Timeline)</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Añadir un filtro de fechas profesional (Escala de Tiempo) a tu gráfico de tendencia.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Haz clic en el gráfico dinámico de tendencia que acabas de crear.</li>
+                            <li>Ve a <em>Análisis de gráfico dinámico > Insertar escala de tiempo</em>.</li>
+                            <li>Selecciona el campo "Fecha" (solo aparecerán campos de fecha).</li>
+                            <li>Aparecerá un "Slicer" especial que te permite filtrar por Años, Trimestres, Meses o Días, y arrastrar el rango.</li>
+                            <li>(Opcional) Conecta esta escala de tiempo a otros gráficos (clic derecho > <em>Conexiones de informes</em>).</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 3.3 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 3: KPI Principal (Tarjeta de "Total Ventas")</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Mostrar el número "Total de Ventas" en grande, como un KPI principal.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Crea una nueva Tabla Dinámica (en "TD_Data") que solo tenga "Ventas" en el área de <strong>Valores</strong>. (Será una sola celda con el gran total).</li>
+                            <li>Nombra esta celda (ej. "TotalVentas").</li>
+                            <li>En tu hoja de "Dashboard", inserta un <strong>Cuadro de Texto</strong> (<em>Insertar > Texto > Cuadro de Texto</em>).</li>
+                            <li>Con el cuadro de texto seleccionado, NO escribas en él. Ve a la <strong>barra de fórmulas</strong>.</li>
+                            <li>Escribe <code>=</code> y haz clic en la celda de la tabla dinámica que contiene el gran total (ej. <code>=TD_Data!B4</code>).</li>
+                            <li>Da formato al Cuadro de Texto: quita el borde, quita el relleno, aumenta el tamaño de la fuente (ej. 48pt) y centra el texto.</li>
+                            <li><strong>Importante:</strong> Asegúrate de que los Slicers (del Módulo 3, Ejemplo 2) también estén conectados a esta nueva tabla dinámica. Ahora, cuando filtres, ¡tu KPI principal se actualizará!</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 3.4 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 4: Formato Condicional en Tablas Dinámicas</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Crear una tabla "Top 5 Vendedores" que incluya barras de datos visuales.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Crea una Tabla Dinámica: "Vendedor" en Filas, "Ventas" en Valores.</li>
+                            <li>Ordena de Mayor a Menor (Clic derecho en un valor de ventas > <em>Ordenar > De mayor a menor</em>).</li>
+                            <li>Aplica un filtro de Top 5 (Clic en la flecha de "Etiquetas de fila" > <em>Filtros de valor > 10 mejores...</em> > Cambia 10 a 5).</li>
+                            <li>Selecciona solo las celdas de valores numéricos (las ventas) en la tabla dinámica.</li>
+                            <li>Ve a <em>Inicio > Formato Condicional > Barras de datos > Relleno degradado (Azul)</em>.</li>
+                            <li>¡Ahora tienes un mini-gráfico dentro de tu tabla que se actualiza con los filtros!</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 3.5 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 5: Gráfico Combinado (Eje Secundario)</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Mostrar "Ventas" (millones) y "% de Crecimiento" (porcentaje) en el mismo gráfico, aunque tengan escalas diferentes.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Crea una Tabla Dinámica: "Mes" en Filas, "Ventas" en Valores.</li>
+                            <li>Añade "Ventas" una *segunda vez* a Valores.</li>
+                            <li>Haz clic derecho en este segundo campo de "Ventas" > <em>Mostrar valores como > % de diferencia de > (Campo base: Mes, Elemento base: (Anterior))</em>. Renómbralo a "% Crecimiento".</li>
+                            <li>Crea un Gráfico Dinámico a partir de esta tabla.</li>
+                            <li>Haz clic derecho en el gráfico > <em>Cambiar tipo de gráfico > Combinado</em>.</li>
+                            <li>Para la serie "Ventas", elige "Columnas Agrupadas".</li>
+                            <li>Para la serie "% Crecimiento", elige "Línea" y <strong>marca la casilla "Eje secundario"</strong>.</li>
+                            <li>Acepta. Ahora tienes un gráfico profesional que muestra la magnitud (barras) y la tendencia (línea) juntas.</li>
+                        </ol>
+                    </div>
+                    <!-- FIN DE CONTENIDO NUEVO: Ejercicios Módulo 3 -->
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulo 4: Integración con otras herramientas -->
+        <section id="modulo4">
+            <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
+                <div class="bg-teal-700 p-6">
+                    <h2 class="text-3xl font-bold text-white">Módulo 4: Integración con Otras Herramientas</h2>
+                </div>
+                <div class="p-8 md:p-10">
+                    <h3 class="text-2xl font-semibold text-teal-800 mt-4 border-b-2 border-teal-100 pb-2">Concepto Clave</h3>
+                    <blockquote class="border-l-4 border-teal-500 pl-4 italic text-gray-600 my-5 text-lg">
+                        Excel ya no trabaja solo. Es parte de un ecosistema de datos. La habilidad clave es saber cuándo usar Excel y cómo conectarlo con herramientas más potentes (como Power BI) o más colaborativas (como Google Sheets).
+                    </blockquote>
+
+                    <h3 class="text-2xl font-semibold text-teal-800 mt-8 border-b-2 border-teal-100 pb-2">Integración con Power BI</h3>
+                    <p class="text-lg leading-relaxed my-4">
+                        <strong>Cuándo usarlo:</strong> Cuando tu dashboard de Excel se vuelve lento, manejas millones de filas, o necesitas consolidar múltiples fuentes (ej. un Excel, una base de datos SQL y una web) en un solo modelo de datos.
+                    </p>
+                    <p class="text-lg leading-relaxed my-4">
+                        <strong>Paso a Paso (La conexión más simple):</strong>
+                    </p>
+                    <ol class="list-decimal list-inside space-y-3 bg-gray-50 p-6 rounded-lg border border-gray-200 text-lg">
+                        <li>En Power BI Desktop (la aplicación gratuita de Windows).</li>
+                        <li>En la pestaña <em>Inicio</em>, haz clic en <em>Obtener datos > Excel</em>.</li>
+                        <li>Selecciona tu archivo .xlsx.</li>
+                        <li>Aparecerá un "Navegador" mostrándote las hojas y las Tablas dentro de tu archivo. <strong>(Pro-Tip: Siempre importa Tablas, no hojas).</strong></li>
+                        <li>Selecciona la Tabla y haz clic en "Cargar".</li>
+                        <li>Los datos de tu Excel ahora están en el "Modelo" de Power BI, listos para crear visualizaciones mucho más potentes y rápidas.</li>
+                    </ol>
+                    <p class="text-lg leading-relaxed my-4">
+                        <strong>Conexión Clave:</strong> La herramienta "Obtener y transformar datos" (Power Query) en la pestaña <em>Datos</em> de Excel es *exactamente* el mismo motor que usa Power BI. Si aprendes a limpiar y conectar datos allí, ya sabes el 70% de Power BI.
+                    </p>
+
+                    <h3 class="text-2xl font-semibold text-teal-800 mt-8 border-b-2 border-teal-100 pb-2">Integración con Google Sheets</h3>
+                    <p class="text-lg leading-relaxed my-4">
+                        <strong>Cuándo usarlo:</strong> Cuando la colaboración en tiempo real es más importante que la potencia de cálculo. Múltiples usuarios pueden editar el mismo archivo simultáneamente.
+                    </p>
+                    <p class="text-lg leading-relaxed my-4">
+                        <strong>Flujo de Trabajo (Compatibilidad):</strong>
+                    </p>
+                    <ol class="list-decimal list-inside space-y-3 bg-gray-50 p-6 rounded-lg border border-gray-200 text-lg">
+                        <li><strong>Subir un Excel a Sheets:</strong> En Google Drive, haz clic en <em>Nuevo > Subir archivo</em>. Sube tu .xlsx. Al abrirlo, puedes elegir "Abrir con Google Sheets".</li>
+                        <li><strong>Descargar de Sheets a Excel:</strong> En Google Sheets, ve a <em>Archivo > Descargar > Microsoft Excel (.xlsx)</em>.</li>
+                    </ol>
+
+                    <h3 class="text-2xl font-semibold text-red-600 mt-8 border-b-2 border-red-100 pb-2">¡La Trampa de la Integración! (VBA vs. Apps Script)</h3>
+                    <p class="text-lg leading-relaxed my-4 text-red-700 font-semibold">
+                        <strong>ADVERTENCIA FUNDAMENTAL:</strong> Tus Macros de VBA <strong>NO</strong> funcionan en Google Sheets.
+                    </p>
+                    <p class="text-lg leading-relaxed my-4">
+                        Si abres un archivo .xlsm en Google Sheets, las macros no se ejecutarán. Google Sheets tiene su propio lenguaje de automatización llamado <strong>Google Apps Script</strong> (que se parece más a JavaScript).
+                    </p>
+                    <p class="text-lg leading-relaxed my-4">
+                        <strong>La Regla:</strong>
+                        <ul>
+                            <li>Si la tarea es <strong>automatización pesada</strong> y análisis complejo en una sola PC: Usa <strong>Excel + VBA</strong>.</li>
+                            <li>Si la tarea es <strong>colaboración en vivo</strong> y formularios web: Usa <strong>Google Sheets + Apps Script</strong>.</li>
+                        </ul>
+                    </p>
+
+                    <!-- INICIO DE CONTENIDO NUEVO: Ejercicios Módulo 4 -->
+                    <h3 class="text-2xl font-semibold text-teal-800 mt-12 border-b-2 border-teal-100 pb-2">Ejercicios Prácticos Resueltos (Integración)</h3>
+
+                    <!-- Ejercicio 4.1 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 1: (Power Query) Importar Tabla de una Web</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Traer a Excel una tabla de datos (ej. población mundial) desde una página de Wikipedia y hacerla actualizable.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>En Excel, ve a la pestaña <em>Datos > Obtener datos > De otras fuentes > De la Web</em>.</li>
+                            <li>Pega la URL de una página de Wikipedia que contenga tablas (ej. <code>https://es.wikipedia.org/wiki/Anexo:Países_por_población_(Naciones_Unidas)</code>).</li>
+                            <li>Excel analizará la web y te mostrará un "Navegador" con las tablas que encontró (ej. "Table 0", "Table 1").</li>
+                            <li>Selecciona la tabla que te interesa y haz clic en <strong>"Transformar datos"</strong>.</li>
+                            <li>Se abrirá el editor de Power Query. Aquí puedes limpiar los datos (ej. quitar columnas innecesarias, cambiar tipo de dato).</li>
+                            <li>Cuando estés listo, haz clic en <em>Inicio > Cerrar y cargar</em>.</li>
+                            <li>Los datos de la web ahora están en tu hoja de Excel. Para actualizar: <em>Datos > Actualizar todo</em>.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 4.2 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 2: (Power Query) Consolidar Archivos de una Carpeta</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Tienes 12 archivos de Excel (uno por mes) en una carpeta. Quieres unirlos todos en una sola tabla maestra.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Ve a <em>Datos > Obtener datos > De un archivo > De una carpeta</em>.</li>
+                            <li>Navega y selecciona la carpeta que contiene tus 12 archivos.</li>
+                            <li>Aparecerá una vista previa de los archivos. Haz clic en <strong>"Combinar y transformar datos"</strong>.</li>
+                            <li>Power Query te preguntará qué elemento quieres combinar (ej. "Hoja1" de cada archivo).</li>
+                            <li>Automáticamente creará una consulta que abre cada archivo, extrae la "Hoja1" y la "anexa" (une una debajo de otra) en una sola tabla gigante.</li>
+                            <li>Limpia si es necesario (ej. filtrar encabezados repetidos) y haz clic en "Cerrar y cargar".</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 4.3 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 3: (Google Sheets) Importar Rango de otra Hoja</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> En Google Sheets, traer datos en vivo desde otra hoja de cálculo (ej. un "Maestro de Precios" en otro archivo).</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Abre tu hoja de Google Sheets de destino.</li>
+                            <li>En una celda, escribe la función <code>=IMPORTRANGE("URL_o_ID_de_la_otra_hoja", "NombreHoja!A1:B10")</code>.</li>
+                            <li><strong>URL/ID:</strong> Puedes copiar la URL completa de la otra hoja de cálculo.</li>
+                            <li><strong>Rango:</strong> El nombre de la pestaña y el rango que quieres importar (ej. "Precios!A1:E50").</li>
+                            <li>La primera vez, mostrará un error <code>#REF!</code>. Pasa el mouse sobre la celda y haz clic en <strong>"Permitir acceso"</strong> para conectar las dos hojas.</li>
+                            <li>Los datos aparecerán y se actualizarán automáticamente si la hoja de origen cambia.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 4.4 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 4: (Google Forms) Conectar un Formulario a Sheets</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Crear un formulario de captura de datos (ej. "Registro de Gastos") que alimente una hoja de cálculo en tiempo real.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Ve a Google Forms (forms.google.com) y crea un formulario simple (ej. "Fecha", "Monto", "Categoría").</li>
+                            <li>En la pestaña "Respuestas" dentro de Google Forms, haz clic en el ícono verde de Google Sheets.</li>
+                            <li>Elige "Crear una nueva hoja de cálculo" y asígnale un nombre.</li>
+                            <li>Se abrirá una nueva hoja de Google Sheets. Verás que las columnas coinciden con tus preguntas del formulario.</li>
+                            <li>Envía una respuesta de prueba desde tu formulario. Verás cómo aparece una nueva fila en tu hoja de Google Sheets instantáneamente.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Ejercicio 4.5 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Ejercicio 5: (Power BI) Analizar Datos de Excel</h4>
+                        <p class="text-lg mb-3"><strong>Objetivo:</strong> Recrear un gráfico dinámico simple de Excel dentro de Power BI Desktop.</p>
+                        <ol class="list-decimal list-inside space-y-2 text-lg">
+                            <li>Guarda tu archivo de Excel con los datos de ventas (el que usaste para los dashboards).</li>
+                            <li>Abre <strong>Power BI Desktop</strong>.</li>
+                            <li>En <em>Inicio > Obtener datos > Excel</em>. Selecciona tu archivo.</li>
+                            <li>En el Navegador, selecciona la <strong>Tabla</strong> de datos (no la hoja) y haz clic en "Cargar".</li>
+                            <li>A la derecha, en el panel "Datos", verás tus columnas (Ventas, Región, Fecha...).</li>
+                            <li>En el panel "Visualizaciones", haz clic en el ícono de "Gráfico de barras agrupadas".</li>
+                            <li>Arrastra el campo "Región" al eje Y.</li>
+                            <li>Arrastra el campo "Ventas" al eje X.</li>
+                            <li>¡Has creado el mismo gráfico que en Excel! Ahora explora cambiar los colores, filtros y otros tipos de visualización en Power BI.</li>
+                        </ol>
+                    </div>
+                    <!-- FIN DE CONTENIDO NUEVO: Ejercicios Módulo 4 -->
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 - Curso de Excel Avanzado para Universitarios. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

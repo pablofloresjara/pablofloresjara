@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso: Modelos Financieros y Simulaciones en Excel</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f6;
+        }
+
+        /* Estilo para asegurar que los enlaces de ancla se posicionen correctamente */
+        section[id] {
+            scroll-margin-top: 1rem;
+        }
+
+        /* Estilos para las tablas de ejercicios */
+        table.ejercicio-tabla {
+            width: 100%;
+            margin-top: 1rem;
+            border-collapse: collapse;
+        }
+
+        table.ejercicio-tabla th,
+        table.ejercicio-tabla td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table.ejercicio-tabla th {
+            background-color: #e9ecef;
+            font-weight: 600;
+        }
+
+        table.ejercicio-tabla code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f1f1f1;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+    </style>
+    <!-- Carga de la fuente Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Encabezado Principal -->
+    <header class="bg-gradient-to-r from-blue-700 to-blue-900 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <h1 class="text-4xl font-bold tracking-tight">📈 Curso de Modelos Financieros y Simulaciones en Excel</h1>
+            <p class="mt-4 text-xl text-blue-100">Un curso completo, de 0 a 100, con 20 ejercicios prácticos detallados.
+            </p>
+        </div>
+    </header>
+
+    <!-- Contenedor Principal (Sidebar + Contenido) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col lg:flex-row">
+
+            <!-- Sidebar de Navegación -->
+            <nav class="w-full lg:w-1/4 lg:sticky lg:top-8 lg:self-start lg:h-[90vh] lg:overflow-y-auto pr-4 mb-8 lg:mb-0">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Módulos del Curso</h2>
+                    <ul class="space-y-2">
+                        <li><a href="#modulo1"
+                                class="block font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md p-2 transition">Módulo
+                                1: Introducción</a></li>
+                        <li><a href="#modulo2"
+                                class="block font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md p-2 transition">Módulo
+                                2: Herramientas Fundamentales</a></li>
+                        <li><a href="#modulo3"
+                                class="block font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md p-2 transition">Módulo
+                                3: Modelo P&G (Proyecciones)</a></li>
+                        <li><a href="#modulo4"
+                                class="block font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md p-2 transition">Módulo
+                                4: Evaluación de Proyectos (DCF)</a></li>
+                        <li><a href="#modulo5"
+                                class="block font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md p-2 transition">Módulo
+                                5: Introducción a Monte Carlo</a></li>
+                        <li><a href="#modulo6"
+                                class="block font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md p-2 transition">Módulo
+                                6: Simulación Monte Carlo Aplicada</a></li>
+                        <li><a href="#modulo7"
+                                class="block font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md p-2 transition">Módulo
+                                7: Técnicas Avanzadas</a></li>
+                    </ul>
+
+                    <h3 class="text-lg font-bold text-gray-900 mt-8 mb-4">Ejercicios (20)</h3>
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#ejercicio1" class="text-gray-600 hover:text-blue-600">1. Cálculo VNA (NPV)</a></li>
+                        <li><a href="#ejercicio2" class="text-gray-600 hover:text-blue-600">2. Cálculo TIR (IRR)</a></li>
+                        <li><a href="#ejercicio3" class="text-gray-600 hover:text-blue-600">3. Tabla de Datos 1 Variable</a></li>
+                        <li><a href="#ejercicio4" class="text-gray-600 hover:text-blue-600">4. Administrador de
+                                Escenarios</a></li>
+                        <li><a href="#ejercicio5" class="text-gray-600 hover:text-blue-600">5. Función PAGO (Préstamo)</a>
+                        </li>
+                        <li><a href="#ejercicio6" class="text-gray-600 hover:text-blue-600">6. Modificar P&G (Inputs
+                                Variables)</a></li>
+                        <li><a href="#ejercicio7" class="text-gray-600 hover:text-blue-600">7. Payback Simple</a></li>
+                        <li><a href="#ejercicio8" class="text-gray-600 hover:text-blue-600">8. Payback Descontado</a>
+                        </li>
+                        <li><a href="#ejercicio9" class="text-gray-600 hover:text-blue-600">9. Cálculo de Flujo de Caja
+                                Libre (FCF)</a></li>
+                        <li><a href="#ejercicio10" class="text-gray-600 hover:text-blue-600">10. Simular un Dado</a></li>
+                        <li><a href="#ejercicio11" class="text-gray-600 hover:text-blue-600">11. Simular Ventas
+                                (Uniforme)</a></li>
+                        <li><a href="#ejercicio12" class="text-gray-600 hover:text-blue-600">12. Simular Crecimiento
+                                (Normal)</a></li>
+                        <li><a href="#ejercicio13" class="text-gray-600 hover:text-blue-600">13. P&G con 1 Variable
+                                Aleatoria</a></li>
+                        <li><a href="#ejercicio14" class="text-gray-600 hover:text-blue-600">14. Simulación 1000 Ensayos
+                                (Tabla)</a></li>
+                        <li><a href="#ejercicio15" class="text-gray-600 hover:text-blue-600">15. Análisis de Resultados
+                                (Estadísticas)</a></li>
+                        <li><a href="#ejercicio16" class="text-gray-600 hover:text-blue-600">16. Probabilidad de Pérdida
+                                (CONTAR.SI)</a></li>
+                        <li><a href="#ejercicio17" class="text-gray-600 hover:text-blue-600">17. Buscar Objetivo (Goal
+                                Seek)</a></li>
+                        <li><a href="#ejercicio18" class="text-gray-600 hover:text-blue-600">18. Optimización (Solver)</a>
+                        </li>
+                        <li><a href="#ejercicio19" class="text-gray-600 hover:text-blue-600">19. Dashboard (Control
+                                Deslizante)</a></li>
+                        <li><a href="#ejercicio20" class="text-gray-600 hover:text-blue-600">20. Control de Errores
+                                (SIERROR)</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Área de Contenido Principal -->
+            <main class="w-full lg:w-3/4 lg:pl-8">
+                <div class="space-y-12">
+
+                    <!--  -->
+                    <img src="https://placehold.co/800x400/1D4ED8/FFFFFF?text=Modelos+Financieros+en+Excel"
+                        alt="Banner de Modelos Financieros" class="rounded-xl shadow-lg w-full">
+
+
+                    <!-- MÓDULO 1: INTRODUCCIÓN -->
+                    <section id="modulo1" class="bg-white p-8 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Módulo 1: Estructura y Plan de Estudio</h2>
+                        <p class="text-lg text-gray-700 mb-4">
+                            ¡Bienvenido! Este curso te llevará de los conceptos básicos a las técnicas avanzadas de
+                            modelado financiero y simulación en Excel. Estas herramientas son cruciales para la toma de
+                            decisiones estratégicas, permitiéndonos predecir resultados futuros y probar el impacto de
+                            diferentes decisiones antes de tomarlas.
+                        </p>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Syllabus del Curso</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 pl-4">
+                            <li><strong>Módulo 1: Introducción y Syllabus</strong> (¡Lo estás viendo!)</li>
+                            <li><strong>Módulo 2: Herramientas Fundamentales de Excel para Modelado</strong> (VNA, TIR,
+                                Tablas de Datos, Escenarios)</li>
+                            <li><strong>Módulo 3: Construcción de un Modelo Financiero Base (Proyecciones)</strong> (P&G
+                                Pro-Forma)</li>
+                            <li><strong>Módulo 4: Evaluación de Proyectos de Inversión (DCF)</strong> (Flujo de Caja
+                                Libre, Payback)</li>
+                            <li><strong>Módulo 5: Introducción a la Simulación de Monte Carlo</strong> (Incertidumbre,
+                                Funciones Aleatorias)</li>
+                            <li><strong>Módulo 6: Simulación de Monte Carlo Aplicada</strong> (Modelo P&G Estocástico,
+                                Análisis de 1000 ensayos)</li>
+                            <li><strong>Módulo 7: Técnicas Avanzadas y Presentación</strong> (Solver, Buscar Objetivo,
+                                Dashboards)</li>
+                        </ul>
+                    </section>
+
+                    <!-- MÓDULO 2: HERRAMIENTAS FUNDAMENTALES -->
+                    <section id="modulo2" class="bg-white p-8 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Módulo 2: Herramientas Fundamentales de Modelado
+                        </h2>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">1. Definiciones Clave</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 pl-4 mb-6">
+                            <li><strong>Modelo Financiero:</strong> Representación matemática (en Excel) de la realidad
+                                financiera de una empresa o proyecto.</li>
+                            <li><strong>Análisis de Sensibilidad (What-If):</strong> Proceso de cambiar *Inputs* para ver
+                                cómo cambia el *Output*.</li>
+                            <li><strong>Tabla de Datos:</strong> Herramienta de Excel para realizar Análisis de
+                                Sensibilidad de 1 o 2 variables automáticamente.</li>
+                            <li><strong>Administrador de Escenarios:</strong> Permite guardar y comparar grupos de
+                                inputs (Ej. Pesimista, Base, Optimista).</li>
+                        </ul>
+
+                        <!--  -->
+                        <img src="https://placehold.co/600x300/059669/FFFFFF?text=Diálogo+de+Tabla+de+Datos+de+Excel"
+                            alt="Diálogo de Tabla de Datos en Excel"
+                            class="rounded-lg shadow-md w-full max-w-lg mx-auto mb-6">
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">2. Ejemplo Detallado: Tabla de Datos de 2
+                            Variables</h3>
+                        <p class="text-gray-700 mb-4">
+                            Imagina un modelo simple de Utilidad = (Precio - Costo) * Unidades. Queremos ver cómo cambia
+                            la Utilidad si movemos el Precio y las Unidades.
+                        </p>
+                        <ol class="list-decimal list-inside text-gray-700 space-y-2 pl-4 mb-6">
+                            <li><strong>Construir el Modelo Base:</strong>
+                                <ul class="list-disc list-inside pl-6">
+                                    <li><code>C1</code> (Precio): 10</li>
+                                    <li><code>C2</code> (Costo): 6</li>
+                                    <li><code>C3</code> (Unidades): 1000</li>
+                                    <li><code>C5</code> (Utilidad): <code>=(C1-C2)*C3</code> (Resultado: 4000)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Preparar la Matriz:</strong>
+                                <ul class="list-disc list-inside pl-6">
+                                    <li>En <code>B9</code>, vincular la fórmula de resultado: <code>=C5</code>.</li>
+                                    <li>En la fila 9 (<code>C9</code>, <code>D9</code>, ...), poner los precios (ej. 8,
+                                        9, 10, 11).</li>
+                                    <li>En la columna B (<code>B10</code>, <code>B11</code>, ...), poner las unidades
+                                        (ej. 800, 900, 1000).</li>
+                                </ul>
+                            </li>
+                            <li><strong>Ejecutar la Tabla:</strong>
+                                <ul class="list-disc list-inside pl-6">
+                                    <li>Seleccionar todo el rango <code>B9:G14</code> (ejemplo).</li>
+                                    <li>Ir a <strong>Datos &gt; Análisis Y si &gt; Tabla de Datos...</strong></li>
+                                    <li>Celda de entrada (Fila): <code>C3</code> (la variable de las filas: Unidades).
+                                    </li>
+                                    <li>Celda de entrada (Columna): <code>C1</code> (la variable de las columnas:
+                                        Precio).</li>
+                                    <li>Aceptar. Excel llena la tabla.</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">3. Ejercicios (1-3)</h3>
+
+                        <!-- Ejercicio 1 -->
+                        <div id="ejercicio1" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 1: Cálculo del VNA (Valor Neto
+                                Actual)</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Determinar si un proyecto es
+                                rentable usando la función <code>VNA</code> (o <code>NPV</code>).</p>
+                            <table class="ejercicio-tabla">
+                                <thead>
+                                    <tr>
+                                        <th>Datos</th>
+                                        <th>Valor</th>
+                                        <th>Celda (Ejemplo)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Tasa Descuento</td>
+                                        <td>10%</td>
+                                        <td><code>B1</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Inversión (Año 0)</td>
+                                        <td>-100,000</td>
+                                        <td><code>B4</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Flujo Año 1</td>
+                                        <td>25,000</td>
+                                        <td><code>B5</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Flujo Año 2</td>
+                                        <td>30,000</td>
+                                        <td><code>B6</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Flujo Año 3</td>
+                                        <td>40,000</td>
+                                        <td><code>B7</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Flujo Año 4</td>
+                                        <td>45,000</td>
+                                        <td><code>B8</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <p class="text-gray-700">En una celda, escribe: <code>=VNA(B1, B5:B8) + B4</code></p>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> <code>$11,882.83</code>.
+                                (<strong>Conclusión:</strong> VNA > 0, el proyecto es rentable).</p>
+                        </div>
+
+                        <!-- Ejercicio 2 -->
+                        <div id="ejercicio2" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 2: Cálculo de la TIR (Tasa Interna
+                                de Retorno)</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Encontrar la rentabilidad intrínseca
+                                del proyecto del Ejercicio 1 usando <code>TIR</code> (o <code>IRR</code>).</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <p class="text-gray-700">Se usa el rango completo, incluyendo la inversión inicial.</p>
+                            <p class="text-gray-700">En una celda, escribe: <code>=TIR(B4:B8)</code></p>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> <code>15.09%</code>.
+                                (<strong>Conclusión:</strong> 15.09% (TIR) > 10% (Tasa Descuento), el proyecto es
+                                rentable).</p>
+                        </div>
+
+                        <!-- Ejercicio 3 -->
+                        <div id="ejercicio3" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 3: Tabla de Datos (1 Variable)
+                            </h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Ver cómo cambia el VNA (celda
+                                <code>B10</code> del Ej. 1) si cambia la Tasa de Descuento (celda <code>B1</code>).</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <ol class="list-decimal list-inside text-gray-700 space-y-2 pl-4">
+                                <li>En <code>C4</code> a <code>C8</code>, poner tasas (ej. 8%, 9%, 10%, 11%, 12%).</li>
+                                <li>En <code>D3</code>, vincular el resultado: <code>=B10</code> (la fórmula del VNA).
+                                </li>
+                                <li>Seleccionar <code>C3:D8</code>.</li>
+                                <li><strong>Datos &gt; Tabla de Datos...</strong></li>
+                                <li>Celda de entrada (Fila): (dejar en blanco).</li>
+                                <li>Celda de entrada (Columna): <code>B1</code> (la Tasa de Descuento original).</li>
+                            </ol>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> La columna D se llenará con los VNA
+                                para cada tasa, mostrando cómo el VNA disminuye si la tasa sube.</p>
+                        </div>
+                    </section>
+
+
+                    <!-- MÓDULO 3: MODELO P&G (PROYECCIONES) -->
+                    <section id="modulo3" class="bg-white p-8 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Módulo 3: Construcción de un Modelo Financiero
+                            Base (Proyecciones)</h2>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">1. Principios Clave</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 pl-4 mb-6">
+                            <li><strong>Pro-Forma:</strong> Un estado financiero que mira hacia el futuro (proyección).
+                            </li>
+                            <li><strong>Inputs, Procesos, Outputs:</strong> La regla de oro.
+                                <ul class="list-disc list-inside pl-6">
+                                    <li><strong>Inputs:</strong> Suposiciones (ej. Crecimiento 8%). Ponerlos arriba y en
+                                        azul.</li>
+                                    <li><strong>Procesos:</strong> Fórmulas y cálculos.</li>
+                                    <li><strong>Outputs:</strong> Resultados clave (ej. Utilidad Neta).</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <!--  -->
+                        <img src="https://placehold.co/800x350/D97706/FFFFFF?text=Proyección+de+P&G+en+Excel"
+                            alt="Proyección de P&G en Excel"
+                            class="rounded-lg shadow-md w-full mx-auto mb-6">
+
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">2. Ejemplo Detallado: P&G Pro-Forma a 3
+                            Años</h3>
+                        <p class="text-gray-700 mb-4">
+                            Construiremos un modelo que proyecte la Utilidad Neta.
+                        </p>
+                        <ol class="list-decimal list-inside text-gray-700 space-y-2 pl-4 mb-6">
+                            <li><strong>Paso 1: Configurar Inputs (Suposiciones)</strong>
+                                <ul class="list-disc list-inside pl-6">
+                                    <li><code>C3</code> (Unidades Año 1): 1000</li>
+                                    <li><code>C4</code> (Crecimiento Ventas): 8%</li>
+                                    <li><code>C5</code> (Precio Venta): $50</li>
+                                    <li><code>C6</code> (Costo Variable %): 40%</li>
+                                    <li><code>C7</code> (Costos Fijos): $15,000</li>
+                                    <li><code>C8</code> (Tasa Impuestos): 25%</li>
+                                </ul>
+                            </li>
+                            <li><strong>Paso 2: Estructurar P&G (Procesos)</strong>
+                                <ul class="list-disc list-inside pl-6">
+                                    <li>Columnas: <code>Año 1</code>, <code>Año 2</code>, <code>Año 3</code>.</li>
+                                    <li>Filas: Ventas, Costo de Ventas, Utilidad Bruta, Costos Fijos, EBIT, Impuestos,
+                                        Utilidad Neta.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Paso 3: Rellenar Fórmulas (Conectando Inputs)</strong>
+                                <ul class="list-disc list-inside pl-6">
+                                    <li><strong>Unidades Año 1:</strong> <code>=C3</code></li>
+                                    <li><strong>Unidades Año 2:</strong> <code>=C14*(1+$C$4)</code> (Asumiendo que C14 es
+                                        Unidades Año 1. Usar <code>$</code> para fijar la celda de crecimiento).</li>
+                                    <li><strong>Ventas (Año 1):</strong> <code>=Unidades_Año_1 * $C$5</code></li>
+                                    <li><strong>Costo Ventas (Año 1):</strong> <code>=Ventas_Año_1 * $C$6</code></li>
+                                    <li><strong>Utilidad Bruta (Año 1):</strong> <code>=Ventas_Año_1 -
+                                            Costo_Ventas_Año_1</code></li>
+                                    <li><strong>Costos Fijos (Año 1):</strong> <code>=$C$7</code></li>
+                                    <li><strong>EBIT (Año 1):</strong> <code>=Utilidad_Bruta_Año_1 -
+                                            Costos_Fijos_Año_1</code></li>
+                                    <li><strong>Impuestos (Año 1):</strong> <code>=EBIT_Año_1 * $C$8</code></li>
+                                    <li><strong>Utilidad Neta (Año 1):</strong> <code>=EBIT_Año_1 - Impuestos_Año_1</code>
+                                    </li>
+                                    <li>Copiar todas las fórmulas hacia la derecha para Año 2 y Año 3.</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">3. Ejercicios (4-6)</h3>
+                        <!-- Ejercicio 4 -->
+                        <div id="ejercicio4" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 4: Administrador de Escenarios</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Comparar 3 escenarios (Base,
+                                Pesimista, Optimista) para nuestro P&G.</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <ol class="list-decimal list-inside text-gray-700 space-y-2 pl-4">
+                                <li>Ir a <strong>Datos &gt; Análisis Y si &gt; Administrador de Escenarios...</strong>
+                                </li>
+                                <li><strong>Agregar...</strong> "Base". Celdas cambiantes: <code>C3,C4,C5</code>.
+                                    Valores: 1000, 8%, 50.</li>
+                                <li><strong>Agregar...</strong> "Pesimista". Celdas cambiantes: <code>C3,C4,C5</code>.
+                                    Valores: 800, 5%, 45.</li>
+                                <li><strong>Agregar...</strong> "Optimista". Celdas cambiantes: <code>C3,C4,C5</code>.
+                                    Valores: 1200, 10%, 55.</li>
+                                <li>Hacer clic en <strong>Resumen...</strong></li>
+                                <li>Celda de resultado: <code>E24</code> (Utilidad Neta Año 3 del P&G).</li>
+                            </ol>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> Excel crea una nueva hoja con un
+                                resumen comparativo de la Utilidad Neta del Año 3 para los tres escenarios.</p>
+                        </div>
+
+                        <!-- Ejercicio 5 -->
+                        <div id="ejercicio5" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 5: Evaluación de un Préstamo
+                                (Función PAGO)</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Calcular la cuota mensual para un
+                                préstamo de $50,000 a 5 años con una tasa anual del 12%.</p>
+                            <p class="text-gray-700 mt-4"><strong>Datos:</strong></p>
+                            <ul class="list-disc list-inside pl-6">
+                                <li>Monto (va): 50000</li>
+                                <li>Tasa Anual: 12%</li>
+                                <li>Años: 5</li>
+                            </ul>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <p class="text-gray-700">La función <code>PAGO</code> (o <code>PMT</code>) requiere que la
+                                tasa y el plazo estén en la misma unidad.</p>
+                            <ul class="list-disc list-inside pl-6">
+                                <li>Tasa mensual (tasa): <code>12% / 12</code> = 1%</li>
+                                <li>N° de Meses (nper): <code>5 * 12</code> = 60</li>
+                            </ul>
+                            <p class="text-gray-700 mt-2">Fórmula: <code>=PAGO(1%, 60, 50000)</code></p>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> <code>-$1,112.22</code> (negativo
+                                porque es una salida de dinero).</p>
+                        </div>
+
+                        <!-- Ejercicio 6 -->
+                        <div id="ejercicio6" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 6: Modificación del P&G (Inputs
+                                Variables)</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Modificar el P&G del Módulo 3 para
+                                que el Precio también crezca un 3% anual.</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <ol class="list-decimal list-inside text-gray-700 space-y-2 pl-4">
+                                <li>Añadir Input: <code>C9</code> (Crec. Precio): 3%</li>
+                                <li>Insertar fila en el P&G: "Precio de Venta".</li>
+                                <li>Precio Año 1: <code>=$C$5</code></li>
+                                <li>Precio Año 2: <code>=Precio_Año_1 * (1 + $C$9)</code> (fijar C9).</li>
+                                <li>Copiar fórmula de Precio Año 2 a Año 3.</li>
+                                <li>Modificar fórmula de Ventas (Año 1): <code>=Unidades_Año_1 * Precio_Año_1</code> (ya
+                                    no se fija el precio C5).</li>
+                                <li>Copiar fórmula de Ventas a Año 2 y 3.</li>
+                            </ol>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> La Utilidad Neta ahora será mayor
+                                en los años 2 y 3, ya que el precio aumenta.</p>
+                        </div>
+                    </section>
+
+
+                    <!-- MÓDULO 4: EVALUACIÓN DE PROYECTOS (DCF) -->
+                    <section id="modulo4" class="bg-white p-8 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Módulo 4: Evaluación de Proyectos de Inversión
+                            (DCF)</h2>
+                        <!--  -->
+                        <img src="https://placehold.co/600x300/0E7490/FFFFFF?text=Gráfico+de+Flujo+de+Caja+Descontado"
+                            alt="Gráfico de Flujo de Caja Descontado"
+                            class="rounded-lg shadow-md w-full max-w-lg mx-auto mb-6">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">1. Definiciones Clave</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 pl-4 mb-6">
+                            <li><strong>Flujo de Caja Libre (Free Cash Flow - FCF):</strong> Es el dinero real que genera
+                                el negocio, disponible para pagar a inversores (deuda y capital). Es diferente de la
+                                Utilidad Neta.</li>
+                            <li><strong>Fórmula FCF (simplificada):</strong> <code>FCF = EBIT * (1 - Tasa Impuestos) +
+                                    Depreciación - CAPEX - ΔCapital de Trabajo</code></li>
+                            <li><strong>Payback (Período de Recuperación):</strong> El tiempo (en años) que tarda un
+                                proyecto en recuperar su inversión inicial.</li>
+                            <li><strong>Payback Descontado:</strong> Igual que el Payback, pero usa flujos de caja
+                                descontados (traídos a valor presente). Es más preciso.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">2. Ejercicios (7-9)</h3>
+                        <!-- Ejercicio 7 -->
+                        <div id="ejercicio7" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 7: Payback Simple</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Calcular el período de recuperación
+                                simple.</p>
+                            <table class="ejercicio-tabla">
+                                <thead>
+                                    <tr>
+                                        <th>Año</th>
+                                        <th>Flujo</th>
+                                        <th>Flujo Acumulado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>-100,000</td>
+                                        <td>-100,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>30,000</td>
+                                        <td>-70,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>40,000</td>
+                                        <td>-30,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>50,000</td>
+                                        <td>20,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>50,000</td>
+                                        <td>70,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <p class="text-gray-700">El último año negativo es el Año 2 (aún faltan $30,000 por
+                                recuperar). El Año 3 genera $50,000.</p>
+                            <p class="text-gray-700 mt-2">Fórmula: <code>Año del último negativo + (Monto faltante /
+                                    Flujo del siguiente año)</code></p>
+                            <p class="text-gray-700"><code>2 + (30,000 / 50,000)</code></p>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> <code>2.6 años</code>.</p>
+                        </div>
+
+                        <!-- Ejercicio 8 -->
+                        <div id="ejercicio8" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 8: Payback Descontado</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Calcular el payback usando flujos
+                                descontados (Tasa: 10%).</p>
+                            <table class="ejercicio-tabla">
+                                <thead>
+                                    <tr>
+                                        <th>Año</th>
+                                        <th>Flujo</th>
+                                        <th>Flujo Descontado (<code>=Flujo / (1+10%)^Año</code>)</th>
+                                        <th>Acumulado Descontado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>-100,000</td>
+                                        <td>-100,000</td>
+                                        <td>-100,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>30,000</td>
+                                        <td>27,273</td>
+                                        <td>-72,727</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>40,000</td>
+                                        <td>33,058</td>
+                                        <td>-39,669</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>50,000</td>
+                                        <td>37,566</td>
+                                        <td>-2,103</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>50,000</td>
+                                        <td>34,151</td>
+                                        <td>32,048</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <p class="text-gray-700">El último año negativo es el 3 (faltan $2,103). El Año 4 genera
+                                $34,151 descontados.</p>
+                            <p class="text-gray-700"><code>3 + (2,103 / 34,151)</code></p>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> <code>3.06 años</code>. (Nota: Es
+                                más largo que el payback simple, como debe ser).</p>
+                        </div>
+
+                        <!-- Ejercicio 9 -->
+                        <div id="ejercicio9" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 9: Cálculo de Flujo de Caja Libre
+                                (FCF)</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Calcular el FCF del Año 1 con los
+                                siguientes datos.</p>
+                            <table class="ejercicio-tabla">
+                                <tbody>
+                                    <tr>
+                                        <td>EBIT (Utilidad Operativa)</td>
+                                        <td>$50,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tasa Impuestos</td>
+                                        <td>25%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Depreciación (Gasto no-caja)</td>
+                                        <td>$10,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CAPEX (Inversión en Activos)</td>
+                                        <td>-$15,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ΔCapital de Trabajo (Aum. en Cuentas por Cobrar)</td>
+                                        <td>-$5,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-gray-700 mt-4"><strong>Resolución (Fórmula FCF):</strong></p>
+                            <p class="text-gray-700"><code>= (EBIT * (1 - Tasa Imp.)) + Depreciación - CAPEX -
+                                    ΔCapital</code></p>
+                            <p class="text-gray-700"><code>= (50000 * (1 - 0.25)) + 10000 - 15000 - 5000</code></p>
+                            <p class="text-gray-700"><code>= 37,500 + 10,000 - 15,000 - 5,000</code></p>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> <code>$27,500</code>. (Este es el
+                                flujo que se usa para VNA y TIR en modelos reales).</p>
+                        </div>
+                    </section>
+
+
+                    <!-- MÓDULO 5: INTRODUCCIÓN A MONTE CARLO -->
+                    <section id="modulo5" class="bg-white p-8 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Módulo 5: Introducción a la Simulación de
+                            Monte Carlo</h2>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">1. Definiciones Clave</h3>
+                        <p class="text-gray-700 mb-4">La simulación de Monte Carlo nos permite modelar la
+                            <strong>incertidumbre</strong>. En lugar de decir "Las ventas serán 1000", decimos "Las
+                            ventas estarán *entre* 800 y 1200".</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 pl-4 mb-6">
+                            <li><strong>Incertidumbre vs. Riesgo:</strong> El riesgo es una incertidumbre que *importa*
+                                (ej. la probabilidad de perder dinero).</li>
+                            <li><code>ALEATORIO()</code>: Devuelve un número aleatorio entre 0 y 0.999... (Distribución
+                                Uniforme).</li>
+                            <li><code>ALEATORIO.ENTRE(min, max)</code>: Devuelve un número entero aleatorio entre min y
+                                max.</li>
+                            <li><strong>Distribución Uniforme:</strong> Todos los valores en un rango son igualmente
+                                probables (ej. <code>ALEATORIO.ENTRE</code>).</li>
+                            <li><strong>Distribución Normal:</strong> Los valores cercanos a la media son más probables.
+                                Se define por su media y desviación estándar.</li>
+                        </ul>
+
+                        <!-- [Image of normal distribution curve] -->
+                        <img src="https://placehold.co/600x300/6D28D9/FFFFFF?text=Curva+de+Distribución+Normal"
+                            alt="Curva de Distribución Normal"
+                            class="rounded-lg shadow-md w-full max-w-lg mx-auto mb-6">
+
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">2. Ejercicios (10-12)</h3>
+                        <!-- Ejercicio 10 -->
+                        <div id="ejercicio10" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 10: Simular un Dado</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Simular el lanzamiento de un dado de
+                                6 caras.</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <p class="text-gray-700"><code>=ALEATORIO.ENTRE(1, 6)</code></p>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> Un número entero: 1, 2, 3, 4, 5, o
+                                6. (Presiona F9 para recalcular).</p>
+                        </div>
+
+                        <!-- Ejercicio 11 -->
+                        <div id="ejercicio11" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 11: Simular Ventas (Uniforme)</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Simular las Unidades Vendidas, que
+                                creemos estarán entre 500 y 1500 (cualquier valor es igual de probable).</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <p class="text-gray-700"><code>=ALEATORIO.ENTRE(500, 1500)</code></p>
+                        </div>
+
+                        <!-- Ejercicio 12 -->
+                        <div id="ejercicio12" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 12: Simular Crecimiento (Normal)
+                            </h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Simular el Crecimiento de Ventas.
+                                Creemos que la media será 8%, con una desviación estándar del 2%. (Valores cercanos a 8%
+                                son más probables).</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <p class="text-gray-700">Usamos la inversa de la distribución normal.</p>
+                            <p class="text-gray-700"><code>=INV.NORM.N(ALEATORIO(), 0.08, 0.02)</code></p>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> Un número aleatorio (ej. 0.075,
+                                0.091, 0.063). La mayoría (aprox. 68%) estará entre 6% y 10%.</p>
+                        </div>
+                    </section>
+
+
+                    <!-- MÓDULO 6: MONTE CARLO APLICADO -->
+                    <section id="modulo6" class="bg-white p-8 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Módulo 6: Simulación de Monte Carlo Aplicada
+                        </h2>
+                        <p class="text-lg text-gray-700 mb-4">
+                            Aquí es donde unimos todo. Tomaremos nuestro P&G (Módulo 3), reemplazaremos los inputs fijos
+                            por inputs aleatorios (Módulo 5) y usaremos una Tabla de Datos (Módulo 2) para ejecutar miles
+                            de simulaciones.
+                        </p>
+                        <!--  -->
+                        <img src="https://placehold.co/800x400/DB2777/FFFFFF?text=Histograma+de+Resultados+de+Simulación"
+                            alt="Histograma de Resultados de Simulación"
+                            class="rounded-lg shadow-md w-full mx-auto mb-6">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Ejercicios (13-16)</h3>
+
+                        <!-- Ejercicio 13 -->
+                        <div id="ejercicio13" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 13: P&G con 1 Variable Aleatoria
+                            </h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Modificar el P&G (Módulo 3) para que
+                                el "Crecimiento Ventas" (C4) ya no sea 8% fijo.</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <p class="text-gray-700">Reemplaza el valor en la celda <code>C4</code> (nuestro Input) con
+                                la fórmula del Ejercicio 12:</p>
+                            <p class="text-gray-700"><code>=INV.NORM.N(ALEATORIO(), 0.08, 0.02)</code></p>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> Ahora, cada vez que presionas F9,
+                                el crecimiento cambia, y toda la proyección P&G (Año 2 y 3) se recalcula.</p>
+                        </div>
+
+                        <!-- Ejercicio 14 -->
+                        <div id="ejercicio14" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 14: Simulación de 1000 Ensayos
+                                (Tabla de Datos)</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Ejecutar 1000 simulaciones de
+                                nuestro P&G aleatorio y registrar la Utilidad Neta del Año 3 (<code>E24</code>).</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución (El gran truco):</strong></p>
+                            <ol class="list-decimal list-inside text-gray-700 space-y-2 pl-4">
+                                <li>En <code>G1</code>, escribe "Ensayo". En <code>H1</code>, escribe "Utilidad Año 3".
+                                </li>
+                                <li>En <code>G2</code> a <code>G1001</code>, escribe los números 1 a 1000.</li>
+                                <li>En <code>H2</code>, vincula el resultado: <code>=E24</code> (Utilidad Neta Año 3).
+                                </li>
+                                <li>Selecciona el rango <code>G2:H1001</code>. (Importante: NO incluir <code>H1</code>).
+                                </li>
+                                <li><strong>Datos &gt; Tabla de Datos...</strong></li>
+                                <li>Celda de entrada (Fila): (dejar en blanco).</li>
+                                <li>Celda de entrada (Columna): <code>A1</code> (¡Selecciona CUALQUIER celda que esté
+                                    vacía y no se use en el modelo!).</li>
+                            </ol>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> Excel llena la columna H con 1000
+                                resultados diferentes de la Utilidad Neta Año 3. Ha forzado a <code>ALEATORIO()</code> a
+                                recalcularse 1000 veces.</p>
+                        </div>
+
+                        <!-- Ejercicio 15 -->
+                        <div id="ejercicio15" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 15: Análisis de Resultados
+                                (Estadísticas)</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Analizar los 1000 resultados de la
+                                columna <code>H2:H1001</code>.</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <ul class="list-disc list-inside pl-6">
+                                <li><strong>Promedio:</strong> <code>=PROMEDIO(H2:H1001)</code></li>
+                                <li><strong>Desv. Estándar:</strong> <code>=DESVEST.M(H2:H1001)</code></li>
+                                <li><strong>Mínimo:</strong> <code>=MIN(H2:H1001)</code></li>
+                                <li><strong>Máximo:</strong> <code>=MAX(H2:H1001)</code></li>
+                                <li><strong>Percentil 10:</strong> <code>=PERCENTIL.INC(H2:H1001, 0.1)</code></li>
+                            </ul>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> Ahora no solo tienes "un"
+                                resultado, sino el rango completo de futuros posibles.</p>
+                        </div>
+
+                        <!-- Ejercicio 16 -->
+                        <div id="ejercicio16" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 16: Probabilidad de Pérdida
+                                (CONTAR.SI)</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Calcular la probabilidad (en %) de
+                                que perdamos dinero (Utilidad Neta < 0) en el Año 3.</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <p class="text-gray-700">Contamos cuántos de los 1000 ensayos fueron negativos y lo dividimos
+                                por 1000.</p>
+                            <p class="text-gray-700"><code>=CONTAR.SI(H2:H1001, "<0") / 1000</code></p>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> Ej. <code>0.12</code> ó
+                                <code>12%</code>. (<strong>Conclusión:</strong> "Jefe, según 1000 simulaciones, hay un
+                                12% de probabilidad de que perdamos dinero en el Año 3").</p>
+                        </div>
+                    </section>
+
+
+                    <!-- MÓDULO 7: TÉCNICAS AVANZADAS -->
+                    <section id="modulo7" class="bg-white p-8 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Módulo 7: Técnicas Avanzadas y Presentación
+                        </h2>
+                        <!--  -->
+                        <img src="https://placehold.co/600x400/4B5563/FFFFFF?text=Herramienta+Solver+de+Excel"
+                            alt="Herramienta Solver de Excel"
+                            class="rounded-lg shadow-md w-full max-w-lg mx-auto mb-6">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">1. Definiciones Clave</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 pl-4 mb-6">
+                            <li><strong>Buscar Objetivo (Goal Seek):</strong> Permite encontrar el *Input* necesario para
+                                lograr un *Output* deseado. (Ej. ¿Qué precio necesito para una Utilidad de 10k?).</li>
+                            <li><strong>Solver:</strong> Una herramienta avanzada (Add-in) de optimización. Puede
+                                encontrar el *Input* que *maximiza* o *minimiza* un *Output*, sujeto a múltiples
+                                restricciones.</li>
+                            <li><strong>Dashboard:</strong> Un panel de control visual para presentar los resultados del
+                                modelo. Usa Controles de Formulario (ej. barras deslizantes) para hacer el modelo
+                                interactivo.</li>
+                            <li><code>SIERROR</code> (o <code>IFERROR</code>): Función para "atrapar" errores (ej. #DIV/0!)
+                                y mostrar un mensaje amigable.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">2. Ejercicios (17-20)</h3>
+                        <!-- Ejercicio 17 -->
+                        <div id="ejercicio17" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 17: Buscar Objetivo (Goal Seek)
+                            </h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Usando el P&G original (Módulo 3),
+                                ¿qué "Precio Venta" (<code>C5</code>) necesitamos para que la "Utilidad Neta Año 1"
+                                (<code>C24</code>) sea exactamente $5,000?</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <ol class="list-decimal list-inside text-gray-700 space-y-2 pl-4">
+                                <li>Ir a <strong>Datos &gt; Análisis Y si &gt; Buscar Objetivo...</strong></li>
+                                <li><strong>Definir la celda:</strong> <code>C24</code> (Utilidad Neta Año 1)</li>
+                                <li><strong>Con el valor:</strong> <code>5000</code></li>
+                                <li><strong>Para cambiar la celda:</strong> <code>C5</code> (Precio Venta)</li>
+                            </ol>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> Excel encontrará el precio exacto
+                                (ej. $52.78) que logra esa utilidad.</p>
+                        </div>
+
+                        <!-- Ejercicio 18 -->
+                        <div id="ejercicio18" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 18: Optimización (Solver)</h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Maximizar la "Utilidad Neta Año 3"
+                                (<code>E24</code>) cambiando el "Precio" (<code>C5</code>) y las "Unidades Año 1"
+                                (<code>C3</code>).</p>
+                            <p class="text-gray-700 mt-2"><strong>Restricciones:</strong></p>
+                            <ul class="list-disc list-inside pl-6">
+                                <li>El Precio (<code>C5</code>) no puede ser mayor a $55.</li>
+                                <li>Las Unidades (<code>C3</code>) no pueden ser mayores a 1300.</li>
+                            </ul>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></s <ol
+                                class="list-decimal list-inside text-gray-700 space-y-2 pl-4">
+                                <li>Ir a <strong>Datos &gt; Solver</strong> (Quizás tengas que activarlo en Opciones >
+                                    Complementos).</li>
+                                <li><strong>Establecer Objetivo:</strong> <code>E24</code></li>
+                                <li><strong>Para:</strong> <code>Max</code></li>
+                                <li><strong>Cambiando las celdas:</strong> <code>C3, C5</code></li>
+                                <li><strong>Sujeto a las restricciones:</strong>
+                                    <ul>
+                                        <li><code>C3 &lt;= 1300</code> (Agregar...)</li>
+                                        <li><code>C5 &lt;= 55</code> (Agregar...)</li>
+                                    </ul>
+                                </li>
+                                <li>Resolver.</li>
+                            </ol>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> Solver encontrará la combinación
+                                óptima (en este caso, 1300 unidades y $55) que maximiza la utilidad.</p>
+                        </div>
+
+                        <!-- Ejercicio 19 -->
+                        <div id="ejercicio19" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 19: Dashboard (Control Deslizante)
+                            </h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Añadir una barra deslizante que
+                                controle el "Crecimiento Ventas" (<code>C4</code>) de 0% a 20%.</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <ol class="list-decimal list-inside text-gray-700 space-y-2 pl-4">
+                                <li>Activar pestaña <strong>Programador</strong> (o Desarrollador).</li>
+                                <li>Ir a <strong>Insertar &gt; Controles de Formulario &gt; Barra de
+                                        desplazamiento</strong>.</li>
+                                <li>Dibujar la barra en la hoja.</li>
+                                <li>Clic derecho en la barra &gt; <strong>Formato de control...</strong></li>
+                                <li><strong>Vincular con la celda:</strong> <code>J1</code> (una celda auxiliar).</li>
+                                <li><strong>Valor actual:</strong> 8. <strong>Valor mínimo:</strong> 0. <strong>Valor
+                                        máximo:</strong> 20.</li>
+                                <li>Ahora <code>J1</code> mostrará un número entero (0-20) según muevas la barra.</li>
+                                <li>Modifica el Input <code>C4</code>. Borra el 8% y escribe: <code>=J1/100</code>.
+                                </li>
+                            </ol>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> Ahora puedes mover la barra
+                                deslizante y verás cómo toda la proyección P&G cambia en tiempo real.</p>
+                        </div>
+
+                        <!-- Ejercicio 20 -->
+                        <div id="ejercicio20" class="border border-gray-200 p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold text-gray-800">Ejercicio 20: Control de Errores (SIERROR)
+                            </h4>
+                            <p class="text-gray-700 mt-2"><strong>Objetivo:</strong> Evitar que una fórmula muestre
+                                #DIV/0! si un Input está vacío.</p>
+                            <p class="text-gray-700 mt-4"><strong>Contexto:</strong> Tienes una fórmula <code>=A1/A2</code>.
+                                Si <code>A2</code> está vacío o es 0, muestra error.</p>
+                            <p class="text-gray-700 mt-4"><strong>Resolución:</strong></p>
+                            <p class="text-gray-700">Envuelve la fórmula en <code>SIERROR</code> (o <code>IFERROR</code>).
+                            </p>
+                            <p class="text-gray-700"><code>=SIERROR(A1/A2, "Revisar Inputs")</code></p>
+                            <p class="text-gray-700 mt-2"><strong>Resultado:</strong> Si <code>A2</code> es 0, la celda
+                                mostrará "Revisar Inputs" en lugar de un error feo.</p>
+                        </div>
+                    </section>
+
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- Pie de Página -->
+    <footer class="mt-16 bg-gray-800 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+            <p>&copy; 2025 - Curso de Modelos Financieros. Desarrollado por tu Docente Experto en Excel.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

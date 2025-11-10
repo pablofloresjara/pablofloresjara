@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de CSS | Ingeniería de Sistemas</title>
+    <!-- 1. Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Carga de la fuente Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- 3. Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'slate': {
+                            850: '#172033',
+                            900: '#0F172A',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- 4. Estilos CSS personalizados en el head -->
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Estilo para las barras de scroll */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F172A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-gray-300 font-sans leading-relaxed">
+
+    <!-- ==== HEADER ==== -->
+    <header class="bg-slate-850 shadow-lg">
+        <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6">
+            <h1 class="text-3xl sm:text-4xl font-bold text-white">Curso de CSS: De Cero a Héroe</h1>
+            <p class="mt-2 text-lg text-cyan-400">Orientado a estudiantes de Ingeniería de Sistemas</p>
+        </div>
+    </header>
+
+    <!-- ==== CONTENIDO PRINCIPAL ==== -->
+    <main class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+
+        <!-- Sección de Bienvenida -->
+        <section class="bg-slate-800 rounded-lg shadow-xl p-6 sm:p-8 mb-8">
+            <h2 class="text-2xl font-bold text-white mb-4">¿Qué es CSS y por qué es fundamental?</h2>
+            <p class="mb-4">CSS (Cascading Style Sheets) es el lenguaje que usamos para describir la presentación de un documento HTML. Es la piedra angular del diseño web moderno y, para un ingeniero de sistemas, dominarlo es crucial.</p>
+            <ul class="list-disc list-inside space-y-2">
+                <li><strong class="text-cyan-400">Separación de Intereses:</strong> Permite separar la estructura (HTML) de la presentación (CSS), haciendo el código más limpio y mantenible.</li>
+                <li><strong class="text-cyan-400">Flexibilidad y Escalabilidad:</strong> Facilita la creación de diseños complejos y la aplicación de un mismo estilo a múltiples páginas.</li>
+                <li><strong class="text-cyan-400">Dinamismo:</strong> En conjunto con JavaScript y el DOM, CSS permite crear interfaces de usuario interactivas y animadas.</li>
+                <li><strong class="text-cyan-400">Optimización:</strong> Un CSS bien estructurado reduce el peso de las páginas y mejora los tiempos de carga.</li>
+            </ul>
+        </section>
+
+        <!-- Contenedor de Módulos -->
+        <div class="space-y-8">
+
+            <!-- Módulo 1: Fundamentos y Sintaxis -->
+            <section class="bg-slate-800 rounded-lg shadow-xl overflow-hidden">
+                <div class="p-6 sm:p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6">Módulo 1: Fundamentos y Sintaxis</h2>
+                    
+                    <!-- Sintaxis Básica -->
+                    <div class="mb-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">1.1 Sintaxis Básica</h3>
+                        <p class="mb-3">La sintaxis de CSS se compone de un selector y un bloque de declaración.</p>
+                        <pre class="bg-slate-900 rounded-lg p-4 text-sm text-gray-200 overflow-x-auto"><code class="language-css"><span class="text-cyan-400">selector</span> {
+    <span class="text-blue-400">propiedad</span>: <span class="text-emerald-400">valor</span>;
+    <span class="text-gray-500">/* Ejemplo: */</span>
+    <span class="text-cyan-400">h1</span> {
+        <span class="text-blue-400">color</span>: <span class="text-emerald-400">#CC9900</span>;
+        <span class="text-blue-400">font-size</span>: <span class="text-emerald-400">2rem</span>;
+    }
+}</code></pre>
+                    </div>
+
+                    <!-- Cómo Aplicar CSS -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-3">1.2 Tres Formas de Aplicar CSS</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- En Línea -->
+                            <div class="bg-slate-850 p-4 rounded-lg">
+                                <h4 class="font-semibold text-white">1. En Línea (Atributo)</h4>
+                                <p class="text-sm mb-2">Aplica estilos directamente a un elemento. (No recomendado para mantenibilidad).</p>
+                                <pre class="bg-slate-900 rounded p-2 text-xs overflow-x-auto"><code class="language-html">&lt;p <span class="text-blue-400">style</span>="<span class="text-emerald-400">color: red;</span>"&gt;...&lt;/p&gt;</code></pre>
+                            </div>
+                            <!-- Interna -->
+                            <div class="bg-slate-850 p-4 rounded-lg">
+                                <h4 class="font-semibold text-white">2. Interna (Cabecera)</h4>
+                                <p class="text-sm mb-2">Define estilos en el `<head>` de la página. Útil para estilos de una sola página.</p>
+                                <pre class="bg-slate-900 rounded p-2 text-xs overflow-x-auto"><code class="language-html">&lt;style&gt;
+    p { <span class="text-blue-400">text-align</span>: <span class="text-emerald-400">right</span>; }
+&lt;/style&gt;</code></pre>
+                            </div>
+                            <!-- Externa -->
+                            <div class="bg-slate-850 p-4 rounded-lg border border-cyan-500">
+                                <h4 class="font-semibold text-white">3. Hoja Externa (Enlace)</h4>
+                                <p class="text-sm mb-2"><strong class="text-cyan-400">Mejor Práctica.</strong> Vincula un archivo `.css` externo. Ideal para sitios completos.</p>
+                                <pre class="bg-slate-900 rounded p-2 text-xs overflow-x-auto"><code class="language-html">&lt;link <span class="text-blue-400">rel</span>="<span class="text-emerald-400">stylesheet</span>" <span class="text-blue-400">href</span>="<span class="text-emerald-400">estilo.css</span>"&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo 2: Selectores -->
+            <section class="bg-slate-800 rounded-lg shadow-xl p-6 sm:p-8">
+                <h2 class="text-2xl font-bold text-white mb-6">Módulo 2: El Poder de los Selectores</h2>
+                <p class="mb-6">Los selectores son el corazón de CSS. Nos permiten "seleccionar" los elementos HTML que queremos estilizar.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Selectores Básicos -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-3">2.1 Selectores Básicos</h3>
+                        <ul class="list-none space-y-3">
+                            <li><code class="bg-slate-850 text-cyan-400 px-2 py-1 rounded">h1, p, b</code> <span class="text-gray-400">- Por Elemento (Agrupados)</span></li>
+                            <li><code class="bg-slate-850 text-cyan-400 px-2 py-1 rounded">.enfatizada</code> <span class="text-gray-400">- Por Clase General</span></li>
+                            <li><code class="bg-slate-850 text-cyan-400 px-2 py-1 rounded">p.enfatizada</code> <span class="text-gray-400">- Por Clase en Elemento</span></li>
+                            <li><code class="bg-slate-850 text-cyan-400 px-2 py-1 rounded">#enfatizada</code> <span class="text-gray-400">- Por ID (Debe ser único)</span></li>
+                        </ul>
+                    </div>
+                    <!-- Pseudo-clases y Pseudo-elementos -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-3">2.2 Pseudo-Clases y Elementos</h3>
+                        <p class="text-sm mb-3">Permiten estilizar elementos basados en su estado o posición.</p>
+                        <ul class="list-none space-y-3">
+                            <li><code class="bg-slate-850 text-cyan-400 px-2 py-1 rounded">:hover</code> <span class="text-gray-400">- Estado (mouse encima)</span></li>
+                            <li><code class="bg-slate-850 text-cyan-400 px-2 py-1 rounded">:link</code> <span class="text-gray-400">- Enlace no visitado</span></li>
+                            <li><code class="bg-slate-850 text-cyan-400 px-2 py-1 rounded">:visited</code> <span class="text-gray-400">- Enlace visitado</span></li>
+                            <li><code class="bg-slate-850 text-cyan-400 px-2 py-1 rounded">:first-child</code> <span class="text-gray-400">- Primer hijo de un padre</span></li>
+                            <li><code class="bg-slate-850 text-cyan-400 px-2 py-1 rounded">::first-line</code> <span class="text-gray-400">- Primera línea de un texto</span></li>
+                            <li><code class="bg-slate-850 text-cyan-400 px-2 py-1 rounded">::first-letter</code> <span class="text-gray-400">- Primera letra de un texto</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo 3: El Modelo de Caja (Box Model) -->
+            <section class="bg-slate-800 rounded-lg shadow-xl p-6 sm:p-8">
+                <h2 class="text-2xl font-bold text-white mb-6">Módulo 3: El Modelo de Caja (Box Model)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="mb-4">Todo elemento en la web es una caja rectangular. El "Box Model" describe cómo se calcula el tamaño de esta caja.</p>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong class="text-white">Content:</strong> El contenido (texto, imagen).</li>
+                            <li><strong class="text-white">Padding:</strong> Espacio interno, entre el contenido y el borde.</li>
+                            <li><strong class="text-white">Border:</strong> La línea que rodea al padding y contenido.</li>
+                            <li><strong class="text-white">Margin:</strong> Espacio externo, fuera del borde. Separa esta caja de otras.</li>
+                        </ul>
+                        <p class="mt-6 bg-slate-850 p-4 rounded-lg text-sm">
+                            <strong class="text-cyan-400">Pro Tip:</strong> Usa siempre <code class="bg-slate-900 px-1 py-0.5 rounded">box-sizing: border-box;</code>. Esto hace que el `padding` y `border` se incluyan en el `width` y `height` totales, facilitando enormemente los cálculos de layout.
+                        </p>
+                    </div>
+                    <div>
+                        <!-- Imagen representativa del Box Model -->
+                                                <img src="https://placehold.co/400x300/172033/E0E7FF?text=Diagrama+del+Box+Model%0A(Content,+Padding,+Border,+Margin)" 
+                             alt="Diagrama del Modelo de Caja de CSS"
+                             class="rounded-lg shadow-md w-full"
+                             onerror="this.src='https://placehold.co/400x300/172033/E0E7FF?text=Error+cargando+imagen'">
+                    </div>
+                </div>
+            </section>
+            
+            <!-- MÓDULOS AVANZADOS (Expansión del PPT) -->
+            
+            <!-- Módulo 4: Layouts Modernos -->
+            <section>
+                <h2 class="text-2xl font-bold text-white mb-6">Módulo 4: Layouts Modernos (Temas Avanzados)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Flexbox -->
+                    <div class="bg-slate-800 rounded-lg shadow-xl p-6 sm:p-8">
+                        <h3 class="text-xl font-semibold text-white mb-3">4.1 Flexbox</h3>
+                        <p class="mb-4">Es un modelo de layout unidimensional (1D) diseñado para distribuir espacio entre ítems en un contenedor, incluso cuando sus tamaños son desconocidos o dinámicos.</p>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>Perfecto para alinear ítems (horizontal o verticalmente).</li>
+                            <li>Ideal para barras de navegación, listados y centrado.</li>
+                            <li>Controla dirección, alineación, justificación y orden.</li>
+                        </ul>
+                        <pre class="bg-slate-900 rounded-lg p-3 text-xs mt-4"><code class="language-css">.container {
+    <span class="text-blue-400">display</span>: <span class="text-emerald-400">flex</span>;
+    <span class="text-blue-400">justify-content</span>: <span class="text-emerald-400">center</span>;
+    <span class="text-blue-400">align-items</span>: <span class="text-emerald-400">center</span>;
+}</code></pre>
+                    </div>
+                    
+                    <!-- Grid -->
+                    <div class="bg-slate-800 rounded-lg shadow-xl p-6 sm:p-8">
+                        <h3 class="text-xl font-semibold text-white mb-3">4.2 CSS Grid</h3>
+                        <p class="mb-4">Es un modelo de layout bidimensional (2D). Permite crear diseños complejos basados en filas y columnas, similar a una tabla pero mucho más potente y flexible.</p>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>Perfecto para el layout general de la página.</li>
+                            <li>Permite superponer elementos fácilmente.</li>
+                            <li>Control total sobre filas y columnas.</li>
+                        </ul>
+                        <pre class="bg-slate-900 rounded-lg p-3 text-xs mt-4"><code class="language-css">.container {
+    <span class="text-blue-400">display</span>: <span class="text-emerald-400">grid</span>;
+    <span class="text-blue-400">grid-template-columns</span>: <span class="text-emerald-400">1fr 1fr 1fr</span>;
+    <span class="text-blue-400">gap</span>: <span class="text-emerald-400">1rem</span>;
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Módulo 5: Diseño Responsivo -->
+            <section class="bg-slate-800 rounded-lg shadow-xl p-6 sm:p-8">
+                <h2 class="text-2xl font-bold text-white mb-6">Módulo 5: Diseño Responsivo (Media Queries)</h2>
+                <p class="mb-4">El Diseño Responsivo asegura que tu aplicación web se vea y funcione bien en todos los dispositivos (móviles, tablets, desktops). La herramienta principal para esto son las <strong class="text-white">Media Queries</strong>.</p>
+                <p class="mb-4">Una Media Query permite aplicar un bloque de CSS solo si una condición específica (como el ancho de la pantalla) es verdadera.</p>
+                <pre class="bg-slate-900 rounded-lg p-4 text-sm text-gray-200 overflow-x-auto"><code class="language-css"><span class="text-gray-500">/* Estilos base (móvil primero) */</span>
+.container {
+    <span class="text-blue-400">width</span>: <span class="text-emerald-400">100%</span>;
+}
+
+<span class="text-gray-500">/* Estilos para pantallas más grandes (ej. tablets y más) */</span>
+<span class="text-purple-400">@media</span> (<span class="text-blue-400">min-width</span>: <span class="text-emerald-400">768px</span>) {
+    .container {
+        <span class="text-blue-400">width</span>: <span class="text-emerald-400">750px</span>;
+        <span class="text-blue-400">background-color</span>: <span class="text-emerald-400">#1E293B</span>; <span class="text-gray-500">/* bg-slate-800 */</span>
+    }
+}</code></pre>
+            </section>
+        </div>
+    </main>
+
+    <!-- ==== FOOTER ==== -->
+    <footer class="text-center text-gray-500 text-sm py-10 mt-8 border-t border-slate-800">
+        <p>Página de curso generada para Ingeniería de Sistemas.</p>
+        <p class="mt-1">Contenido base adaptado de la presentación "CSS: Cascading Style Sheets" de Yusef Hassan Montero.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Académica UPDS - Rediseño 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f3f4f6;
+        }
+        
+        .hero-pattern {
+            background-color: #1e3a8a;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Custom Scrollbar for modals */
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .modal-content::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-blue-900"><i class="fas fa-university mr-2"></i>UPDS 2025</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-gray-700 hover:text-blue-900 font-medium hidden md:block">Inicio</a>
+                    <a href="#facultades" class="text-gray-700 hover:text-blue-900 font-medium hidden md:block">Facultades</a>
+                    <button class="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition">Contactar</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-pattern text-white py-20 px-4">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Rediseño Curricular 2025</h1>
+            <p class="text-xl md:text-2xl mb-8 text-blue-100">Formación basada en competencias, tecnología y microcredenciales para el mundo real.</p>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <span class="bg-blue-800 bg-opacity-50 px-4 py-2 rounded-full border border-blue-400 backdrop-blur-sm"><i class="fas fa-certificate mr-2"></i>Microcredenciales</span>
+                <span class="bg-blue-800 bg-opacity-50 px-4 py-2 rounded-full border border-blue-400 backdrop-blur-sm"><i class="fas fa-laptop-code mr-2"></i>Transformación Digital</span>
+                <span class="bg-blue-800 bg-opacity-50 px-4 py-2 rounded-full border border-blue-400 backdrop-blur-sm"><i class="fas fa-globe mr-2"></i>Visión Global</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Filter Section -->
+    <section id="facultades" class="py-10 max-w-7xl mx-auto px-4">
+        <div class="flex justify-center mb-10 overflow-x-auto py-2">
+            <div class="inline-flex rounded-md shadow-sm" role="group">
+                <button type="button" onclick="filterCareers('all')" class="px-6 py-3 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 active-tab" id="btn-all">
+                    Todas
+                </button>
+                <button type="button" onclick="filterCareers('ingenieria')" class="px-6 py-3 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700" id="btn-ingenieria">
+                    Facultad de Ingeniería
+                </button>
+                <button type="button" onclick="filterCareers('empresariales')" class="px-6 py-3 text-sm font-medium text-gray-900 bg-white border-t border-b border-r border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700" id="btn-empresariales">
+                    Ciencias Empresariales
+                </button>
+                <button type="button" onclick="filterCareers('sociales')" class="px-6 py-3 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700" id="btn-sociales">
+                    Sociales y Jurídicas
+                </button>
+            </div>
+        </div>
+
+        <!-- Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="careers-grid">
+            <!-- Content will be injected by JS -->
+        </div>
+    </section>
+
+    <!-- Modal Template (Hidden) -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col transform transition-all scale-100">
+            <!-- Modal Header -->
+            <div class="bg-blue-900 text-white p-6 flex justify-between items-center shrink-0">
+                <h2 id="modal-title" class="text-2xl font-bold">Título de la Carrera</h2>
+                <button onclick="closeModal()" class="text-white hover:text-gray-300 focus:outline-none">
+                    <i class="fas fa-times fa-lg"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div id="modal-content" class="p-6 overflow-y-auto modal-content space-y-8">
+                <!-- Dynamic Content -->
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="bg-gray-50 p-4 border-t shrink-0 flex justify-end">
+                <button onclick="closeModal()" class="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-800 transition">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>&copy; 2025 Universidad Privada Domingo Savio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data Structure
+        const careersData = [
+            // --- Facultad de Ingeniería ---
+            {
+                id: 'sistemas',
+                category: 'ingenieria',
+                title: 'Ingeniería de Sistemas',
+                icon: 'fa-laptop-code',
+                shortDesc: 'Forma líderes tecnológicos en IA, Cloud y DevOps.',
+                tags: ['IA', 'Cloud', 'DevOps'],
+                content: {
+                    analysis: 'El nuevo enfoque curricular se basa en el modelo socioformativo por competencias integradoras. Pasa de 5,300 a 6,180 horas académicas. Busca formar líderes tecnológicos con pensamiento crítico, compromiso social y capacidad de generar soluciones innovadoras.',
+                    strengths: [
+                        { title: 'Innovación Curricular', desc: 'Integración explícita de Design Thinking y Gamificación. Modelo pedagógico de vanguardia.' },
+                        { title: 'Competencias Digitales', desc: 'Inclusión troncal de Inteligencia Artificial (Machine/Deep Learning), DevOps, Visión Computacional e IoT.' },
+                        { title: 'Microcredenciales', desc: '6 Títulos de Especialista en el camino (ej. Gestión y Ciencia de Datos, IA).' }
+                    ],
+                    outputs: 'Arquitectura de Sistemas, Liderazgo de Proyectos DevOps, Especialista en Nube, Investigación en IA.',
+                    spots: [
+                        { title: 'El CV Multi-Certificado', text: '¿Un solo título? El mercado pide más. Gradúate con 6 Microcredenciales certificadas en IA y Big Data.' },
+                        { title: 'Líder Cloud y DevOps', text: 'Domina la Infraestructura Cloud y el Inglés Técnico para acceder a trabajos globales.' }
+                    ]
+                }
+            },
+            {
+                id: 'redes',
+                category: 'ingenieria',
+                title: 'Ingeniería en Redes y Telecomunicaciones',
+                icon: 'fa-network-wired',
+                shortDesc: 'Orientación en Cloud, Ciberseguridad y Hacking Ético.',
+                tags: ['Ciberseguridad', 'Hacking Ético', 'IoT'],
+                content: {
+                    analysis: 'El nuevo enfoque aborda debilidades anteriores como el inglés y la práctica. Se centra en Cloud, Ciberseguridad y Hacking Ético con 3,910 horas de componente práctico.',
+                    strengths: [
+                        { title: 'Práctica Intensiva', desc: 'Mayoría de carga horaria práctica. Laboratorios de automatización y nube.' },
+                        { title: 'Competencias Clave', desc: 'Pentesting, Criptografía, Seguridad en Cloud, IoT y Automatización.' },
+                        { title: 'Microcredenciales', desc: '6 Microcredenciales en Ciberseguridad, Computación en la Nube y Automatización.' }
+                    ],
+                    outputs: 'Arquitecto de Soluciones Cloud, Especialista en Ciberseguridad, Ingeniero DevOps.',
+                    spots: [
+                        { title: 'El Hacker Ético', text: 'Ellos atacan. Tú defiendes. Conviértete en un Hacker Ético y aprende Pentesting con el nuevo enfoque.' },
+                        { title: 'Arquitecto Cloud', text: 'No solo conectamos, te enseñamos a dominar la infraestructura global. Sé Arquitecto Cloud.' }
+                    ]
+                }
+            },
+            {
+                id: 'industrial',
+                category: 'ingenieria',
+                title: 'Ingeniería Industrial',
+                icon: 'fa-industry',
+                shortDesc: 'Ingeniería Digital, Robótica y Visión Sistémica.',
+                tags: ['Robótica', 'Gestión de Datos', 'Producción Limpia'],
+                content: {
+                    analysis: 'Evoluciona al Modelo Socioformativo por Competencias Integrales. Aumenta a 6,060 horas. Integra programación y análisis de datos a la base industrial tradicional.',
+                    strengths: [
+                        { title: 'Ingeniería Digital', desc: 'Inclusión troncal de Programación Básica, IA y Robótica. Transformación a Ingeniero 4.0.' },
+                        { title: 'Sostenibilidad', desc: 'Enfoque fuerte en Producción Limpia y Ética Global.' },
+                        { title: 'Microcredenciales', desc: '6 certificaciones en IA, Automatización, Calidad, Logística, etc.' }
+                    ],
+                    outputs: 'Arquitecto de Cadena de Suministro, Especialista en Automatización, Analista de Datos Industriales.',
+                    spots: [
+                        { title: 'El Desafío 4.0', text: 'Deja de apagar incendios. Programa la eficiencia. Domina IA y Robótica. Lidera la Industria 4.0.' },
+                        { title: 'Visión de Impacto', text: 'Producir más, contaminar menos. Integra Producción Limpia y Sostenibilidad.' }
+                    ]
+                }
+            },
+            // --- Facultad de Ciencias Empresariales ---
+            {
+                id: 'contaduria',
+                category: 'empresariales',
+                title: 'Contaduría Pública',
+                icon: 'fa-calculator',
+                shortDesc: 'De registrador a Analista de Datos y Consultor Estratégico.',
+                tags: ['Finanzas', 'Analítica de Datos', 'NIIF'],
+                content: {
+                    analysis: 'Posiciona al egresado como Analista de Datos y Consultor. Pasa de una contabilidad fiscal a una estratégica, tecnológica y de alcance internacional.',
+                    strengths: [
+                        { title: 'Tecnología', desc: 'Formación en IA, Blockchain, automatización (RPA) y SAP/ERP.' },
+                        { title: 'Globalidad', desc: 'Formación sólida en normas NIIF e Inglés Técnico obligatorio.' },
+                        { title: 'Microcredenciales', desc: '6 especializaciones: Contabilidad Automatizada, Finanzas Corporativas, Gestión Tributaria, etc.' }
+                    ],
+                    outputs: 'Consultor Estratégico, Auditor de Sistemas, Analista de Big Data Financiero.',
+                    spots: [
+                        { title: 'El Contador Analítico', text: 'Deja de registrar el pasado. Es hora de predecir el futuro con IA y Análisis de Datos.' },
+                        { title: 'Alcance Global', text: '¿Quieres una carrera sin fronteras? Formación con NIIF e Inglés Técnico.' }
+                    ]
+                }
+            },
+            {
+                id: 'admin',
+                category: 'empresariales',
+                title: 'Administración de Empresas',
+                icon: 'fa-briefcase',
+                shortDesc: 'Líder Estratégico, Digital y orientado al Big Data.',
+                tags: ['Startups', 'Big Data', 'Bilingüismo'],
+                content: {
+                    analysis: 'Transforma al administrador tradicional en un Líder Estratégico Digital. Énfasis en Gestión basada en Datos e Innovación Sostenible.',
+                    strengths: [
+                        { title: 'Data Analytics', desc: 'Inteligencia de Negocios y Análisis de Datos para decisiones informadas.' },
+                        { title: 'Emprendimiento', desc: 'Asignatura específica: Gestión de Incubación de Startups.' },
+                        { title: 'Microcredenciales', desc: 'Gestión Estratégica, Finanzas, Talento Humano, Innovación.' }
+                    ],
+                    outputs: 'CEO de Startups, Gerente de Transformación Digital, Consultor Internacional.',
+                    spots: [
+                        { title: 'El Administrador Analítico', text: 'Deja de adivinar. Es hora de decidir con datos. Lidera con Inteligencia de Negocios.' },
+                        { title: 'Sé tu propio CEO', text: 'Administración 2025 te enseña Gestión de Incubación de Startups. De la idea a tu empresa.' }
+                    ]
+                }
+            },
+            {
+                id: 'comercial',
+                category: 'empresariales',
+                title: 'Ingeniería Comercial',
+                icon: 'fa-chart-line',
+                shortDesc: 'Profesional visionario, estratégico y digital.',
+                tags: ['Marketing Digital', 'Fintech', 'Estrategia'],
+                content: {
+                    analysis: 'Respuesta estratégica a la transformación digital. Enfoque en formar un profesional visionario y certificado, superando el modelo generalista de 2015.',
+                    strengths: [
+                        { title: 'Competencias Digitales', desc: 'Énfasis en Transformación Digital, Inteligencia de Mercados, IA y Fintech.' },
+                        { title: 'Metodología', desc: 'Aprendizaje Basado en Proyectos, simulaciones empresariales y gamificación.' },
+                        { title: 'Microcredenciales', desc: '6 credenciales en áreas como IA, Fintech y Marketing Digital.' }
+                    ],
+                    outputs: 'Líder en procesos de cambio, Alta Gerencia, Consultoría Especializada.',
+                    spots: [
+                        { title: 'Poder de la Certificación', text: '¿Un título o un paquete de especialidades? Certifícate en IA y Fintech mientras estudias.' },
+                        { title: 'Liderazgo Digital', text: 'Deja de adivinar el mercado. Toma decisiones basadas en datos.' }
+                    ]
+                }
+            },
+            // --- Facultad de Ciencias Sociales y Jurídicas ---
+            {
+                id: 'derecho',
+                category: 'sociales',
+                title: 'Derecho',
+                icon: 'fa-balance-scale',
+                shortDesc: 'Abogado digital, ético y con práctica forense temprana.',
+                tags: ['LegalTech', 'Justicia Restaurativa', 'Oralidad'],
+                content: {
+                    analysis: 'Rompe con el modelo memorístico. Incorpora LegalTech, Derecho Digital y Prácticas Forenses desde etapas tempranas. Perfil de abogado digital e intercultural.',
+                    strengths: [
+                        { title: 'Innovación', desc: 'Derecho Digital, LegalTech, Justicia Restaurativa, Pluralismo Jurídico.' },
+                        { title: 'Práctica Real', desc: 'Simulación forense civil, penal y constitucional desde semestres intermedios.' },
+                        { title: 'Microcredenciales', desc: 'LegalTech, Derecho Corporativo, Litigio Internacional, Arbitraje.' }
+                    ],
+                    outputs: 'Compliance, Arbitraje Digital, Asesoría en Tecnología Legal, Gestión Pública.',
+                    spots: [
+                        { title: 'Derecho Digital', text: 'Hoy los juicios también pasan por la pantalla. Aprende LegalTech para litigar en un mundo conectado.' },
+                        { title: 'Práctica Forense', text: 'Tu primera audiencia no tiene que esperar al título. Entrena tu voz y criterio desde la U.' }
+                    ]
+                }
+            },
+            {
+                id: 'comunicacion',
+                category: 'sociales',
+                title: 'Ciencias de la Comunicación Social',
+                icon: 'fa-bullhorn',
+                shortDesc: 'De medios tradicionales al ecosistema digital y transmedia.',
+                tags: ['Transmedia', 'Media Labs', 'Estrategia'],
+                content: {
+                    analysis: 'Actualiza el perfil hacia el ecosistema digital y la producción transmedia. Integra Media Labs y herramientas digitales estratégicas.',
+                    strengths: [
+                        { title: 'Media Labs', desc: 'Producción de contenidos reales y dominio de plataformas desde primer año.' },
+                        { title: 'Enfoque', desc: 'De creador de contenidos a estratega comunicacional.' },
+                        { title: 'Microcredenciales', desc: '6 credenciales en Redes, Diseño, Producción, Comunicación Estratégica.' }
+                    ],
+                    outputs: 'Comunicación Institucional, RRPP Estratégicas, Marketing Digital, Periodismo Transmedia.',
+                    spots: [
+                        { title: 'Poder de la Microcredencial', text: '¿Un comunicador o un estratega certificado? Obtén 6 microcredenciales oficiales.' },
+                        { title: 'Comunicación en Acción', text: 'Hoy no solo se comunica: se analiza y gestiona. Forma estrategas digitales.' }
+                    ]
+                }
+            },
+            {
+                id: 'psicologia',
+                category: 'sociales',
+                title: 'Psicología',
+                icon: 'fa-brain',
+                shortDesc: 'Enfoque en neurociencia, digitalización e intervención real.',
+                tags: ['Neurociencia', 'Psicología Digital', 'Comunitaria'],
+                content: {
+                    analysis: 'Deja atrás la teoría clásica pura. Incorpora neurociencia, psicología digital y bienestar laboral. Práctica temprana en contextos reales.',
+                    strengths: [
+                        { title: 'Nuevas Áreas', desc: 'Neuropsicología, Psicología en Contextos Digitales, Psicología de Emergencias.' },
+                        { title: 'Práctica', desc: 'Intervención directa en escuelas, comunidades y empresas desde semestres intermedios.' },
+                        { title: 'Microcredenciales', desc: 'Intervención Psicoeducativa, Diagnóstico Integral, Forense, Digital.' }
+                    ],
+                    outputs: 'Psicología Educativa Inclusiva, Laboral, Forense, Digital y Proyectos Psicosociales.',
+                    spots: [
+                        { title: 'Psicología Digital', text: 'La mente también habita entornos digitales. Estudia neurociencia para desafíos modernos.' },
+                        { title: 'Intervención Real', text: 'En Psicología no solo se estudian casos, se acompañan vidas. Prácticas reales.' }
+                    ]
+                }
+            }
+        ];
+
+        // Functions
+        function renderCards(filter = 'all') {
+            const grid = document.getElementById('careers-grid');
+            grid.innerHTML = ''; // Clear existing
+
+            const filteredData = filter === 'all' 
+                ? careersData 
+                : careersData.filter(career => career.category === filter);
+
+            filteredData.forEach(career => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100 flex flex-col h-full';
+                
+                // Color coding by faculty
+                let headerColor = 'bg-gray-700';
+                if(career.category === 'ingenieria') headerColor = 'bg-blue-600';
+                if(career.category === 'empresariales') headerColor = 'bg-emerald-600';
+                if(career.category === 'sociales') headerColor = 'bg-purple-600';
+
+                card.innerHTML = `
+                    <div class="${headerColor} p-4 text-white flex items-center justify-between">
+                        <i class="fas ${career.icon} text-3xl opacity-80"></i>
+                        <span class="text-xs font-bold uppercase tracking-wider bg-white bg-opacity-20 px-2 py-1 rounded">${getCategoryName(career.category)}</span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">${career.title}</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">${career.shortDesc}</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            ${career.tags.map(tag => `<span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full font-semibold border border-gray-200">${tag}</span>`).join('')}
+                        </div>
+                        
+                        <button onclick="openModal('${career.id}')" class="w-full bg-white text-${headerColor.replace('bg-', '')} border border-current font-bold py-2 px-4 rounded hover:bg-gray-50 transition flex justify-center items-center gap-2 group">
+                            Ver Detalles Completos
+                            <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function getCategoryName(cat) {
+            if(cat === 'ingenieria') return 'Ingeniería';
+            if(cat === 'empresariales') return 'Empresariales';
+            if(cat === 'sociales') return 'Sociales y Jurídicas';
+            return 'General';
+        }
+
+        function filterCareers(category) {
+            // Visual feedback on buttons
+            document.querySelectorAll('button[id^="btn-"]').forEach(btn => {
+                btn.classList.remove('bg-gray-100', 'text-blue-700', 'ring-2', 'ring-blue-700', 'z-10');
+                btn.classList.add('bg-white', 'text-gray-900');
+            });
+            
+            const activeBtn = document.getElementById(`btn-${category === 'all' ? 'all' : category}`);
+            activeBtn.classList.remove('bg-white', 'text-gray-900');
+            activeBtn.classList.add('bg-gray-100', 'text-blue-700', 'ring-2', 'ring-blue-700', 'z-10');
+
+            renderCards(category);
+        }
+
+        function openModal(id) {
+            const data = careersData.find(c => c.id === id);
+            if (!data) return;
+
+            document.getElementById('modal-title').textContent = data.title;
+            
+            const contentDiv = document.getElementById('modal-content');
+            
+            // Build Modal HTML
+            let html = `
+                <section>
+                    <h3 class="text-lg font-bold text-blue-900 mb-2 flex items-center"><i class="fas fa-search mr-2"></i>Análisis 2025</h3>
+                    <p class="text-gray-700 leading-relaxed bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">${data.content.analysis}</p>
+                </section>
+                
+                <section class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-bold text-blue-900 mb-3 flex items-center"><i class="fas fa-star mr-2"></i>Fortalezas y Diferencias</h3>
+                        <ul class="space-y-3">
+                            ${data.content.strengths.map(s => `
+                                <li class="bg-gray-50 p-3 rounded border border-gray-100">
+                                    <strong class="text-gray-900 block text-sm">${s.title}</strong>
+                                    <span class="text-gray-600 text-sm">${s.desc}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-blue-900 mb-3 flex items-center"><i class="fas fa-door-open mr-2"></i>Salidas Profesionales</h3>
+                        <div class="bg-green-50 p-4 rounded-lg border border-green-100 text-green-900 font-medium">
+                            ${data.content.outputs}
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h3 class="text-lg font-bold text-blue-900 mb-3 flex items-center"><i class="fas fa-bullhorn mr-2"></i>Mensajes Clave (Spots)</h3>
+                            <div class="space-y-2">
+                                ${data.content.spots.map(spot => `
+                                    <div class="border-l-4 border-purple-500 pl-3 py-1">
+                                        <p class="text-xs font-bold text-purple-700 uppercase">${spot.title}</p>
+                                        <p class="text-sm text-gray-600 italic">"${spot.text}"</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+
+            contentDiv.innerHTML = html;
+            
+            const overlay = document.getElementById('modal-overlay');
+            overlay.classList.remove('hidden');
+            // Small delay to allow display:block to apply before opacity transition
+            setTimeout(() => {
+                overlay.querySelector('div').classList.remove('scale-95', 'opacity-0');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('modal-overlay');
+            // overlay.querySelector('div').classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 100); 
+        }
+
+        // Close modal on click outside
+        document.getElementById('modal-overlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Initialize
+        renderCards('all');
+
+    </script>
+</body>
+</html>

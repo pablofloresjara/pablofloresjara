@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadenas de Caracteres - Guía Completa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .code-block { background-color: #1e293b; color: #e2e8f0; border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-family: monospace; }
+        .keyword { color: #c678dd; } /* Purple */
+        .string { color: #98c379; } /* Green */
+        .type { color: #e5c07b; } /* Yellow */
+        .comment { color: #5c6370; font-style: italic; } /* Gray */
+        .func { color: #61afef; } /* Blue */
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navegación Superior -->
+    <nav class="bg-blue-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="file-code-2" class="h-8 w-8 text-blue-300"></i>
+                    <span class="font-bold text-xl tracking-tight">Mastering Strings</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#definicion" class="hover:bg-blue-800 px-3 py-2 rounded-md text-sm font-medium transition">Teoría</a>
+                        <a href="#memoria" class="hover:bg-blue-800 px-3 py-2 rounded-md text-sm font-medium transition">Memoria</a>
+                        <a href="#csharp" class="hover:bg-blue-800 px-3 py-2 rounded-md text-sm font-medium transition">C# .NET</a>
+                        <a href="#lab" class="bg-blue-600 hover:bg-blue-500 px-3 py-2 rounded-md text-sm font-medium shadow-md transition">Laboratorio Interactivo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Hero -->
+    <header class="bg-white shadow-sm border-b border-slate-200">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+            <div class="md:w-2/3 pr-8">
+                <h1 class="text-4xl font-extrabold text-slate-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+                    Cadenas de Caracteres
+                </h1>
+                <p class="mt-5 text-xl text-slate-500 text-justify">
+                    Una recopilación exhaustiva basada en la literatura de Joyanes Aguilar, Sebesta, Louden y la documentación oficial de C#. Desde la abstracción teórica hasta la manipulación eficiente en memoria.
+                </p>
+                <div class="mt-8 flex gap-4">
+                    <a href="#definicion" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-700 hover:bg-blue-800">
+                        Comenzar Lectura
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/3 mt-8 md:mt-0 flex justify-center">
+                <div class="bg-slate-800 p-6 rounded-lg shadow-xl text-green-400 font-mono text-sm leading-6 w-full max-w-sm">
+                    <p><span class="text-purple-400">string</span> saludo = <span class="text-yellow-300">"Hola Mundo"</span>;</p>
+                    <p><span class="text-purple-400">char</span> primera = saludo[0];</p>
+                    <p class="text-slate-500">// En memoria (Heap):</p>
+                    <p>[ 'H', 'o', 'l', 'a', ' ', ... ]</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- Grid Layout para Contenido -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            
+            <!-- Sidebar de Contenidos -->
+            <aside class="hidden lg:block col-span-1">
+                <nav class="sticky top-24 space-y-1">
+                    <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Tabla de Contenidos</h3>
+                    <a href="#definicion" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:text-slate-900 hover:bg-slate-100">
+                        <span class="truncate">1. Definición y Fundamentos</span>
+                    </a>
+                    <a href="#tipos" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:text-slate-900 hover:bg-slate-100">
+                        <span class="truncate">2. Tipos de Longitud</span>
+                    </a>
+                    <a href="#memoria" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:text-slate-900 hover:bg-slate-100">
+                        <span class="truncate">3. Representación en Memoria</span>
+                    </a>
+                    <a href="#csharp" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:text-slate-900 hover:bg-slate-100">
+                        <span class="truncate">4. Cadenas en C# (.NET)</span>
+                    </a>
+                    <a href="#stringbuilder" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:text-slate-900 hover:bg-slate-100">
+                        <span class="truncate">5. Eficiencia: StringBuilder</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Contenido Principal -->
+            <div class="col-span-1 lg:col-span-3 space-y-12">
+
+                <!-- Sección 1: Definición -->
+                <section id="definicion" class="bg-white rounded-lg shadow-sm border border-slate-200 p-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 bg-indigo-100 rounded-lg text-indigo-600">
+                            <i data-lucide="book-open"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-slate-900">1. Definición y Fundamentos</h2>
+                    </div>
+                    
+                    <div class="prose max-w-none text-slate-600">
+                        <p class="mb-4">
+                            Según <strong>Luis Joyanes Aguilar</strong>, una cadena (string) es una secuencia de caracteres (letras, dígitos y símbolos especiales) que se trata como una unidad de datos única. Dependiendo del lenguaje de programación, puede ser un tipo primitivo o una estructura compuesta (objeto).
+                        </p>
+                        
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                            <h4 class="font-bold text-blue-900 text-sm uppercase">Codificación de Caracteres</h4>
+                            <p class="text-sm mt-1">
+                                Para que el ordenador entienda los caracteres, estos se mapean a números enteros.
+                                <ul class="list-disc list-inside mt-2">
+                                    <li><strong>ASCII:</strong> Estándar de 7 bits (128 caracteres). Limitado al inglés.</li>
+                                    <li><strong>Unicode:</strong> Estándar moderno (como UTF-16 usado en C# y Java) que permite representar caracteres de casi todos los idiomas del mundo.</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección 2: Tipos de Longitud -->
+                <section id="tipos" class="bg-white rounded-lg shadow-sm border border-slate-200 p-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 bg-emerald-100 rounded-lg text-emerald-600">
+                            <i data-lucide="ruler"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-slate-900">2. Tipos de Longitud</h2>
+                    </div>
+                    <p class="mb-4 text-slate-600">
+                        Basado en <strong>Sebesta (Concepts of Programming Languages)</strong>, las cadenas se clasifican según cómo manejan su longitud:
+                    </p>
+
+                    <div class="grid md:grid-cols-3 gap-4 mt-6">
+                        <div class="border rounded-lg p-4 hover:shadow-md transition">
+                            <h3 class="font-bold text-slate-800 mb-2">Longitud Estática</h3>
+                            <p class="text-sm text-slate-600">La longitud se fija cuando se crea la variable (tiempo de compilación). Ejemplos: <code>CHAR(10)</code> en SQL o cadenas antiguas en FORTRAN.</p>
+                        </div>
+                        <div class="border rounded-lg p-4 hover:shadow-md transition">
+                            <h3 class="font-bold text-slate-800 mb-2">Dinámica Limitada</h3>
+                            <p class="text-sm text-slate-600">Pueden variar en longitud hasta un máximo declarado. Ejemplo: Cadenas en C (arrays de char con terminador nulo <code>\0</code>).</p>
+                        </div>
+                        <div class="border rounded-lg p-4 bg-emerald-50 border-emerald-200 hover:shadow-md transition">
+                            <h3 class="font-bold text-emerald-900 mb-2">Dinámica</h3>
+                            <p class="text-sm text-emerald-800">Longitud variable sin máximo teórico (limitado solo por memoria). Requiere gestión de memoria en el Heap. Ejemplos: <strong>C#, Java, JavaScript</strong>.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección 3: Implementación en Memoria -->
+                <section id="memoria" class="bg-white rounded-lg shadow-sm border border-slate-200 p-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 bg-amber-100 rounded-lg text-amber-600">
+                            <i data-lucide="cpu"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-slate-900">3. Representación: C-Style vs Descriptores</h2>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-lg mb-3">Estilo C (Terminación Nula)</h4>
+                            <p class="text-slate-600 mb-4 text-sm">
+                                Se utiliza un carácter especial (<code>\0</code>) para marcar el final. No se almacena la longitud explícitamente, lo que hace que operaciones como <code>strlen</code> sean O(n) (deben recorrer toda la cadena).
+                            </p>
+                            <div class="code-block text-xs">
+                                char str[] = {'H', 'o', 'l', 'a', '\0'};
+                            </div>
+                        </div>
+                        <div class="flex-1 border-l pl-0 md:pl-8 border-slate-200">
+                            <h4 class="font-semibold text-lg mb-3">Descriptores (C# / Java)</h4>
+                            <p class="text-slate-600 mb-4 text-sm">
+                                La variable no apunta directamente a los caracteres, sino a un <strong>Descriptor</strong> u Objeto en el Heap que contiene:
+                            </p>
+                            <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                                <li>Puntero a los datos.</li>
+                                <li><strong>Longitud actual</strong> (permite obtener el tamaño en O(1)).</li>
+                                <li>Capacidad (a veces).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección 4: C# .NET -->
+                <section id="csharp" class="bg-slate-900 text-white rounded-lg shadow-xl overflow-hidden">
+                    <div class="p-8 border-b border-slate-700">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-purple-500/20 rounded-lg text-purple-300">
+                                <i data-lucide="terminal"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold">4. Cadenas en C# (.NET)</h2>
+                        </div>
+                        <p class="text-slate-300 mb-6">
+                            Según la <em>Biblia de C#</em> y <em>Javier Ceballos</em>, en .NET <code>string</code> es un alias de la clase <code>System.String</code>. Es un <strong>tipo de referencia</strong>, pero se comporta sintácticamente parecido a un tipo valor en asignaciones.
+                        </p>
+                    </div>
+
+                    <div class="p-8 grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-300 mb-3 flex items-center gap-2">
+                                <i data-lucide="lock" class="w-4 h-4"></i> Inmutabilidad
+                            </h3>
+                            <p class="text-slate-400 text-sm mb-4">
+                                Las cadenas en C# son <strong>inmutables</strong>. Una vez creado un objeto string, no puede modificarse.
+                                <br><br>
+                                Si haces <code>s = s + "!";</code>, no estás cambiando la cadena original. Estás creando un nuevo objeto en memoria y cambiando la referencia. La cadena vieja queda para el Recolector de Basura (GC).
+                            </p>
+                        </div>
+                        <div>
+                            <div class="code-block text-sm h-full">
+<span class="type">string</span> s1 = <span class="string">"Hola"</span>;
+<span class="comment">// s1 apunta a dirección 0x100 ("Hola")</span>
+
+s1 += <span class="string">" Mundo"</span>; 
+<span class="comment">// 1. Se crea nueva cadena "Hola Mundo" en 0x200</span>
+<span class="comment">// 2. s1 ahora apunta a 0x200</span>
+<span class="comment">// 3. "Hola" en 0x100 queda huérfana</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-800 p-8">
+                        <h3 class="font-bold text-white mb-4">Literales y Caracteres de Escape</h3>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <p class="text-slate-400 mb-2">Secuencias de escape:</p>
+                                <ul class="list-disc list-inside text-slate-300 space-y-1">
+                                    <li><code>\n</code> : Nueva línea</li>
+                                    <li><code>\t</code> : Tabulador</li>
+                                    <li><code>\"</code> : Comillas dobles</li>
+                                    <li><code>\\</code> : Barra invertida</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-slate-400 mb-2">Literales "Verbatim" (@):</p>
+                                <p class="text-slate-300 text-xs mb-2">Permiten escribir rutas o texto multilínea sin escapar caracteres.</p>
+                                <div class="code-block text-xs">
+<span class="type">string</span> ruta = <span class="string">@"C:\Docs\Libro.pdf"</span>;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección 5: StringBuilder -->
+                <section id="stringbuilder" class="bg-white rounded-lg shadow-sm border border-slate-200 p-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 bg-orange-100 rounded-lg text-orange-600">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-slate-900">5. Eficiencia: StringBuilder</h2>
+                    </div>
+                    <p class="mb-6 text-slate-600">
+                        Como las concatenaciones repetidas de <code>string</code> son costosas (generan mucha basura en memoria), .NET ofrece la clase <code>System.Text.StringBuilder</code>. Esta clase representa una cadena <strong>mutable</strong>. Utiliza un buffer interno que se expande dinámicamente.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="border rounded-lg p-4 bg-gray-50">
+                            <h4 class="font-bold text-red-600 mb-2">❌ Incorrecto (Bucle Infinito)</h4>
+                            <div class="code-block text-xs">
+<span class="type">string</span> s = <span class="string">""</span>;
+<span class="keyword">for</span>(<span class="type">int</span> i=0; i<10000; i++) {
+    s += i.ToString(); <span class="comment">// ¡Crea 10,000 objetos!</span>
+}
+                            </div>
+                        </div>
+                        <div class="border rounded-lg p-4 bg-green-50">
+                            <h4 class="font-bold text-green-700 mb-2">✅ Correcto (StringBuilder)</h4>
+                            <div class="code-block text-xs">
+<span class="type">var</span> sb = <span class="keyword">new</span> StringBuilder();
+<span class="keyword">for</span>(<span class="type">int</span> i=0; i<10000; i++) {
+    sb.Append(i); <span class="comment">// Modifica el mismo buffer</span>
+}
+<span class="type">string</span> result = sb.ToString();
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Laboratorio Interactivo -->
+                <section id="lab" class="mt-12">
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl shadow-2xl p-1">
+                        <div class="bg-white rounded-lg p-6 md:p-10">
+                            <div class="text-center mb-8">
+                                <h2 class="text-3xl font-extrabold text-slate-900">Laboratorio de Cadenas</h2>
+                                <p class="text-slate-500 mt-2">Prueba las operaciones básicas descritas en los libros.</p>
+                            </div>
+
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Ingresa una cadena:</label>
+                                    <input type="text" id="strInput" class="w-full border-2 border-slate-300 rounded-lg p-3 text-lg focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition outline-none" placeholder="Escribe algo aquí..." oninput="analyzeString()">
+                                </div>
+
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="bg-slate-50 p-4 rounded-lg text-center border border-slate-200">
+                                        <p class="text-xs text-slate-500 uppercase font-bold">Longitud (.Length)</p>
+                                        <p class="text-2xl font-mono text-blue-600 mt-1" id="outLength">0</p>
+                                    </div>
+                                    <div class="bg-slate-50 p-4 rounded-lg text-center border border-slate-200">
+                                        <p class="text-xs text-slate-500 uppercase font-bold">Mayúsculas (.ToUpper)</p>
+                                        <p class="text-sm font-mono text-slate-800 mt-2 truncate" id="outUpper">-</p>
+                                    </div>
+                                    <div class="bg-slate-50 p-4 rounded-lg text-center border border-slate-200">
+                                        <p class="text-xs text-slate-500 uppercase font-bold">Minúsculas (.ToLower)</p>
+                                        <p class="text-sm font-mono text-slate-800 mt-2 truncate" id="outLower">-</p>
+                                    </div>
+                                    <div class="bg-slate-50 p-4 rounded-lg text-center border border-slate-200">
+                                        <p class="text-xs text-slate-500 uppercase font-bold">Último Carácter</p>
+                                        <p class="text-2xl font-mono text-purple-600 mt-1" id="outLast">-</p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-slate-900 rounded-lg p-4 font-mono text-sm text-green-400 overflow-x-auto">
+                                    <p class="text-slate-500 mb-2 border-b border-slate-700 pb-2">// Visualización Array de Caracteres</p>
+                                    <div id="arrayViz" class="flex gap-1 flex-wrap">
+                                        <span class="text-slate-600">[ Vacío ]</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-slate-800 mt-12 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-slate-400 text-sm">
+                Generado con información de: <em>Programming Languages (Louden), C# Bible, Concepts of Programming Languages (Sebesta), Fundamentos de Programación (Joyanes).</em>
+            </p>
+            <p class="text-slate-600 text-xs mt-4">
+                &copy; 2024 Generación de Contenido Educativo.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Script de Interactividad -->
+    <script>
+        // Inicializar Iconos Lucide
+        lucide.createIcons();
+
+        function analyzeString() {
+            const input = document.getElementById('strInput').value;
+            
+            // Operaciones básicas
+            document.getElementById('outLength').innerText = input.length;
+            document.getElementById('outUpper').innerText = input.length > 0 ? input.toUpperCase() : '-';
+            document.getElementById('outLower').innerText = input.length > 0 ? input.toLowerCase() : '-';
+            document.getElementById('outLast').innerText = input.length > 0 ? "'" + input[input.length - 1] + "'" : '-';
+
+            // Visualización de Array
+            const vizContainer = document.getElementById('arrayViz');
+            vizContainer.innerHTML = ''; // Limpiar
+
+            if (input.length === 0) {
+                vizContainer.innerHTML = '<span class="text-slate-600">[ Vacío ]</span>';
+                return;
+            }
+
+            // Generar visualización estilo memoria
+            for (let i = 0; i < input.length; i++) {
+                const charBox = document.createElement('div');
+                charBox.className = 'flex flex-col items-center bg-slate-800 p-2 rounded min-w-[30px] border border-slate-700';
+                
+                const index = document.createElement('span');
+                index.className = 'text-[10px] text-slate-500 mb-1';
+                index.innerText = i;
+
+                const charVal = document.createElement('span');
+                charVal.className = 'font-bold text-white';
+                // Manejar espacios para que se vean
+                charVal.innerText = input[i] === ' ' ? '␣' : input[i];
+
+                charBox.appendChild(index);
+                charBox.appendChild(charVal);
+                vizContainer.appendChild(charBox);
+            }
+        }
+    </script>
+</body>
+</html>

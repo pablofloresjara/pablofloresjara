@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructuras de Datos Unidimensionales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Estilos para visualizaciones de estructuras */
+        .array-cell {
+            transition: all 0.3s ease;
+        }
+        .array-cell:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .node-arrow::after {
+            content: '→';
+            font-size: 24px;
+            color: #94a3b8;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .node-arrow:last-child::after {
+            content: 'NULL';
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .stack-item {
+            animation: slideInDown 0.5s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navegación -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fa-solid fa-layer-group text-blue-600 text-2xl mr-3"></i>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">Estructuras Unidimensionales</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#intro" class="text-slate-600 hover:text-blue-600 font-medium transition">Conceptos</a>
+                    <a href="#arrays" class="text-slate-600 hover:text-blue-600 font-medium transition">Arreglos</a>
+                    <a href="#lists" class="text-slate-600 hover:text-blue-600 font-medium transition">Listas</a>
+                    <a href="#stacks" class="text-slate-600 hover:text-blue-600 font-medium transition">Pilas</a>
+                    <a href="#queues" class="text-slate-600 hover:text-blue-600 font-medium transition">Colas</a>
+                </div>
+                <!-- Mobile menu button placeholder -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-slate-600 hover:text-slate-900 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="intro" class="bg-white pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 mb-6">
+                Organización Lineal de Datos
+            </h1>
+            <p class="text-xl text-slate-600 leading-relaxed mb-8">
+                Basado en los fundamentos de <span class="font-semibold text-blue-600">Joyanes Aguilar</span> y la sintaxis moderna de <span class="font-semibold text-purple-600">C#</span>. 
+                Las estructuras unidimensionales son colecciones donde sus elementos se organizan secuencialmente, uno tras otro.
+            </p>
+            <div class="flex justify-center gap-4">
+                <div class="bg-blue-50 text-blue-700 px-4 py-2 rounded-lg font-medium text-sm">
+                    <i class="fa-solid fa-memory mr-2"></i>Memoria Estática vs Dinámica
+                </div>
+                <div class="bg-green-50 text-green-700 px-4 py-2 rounded-lg font-medium text-sm">
+                    <i class="fa-solid fa-arrow-right-long mr-2"></i>Acceso Secuencial
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
+
+        <!-- SECCIÓN 1: ARREGLOS (VECTORES) -->
+        <section id="arrays" class="grid md:grid-cols-2 gap-12 items-start">
+            <div>
+                <div class="flex items-center mb-4">
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Estático</span>
+                    <h2 class="text-3xl font-bold text-slate-900">Arreglos (Arrays/Vectores)</h2>
+                </div>
+                <p class="text-slate-600 mb-4 leading-relaxed">
+                    Un arreglo es una colección finita, homogénea y ordenada de elementos. Se almacenan en posiciones contiguas de memoria, lo que permite un acceso extremadamente rápido mediante índices.
+                </p>
+                <ul class="space-y-3 mb-6 text-slate-700">
+                    <li class="flex items-start">
+                        <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                        <span><strong>Acceso Directo:</strong> Complejidad O(1) para leer cualquier elemento.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                        <span><strong>Homogeneidad:</strong> Todos los datos deben ser del mismo tipo (ej. todos <code>int</code>).</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-500 mt-1 mr-3"></i>
+                        <span><strong>Tamaño Fijo:</strong> Se debe definir su capacidad al crearlo (en C# estándar).</span>
+                    </li>
+                </ul>
+                
+                <!-- Code Snippet C# -->
+                <div class="bg-slate-900 rounded-lg p-4 shadow-lg overflow-x-auto">
+                    <div class="flex justify-between items-center mb-2 border-b border-slate-700 pb-2">
+                        <span class="text-slate-400 text-xs font-mono">C# Syntax</span>
+                        <div class="flex space-x-1">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                    </div>
+                    <pre class="code-font text-sm text-green-400">
+<span class="text-purple-400">int</span>[] numeros = <span class="text-purple-400">new</span> <span class="text-purple-400">int</span>[5];
+
+<span class="text-slate-500">// Asignación directa</span>
+numeros[0] = 10;
+numeros[1] = 20;
+
+<span class="text-slate-500">// Declaración e inicialización</span>
+<span class="text-purple-400">string</span>[] nombres = { <span class="text-yellow-300">"Ana"</span>, <span class="text-yellow-300">"Luis"</span>, <span class="text-yellow-300">"Pepe"</span> };</pre>
+                </div>
+            </div>
+
+            <!-- Visualización Gráfica -->
+            <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
+                <h3 class="text-lg font-semibold text-slate-800 mb-6 text-center">Representación en Memoria</h3>
+                
+                <div class="flex justify-center space-x-1 mb-2">
+                    <!-- Índices -->
+                    <div class="w-16 text-center text-xs text-slate-400 font-mono">idx: 0</div>
+                    <div class="w-16 text-center text-xs text-slate-400 font-mono">idx: 1</div>
+                    <div class="w-16 text-center text-xs text-slate-400 font-mono">idx: 2</div>
+                    <div class="w-16 text-center text-xs text-slate-400 font-mono">idx: 3</div>
+                    <div class="w-16 text-center text-xs text-slate-400 font-mono">idx: 4</div>
+                </div>
+
+                <div class="flex justify-center space-x-1">
+                    <div class="array-cell w-16 h-16 bg-slate-100 border-2 border-slate-300 flex items-center justify-center font-bold text-xl rounded">10</div>
+                    <div class="array-cell w-16 h-16 bg-slate-100 border-2 border-slate-300 flex items-center justify-center font-bold text-xl rounded">20</div>
+                    <div class="array-cell w-16 h-16 bg-slate-100 border-2 border-slate-300 flex items-center justify-center font-bold text-xl rounded">55</div>
+                    <div class="array-cell w-16 h-16 bg-slate-100 border-2 border-slate-300 flex items-center justify-center font-bold text-xl rounded">8</div>
+                    <div class="array-cell w-16 h-16 bg-slate-100 border-2 border-slate-300 flex items-center justify-center font-bold text-xl rounded">99</div>
+                </div>
+                
+                <div class="mt-8 text-center text-sm text-slate-500 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                    <i class="fa-solid fa-lightbulb text-yellow-500 mr-2"></i>
+                    Las direcciones de memoria son contiguas (ej. 0x00, 0x04, 0x08...).
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-slate-200">
+
+        <!-- SECCIÓN 2: LISTAS ENLAZADAS -->
+        <section id="lists" class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="order-2 md:order-1 bg-white p-8 rounded-2xl shadow-xl border border-slate-100 overflow-x-auto">
+                <h3 class="text-lg font-semibold text-slate-800 mb-6 text-center">Lista Enlazada Simple</h3>
+                
+                <div class="flex items-center justify-center min-w-max py-4">
+                    <!-- Nodo 1 -->
+                    <div class="node-arrow flex">
+                        <div class="flex border-2 border-purple-500 rounded bg-purple-50">
+                            <div class="p-3 w-12 text-center border-r border-purple-300 font-bold">12</div>
+                            <div class="p-3 bg-purple-200 w-12 flex items-center justify-center"><div class="w-2 h-2 bg-purple-600 rounded-full"></div></div>
+                        </div>
+                    </div>
+                    <!-- Nodo 2 -->
+                    <div class="node-arrow flex">
+                        <div class="flex border-2 border-purple-500 rounded bg-purple-50">
+                            <div class="p-3 w-12 text-center border-r border-purple-300 font-bold">4</div>
+                            <div class="p-3 bg-purple-200 w-12 flex items-center justify-center"><div class="w-2 h-2 bg-purple-600 rounded-full"></div></div>
+                        </div>
+                    </div>
+                    <!-- Nodo 3 -->
+                    <div class="node-arrow flex">
+                        <div class="flex border-2 border-purple-500 rounded bg-purple-50">
+                            <div class="p-3 w-12 text-center border-r border-purple-300 font-bold">99</div>
+                            <div class="p-3 bg-purple-200 w-12 flex items-center justify-center"><i class="fa-solid fa-xmark text-purple-800"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 text-sm text-slate-600">
+                    <p class="mb-2"><strong>Nodo:</strong> Compuesto por dos partes:</p>
+                    <ul class="list-disc pl-5">
+                        <li><strong>Dato:</strong> El valor almacenado.</li>
+                        <li><strong>Puntero/Referencia:</strong> Dirección del siguiente nodo.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="order-1 md:order-2">
+                <div class="flex items-center mb-4">
+                    <span class="bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Dinámico</span>
+                    <h2 class="text-3xl font-bold text-slate-900">Listas Enlazadas</h2>
+                </div>
+                <p class="text-slate-600 mb-4 leading-relaxed">
+                    Estructura dinámica donde los elementos (nodos) están dispersos en memoria. Cada elemento apunta al siguiente. Es ideal cuando no sabemos cuántos elementos vamos a almacenar.
+                </p>
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                    <p class="text-sm text-yellow-800">
+                        <strong>Nota Importante:</strong> En C#, la clase <code>List&lt;T&gt;</code> en realidad implementa un arreglo dinámico redimensionable, pero conceptualmente actúa como una lista. Para una lista enlazada real se usa <code>LinkedList&lt;T&gt;</code>.
+                    </p>
+                </div>
+                
+                <div class="bg-slate-900 rounded-lg p-4 shadow-lg overflow-x-auto">
+                    <div class="flex justify-between items-center mb-2 border-b border-slate-700 pb-2">
+                        <span class="text-slate-400 text-xs font-mono">C# LinkedList</span>
+                    </div>
+                    <pre class="code-font text-sm text-green-400">
+LinkedList&lt;<span class="text-purple-400">string</span>&gt; lista = <span class="text-purple-400">new</span> LinkedList&lt;<span class="text-purple-400">string</span>&gt;();
+
+<span class="text-slate-500">// Añadir nodos</span>
+lista.AddLast(<span class="text-yellow-300">"Origen"</span>);
+lista.AddLast(<span class="text-yellow-300">"Destino"</span>);
+lista.AddFirst(<span class="text-yellow-300">"Inicio Real"</span>);
+
+<span class="text-slate-500">// Recorrido O(n)</span>
+<span class="text-purple-400">foreach</span> (<span class="text-purple-400">var</span> nodo <span class="text-purple-400">in</span> lista) {
+    Console.WriteLine(nodo);
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-slate-200">
+
+        <!-- SECCIÓN 3: PILAS (STACKS) -->
+        <section id="stacks" class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="flex items-center mb-4">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">LIFO</span>
+                    <h2 class="text-3xl font-bold text-slate-900">Pilas (Stacks)</h2>
+                </div>
+                <h3 class="text-xl font-medium text-slate-700 mb-2">Last In, First Out</h3>
+                <p class="text-slate-600 mb-4 leading-relaxed">
+                    Una estructura restringida donde las inserciones y eliminaciones se realizan solo por un extremo llamado "tope" (top). Es como una pila de platos: el último que pones es el primero que sacas.
+                </p>
+                
+                <h4 class="font-bold text-slate-800 mt-4 mb-2">Operaciones Clave:</h4>
+                <ul class="list-none space-y-2 mb-6">
+                    <li class="flex items-center bg-white border border-slate-200 p-2 rounded">
+                        <span class="font-mono text-purple-600 font-bold mr-2">Push(x)</span> Inserta un elemento en el tope.
+                    </li>
+                    <li class="flex items-center bg-white border border-slate-200 p-2 rounded">
+                        <span class="font-mono text-purple-600 font-bold mr-2">Pop()</span> Elimina y devuelve el elemento del tope.
+                    </li>
+                    <li class="flex items-center bg-white border border-slate-200 p-2 rounded">
+                        <span class="font-mono text-purple-600 font-bold mr-2">Peek()</span> Mira el tope sin eliminarlo.
+                    </li>
+                </ul>
+
+                <div class="bg-slate-900 rounded-lg p-4 shadow-lg overflow-x-auto">
+                    <pre class="code-font text-sm text-green-400">
+Stack&lt;<span class="text-purple-400">int</span>&gt; pila = <span class="text-purple-400">new</span> Stack&lt;<span class="text-purple-400">int</span>&gt;();
+
+pila.Push(1);
+pila.Push(2);
+pila.Push(3);
+
+<span class="text-purple-400">int</span> tope = pila.Pop(); <span class="text-slate-500">// Retorna 3</span>
+<span class="text-slate-500">// Ahora el tope es 2</span></pre>
+                </div>
+            </div>
+
+            <!-- Visualización Pila -->
+            <div class="flex flex-col items-center justify-center bg-white p-8 rounded-2xl shadow-xl border border-slate-100 h-full">
+                <div class="text-slate-400 text-sm mb-2 font-mono"><i class="fa-solid fa-arrow-down mr-2"></i>Push / Pop <i class="fa-solid fa-arrow-up ml-2"></i></div>
+                <div class="w-48 border-l-4 border-r-4 border-b-4 border-slate-300 rounded-b-lg p-2 bg-slate-50 min-h-[250px] flex flex-col-reverse gap-2">
+                    <div class="stack-item h-12 bg-indigo-500 text-white flex items-center justify-center font-bold rounded shadow-md">3 (Tope)</div>
+                    <div class="stack-item h-12 bg-indigo-400 text-white flex items-center justify-center font-bold rounded shadow-md">2</div>
+                    <div class="stack-item h-12 bg-indigo-300 text-white flex items-center justify-center font-bold rounded shadow-md">1</div>
+                </div>
+                <p class="mt-4 text-sm text-slate-500 text-center">
+                    Utilizado en la recursividad, el botón "Deshacer" (Undo) de los editores y la evaluación de expresiones matemáticas.
+                </p>
+            </div>
+        </section>
+
+        <hr class="border-slate-200">
+
+        <!-- SECCIÓN 4: COLAS (QUEUES) -->
+        <section id="queues" class="grid md:grid-cols-2 gap-12 items-center">
+             <!-- Visualización Cola -->
+             <div class="order-2 md:order-1 flex flex-col items-center justify-center bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
+                <div class="flex justify-between w-full mb-2 px-4 text-slate-500 text-sm font-bold">
+                    <span>Salida (Dequeue)</span>
+                    <span>Entrada (Enqueue)</span>
+                </div>
+                <div class="relative w-full h-24 border-y-4 border-slate-300 bg-slate-50 flex items-center px-2 gap-2 overflow-hidden">
+                    <div class="h-16 w-16 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold shadow-md shrink-0">A</div>
+                    <div class="h-16 w-16 bg-teal-400 text-white rounded-full flex items-center justify-center font-bold shadow-md shrink-0">B</div>
+                    <div class="h-16 w-16 bg-teal-300 text-white rounded-full flex items-center justify-center font-bold shadow-md shrink-0">C</div>
+                    <div class="h-16 w-16 border-2 border-dashed border-slate-300 rounded-full flex items-center justify-center text-slate-300 shrink-0">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+                <div class="flex justify-between w-full mt-2 px-4">
+                    <i class="fa-solid fa-arrow-left text-2xl text-teal-600"></i>
+                    <i class="fa-solid fa-arrow-left text-2xl text-slate-300"></i>
+                </div>
+            </div>
+
+            <div class="order-1 md:order-2">
+                <div class="flex items-center mb-4">
+                    <span class="bg-teal-100 text-teal-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">FIFO</span>
+                    <h2 class="text-3xl font-bold text-slate-900">Colas (Queues)</h2>
+                </div>
+                <h3 class="text-xl font-medium text-slate-700 mb-2">First In, First Out</h3>
+                <p class="text-slate-600 mb-4 leading-relaxed">
+                    Estructura donde el primer elemento en entrar es el primero en salir. Simula una fila en el supermercado o la cola de impresión de documentos.
+                </p>
+
+                <h4 class="font-bold text-slate-800 mt-4 mb-2">Operaciones Clave:</h4>
+                <ul class="list-none space-y-2 mb-6">
+                    <li class="flex items-center bg-white border border-slate-200 p-2 rounded">
+                        <span class="font-mono text-teal-600 font-bold mr-2">Enqueue(x)</span> Añade al final.
+                    </li>
+                    <li class="flex items-center bg-white border border-slate-200 p-2 rounded">
+                        <span class="font-mono text-teal-600 font-bold mr-2">Dequeue()</span> Saca del frente.
+                    </li>
+                </ul>
+
+                <div class="bg-slate-900 rounded-lg p-4 shadow-lg overflow-x-auto">
+                    <pre class="code-font text-sm text-green-400">
+Queue&lt;<span class="text-purple-400">string</span>&gt; cola = <span class="text-purple-400">new</span> Queue&lt;<span class="text-purple-400">string</span>&gt;();
+
+cola.Enqueue(<span class="text-yellow-300">"Cliente A"</span>);
+cola.Enqueue(<span class="text-yellow-300">"Cliente B"</span>);
+
+<span class="text-purple-400">string</span> atendido = cola.Dequeue(); 
+<span class="text-slate-500">// Retorna "Cliente A"</span></pre>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer / Bibliografía -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-white font-bold text-lg mb-4">Bibliografía y Referencias</h3>
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+                <ul>
+                    <li class="mb-2"><i class="fa-solid fa-book mr-2"></i>Joyanes Aguilar, L. - <em>Fundamentos de Programación</em></li>
+                    <li class="mb-2"><i class="fa-solid fa-book mr-2"></i>Ceballos, F.J. - <em>Microsoft C# Curso de Programación</em></li>
+                    <li class="mb-2"><i class="fa-solid fa-book mr-2"></i>Ferguson, J. et al. - <em>La Biblia de C#</em></li>
+                </ul>
+                <ul>
+                    <li class="mb-2"><i class="fa-solid fa-book mr-2"></i>Sebesta, R.W. - <em>Concepts of Programming Languages</em></li>
+                    <li class="mb-2"><i class="fa-solid fa-book mr-2"></i>Louden, K.C. - <em>Programming Languages: Principles and Practice</em></li>
+                </ul>
+            </div>
+            <div class="mt-8 pt-8 border-t border-slate-800 text-center text-xs">
+                Generado con base en documentos académicos proporcionados.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

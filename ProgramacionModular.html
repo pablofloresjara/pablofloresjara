@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Modular: Guía Completa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/csharp.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        code { font-family: 'Fira Code', monospace; }
+        .gradient-text {
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .sidebar-link.active {
+            background-color: #eff6ff;
+            color: #2563eb;
+            border-right: 3px solid #2563eb;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .diagram-box {
+            transition: all 0.3s ease;
+        }
+        .diagram-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 h-screen flex overflow-hidden">
+
+    <!-- Mobile Header -->
+    <div class="md:hidden fixed w-full bg-white z-50 border-b p-4 flex justify-between items-center shadow-sm">
+        <h1 class="font-bold text-lg text-slate-800">Prog. Modular</h1>
+        <button id="menuBtn" class="text-slate-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="transform -translate-x-full md:translate-x-0 transition-transform duration-300 fixed md:relative z-40 w-64 h-full bg-white border-r border-slate-200 flex flex-col pt-16 md:pt-0">
+        <div class="p-6 border-b border-slate-100">
+            <h1 class="text-2xl font-bold tracking-tight text-slate-900">Programación <span class="gradient-text">Modular</span></h1>
+            <p class="text-xs text-slate-500 mt-2">Basado en Joyanes, Ceballos y Sebesta.</p>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-4">
+            <a href="#intro" class="sidebar-link block px-6 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors active" onclick="setActive(this)">1. Introducción y Concepto</a>
+            <a href="#structure" class="sidebar-link block px-6 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors" onclick="setActive(this)">2. Estructura del Módulo</a>
+            <a href="#coupling" class="sidebar-link block px-6 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors" onclick="setActive(this)">3. Acoplamiento y Cohesión</a>
+            <a href="#dataflow" class="sidebar-link block px-6 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors" onclick="setActive(this)">4. Alcance y Parámetros</a>
+            <a href="#csharp" class="sidebar-link block px-6 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors" onclick="setActive(this)">5. Implementación en C#</a>
+            <a href="#quiz" class="sidebar-link block px-6 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors" onclick="setActive(this)">6. Autoevaluación</a>
+        </nav>
+        <div class="p-4 bg-slate-50 border-t border-slate-200">
+            <button onclick="document.getElementById('resourcesModal').classList.remove('hidden')" class="w-full flex items-center justify-center gap-2 bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                Bibliografía
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 h-full overflow-y-auto bg-slate-50 scroll-smooth pt-16 md:pt-0">
+        <div class="max-w-4xl mx-auto p-6 md:p-12 space-y-16">
+
+            <!-- Hero Section -->
+            <section id="intro" class="space-y-6 animate-fade-in-up">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded uppercase tracking-wide">Fundamentos</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-4 mb-4">¿Qué es la Programación Modular?</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                        Según Luis Joyanes Aguilar, la programación modular es uno de los métodos de diseño más flexibles y potentes para mejorar la productividad. Se basa en la estrategia de <strong>"Divide y Vencerás"</strong>: descomponer un problema complejo en subproblemas más pequeños y manejables llamados <em>módulos</em>.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h3 class="font-semibold text-slate-800 mb-2 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Ventajas
+                            </h3>
+                            <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                                <li>Facilita la comprensión del problema.</li>
+                                <li>Permite la reutilización de código.</li>
+                                <li>Simplifica el mantenimiento y la depuración.</li>
+                                <li>Permite el trabajo en equipo simultáneo.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h3 class="font-semibold text-slate-800 mb-2 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                                Abstracción
+                            </h3>
+                            <p class="text-sm text-slate-600">
+                                Según Sebesta y Mitchell, la modularidad es la realización física de la <strong>abstracción</strong>. Nos permite ignorar los detalles de <em>cómo</em> se hace algo y centrarnos en <em>qué</em> hace.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Structure Section -->
+            <section id="structure" class="space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-blue-500 pl-4">Estructura de un Módulo</h2>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <p class="mb-4 text-slate-600">
+                        Un módulo (subprograma, función, procedimiento o clase) consta generalmente de dos partes:
+                    </p>
+                    <div class="flex flex-col md:flex-row gap-6 items-center">
+                        <div class="flex-1 space-y-4 w-full">
+                            <div class="diagram-box bg-blue-50 p-4 rounded-lg border border-blue-100 cursor-pointer" onclick="toggleDetail('interfaz-detail')">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-blue-900">1. Interfaz (Cabecera)</h4>
+                                    <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                                <p id="interfaz-detail" class="text-sm text-blue-800 mt-2 hidden">
+                                    Es la parte visible. Define <strong>qué</strong> hace el módulo y cómo comunicarse con él (nombre, parámetros, tipo de retorno).
+                                </p>
+                            </div>
+                            <div class="diagram-box bg-purple-50 p-4 rounded-lg border border-purple-100 cursor-pointer" onclick="toggleDetail('impl-detail')">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-purple-900">2. Implementación (Cuerpo)</h4>
+                                    <svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                                <p id="impl-detail" class="text-sm text-purple-800 mt-2 hidden">
+                                    Es la parte oculta (Caja Negra). Contiene el código, las variables locales y la lógica de <strong>cómo</strong> realiza la tarea.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Visual Representation -->
+                        <div class="w-full md:w-1/3 flex flex-col items-center justify-center bg-slate-100 rounded-lg p-4 border border-slate-200 border-dashed">
+                            <div class="w-32 h-10 bg-slate-800 text-white flex items-center justify-center rounded mb-2 shadow-lg z-10">Programa Principal</div>
+                            <div class="h-8 border-l-2 border-slate-400 border-dashed"></div>
+                            <div class="flex gap-2">
+                                <div class="w-24 h-24 bg-blue-100 border-2 border-blue-500 text-blue-700 flex flex-col items-center justify-center rounded shadow-sm text-xs text-center p-1">
+                                    <strong>Módulo A</strong>
+                                    <span class="text-[10px] text-slate-500 mt-1">Lectura Datos</span>
+                                </div>
+                                <div class="w-24 h-24 bg-purple-100 border-2 border-purple-500 text-purple-700 flex flex-col items-center justify-center rounded shadow-sm text-xs text-center p-1">
+                                    <strong>Módulo B</strong>
+                                    <span class="text-[10px] text-slate-500 mt-1">Cálculos</span>
+                                </div>
+                                <div class="w-24 h-24 bg-green-100 border-2 border-green-500 text-green-700 flex flex-col items-center justify-center rounded shadow-sm text-xs text-center p-1">
+                                    <strong>Módulo C</strong>
+                                    <span class="text-[10px] text-slate-500 mt-1">Resultados</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Coupling and Cohesion Section -->
+            <section id="coupling" class="space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-indigo-500 pl-4">Acoplamiento y Cohesión</h2>
+                <p class="text-slate-600">
+                    Joyanes y Louden enfatizan que la calidad de un diseño modular se mide por dos criterios fundamentales. El objetivo es siempre: <strong>Alta Cohesión y Bajo Acoplamiento</strong>.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Acoplamiento -->
+                    <div class="bg-white rounded-xl shadow-sm border border-red-100 overflow-hidden">
+                        <div class="bg-red-50 p-4 border-b border-red-100">
+                            <h3 class="font-bold text-red-800">Acoplamiento (Coupling)</h3>
+                            <p class="text-xs text-red-600 uppercase tracking-wider font-semibold mt-1">Objetivo: MINIMIZAR</p>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm text-slate-600 mb-4">
+                                Es el grado de interdependencia entre módulos. Si dos módulos están muy "pegados", cambiar uno rompe el otro.
+                            </p>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-sm">
+                                    <span class="w-3 h-3 rounded-full bg-red-500 flex-shrink-0"></span>
+                                    <span><strong>Acoplamiento de Contenido (Malo):</strong> Un módulo modifica datos internos de otro.</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm">
+                                    <span class="w-3 h-3 rounded-full bg-yellow-500 flex-shrink-0"></span>
+                                    <span><strong>Acoplamiento de Control:</strong> Un módulo pasa "flags" que controlan la lógica de otro.</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm">
+                                    <span class="w-3 h-3 rounded-full bg-green-500 flex-shrink-0"></span>
+                                    <span><strong>Acoplamiento de Datos (Bueno):</strong> Se comunican solo pasando los datos necesarios por parámetros.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cohesión -->
+                    <div class="bg-white rounded-xl shadow-sm border border-emerald-100 overflow-hidden">
+                        <div class="bg-emerald-50 p-4 border-b border-emerald-100">
+                            <h3 class="font-bold text-emerald-800">Cohesión (Cohesion)</h3>
+                            <p class="text-xs text-emerald-600 uppercase tracking-wider font-semibold mt-1">Objetivo: MAXIMIZAR</p>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm text-slate-600 mb-4">
+                                Es la medida de cuán relacionadas están las tareas dentro de un solo módulo. Un módulo debe hacer <strong>una sola cosa</strong> y hacerla bien.
+                            </p>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-sm">
+                                    <span class="w-3 h-3 rounded-full bg-red-500 flex-shrink-0"></span>
+                                    <span><strong>Cohesión Coincidental (Mala):</strong> Agrupar funciones al azar (ej. "Utilidades.cs" sin criterio).</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm">
+                                    <span class="w-3 h-3 rounded-full bg-yellow-500 flex-shrink-0"></span>
+                                    <span><strong>Cohesión Temporal:</strong> Agrupar tareas porque ocurren al mismo tiempo (ej. "InicializarTodo").</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm">
+                                    <span class="w-3 h-3 rounded-full bg-green-500 flex-shrink-0"></span>
+                                    <span><strong>Cohesión Funcional (Ideal):</strong> Todos los elementos contribuyen a una única tarea específica (ej. "CalcularImpuesto").</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Flow & Scope -->
+            <section id="dataflow" class="space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-amber-500 pl-4">Alcance y Paso de Parámetros</h2>
+                
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="flex border-b border-slate-200 bg-slate-50">
+                        <button class="flex-1 py-3 text-sm font-medium text-slate-700 bg-white border-b-2 border-amber-500" id="btn-scope" onclick="switchTab('scope')">Variables (Scope)</button>
+                        <button class="flex-1 py-3 text-sm font-medium text-slate-500 hover:text-slate-700" id="btn-params" onclick="switchTab('params')">Parámetros (Valor vs Ref)</button>
+                    </div>
+                    
+                    <div class="p-6" id="content-scope">
+                        <h3 class="font-bold text-lg mb-2">Visibilidad de las Variables</h3>
+                        <p class="text-slate-600 mb-4 text-sm">El "Libro de Problemas" de Joyanes distingue claramente entre:</p>
+                        <ul class="space-y-4">
+                            <li class="bg-slate-50 p-3 rounded border border-slate-200">
+                                <strong class="text-slate-800 block">Variables Globales</strong>
+                                <span class="text-slate-600 text-sm">Declaradas fuera de todos los módulos. Accesibles por todos. <span class="text-red-500 font-bold">¡Peligro!</span> Aumentan el acoplamiento y hacen difícil la depuración (Efectos colaterales).</span>
+                            </li>
+                            <li class="bg-amber-50 p-3 rounded border border-amber-200">
+                                <strong class="text-slate-800 block">Variables Locales</strong>
+                                <span class="text-slate-600 text-sm">Declaradas dentro de un módulo. Solo existen mientras el módulo se ejecuta. Son la base de la programación modular segura.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 hidden" id="content-params">
+                        <h3 class="font-bold text-lg mb-2">Paso de Parámetros</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-semibold text-blue-600">Por Valor (In)</h4>
+                                <p class="text-xs text-slate-500 mb-2">El módulo recibe una <strong>copia</strong> del dato.</p>
+                                <pre><code class="language-csharp rounded text-xs">void Duplicar(int x) {
+    x = x * 2; 
+    // El original NO cambia
+}</code></pre>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-purple-600">Por Referencia (In/Out)</h4>
+                                <p class="text-xs text-slate-500 mb-2">El módulo recibe la <strong>dirección</strong> de memoria.</p>
+                                <pre><code class="language-csharp rounded text-xs">void Duplicar(ref int x) {
+    x = x * 2; 
+    // El original SÍ cambia
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- C# Implementation -->
+            <section id="csharp" class="space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-green-500 pl-4">Implementación en C#</h2>
+                <p class="text-slate-600 mb-4">
+                    Basado en "La Biblia de C#" y "Microsoft C# (Ceballos)". En C#, la modularidad se implementa a través de varios niveles de abstracción:
+                </p>
+
+                <div class="space-y-4">
+                    <!-- Level 1: Methods -->
+                    <div class="collapse-group border border-slate-200 rounded-lg bg-white overflow-hidden">
+                        <button class="w-full text-left p-4 bg-slate-50 hover:bg-slate-100 flex justify-between items-center font-semibold" onclick="toggleCode('code-methods')">
+                            1. Métodos (Funciones y Procedimientos)
+                            <span class="text-slate-400 text-sm">▼</span>
+                        </button>
+                        <div id="code-methods" class="hidden p-4 bg-slate-900 text-slate-50">
+                            <p class="text-xs text-gray-400 mb-2">// Un método encapsula una tarea específica.</p>
+                            <pre><code class="language-csharp">public class Matematicas 
+{
+    // Módulo funcional (Función)
+    public int Sumar(int a, int b) 
+    {
+        return a + b;
+    }
+
+    // Módulo de acción (Procedimiento/void)
+    public void ImprimirResultado(int resultado) 
+    {
+        Console.WriteLine($"El resultado es: {resultado}");
+    }
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Level 2: Classes -->
+                    <div class="collapse-group border border-slate-200 rounded-lg bg-white overflow-hidden">
+                        <button class="w-full text-left p-4 bg-slate-50 hover:bg-slate-100 flex justify-between items-center font-semibold" onclick="toggleCode('code-classes')">
+                            2. Clases (Encapsulamiento)
+                            <span class="text-slate-400 text-sm">▼</span>
+                        </button>
+                        <div id="code-classes" class="hidden p-4 bg-slate-900 text-slate-50">
+                            <p class="text-xs text-gray-400 mb-2">// La clase agrupa datos (estado) y métodos (comportamiento).</p>
+                            <pre><code class="language-csharp">public class CuentaBancaria 
+{
+    // Datos privados (Ocultamiento de información)
+    private decimal saldo;
+
+    // Interfaz pública
+    public void Depositar(decimal cantidad) 
+    {
+        if (cantidad > 0) saldo += cantidad;
+    }
+
+    public decimal ObtenerSaldo() 
+    {
+        return saldo;
+    }
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Level 3: Namespaces & Assemblies -->
+                    <div class="collapse-group border border-slate-200 rounded-lg bg-white overflow-hidden">
+                        <button class="w-full text-left p-4 bg-slate-50 hover:bg-slate-100 flex justify-between items-center font-semibold" onclick="toggleCode('code-namespaces')">
+                            3. Namespaces y Ensamblados
+                            <span class="text-slate-400 text-sm">▼</span>
+                        </button>
+                        <div id="code-namespaces" class="hidden p-4 bg-slate-900 text-slate-50">
+                            <p class="text-xs text-gray-400 mb-2">// Organización lógica y física de módulos grandes.</p>
+                            <pre><code class="language-csharp">// Archivo: Geometria.cs
+namespace MiProyecto.Geometria 
+{
+    public class Circulo { /* ... */ }
+    public class Rectangulo { /* ... */ }
+}
+
+// Archivo: Programa.cs
+using MiProyecto.Geometria; // Importando el módulo
+
+class Program {
+    static void Main() {
+        Circulo c = new Circulo();
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Section -->
+            <section id="quiz" class="pb-12">
+                <div class="bg-gradient-to-r from-slate-800 to-slate-900 text-white rounded-2xl p-8 shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4">Autoevaluación</h2>
+                    <p class="mb-6 text-slate-300">Prueba tus conocimientos sobre los conceptos de Joyanes y Ceballos.</p>
+                    
+                    <div id="quiz-container">
+                        <div class="mb-4">
+                            <p class="font-semibold mb-3">1. ¿Qué combinación de métricas buscamos en un buen diseño modular?</p>
+                            <div class="space-y-2">
+                                <button onclick="checkAnswer(this, false)" class="block w-full text-left p-3 rounded bg-slate-700 hover:bg-slate-600 transition-colors">A) Alto Acoplamiento y Baja Cohesión</button>
+                                <button onclick="checkAnswer(this, true)" class="block w-full text-left p-3 rounded bg-slate-700 hover:bg-slate-600 transition-colors">B) Bajo Acoplamiento y Alta Cohesión</button>
+                                <button onclick="checkAnswer(this, false)" class="block w-full text-left p-3 rounded bg-slate-700 hover:bg-slate-600 transition-colors">C) Alto Acoplamiento y Alta Cohesión</button>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <p class="font-semibold mb-3">2. ¿Qué palabra clave en C# se usa para devolver un valor en una función?</p>
+                            <div class="space-y-2">
+                                <button onclick="checkAnswer(this, false)" class="block w-full text-left p-3 rounded bg-slate-700 hover:bg-slate-600 transition-colors">A) void</button>
+                                <button onclick="checkAnswer(this, true)" class="block w-full text-left p-3 rounded bg-slate-700 hover:bg-slate-600 transition-colors">B) return</button>
+                                <button onclick="checkAnswer(this, false)" class="block w-full text-left p-3 rounded bg-slate-700 hover:bg-slate-600 transition-colors">C) ref</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="quiz-feedback" class="mt-4 font-bold hidden"></div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Modal Bibliografía -->
+    <div id="resourcesModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6">
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Bibliografía Utilizada</h3>
+            <ul class="space-y-3 text-sm text-slate-600 list-disc list-inside">
+                <li>Joyanes Aguilar, L. <em>Fundamentos de Programación</em> (Algoritmos y Estructura de Datos).</li>
+                <li>Joyanes Aguilar, L. <em>Libro de Problemas</em>.</li>
+                <li>Ceballos, J. <em>Microsoft C# - Curso de Programación</em>.</li>
+                <li>Ferguson, J. et al. <em>La Biblia de C#</em>.</li>
+                <li>Sebesta, R.W. <em>Concepts of Programming Languages</em>.</li>
+            </ul>
+            <button onclick="document.getElementById('resourcesModal').classList.add('hidden')" class="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        // Init Highlight.js
+        hljs.highlightAll();
+
+        // Mobile Menu Toggle
+        document.getElementById('menuBtn').addEventListener('click', () => {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
+
+        // Toggle Details
+        function toggleDetail(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Tab Switching for Data Flow
+        function switchTab(tab) {
+            const scopeContent = document.getElementById('content-scope');
+            const paramsContent = document.getElementById('content-params');
+            const scopeBtn = document.getElementById('btn-scope');
+            const paramsBtn = document.getElementById('btn-params');
+
+            if (tab === 'scope') {
+                scopeContent.classList.remove('hidden');
+                paramsContent.classList.add('hidden');
+                scopeBtn.classList.add('border-b-2', 'border-amber-500', 'bg-white', 'text-slate-700');
+                scopeBtn.classList.remove('text-slate-500');
+                paramsBtn.classList.remove('border-b-2', 'border-amber-500', 'bg-white', 'text-slate-700');
+                paramsBtn.classList.add('text-slate-500');
+            } else {
+                scopeContent.classList.add('hidden');
+                paramsContent.classList.remove('hidden');
+                paramsBtn.classList.add('border-b-2', 'border-amber-500', 'bg-white', 'text-slate-700');
+                paramsBtn.classList.remove('text-slate-500');
+                scopeBtn.classList.remove('border-b-2', 'border-amber-500', 'bg-white', 'text-slate-700');
+                scopeBtn.classList.add('text-slate-500');
+            }
+        }
+
+        // Toggle Code Blocks
+        function toggleCode(id) {
+            const el = document.getElementById(id);
+            const btn = el.previousElementSibling.querySelector('span');
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                btn.textContent = '▲';
+            } else {
+                el.classList.add('hidden');
+                btn.textContent = '▼';
+            }
+        }
+
+        // Quiz Logic
+        function checkAnswer(btn, isCorrect) {
+            const parent = btn.parentElement;
+            const buttons = parent.querySelectorAll('button');
+            buttons.forEach(b => {
+                b.disabled = true;
+                if(b === btn) {
+                    if(isCorrect) {
+                        b.classList.remove('bg-slate-700', 'hover:bg-slate-600');
+                        b.classList.add('bg-green-600');
+                        b.innerHTML += ' ✓ Correcto';
+                    } else {
+                        b.classList.remove('bg-slate-700', 'hover:bg-slate-600');
+                        b.classList.add('bg-red-600');
+                        b.innerHTML += ' ✗ Incorrecto';
+                    }
+                }
+            });
+        }
+
+        // Sidebar Active State
+        function setActive(link) {
+            document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            
+            // Close mobile menu on click
+            if(window.innerWidth < 768) {
+                document.getElementById('sidebar').classList.add('-translate-x-full');
+            }
+        }
+    </script>
+</body>
+</html>

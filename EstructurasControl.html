@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructuras de Control - Guía Completa</title>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        
+        pre, code {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        
+        // Iconos usando Lucide (SVG in-line para React)
+        const BookOpen = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>;
+        const GitBranch = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>;
+        const Repeat = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>;
+        const SkipForward = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>;
+        const Code = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>;
+        const Info = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>;
+
+        // Datos basados en los libros (Joyanes, Ceballos, Louden, etc.)
+        const contentData = {
+            intro: {
+                title: "Fundamentos: Estructuras de Control",
+                description: "El flujo de control determina el orden en que se ejecutan las instrucciones de un programa.",
+                details: [
+                    "Según Joyanes Aguilar (Fundamentos de Programación), en la programación estructurada existen tres tipos básicos de estructuras de control: Secuenciales, Selectivas y Repetitivas.",
+                    "El teorema de la programación estructurada (Böhm y Jacopini) establece que cualquier algoritmo puede implementarse utilizando solo estas tres estructuras.",
+                    "Los lenguajes modernos como C# añaden estructuras de manejo de excepciones y saltos avanzados (Ceballos, González Seco)."
+                ],
+                source: "Joyanes Aguilar - Fundamentos de Programación / Ceballos - Microsoft C#"
+            },
+            secuencial: {
+                title: "Estructura Secuencial",
+                icon: <BookOpen />,
+                description: "Es la estructura por defecto. Las instrucciones se ejecutan una tras otra, en el orden en que están escritas.",
+                theory: "Una estructura secuencial es aquella en la que una acción (instrucción) sigue a otra en secuencia. La salida de una instrucción es la entrada de la siguiente.",
+                pseudo: `Inicio
+   Leer base
+   Leer altura
+   area = (base * altura) / 2
+   Escribir area
+Fin`,
+                csharp: `// Ejemplo en C#
+double baseTriangulo = 10.0;
+double altura = 5.0;
+
+// Ejecución paso a paso
+double area = (baseTriangulo * altura) / 2.0;
+
+Console.WriteLine("El área es: " + area);`,
+                tips: "En C# (Ceballos), el punto y coma (;) marca el final de cada instrucción secuencial."
+            },
+            seleccion: {
+                title: "Estructuras de Selección (Condicionales)",
+                icon: <GitBranch />,
+                description: "Permiten decidir qué bloque de código ejecutar basándose en una condición lógica (Verdadero/Falso).",
+                subtypes: [
+                    {
+                        name: "Sentencia if / else",
+                        desc: "Evalúa una expresión booleana. Si es true, ejecuta un bloque; si es false, ejecuta el bloque opcional 'else'.",
+                        code: `int edad = 18;
+
+if (edad >= 18) {
+    Console.WriteLine("Es mayor de edad");
+} else {
+    Console.WriteLine("Es menor de edad");
+}`
+                    },
+                    {
+                        name: "Sentencia switch",
+                        desc: "Estructura de selección múltiple (González Seco). Evalúa una expresión y transfiere el control a la etiqueta 'case' coincidente.",
+                        code: `int dia = 3;
+
+switch (dia) {
+    case 1:
+        Console.WriteLine("Lunes");
+        break;
+    case 2:
+        Console.WriteLine("Martes");
+        break;
+    default:
+        Console.WriteLine("Otro día");
+        break;
+}`
+                    },
+                    {
+                        name: "Operador Ternario (?:)",
+                        desc: "Una forma compacta de if-else. (condición ? valor_true : valor_false).",
+                        code: `int a = 10;
+string resultado = (a > 5) ? "Mayor" : "Menor";`
+                    }
+                ]
+            },
+            iteracion: {
+                title: "Estructuras Iterativas (Bucles)",
+                icon: <Repeat />,
+                description: "Permiten repetir un bloque de instrucciones un número determinado de veces o mientras se cumpla una condición.",
+                subtypes: [
+                    {
+                        name: "Bucle while",
+                        desc: "Evalúa la condición ANTES de ejecutar el cuerpo. Si es falsa al inicio, no se ejecuta nunca (Joyanes).",
+                        code: `int contador = 0;
+
+while (contador < 5) {
+    Console.WriteLine(contador);
+    contador++; // Importante: actualizar la variable de control
+}`
+                    },
+                    {
+                        name: "Bucle do-while",
+                        desc: "Evalúa la condición DESPUÉS de ejecutar. Garantiza al menos una ejecución del bloque.",
+                        code: `int num;
+
+do {
+    Console.WriteLine("Ingrese un número positivo:");
+    // Supongamos que leemos 'num' aquí
+    num = 10; 
+} while (num < 0);`
+                    },
+                    {
+                        name: "Bucle for",
+                        desc: "Ideal cuando se conoce de antemano el número de iteraciones. Agrupa inicialización, condición y actualización (Ferguson).",
+                        code: `for (int i = 0; i < 10; i++) {
+    Console.WriteLine("Iteración: " + i);
+}`
+                    },
+                    {
+                        name: "Bucle foreach (C#)",
+                        desc: "Específico para recorrer colecciones o matrices sin usar índices explícitos (González Seco).",
+                        code: `string[] frutas = { "Manzana", "Pera", "Uva" };
+
+foreach (string fruta in frutas) {
+    Console.WriteLine(fruta);
+}`
+                    }
+                ]
+            },
+            saltos: {
+                title: "Sentencias de Salto",
+                icon: <SkipForward />,
+                description: "Transfieren el control a otra parte del programa, rompiendo el flujo secuencial estándar.",
+                subtypes: [
+                    {
+                        name: "break",
+                        desc: "Termina el bucle (for, while, do) o switch más cercano inmediatamente.",
+                        code: `for (int i = 0; i < 10; i++) {
+    if (i == 5) break; // Sale del bucle cuando i es 5
+    Console.WriteLine(i);
+}`
+                    },
+                    {
+                        name: "continue",
+                        desc: "Salta el resto de la iteración actual y pasa a la siguiente evaluación de la condición del bucle.",
+                        code: `for (int i = 0; i < 5; i++) {
+    if (i == 2) continue; // Omite el 2
+    Console.WriteLine(i);
+}`
+                    },
+                    {
+                        name: "return",
+                        desc: "Devuelve el control al método que llamó, opcionalmente devolviendo un valor.",
+                        code: `public int Sumar(int a, int b) {
+    return a + b; // Devuelve el resultado y sale
+}`
+                    },
+                     {
+                        name: "goto",
+                        desc: "Transferencia incondicional (poco recomendado por Sebesta/Louden por generar código espagueti, pero existe en C#).",
+                        code: `goto EtiquetaError;
+// ... código ...
+EtiquetaError:
+Console.WriteLine("Ocurrió un error");`
+                    }
+                ]
+            }
+        };
+
+        const CodeBlock = ({ title, code, language = "csharp" }) => (
+            <div className="mt-4 rounded-lg overflow-hidden border border-gray-200 shadow-sm bg-slate-900 text-slate-50">
+                <div className="px-4 py-2 bg-slate-800 border-b border-slate-700 flex items-center justify-between">
+                    <span className="text-xs font-mono font-semibold text-blue-300">{title || language}</span>
+                    <div className="flex gap-1.5">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                    </div>
+                </div>
+                <div className="p-4 overflow-x-auto">
+                    <pre className="text-sm leading-relaxed">
+                        <code>{code}</code>
+                    </pre>
+                </div>
+            </div>
+        );
+
+        const SectionCard = ({ section, isActive, onClick }) => (
+            <button
+                onClick={onClick}
+                className={`w-full text-left p-4 rounded-xl transition-all duration-200 flex items-center gap-3 mb-3 border ${
+                    isActive 
+                    ? 'bg-blue-600 text-white shadow-lg border-blue-500 scale-[1.02]' 
+                    : 'bg-white text-gray-700 hover:bg-gray-50 border-gray-200 shadow-sm hover:border-blue-300'
+                }`}
+            >
+                <div className={`p-2 rounded-lg ${isActive ? 'bg-blue-500 text-white' : 'bg-blue-100 text-blue-600'}`}>
+                    {section.icon}
+                </div>
+                <div>
+                    <h3 className="font-bold text-sm md:text-base">{section.title}</h3>
+                    <p className={`text-xs mt-1 ${isActive ? 'text-blue-100' : 'text-gray-500'}`}>
+                        {section.description.substring(0, 45)}...
+                    </p>
+                </div>
+            </button>
+        );
+
+        const App = () => {
+            const [activeTab, setActiveTab] = useState('intro');
+
+            return (
+                <div className="min-h-screen flex flex-col md:flex-row max-w-7xl mx-auto p-4 md:p-8 gap-6">
+                    
+                    {/* Sidebar Navigation */}
+                    <div className="w-full md:w-1/3 lg:w-1/4 flex flex-col shrink-0">
+                        <div className="mb-6">
+                            <h1 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
+                                <Code className="text-blue-600" />
+                                Estructuras
+                            </h1>
+                            <p className="text-sm text-gray-500 mt-1">Curso de Programación</p>
+                            <div className="h-1 w-20 bg-blue-600 mt-2 rounded-full"></div>
+                        </div>
+
+                        <nav className="flex-1">
+                            <button 
+                                onClick={() => setActiveTab('intro')}
+                                className={`w-full text-left px-4 py-3 rounded-lg mb-2 text-sm font-medium transition-colors ${
+                                    activeTab === 'intro' ? 'bg-gray-200 text-gray-900' : 'text-gray-600 hover:bg-gray-100'
+                                }`}
+                            >
+                                Introducción
+                            </button>
+                            {Object.entries(contentData).map(([key, data]) => {
+                                if(key === 'intro') return null;
+                                return (
+                                    <SectionCard 
+                                        key={key} 
+                                        section={data} 
+                                        isActive={activeTab === key} 
+                                        onClick={() => setActiveTab(key)} 
+                                    />
+                                );
+                            })}
+                        </nav>
+
+                        <div className="mt-8 p-4 bg-blue-50 rounded-xl border border-blue-100">
+                            <h4 className="text-blue-800 font-bold text-sm mb-2 flex items-center gap-2">
+                                <Info size={16}/> Bibliografía
+                            </h4>
+                            <ul className="text-xs text-blue-700 space-y-1 list-disc list-inside opacity-80">
+                                <li>L. Joyanes Aguilar (Fundamentos)</li>
+                                <li>J. Ceballos (Microsoft C#)</li>
+                                <li>Ferguson (La Biblia C#)</li>
+                                <li>Louden (Lenguajes de Prog.)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    {/* Content Area */}
+                    <main className="flex-1 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden flex flex-col">
+                        <div className="p-6 md:p-10 overflow-y-auto custom-scrollbar h-full fade-in" key={activeTab}>
+                            
+                            {/* Header of Content */}
+                            <div className="mb-8 pb-6 border-b border-gray-100">
+                                <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wide mb-3">
+                                    {activeTab === 'intro' ? 'Concepto General' : 'Módulo de Aprendizaje'}
+                                </span>
+                                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                    {contentData[activeTab].title}
+                                </h2>
+                                <p className="text-lg text-gray-600 leading-relaxed">
+                                    {contentData[activeTab].description}
+                                </p>
+                            </div>
+
+                            {/* Specific Content Logic */}
+                            {activeTab === 'intro' && (
+                                <div className="space-y-6">
+                                    <div className="grid md:grid-cols-3 gap-4">
+                                        <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 text-center">
+                                            <div className="mx-auto bg-green-100 w-12 h-12 rounded-full flex items-center justify-center text-green-600 mb-3"><BookOpen size={20}/></div>
+                                            <h4 className="font-bold text-gray-800">Secuencia</h4>
+                                            <p className="text-xs text-gray-500 mt-1">Orden lineal</p>
+                                        </div>
+                                        <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 text-center">
+                                            <div className="mx-auto bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center text-purple-600 mb-3"><GitBranch size={20}/></div>
+                                            <h4 className="font-bold text-gray-800">Selección</h4>
+                                            <p className="text-xs text-gray-500 mt-1">Toma de decisiones</p>
+                                        </div>
+                                        <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 text-center">
+                                            <div className="mx-auto bg-orange-100 w-12 h-12 rounded-full flex items-center justify-center text-orange-600 mb-3"><Repeat size={20}/></div>
+                                            <h4 className="font-bold text-gray-800">Iteración</h4>
+                                            <p className="text-xs text-gray-500 mt-1">Repetición controlada</p>
+                                        </div>
+                                    </div>
+                                    <div className="prose prose-blue max-w-none text-gray-700">
+                                        <h3 className="text-xl font-bold text-gray-800 mb-3">Teoría Base</h3>
+                                        <ul className="space-y-3">
+                                            {contentData.intro.details.map((detail, idx) => (
+                                                <li key={idx} className="flex gap-3">
+                                                    <span className="text-blue-500 mt-1">•</span>
+                                                    <span>{detail}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'secuencial' && (
+                                <div className="space-y-8">
+                                    <div className="bg-amber-50 p-6 rounded-xl border border-amber-200">
+                                        <h3 className="text-lg font-bold text-amber-900 mb-2">Definición Formal</h3>
+                                        <p className="text-amber-800 italic">"{contentData.secuencial.theory}"</p>
+                                    </div>
+
+                                    <div className="grid lg:grid-cols-2 gap-8">
+                                        <div>
+                                            <h3 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                                                <span className="bg-gray-200 text-gray-700 px-2 py-0.5 rounded text-xs">Pseudocódigo</span>
+                                                Lógica Pura
+                                            </h3>
+                                            <CodeBlock code={contentData.secuencial.pseudo} language="Pseudocódigo" />
+                                        </div>
+                                        <div>
+                                            <h3 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                                                <span className="bg-purple-100 text-purple-700 px-2 py-0.5 rounded text-xs">C#</span>
+                                                Implementación
+                                            </h3>
+                                            <CodeBlock code={contentData.secuencial.csharp} />
+                                        </div>
+                                    </div>
+                                    <p className="text-sm text-gray-500 bg-gray-100 p-3 rounded border border-gray-200">
+                                        💡 <strong>Tip:</strong> {contentData.secuencial.tips}
+                                    </p>
+                                </div>
+                            )}
+
+                            {(activeTab === 'seleccion' || activeTab === 'iteracion' || activeTab === 'saltos') && (
+                                <div className="space-y-10">
+                                    {contentData[activeTab].subtypes.map((subtype, idx) => (
+                                        <div key={idx} className="relative pl-6 border-l-4 border-blue-100 hover:border-blue-400 transition-colors">
+                                            <h3 className="text-xl font-bold text-gray-800 mb-2">{subtype.name}</h3>
+                                            <p className="text-gray-600 mb-4 text-sm leading-relaxed max-w-2xl">
+                                                {subtype.desc}
+                                            </p>
+                                            <div className="w-full">
+                                                <CodeBlock title={`Ejemplo de ${subtype.name}`} code={subtype.code} />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
+                        </div>
+                    </main>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

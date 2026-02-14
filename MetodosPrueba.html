@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telemática: Métodos de Prueba y Calidad de Software</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #2563eb, #1e40af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+        }
+        .nav-active {
+            border-bottom: 2px solid #2563eb;
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <i class="fa-solid fa-code-branch text-blue-600 text-2xl mr-2"></i>
+                    <span class="font-bold text-xl tracking-tight text-slate-800">Telemática<span class="text-blue-600">QA</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#intro" class="hover:text-blue-600 transition-colors py-2 text-sm font-medium">Testing Básico</a>
+                    <a href="#strategies" class="hover:text-blue-600 transition-colors py-2 text-sm font-medium">Caja Blanca vs Negra</a>
+                    <a href="#metrics" class="hover:text-blue-600 transition-colors py-2 text-sm font-medium">Métricas</a>
+                    <a href="#plan" class="hover:text-blue-600 transition-colors py-2 text-sm font-medium">Plan de Prueba</a>
+                </div>
+                <!-- Mobile menu button would go here -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="intro" class="pt-24 pb-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
+                    Ingeniería de Software: <span class="gradient-text">Métodos de Prueba</span>
+                </h1>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-500">
+                    Guía completa sobre estrategias de validación, métricas de calidad y planificación de pruebas basada en los estándares de la industria (Pressman, Sommerville, IEEE).
+                </p>
+                <div class="mt-8 flex justify-center gap-4">
+                    <a href="#strategies" class="rounded-full bg-blue-600 text-white px-8 py-3 font-semibold hover:bg-blue-700 transition shadow-lg">
+                        Explorar Estrategias
+                    </a>
+                    <a href="#simulation" class="rounded-full bg-white text-blue-600 border border-blue-200 px-8 py-3 font-semibold hover:bg-slate-50 transition shadow-sm">
+                        Simulador Interactivo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Testing Básico Section -->
+    <section class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center mb-8">
+                <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                    <i class="fa-solid fa-flask text-blue-600 text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900">Testing Básico</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg text-slate-600 mb-6 text-justify">
+                        El testing no es una fase aislada al final del desarrollo; es un proceso continuo de evaluación. Según Pressman, el objetivo principal es <strong>descubrir errores</strong>, no demostrar que el software funciona.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-green-500">
+                            <h3 class="font-bold text-lg">Verificación</h3>
+                            <p class="text-sm text-slate-500">¿Estamos construyendo el producto correctamente? (Apegado a especificaciones).</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-500">
+                            <h3 class="font-bold text-lg">Validación</h3>
+                            <p class="text-sm text-slate-500">¿Estamos construyendo el producto correcto? (Satisface al cliente).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="font-bold text-slate-800 mb-4 text-center">La Pirámide de Pruebas</h3>
+                    <div class="flex flex-col space-y-2">
+                        <div class="bg-red-100 text-red-800 p-2 text-center rounded-t-lg text-xs font-bold w-1/3 mx-auto">Aceptación (UAT)</div>
+                        <div class="bg-orange-100 text-orange-800 p-3 text-center text-sm font-bold w-1/2 mx-auto">Sistema</div>
+                        <div class="bg-yellow-100 text-yellow-800 p-4 text-center font-bold w-3/4 mx-auto">Integración</div>
+                        <div class="bg-green-100 text-green-800 p-6 text-center rounded-b-lg font-bold w-full mx-auto">Unitarias</div>
+                    </div>
+                    <p class="text-xs text-center mt-4 text-slate-400">Base amplia: Mayor cantidad de pruebas unitarias y rápidas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategies Section: Black Box vs White Box -->
+    <section id="strategies" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Estrategias de Diseño</h2>
+                <p class="text-slate-500 mt-2">Los dos enfoques principales para diseñar casos de prueba.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Caja Negra -->
+                <div class="border border-slate-200 rounded-2xl p-8 hover:shadow-xl transition duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-slate-800 text-white px-4 py-1 rounded-bl-lg text-sm font-bold">Funcional</div>
+                    <div class="flex items-center mb-6">
+                        <i class="fa-solid fa-box text-4xl text-slate-700 mr-4"></i>
+                        <h3 class="text-2xl font-bold">Caja Negra (Black Box)</h3>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Se centra en los requisitos funcionales del software. El tester no necesita conocer la lógica interna del código. Se basa en entradas y salidas esperadas.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> <span><strong>Partición de Equivalencia:</strong> Dividir entradas en clases válidas e inválidas.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> <span><strong>Análisis de Valores Límite:</strong> Probar los bordes (ej: si el rango es 1-10, probar 0, 1, 10, 11).</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> <span><strong>Grafos Causa-Efecto:</strong> Relacionar efectos lógicos.</span></li>
+                    </ul>
+                    <div class="bg-slate-100 p-4 rounded-lg">
+                        <p class="text-xs font-mono text-slate-500 mb-1">Ejemplo: Login</p>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="bg-white px-2 py-1 border rounded">User: admin</span>
+                            <span class="bg-white px-2 py-1 border rounded">Pass: 1234</span>
+                            <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                            <span class="text-green-600 font-bold">Acceso Permitido</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caja Blanca -->
+                <div class="border border-blue-200 rounded-2xl p-8 hover:shadow-xl transition duration-300 relative overflow-hidden bg-blue-50/50">
+                    <div class="absolute top-0 right-0 bg-blue-600 text-white px-4 py-1 rounded-bl-lg text-sm font-bold">Estructural</div>
+                    <div class="flex items-center mb-6">
+                        <i class="fa-solid fa-microchip text-4xl text-blue-600 mr-4"></i>
+                        <h3 class="text-2xl font-bold text-blue-900">Caja Blanca (White Box)</h3>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Se basa en un examen minucioso de los detalles procedimentales. Se prueban los caminos lógicos (bucles, condiciones) del código fuente.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-2"></i> <span><strong>Prueba del Camino Básico:</strong> Asegurar que cada línea se ejecute al menos una vez.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-2"></i> <span><strong>Complejidad Ciclomática:</strong> Métrica de McCabe V(G) = E - N + 2.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-2"></i> <span><strong>Prueba de Condición:</strong> Ejercitar las variables lógicas (True/False).</span></li>
+                    </ul>
+                    
+                    <!-- Code Snippet -->
+                    <div class="code-block text-xs">
+<span class="text-purple-400">public</span> <span class="text-yellow-300">void</span> test(<span class="text-blue-300">int</span> x) {
+  <span class="text-purple-400">if</span> (x > 0) {       <span class="text-gray-500">// Nodo 1</span>
+     print(<span class="text-green-300">"Pos"</span>); <span class="text-gray-500">// Nodo 2</span>
+  } <span class="text-purple-400">else</span> {
+     print(<span class="text-green-300">"Neg"</span>); <span class="text-gray-500">// Nodo 3</span>
+  }
+}                  <span class="text-gray-500">// Nodo 4 (Salida)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulation: Cyclomatic Complexity -->
+    <section id="simulation" class="py-12 bg-slate-900 text-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h3 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fa-solid fa-calculator mr-3 text-green-400"></i>
+                Laboratorio: Cálculo de Complejidad Ciclomática
+            </h3>
+            <p class="text-slate-400 mb-6">La complejidad ciclomática V(G) define el número de caminos independientes en el conjunto básico de un programa. Una complejidad mayor a 10 suele indicar alto riesgo de defectos.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-slate-800 p-6 rounded-lg">
+                    <label class="block text-sm font-bold text-slate-300 mb-2">Número de Aristas (E - Flujos)</label>
+                    <input type="number" id="edges" class="w-full bg-slate-700 text-white border border-slate-600 rounded p-2 mb-4 focus:outline-none focus:border-green-400" placeholder="Ej: 10">
+                    
+                    <label class="block text-sm font-bold text-slate-300 mb-2">Número de Nodos (N - Sentencias)</label>
+                    <input type="number" id="nodes" class="w-full bg-slate-700 text-white border border-slate-600 rounded p-2 mb-4 focus:outline-none focus:border-green-400" placeholder="Ej: 8">
+                    
+                    <button onclick="calculateComplexity()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded transition">
+                        Calcular V(G) = E - N + 2
+                    </button>
+                </div>
+                
+                <div class="flex flex-col justify-center items-center bg-slate-800 rounded-lg p-6 relative">
+                    <div id="resultCircle" class="w-32 h-32 rounded-full border-4 border-slate-600 flex items-center justify-center text-4xl font-bold transition-all duration-500">
+                        --
+                    </div>
+                    <p id="resultText" class="mt-4 text-center text-slate-400">Introduce valores para calcular</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Section -->
+    <section id="metrics" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">Métricas de Prueba</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <div class="h-12 w-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-chart-pie text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Cobertura de Código</h3>
+                    <p class="text-sm text-slate-500 mb-4">Porcentaje de código fuente que ha sido ejecutado durante las pruebas.</p>
+                    <div class="w-full bg-slate-200 rounded-full h-2.5 mb-1">
+                        <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <span class="text-xs text-slate-400">Meta típica: >80%</span>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <div class="h-12 w-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-bug text-red-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Densidad de Defectos</h3>
+                    <p class="text-sm text-slate-500">Errores encontrados por KLOC (mil líneas de código). Indica la calidad del desarrollo.</p>
+                    <div class="mt-4 flex items-end gap-2">
+                        <span class="text-3xl font-bold text-slate-800">4.5</span>
+                        <span class="text-sm text-slate-400 mb-1">defectos / KLOC</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <div class="h-12 w-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-check-double text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Eficiencia de Remoción</h3>
+                    <p class="text-sm text-slate-500">Porcentaje de errores eliminados antes de la entrega al cliente.</p>
+                    <div class="mt-4">
+                        <div class="flex justify-between text-xs text-slate-600 mb-1">
+                            <span>Detección Interna</span>
+                            <span>Escapados al Cliente</span>
+                        </div>
+                        <div class="flex h-3 rounded-full overflow-hidden">
+                            <div class="bg-green-500 w-[95%]"></div>
+                            <div class="bg-red-400 w-[5%]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Test Plan Section -->
+    <section id="plan" class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold text-slate-900">El Plan de Prueba</h2>
+                <p class="text-slate-500">Estructura basada en el estándar IEEE 829</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Accordion Item 1 -->
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left bg-slate-50 hover:bg-slate-100 font-semibold flex justify-between items-center focus:outline-none" onclick="toggleAccordion('acc1')">
+                        1. Alcance y Objetivos
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform" id="icon-acc1"></i>
+                    </button>
+                    <div id="acc1" class="hidden px-6 py-4 text-slate-600 bg-white border-t border-slate-100">
+                        Define qué se va a probar y qué NO se va a probar. Establece los límites del proyecto de testing, incluyendo funcionalidades críticas, integraciones con terceros y requisitos de seguridad.
+                    </div>
+                </div>
+
+                <!-- Accordion Item 2 -->
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left bg-slate-50 hover:bg-slate-100 font-semibold flex justify-between items-center focus:outline-none" onclick="toggleAccordion('acc2')">
+                        2. Recursos y Entorno
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform" id="icon-acc2"></i>
+                    </button>
+                    <div id="acc2" class="hidden px-6 py-4 text-slate-600 bg-white border-t border-slate-100">
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li><strong>Hardware:</strong> Servidores, dispositivos móviles, PCs.</li>
+                            <li><strong>Software:</strong> Sistemas operativos, navegadores, herramientas de automatización (Selenium, JUnit).</li>
+                            <li><strong>Datos de prueba:</strong> Bases de datos de prueba, stubs, mocks.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 3 -->
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left bg-slate-50 hover:bg-slate-100 font-semibold flex justify-between items-center focus:outline-none" onclick="toggleAccordion('acc3')">
+                        3. Estrategia y Cronograma
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform" id="icon-acc3"></i>
+                    </button>
+                    <div id="acc3" class="hidden px-6 py-4 text-slate-600 bg-white border-t border-slate-100">
+                        Describe los tipos de pruebas a realizar (Unitarias, Integración, Estrés) y asigna tiempos estimados. Define los criterios de inicio (entry criteria) y finalización (exit criteria) de las pruebas.
+                    </div>
+                </div>
+
+                <!-- Accordion Item 4 -->
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left bg-slate-50 hover:bg-slate-100 font-semibold flex justify-between items-center focus:outline-none" onclick="toggleAccordion('acc4')">
+                        4. Entregables
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform" id="icon-acc4"></i>
+                    </button>
+                    <div id="acc4" class="hidden px-6 py-4 text-slate-600 bg-white border-t border-slate-100">
+                        Documentos que se generarán:
+                        <ul class="list-disc pl-5 mt-2">
+                            <li>Plan de Pruebas (este documento).</li>
+                            <li>Especificación de Casos de Prueba.</li>
+                            <li>Reportes de Incidentes (Bugs).</li>
+                            <li>Informe Resumen de Pruebas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h4 class="text-white font-bold text-lg mb-4">Referencias Bibliográficas</h4>
+            <div class="flex flex-wrap justify-center gap-4 text-sm mb-8">
+                <span class="bg-slate-800 px-3 py-1 rounded">Pressman, R. (5a Ed.) Ingeniería del Software</span>
+                <span class="bg-slate-800 px-3 py-1 rounded">Sommerville, I. (7a Ed.) Ingeniería del Software</span>
+                <span class="bg-slate-800 px-3 py-1 rounded">Juristo, N. & Moreno, A. Técnicas de Evaluación</span>
+            </div>
+            <p class="text-xs">&copy; 2024 Recurso Educativo para la asignatura de Telemática. Generado por Docente Experto en Software.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive Complexity Calculator Logic
+        function calculateComplexity() {
+            const E = parseInt(document.getElementById('edges').value);
+            const N = parseInt(document.getElementById('nodes').value);
+            const resultCircle = document.getElementById('resultCircle');
+            const resultText = document.getElementById('resultText');
+
+            if (isNaN(E) || isNaN(N)) {
+                resultText.textContent = "Por favor, ingresa números válidos.";
+                return;
+            }
+
+            // Formula de McCabe: V(G) = E - N + 2
+            const complexity = E - N + 2;
+            
+            resultCircle.textContent = complexity;
+
+            // Visual feedback based on complexity
+            resultCircle.className = "w-32 h-32 rounded-full border-4 flex items-center justify-center text-4xl font-bold transition-all duration-500 shadow-lg";
+            
+            if (complexity <= 10) {
+                resultCircle.classList.add('border-green-500', 'text-green-400', 'bg-green-900/20');
+                resultText.innerHTML = "<span class='text-green-400 font-bold'>Riesgo Bajo.</span> Código bien estructurado y fácil de probar.";
+            } else if (complexity <= 20) {
+                resultCircle.classList.add('border-yellow-500', 'text-yellow-400', 'bg-yellow-900/20');
+                resultText.innerHTML = "<span class='text-yellow-400 font-bold'>Riesgo Moderado.</span> Considerar refactorizar.";
+            } else {
+                resultCircle.classList.add('border-red-500', 'text-red-400', 'bg-red-900/20');
+                resultText.innerHTML = "<span class='text-red-400 font-bold'>Riesgo Alto.</span> Código complejo, difícil de mantener y propenso a errores.";
+            }
+        }
+
+        // Simple Accordion Logic
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>

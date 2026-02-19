@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosistema de Tecnologías Emergentes en Educación</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 glass border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-microchip text-blue-600 text-2xl"></i>
+                    <span class="font-bold text-xl tracking-tight text-blue-900">EduTech Emergente</span>
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-medium">
+                    <a href="#conceptos" class="hover:text-blue-600 transition">Conceptos</a>
+                    <a href="#docente" class="hover:text-blue-600 transition">Labor Docente</a>
+                    <a href="#herramientas" class="hover:text-blue-600 transition">Herramientas</a>
+                    <a href="#casos" class="hover:text-blue-600 transition">Casos</a>
+                    <a href="#etica" class="hover:text-blue-600 transition">Uso Ético</a>
+                    <a href="#pasos" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">Próximos Pasos</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="gradient-bg text-white py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6">Transformación Digital Educativa</h1>
+            <p class="text-xl opacity-90 leading-relaxed mb-8">
+                Guía integral para docentes en la era de la Inteligencia Artificial. Desde la teoría hasta la práctica pedagógica innovadora.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#conceptos" class="bg-white text-blue-900 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition shadow-lg">Empezar Lectura</a>
+                <a href="#herramientas" class="border-2 border-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-blue-900 transition">Directorio IA</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section: Conceptos -->
+    <section id="conceptos" class="py-16 max-w-7xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold text-blue-900 mb-6 border-l-4 border-blue-600 pl-4">Conceptos Fundamentales</h2>
+                <div class="space-y-4">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="font-bold text-lg text-blue-700 mb-2">IA Generativa vs Predictiva</h3>
+                        <p class="text-gray-600">Mientras la IA predictiva analiza datos para anticipar resultados, la <strong>IA Generativa</strong> (como ChatGPT) es capaz de crear contenido nuevo (texto, imagen, código) a partir de patrones aprendidos.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="font-bold text-lg text-blue-700 mb-2">LLM (Large Language Models)</h3>
+                        <p class="text-gray-600">Modelos entrenados con volúmenes masivos de datos para procesar y generar lenguaje natural de forma coherente y contextualizada.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="font-bold text-lg text-blue-700 mb-2">Educación 4.0</h3>
+                        <p class="text-gray-600">Un cambio de mentalidad donde la tecnología y la pedagogía se entrelazan para un aprendizaje híbrido, flexible y centrado en el estudiante.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 grid grid-cols-2 gap-4">
+                <div class="bg-blue-50 p-8 rounded-2xl text-center">
+                    <i class="fas fa-brain text-4xl text-blue-600 mb-4"></i>
+                    <p class="font-bold">Aprendizaje Personalizado</p>
+                </div>
+                <div class="bg-indigo-50 p-8 rounded-2xl text-center">
+                    <i class="fas fa-infinity text-4xl text-indigo-600 mb-4"></i>
+                    <p class="font-bold">Lifelong Learning</p>
+                </div>
+                <div class="bg-purple-50 p-8 rounded-2xl text-center">
+                    <i class="fas fa-users text-4xl text-purple-600 mb-4"></i>
+                    <p class="font-bold">Cultura Participativa</p>
+                </div>
+                <div class="bg-teal-50 p-8 rounded-2xl text-center">
+                    <i class="fas fa-project-diagram text-4xl text-teal-600 mb-4"></i>
+                    <p class="font-bold">Convergencia Tecnológica</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Labor Docente -->
+    <section id="docente" class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 text-center mb-12">
+            <h2 class="text-3xl font-bold text-blue-900 mb-4">El Rol del Docente en la Era de la IA</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg">De ser "transmisor de información" a ser "arquitecto de experiencias de aprendizaje" y curador crítico.</p>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <!-- Mentoría -->
+            <div class="bg-white p-8 rounded-2xl shadow-md card-hover">
+                <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-hands-helping text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Facilitador y Mentor</h3>
+                <p class="text-gray-600 mb-4">La IA libera al docente de tareas repetitivas, permitiéndole enfocarse en el apoyo individualizado y el desarrollo socioemocional.</p>
+                <ul class="text-sm text-gray-500 space-y-2">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Apoyo personalizado</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Fomento del pensamiento crítico</li>
+                </ul>
+            </div>
+
+            <!-- Ingeniería de Prompts -->
+            <div class="bg-white p-8 rounded-2xl shadow-md card-hover">
+                <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-terminal text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Prompt Engineering</h3>
+                <p class="text-gray-600 mb-4">Dominar el arte de preguntar. La estructura ganadora para docentes:</p>
+                <div class="bg-gray-50 p-3 rounded-lg text-xs font-mono border">
+                    [Contexto] + [Información Específica] + [Propósito] + [Formato]
+                </div>
+                <p class="mt-4 text-sm text-gray-500 italic">"Actúa como diseñador instruccional, crea una rúbrica para un proyecto de física sobre..."</p>
+            </div>
+
+            <!-- Gestión Institucional -->
+            <div class="bg-white p-8 rounded-2xl shadow-md card-hover">
+                <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-tasks text-purple-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Optimización Administrativa</h3>
+                <p class="text-gray-600 mb-4">Uso de la IA para planificar reuniones, redactar informes de desempeño y organizar cronogramas escolares eficientes.</p>
+                <ul class="text-sm text-gray-500 space-y-2">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Generación de resúmenes</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Organización de temarios</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Herramientas -->
+    <section id="herramientas" class="py-16 max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-blue-900 mb-10 text-center">Caja de Herramientas para el Docente 4.0</h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- LLMs -->
+            <div class="border border-gray-200 p-6 rounded-2xl hover:border-blue-400 transition">
+                <h4 class="font-bold text-blue-600 mb-4 underline decoration-2">Generación de Texto</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="font-semibold text-gray-700 w-24">ChatGPT:</span>
+                        <span class="text-sm text-gray-500">Versatilidad total y planificación.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-semibold text-gray-700 w-24">Gemini:</span>
+                        <span class="text-sm text-gray-500">Integración con ecosistema Google.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-semibold text-gray-700 w-24">Perplexity:</span>
+                        <span class="text-sm text-gray-500">Investigación con fuentes reales.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Multimedia -->
+            <div class="border border-gray-200 p-6 rounded-2xl hover:border-green-400 transition">
+                <h4 class="font-bold text-green-600 mb-4 underline decoration-2">Creatividad y Diseño</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="font-semibold text-gray-700 w-24">Canva IA:</span>
+                        <span class="text-sm text-gray-500">Diseño gráfico y presentaciones.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-semibold text-gray-700 w-24">Firefly:</span>
+                        <span class="text-sm text-gray-500">Generador de imágenes ético.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-semibold text-gray-700 w-24">SlidesAI:</span>
+                        <span class="text-sm text-gray-500">Crea diapositivas desde texto.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Académico -->
+            <div class="border border-gray-200 p-6 rounded-2xl hover:border-purple-400 transition">
+                <h4 class="font-bold text-purple-600 mb-4 underline decoration-2">Uso Académico Específico</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="font-semibold text-gray-700 w-24">Wolfram:</span>
+                        <span class="text-sm text-gray-500">Cálculos precisos y ciencias.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-semibold text-gray-700 w-24">NotebookLM:</span>
+                        <span class="text-sm text-gray-500">Análisis profundo de documentos.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-semibold text-gray-700 w-24">Quizgecko:</span>
+                        <span class="text-sm text-gray-500">Generación de cuestionarios.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Productividad -->
+            <div class="border border-gray-200 p-6 rounded-2xl hover:border-orange-400 transition">
+                <h4 class="font-bold text-orange-600 mb-4 underline decoration-2">Asistentes y Video</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="font-semibold text-gray-700 w-24">MagicSchool:</span>
+                        <span class="text-sm text-gray-500">Suite integral para maestros.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-semibold text-gray-700 w-24">Parlay Genie:</span>
+                        <span class="text-sm text-gray-500">Propicia debates en el aula.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-semibold text-gray-700 w-24">ChatPDF:</span>
+                        <span class="text-sm text-gray-500">Interacción directa con PDFs.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Casos de Éxito y ABP -->
+    <section id="casos" class="py-16 bg-blue-900 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center underline decoration-blue-400">Casos de Éxito e Innovación</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-blue-300 italic">Aprendizaje Basado en Proyectos (ABP) con IA</h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <span class="bg-blue-600 h-10 w-10 flex items-center justify-center rounded-full shrink-0">1</span>
+                            <div>
+                                <h4 class="font-bold">Ideación Colaborativa</h4>
+                                <p class="text-blue-100 text-sm">Uso de LLMs para lluvia de ideas y definición del problema central del proyecto.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="bg-blue-600 h-10 w-10 flex items-center justify-center rounded-full shrink-0">2</span>
+                            <div>
+                                <h4 class="font-bold">Prototipado Visual</h4>
+                                <p class="text-blue-100 text-sm">Generación de bocetos y artes con Adobe Firefly o DALL-E para visualizar soluciones.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="bg-blue-600 h-10 w-10 flex items-center justify-center rounded-full shrink-0">3</span>
+                            <div>
+                                <h4 class="font-bold">Evaluación Continua</h4>
+                                <p class="text-blue-100 text-sm">Retroalimentación instantánea de la IA durante las etapas de investigación del estudiante.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 p-8 rounded-2xl border border-white/20">
+                    <h3 class="text-xl font-bold mb-4">Caso PUCP: Curso Psicología</h3>
+                    <p class="text-blue-100 mb-4 text-sm leading-relaxed">
+                        En el curso de Desarrollo Humano, se utilizó <strong>Perplexity</strong> para definir conceptos de forma colaborativa. Los estudiantes entregaron no solo la respuesta, sino el <strong>prompt utilizado</strong>, fomentando la transparencia y el debate sobre la veracidad de la información.
+                    </p>
+                    <div class="border-t border-white/20 pt-4">
+                        <h4 class="font-bold mb-2">Resultados clave:</h4>
+                        <ul class="text-xs space-y-2 text-blue-100">
+                            <li><i class="fas fa-chart-line mr-2"></i>Mayor participación activa.</li>
+                            <li><i class="fas fa-check-double mr-2"></i>Desarrollo de habilidades de verificación de fuentes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Uso Ético -->
+    <section id="etica" class="py-16 max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-red-800 mb-4">Uso Ético y Responsable de la IA</h2>
+            <div class="h-1 w-24 bg-red-600 mx-auto"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-red-50 p-8 rounded-2xl border border-red-100">
+                <h3 class="text-xl font-bold text-red-900 mb-4 italic">El Árbol de Decisión Ética</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-center text-red-800">
+                        <i class="fas fa-exclamation-triangle mr-4"></i>
+                        <span><strong>Privacidad:</strong> Nunca ingresar datos personales de estudiantes o información sensible de la institución.</span>
+                    </li>
+                    <li class="flex items-center text-red-800">
+                        <i class="fas fa-user-shield mr-4"></i>
+                        <span><strong>Supervisión Humana:</strong> El "Human-in-the-loop" es esencial. No usar el contenido de la IA sin revisión crítica.</span>
+                    </li>
+                    <li class="flex items-center text-red-800">
+                        <i class="fas fa-balance-scale mr-4"></i>
+                        <span><strong>Sesgo Algorítmico:</strong> Ser conscientes de que la IA puede replicar prejuicios culturales o sociales.</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-gray-800 text-white p-8 rounded-2xl shadow-xl">
+                <h3 class="text-xl font-bold mb-6">Pautas para el Alumnado</h3>
+                <div class="space-y-4 text-sm">
+                    <div class="p-4 bg-gray-700 rounded-lg">
+                        <p class="font-bold text-yellow-400">Declaración de Uso</p>
+                        <p>Los estudiantes deben citar explícitamente qué partes de sus trabajos fueron asistidas por IA.</p>
+                    </div>
+                    <div class="p-4 bg-gray-700 rounded-lg">
+                        <p class="font-bold text-green-400">Veracidad</p>
+                        <p>Contrastar siempre los datos de la IA con al menos dos fuentes externas fiables.</p>
+                    </div>
+                    <div class="p-4 bg-gray-700 rounded-lg">
+                        <p class="font-bold text-blue-400">Originalidad</p>
+                        <p>La IA es un copiloto, no el piloto. La voz propia del estudiante debe predominar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Próximos Pasos -->
+    <section id="pasos" class="py-16 bg-blue-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-blue-900 mb-8 italic">Hoja de Ruta: Próximos Pasos para el Docente</h2>
+            <div class="grid gap-4">
+                <div class="bg-white p-6 rounded-xl flex items-center gap-6 shadow-sm border-l-4 border-blue-600">
+                    <span class="text-2xl font-bold text-blue-200">01</span>
+                    <p class="text-left font-medium">Capacitación continua en alfabetización en IA (AI Literacy).</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl flex items-center gap-6 shadow-sm border-l-4 border-blue-600">
+                    <span class="text-2xl font-bold text-blue-200">02</span>
+                    <p class="text-left font-medium">Revisión de los marcos de evaluación para hacerlos "resistentes a la IA" o integradores.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl flex items-center gap-6 shadow-sm border-l-4 border-blue-600">
+                    <span class="text-2xl font-bold text-blue-200">03</span>
+                    <p class="text-left font-medium">Colaboración con colegas para compartir prompts y experiencias exitosas.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl flex items-center gap-6 shadow-sm border-l-4 border-blue-600">
+                    <span class="text-2xl font-bold text-blue-200">04</span>
+                    <p class="text-left font-medium">Creación de un "Asistente Personal de IA" configurado para tus necesidades específicas.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12">
+                <p class="text-gray-500 mb-6">"El genio ha salido de la botella y está aquí para quedarse. Nuestra labor es enseñar a los estudiantes a volar con él sin perder su esencia humana."</p>
+                <button onclick="window.scrollTo(0,0)" class="text-blue-600 font-bold hover:underline">
+                    <i class="fas fa-arrow-up mr-2"></i>Volver al Inicio
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-10">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+            <p class="mb-2">&copy; 2026 Ecosistema de Transformación Digital Educativa.</p>
+            <p>Basado en los cuadernos de Tecnologías Emergentes para la Educación.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

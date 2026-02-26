@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuaderno de Casos de Estudio: Pruebas de Software</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .case-card { transition: all 0.3s ease; }
+        .case-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #2563eb;
+            color: white;
+            font-weight: bold;
+            font-size: 0.875rem;
+            margin-right: 0.75rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+    <div class="max-w-5xl mx-auto px-4 py-12">
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl font-extrabold text-slate-900 mb-4">
+                <i class="fa-solid fa-book-open text-blue-600 mr-3"></i>
+                Casos de Estudio Guiados
+            </h1>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                Aprende a probar software desde cero. Aquí resolveremos paso a paso 5 problemas comunes utilizando técnicas profesionales de Ingeniería de Software.
+            </p>
+        </header>
+
+        <div class="space-y-10">
+
+            <!-- CASO 1: Partición de Equivalencia -->
+            <article class="case-card bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-blue-600 text-white px-6 py-4 flex items-center justify-between">
+                    <h2 class="text-2xl font-bold">Caso 1: Caja Negra - Partición de Equivalencia</h2>
+                    <span class="bg-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Nivel: Básico</span>
+                </div>
+                <div class="p-6">
+                    <div class="mb-6 bg-slate-50 p-4 rounded-lg border-l-4 border-blue-400">
+                        <h3 class="font-bold text-slate-800 mb-2">El Escenario:</h3>
+                        <p class="text-slate-600">Se nos ha pedido probar el sistema de venta de entradas de un cine. El sistema pide la edad del cliente para aplicar un precio. Las reglas son: de 0 a 11 años es tarifa "Infantil", de 12 a 64 años es tarifa "Normal", y de 65 a 120 años es tarifa "Adulto Mayor".</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <span class="step-badge">1</span>
+                            <div>
+                                <h4 class="font-bold text-lg">Entender la técnica</h4>
+                                <p class="text-slate-600">No podemos probar todas las edades posibles (1, 2, 3... hasta 120). La <em>Partición de Equivalencia</em> agrupa los datos en "clases" donde asumimos que si un número funciona, los demás del mismo grupo también funcionarán.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="step-badge">2</span>
+                            <div>
+                                <h4 class="font-bold text-lg">Identificar las Clases (Válidas e Inválidas)</h4>
+                                <ul class="list-disc pl-5 mt-2 text-slate-600 space-y-1">
+                                    <li><strong>Inválida 1:</strong> Menores a 0 años (Ej: -5)</li>
+                                    <li><span class="text-green-600 font-bold">Válida 1 (Infantil):</span> 0 a 11 años</li>
+                                    <li><span class="text-green-600 font-bold">Válida 2 (Normal):</span> 12 a 64 años</li>
+                                    <li><span class="text-green-600 font-bold">Válida 3 (Adulto Mayor):</span> 65 a 120 años</li>
+                                    <li><strong>Inválida 2:</strong> Mayores a 120 años (Ej: 130)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="step-badge">3</span>
+                            <div class="w-full">
+                                <h4 class="font-bold text-lg">Diseñar los Casos de Prueba</h4>
+                                <p class="text-slate-600 mb-2">Elegimos <strong>solo un valor</strong> de cada grupo:</p>
+                                <table class="w-full text-sm text-left text-slate-500 border rounded-lg overflow-hidden">
+                                    <thead class="text-xs text-slate-700 bg-slate-100 uppercase">
+                                        <tr><th class="px-4 py-2">ID</th><th class="px-4 py-2">Edad a ingresar</th><th class="px-4 py-2">Resultado Esperado</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b"><td class="px-4 py-2 font-bold">CP01</td><td class="px-4 py-2">-2</td><td class="px-4 py-2 text-red-500">Error: Edad inválida</td></tr>
+                                        <tr class="border-b"><td class="px-4 py-2 font-bold">CP02</td><td class="px-4 py-2">5</td><td class="px-4 py-2 text-green-600">Tarifa Infantil</td></tr>
+                                        <tr class="border-b"><td class="px-4 py-2 font-bold">CP03</td><td class="px-4 py-2">30</td><td class="px-4 py-2 text-green-600">Tarifa Normal</td></tr>
+                                        <tr class="border-b"><td class="px-4 py-2 font-bold">CP04</td><td class="px-4 py-2">70</td><td class="px-4 py-2 text-green-600">Tarifa Adulto Mayor</td></tr>
+                                        <tr><td class="px-4 py-2 font-bold">CP05</td><td class="px-4 py-2">150</td><td class="px-4 py-2 text-red-500">Error: Edad inválida</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CASO 2: Valores Límite -->
+            <article class="case-card bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-indigo-600 text-white px-6 py-4 flex items-center justify-between">
+                    <h2 class="text-2xl font-bold">Caso 2: Caja Negra - Valores Límite</h2>
+                    <span class="bg-indigo-800 px-3 py-1 rounded-full text-sm font-semibold">Nivel: Básico</span>
+                </div>
+                <div class="p-6">
+                    <div class="mb-6 bg-slate-50 p-4 rounded-lg border-l-4 border-indigo-400">
+                        <h3 class="font-bold text-slate-800 mb-2">El Escenario:</h3>
+                        <p class="text-slate-600">Un formulario de registro web requiere que la contraseña del usuario tenga <strong>mínimo 8 caracteres y máximo 15 caracteres</strong>.</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <span class="step-badge" style="background-color: #4f46e5;">1</span>
+                            <div>
+                                <h4 class="font-bold text-lg">Entender la técnica</h4>
+                                <p class="text-slate-600">Los programadores suelen cometer errores en los bordes de los rangos (usando <code class="bg-slate-200 px-1 rounded">></code> en lugar de <code class="bg-slate-200 px-1 rounded">>=</code>). El <em>Análisis de Valores Límite</em> se enfoca exactamente en probar las "fronteras".</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="step-badge" style="background-color: #4f46e5;">2</span>
+                            <div>
+                                <h4 class="font-bold text-lg">Identificar las Fronteras</h4>
+                                <p class="text-slate-600">Las fronteras son 8 y 15. Debemos probar el valor límite, un valor justo por debajo y un valor justo por encima de cada frontera.</p>
+                                <ul class="list-disc pl-5 mt-2 text-slate-600">
+                                    <li>Límite inferior: probar con <strong>7, 8 y 9</strong>.</li>
+                                    <li>Límite superior: probar con <strong>14, 15 y 16</strong>.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="step-badge" style="background-color: #4f46e5;">3</span>
+                            <div class="w-full">
+                                <h4 class="font-bold text-lg">Diseñar los Casos de Prueba</h4>
+                                <table class="w-full text-sm text-left text-slate-500 border rounded-lg overflow-hidden mt-2">
+                                    <thead class="text-xs text-slate-700 bg-slate-100 uppercase">
+                                        <tr><th class="px-4 py-2">Longitud probada</th><th class="px-4 py-2">Ejemplo de entrada</th><th class="px-4 py-2">Resultado Esperado</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b"><td class="px-4 py-2">7 (Justo por debajo)</td><td class="px-4 py-2">1234567</td><td class="px-4 py-2 text-red-500">Rechazado (Muy corta)</td></tr>
+                                        <tr class="border-b"><td class="px-4 py-2 font-bold text-indigo-600">8 (Límite exacto)</td><td class="px-4 py-2">12345678</td><td class="px-4 py-2 text-green-600">Aceptado</td></tr>
+                                        <tr class="border-b"><td class="px-4 py-2">9 (Justo por encima)</td><td class="px-4 py-2">123456789</td><td class="px-4 py-2 text-green-600">Aceptado</td></tr>
+                                        <tr class="border-b"><td class="px-4 py-2 font-bold text-indigo-600">15 (Límite exacto)</td><td class="px-4 py-2">123456789012345</td><td class="px-4 py-2 text-green-600">Aceptado</td></tr>
+                                        <tr><td class="px-4 py-2">16 (Justo por encima)</td><td class="px-4 py-2">1234567890123456</td><td class="px-4 py-2 text-red-500">Rechazado (Muy larga)</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CASO 3: Camino Básico -->
+            <article class="case-card bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-emerald-600 text-white px-6 py-4 flex items-center justify-between">
+                    <h2 class="text-2xl font-bold">Caso 3: Caja Blanca - Cobertura de Sentencias</h2>
+                    <span class="bg-emerald-800 px-3 py-1 rounded-full text-sm font-semibold">Nivel: Intermedio</span>
+                </div>
+                <div class="p-6">
+                    <div class="mb-6 bg-slate-50 p-4 rounded-lg border-l-4 border-emerald-400">
+                        <h3 class="font-bold text-slate-800 mb-2">El Escenario:</h3>
+                        <p class="text-slate-600">Tenemos un pequeño fragmento de código que calcula el descuento de un cliente. Si la compra es mayor a $100, se le da 10% de descuento. Si además el cliente es "VIP", se le da un 5% extra.</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <span class="step-badge" style="background-color: #059669;">1</span>
+                            <div class="w-full">
+                                <h4 class="font-bold text-lg">Analizar el Código (Pseudocódigo)</h4>
+                                <pre class="bg-slate-800 text-green-300 p-4 rounded mt-2 text-sm font-mono">
+1. INICIO
+2. descuento = 0
+3. SI (compra > 100) ENTONCES
+4.    descuento = 10
+5.    SI (cliente == "VIP") ENTONCES
+6.       descuento = descuento + 5
+7.    FIN SI
+8. FIN SI
+9. total = compra - descuento
+10. FIN</pre>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="step-badge" style="background-color: #059669;">2</span>
+                            <div>
+                                <h4 class="font-bold text-lg">Entender la meta</h4>
+                                <p class="text-slate-600">En <em>Caja Blanca</em> miramos por dentro del código. El objetivo de la "Cobertura de Sentencias" es crear casos de prueba para que <strong>cada línea de código se ejecute al menos una vez</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="step-badge" style="background-color: #059669;">3</span>
+                            <div class="w-full">
+                                <h4 class="font-bold text-lg">Diseñar los Casos</h4>
+                                <p class="text-slate-600 mb-2">Para pasar por las líneas 4 y 6, necesitamos que la compra sea > 100 y el cliente sea VIP.</p>
+                                <ul class="list-disc pl-5 text-slate-600">
+                                    <li><strong>Caso 1:</strong> <code class="bg-slate-200 px-1">compra = 150, cliente = "VIP"</code>. <br><span class="text-sm text-emerald-600">¿Qué líneas ejecuta? Pasa por 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. ¡Hemos cubierto el 100% de las sentencias con un solo caso!</span></li>
+                                    <li><strong>Nota del tester:</strong> Aunque cubrimos las sentencias, un buen tester también añadiría un Caso 2 (compra = 50) para asegurar que el programa no falle cuando NO entra a los <code>SI</code>.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CASO 4: Complejidad Ciclomática -->
+            <article class="case-card bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-rose-600 text-white px-6 py-4 flex items-center justify-between">
+                    <h2 class="text-2xl font-bold">Caso 4: Métrica - Complejidad Ciclomática</h2>
+                    <span class="bg-rose-800 px-3 py-1 rounded-full text-sm font-semibold">Nivel: Intermedio</span>
+                </div>
+                <div class="p-6">
+                    <div class="mb-6 bg-slate-50 p-4 rounded-lg border-l-4 border-rose-400">
+                        <h3 class="font-bold text-slate-800 mb-2">El Escenario:</h3>
+                        <p class="text-slate-600">Queremos medir qué tan complejo es un módulo de inicio de sesión. Si el código es muy complejo, será difícil de mantener y probar. Usaremos la métrica de McCabe V(G).</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <span class="step-badge" style="background-color: #e11d48;">1</span>
+                            <div class="w-full">
+                                <h4 class="font-bold text-lg">Identificar las Decisiones en el Código</h4>
+                                <p class="text-slate-600 mb-2">La forma más sencilla de calcular la complejidad sin dibujar el grafo es contando las sentencias de decisión (if, while, for, case) y sumando 1.</p>
+                                <pre class="bg-slate-800 text-rose-200 p-4 rounded mt-2 text-sm font-mono">
+funcion login(usuario, password):
+   <span class="text-yellow-400">mientras</span> (intentos < 3) hacer:           // Decisión 1
+      <span class="text-yellow-400">si</span> (validar(usuario, password)) ent:  // Decisión 2
+         retornar "Acceso Concedido"
+      <span class="text-yellow-400">sino</span>:
+         intentos = intentos + 1
+   retornar "Cuenta Bloqueada"</pre>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="step-badge" style="background-color: #e11d48;">2</span>
+                            <div>
+                                <h4 class="font-bold text-lg">Calcular con la Fórmula Simplificada</h4>
+                                <p class="text-slate-600 text-lg mt-2">
+                                    <strong>V(G) = Número de Condiciones + 1</strong>
+                                </p>
+                                <p class="text-slate-600 mt-2">
+                                    En nuestro código tenemos: 1 <code>mientras</code> y 1 <code>si</code>.<br>
+                                    V(G) = 2 + 1 = <strong>3</strong>.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="step-badge" style="background-color: #e11d48;">3</span>
+                            <div>
+                                <h4 class="font-bold text-lg">Interpretar el Resultado</h4>
+                                <p class="text-slate-600 mt-1">Una complejidad ciclomática de <strong>3</strong> significa que existen 3 caminos lógicos independientes en este módulo. <br>¿Es bueno o malo? Según los estándares de la industria, un V(G) menor a 10 indica un código bien estructurado, simple y de <strong>bajo riesgo</strong>. Por tanto, nuestro módulo de login es de alta calidad.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CASO 5: Estrategias de Integración -->
+            <article class="case-card bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-teal-600 text-white px-6 py-4 flex items-center justify-between">
+                    <h2 class="text-2xl font-bold">Caso 5: Estrategias - Pruebas de Integración</h2>
+                    <span class="bg-teal-800 px-3 py-1 rounded-full text-sm font-semibold">Nivel: Avanzado</span>
+                </div>
+                <div class="p-6">
+                    <div class="mb-6 bg-slate-50 p-4 rounded-lg border-l-4 border-teal-400">
+                        <h3 class="font-bold text-slate-800 mb-2">El Escenario:</h3>
+                        <p class="text-slate-600">Estamos construyendo una App móvil. Tenemos tres piezas construidas por diferentes programadores: <br>1. La Interfaz (Pantalla). <br>2. La Lógica de Negocio (Calculadora de precios). <br>3. La Base de Datos (Guardar datos). <br>¿Cómo probamos que encajan bien entre sí?</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <span class="step-badge" style="background-color: #0d9488;">1</span>
+                            <div>
+                                <h4 class="font-bold text-lg">El Problema de la Integración</h4>
+                                <p class="text-slate-600">Si unimos todo de golpe y explota (falla), no sabremos quién tuvo la culpa (el famoso efecto "Big Bang"). Necesitamos integrar paso a paso.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="step-badge" style="background-color: #0d9488;">2</span>
+                            <div class="w-full">
+                                <h4 class="font-bold text-lg">Enfoque Top-Down (De Arriba hacia Abajo)</h4>
+                                <p class="text-slate-600">Probamos primero la <em>Interfaz</em>. Como la <em>Lógica</em> y la <em>Base de datos</em> aún no están listas, usamos simuladores tontos llamados <strong>Stubs</strong>.</p>
+                                <div class="bg-slate-100 p-3 mt-2 rounded border">
+                                    <strong>Ejemplo:</strong> La Interfaz envía una petición al "Stub Lógica". El Stub no calcula nada, solo responde inmediatamente: "El precio es $50". Así comprobamos que la Interfaz sabe recibir y mostrar respuestas.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="step-badge" style="background-color: #0d9488;">3</span>
+                            <div class="w-full">
+                                <h4 class="font-bold text-lg">Enfoque Bottom-Up (De Abajo hacia Arriba)</h4>
+                                <p class="text-slate-600">Probamos primero la <em>Base de Datos</em>. Como la Interfaz no está lista para enviarle órdenes, creamos pequeños programas de prueba llamados <strong>Drivers</strong>.</p>
+                                <div class="bg-slate-100 p-3 mt-2 rounded border">
+                                    <strong>Ejemplo:</strong> Un "Driver" es un script simple que le dice a la Base de Datos: "Guarda al usuario Juan". Luego verificamos si realmente se guardó. Si funciona, subimos de nivel y lo conectamos con la Lógica de Negocio.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+        
+        <footer class="mt-12 text-center text-slate-500 text-sm">
+            <p><i class="fa-solid fa-graduation-cap mr-1"></i> Diseñado como material complementario para la introducción a Pruebas de Software (Software Testing).</p>
+        </footer>
+    </div>
+
+</body>
+</html>

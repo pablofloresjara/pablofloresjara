@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase Magistral: Diseño de Objetos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .code-block {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col md:flex-row min-h-screen">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-full md:w-80 bg-white border-r border-slate-200 fixed md:sticky top-0 h-auto md:h-screen z-10 overflow-y-auto shadow-md md:shadow-none">
+        <div class="p-6">
+            <div class="flex items-center gap-3 mb-6">
+                <i class="fas fa-laptop-code text-brand-600 text-2xl"></i>
+                <h1 class="text-xl font-bold text-slate-900 leading-tight">Telemática <br><span class="text-sm font-normal text-slate-500">Diseño de Software</span></h1>
+            </div>
+            <nav class="space-y-1">
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-4">Contenido Principal</p>
+                <a href="#intro" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-brand-50 hover:text-brand-600 transition-colors">Introducción a la POO</a>
+                <a href="#clases" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-brand-50 hover:text-brand-600 transition-colors">Clases</a>
+                <a href="#objetos" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-brand-50 hover:text-brand-600 transition-colors">Objetos</a>
+                
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-6">Atributos y Métodos</p>
+                <div class="pl-3 space-y-1 border-l-2 border-slate-100 ml-2">
+                    <a href="#definicion" class="block px-3 py-1.5 rounded-md text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition-colors">Definición</a>
+                    <a href="#caracteristicas" class="block px-3 py-1.5 rounded-md text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition-colors">Características</a>
+                    <a href="#propiedades" class="block px-3 py-1.5 rounded-md text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition-colors">Propiedades</a>
+                    <a href="#ejemplos" class="block px-3 py-1.5 rounded-md text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition-colors">Ejemplos Prácticos en Java</a>
+                </div>
+            </nav>
+        </div>
+        <div class="p-6 border-t border-slate-100 mt-auto hidden md:block">
+            <div class="bg-brand-50 rounded-lg p-4">
+                <p class="text-xs text-brand-900 font-semibold mb-1"><i class="fas fa-info-circle mr-1"></i> Docente Experto</p>
+                <p class="text-xs text-brand-600">Material basado en bibliografía estándar: Deitel, Pressman, Sommerville.</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 md:p-12 lg:p-16 max-w-5xl mx-auto mt-[220px] md:mt-0">
+        
+        <header class="mb-12 border-b border-slate-200 pb-8">
+            <span class="bg-brand-100 text-brand-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Paradigma de Programación</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mt-4 mb-4">Administración de Procesos de Diseño de Objetos</h1>
+            <p class="text-lg text-slate-600 leading-relaxed">Bienvenido a esta sesión magistral. En este módulo exploraremos los cimientos de la Programación Orientada a Objetos (POO), el paradigma dominante en la ingeniería de software moderna, esencial para modelar sistemas telemáticos y aplicaciones robustas.</p>
+        </header>
+
+        <!-- Introducción -->
+        <section id="intro" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-brand-500 pl-4 mb-6">Introducción a la Programación Orientada a Objetos</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <h3 class="text-lg font-semibold text-brand-600 mb-3"><i class="fas fa-history mr-2"></i> Orígenes</h3>
+                    <p class="text-slate-600 mb-3 text-sm leading-relaxed">El paradigma no surgió de la noche a la mañana. Sus raíces se remontan a finales de los años 60 con <strong>Simula 67</strong>, diseñado por Dahl y Nygaard en Noruega para crear simulaciones de sistemas. Posteriormente, en los 70, Alan Kay y su equipo en Xerox PARC desarrollaron <strong>Smalltalk</strong>, consolidando los conceptos de "objeto" y "paso de mensajes".</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">El auge industrial llegó en los 80s y 90s con C++ y, definitivamente, con <strong>Java</strong>, transformando la POO en el estándar de la industria.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <h3 class="text-lg font-semibold text-brand-600 mb-3"><i class="fas fa-bullseye mr-2"></i> Objetivos Principales</h3>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <strong>Mantenibilidad:</strong> Facilitar la modificación del software sin afectar el sistema completo (aislamiento de fallos).</li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <strong>Reutilización:</strong> Escribir código una vez y usarlo en múltiples contextos a través de herencia y composición.</li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <strong>Abstracción:</strong> Modelar entidades complejas del mundo real enfocándose en sus características esenciales y ocultando detalles técnicos.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p class="text-slate-700 leading-relaxed bg-brand-50 p-4 border-l-4 border-brand-300 rounded-r-lg">
+                <strong>En resumen:</strong> La POO deja de ver a los programas como una simple secuencia de instrucciones y los concibe como una colección de objetos que interactúan entre sí.
+            </p>
+        </section>
+
+        <!-- Clases -->
+        <section id="clases" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-brand-500 pl-4 mb-6">Clases</h2>
+            
+            <p class="text-slate-700 leading-relaxed mb-4">
+                Una <strong>Clase</strong> es el pilar fundamental de la POO. Es una estructura o modelo lógico que define el estado y el comportamiento que tendrán todos los objetos de ese tipo. Es, conceptualmente, un <em>tipo de dato definido por el usuario</em>.
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-6 mb-6 items-center">
+                <div class="flex-1">
+                    <h4 class="font-semibold text-slate-800 mb-2">La Analogía del Plano Arquitectónico</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Piensa en una clase como el plano de una casa trazado por un arquitecto. El plano en sí no es una casa (no puedes vivir en él, ni tiene puertas físicas), pero define exactamente cómo será la casa: cuántas habitaciones tendrá, dónde van las ventanas y de qué color serán las paredes.
+                    </p>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        A partir de ese único plano (<strong>la clase</strong>), un constructor puede edificar múltiples casas reales (<strong>los objetos</strong>).
+                    </p>
+                </div>
+                <div class="w-full md:w-1/3 bg-slate-800 rounded-xl p-4 shadow-lg text-slate-300 code-block text-sm">
+                    <span class="text-purple-400">class</span> <span class="text-yellow-300">Vehiculo</span> {<br>
+                    &nbsp;&nbsp;<span class="text-slate-500">// Molde estructural</span><br>
+                    &nbsp;&nbsp;<span class="text-purple-400">String</span> marca;<br>
+                    &nbsp;&nbsp;<span class="text-purple-400">int</span> velocidadMax;<br>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Objetos -->
+        <section id="objetos" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-brand-500 pl-4 mb-6">Objetos</h2>
+            
+            <p class="text-slate-700 leading-relaxed mb-6">
+                Si la clase es el molde, el <strong>Objeto</strong> es la entidad física o lógica creada a partir de ese molde. Formalmente, a un objeto se le conoce como una <strong>instancia</strong> de una clase. Durante la ejecución del programa, los objetos ocupan espacio en la memoria y realizan el trabajo real del software.
+            </p>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden mb-6">
+                <div class="bg-slate-50 px-6 py-4 border-b border-slate-100">
+                    <h3 class="font-semibold text-slate-800">Todo Objeto posee tres componentes fundamentales (Grady Booch):</h3>
+                </div>
+                <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                    <div class="p-6 text-center">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl"><i class="fas fa-database"></i></div>
+                        <h4 class="font-bold text-slate-800 mb-2">Estado</h4>
+                        <p class="text-xs text-slate-500">Es la suma de todos los valores de las variables internas del objeto en un momento determinado. ¿Está encendido o apagado? ¿Cuál es su nombre?</p>
+                    </div>
+                    <div class="p-6 text-center">
+                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl"><i class="fas fa-cogs"></i></div>
+                        <h4 class="font-bold text-slate-800 mb-2">Comportamiento</h4>
+                        <p class="text-xs text-slate-500">Es cómo actúa y reacciona el objeto. Son las acciones que puede realizar y cómo su estado interno puede cambiar mediante dichas acciones.</p>
+                    </div>
+                    <div class="p-6 text-center">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl"><i class="fas fa-fingerprint"></i></div>
+                        <h4 class="font-bold text-slate-800 mb-2">Identidad</h4>
+                        <p class="text-xs text-slate-500">Es la propiedad que distingue a un objeto de todos los demás. Incluso si dos objetos tienen exactamente el mismo estado, siguen siendo dos entidades distintas en memoria.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Atributos y Métodos -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-8 border-b-2 border-slate-100 pb-4">Atributos y Métodos</h2>
+            
+            <!-- Definición -->
+            <div id="definicion" class="mb-10 scroll-mt-24">
+                <h3 class="text-xl font-bold text-brand-600 mb-4 flex items-center"><i class="fas fa-book-open text-brand-400 mr-3"></i> Definición</h3>
+                <div class="grid md:grid-cols-2 gap-6 pl-9">
+                    <div class="bg-slate-50 p-5 rounded-lg border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-slate-800 mb-2">Atributos (Datos)</h4>
+                        <p class="text-sm text-slate-600">También conocidos como variables de instancia o campos. Representan el <strong>Estado</strong> del objeto. Son los datos que caracterizan y definen de manera individual a un objeto determinado.</p>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-lg border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-slate-800 mb-2">Métodos (Acciones)</h4>
+                        <p class="text-sm text-slate-600">También conocidos como funciones miembro u operaciones. Representan el <strong>Comportamiento</strong> del objeto. Son los bloques de código que se ejecutan cuando un objeto recibe un "mensaje".</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Características -->
+            <div id="caracteristicas" class="mb-10 scroll-mt-24">
+                <h3 class="text-xl font-bold text-brand-600 mb-4 flex items-center"><i class="fas fa-list-ul text-brand-400 mr-3"></i> Características</h3>
+                <div class="pl-9">
+                    <p class="text-slate-700 mb-4">Los atributos y métodos poseen características técnicas específicas que definen cómo el compilador y otros objetos interactúan con ellos:</p>
+                    <div class="overflow-x-auto rounded-lg border border-slate-200">
+                        <table class="w-full text-sm text-left text-slate-600 border-collapse">
+                            <thead class="text-xs text-slate-700 uppercase bg-slate-100">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 border-b border-slate-200">Característica</th>
+                                    <th scope="col" class="px-6 py-3 border-b border-slate-200">En Atributos</th>
+                                    <th scope="col" class="px-6 py-3 border-b border-slate-200">En Métodos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b border-slate-200">
+                                    <td class="px-6 py-4 font-medium text-slate-900">Tipado</td>
+                                    <td class="px-6 py-4">Tienen un tipo de dato estricto (int, String, etc.) o tipo por referencia.</td>
+                                    <td class="px-6 py-4">Tienen un tipo de retorno (incluyendo <code>void</code> si no retornan nada).</td>
+                                </tr>
+                                <tr class="bg-slate-50 border-b border-slate-200">
+                                    <td class="px-6 py-4 font-medium text-slate-900">Visibilidad</td>
+                                    <td class="px-6 py-4">Suelen ser <code>private</code> para proteger el estado (Ocultación de datos).</td>
+                                    <td class="px-6 py-4">Suelen ser <code>public</code> para definir la interfaz de interacción del objeto.</td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <td class="px-6 py-4 font-medium text-slate-900">Firma</td>
+                                    <td class="px-6 py-4">Se identifican por su nombre dentro de la clase.</td>
+                                    <td class="px-6 py-4">Tienen una "Firma": su nombre + lista de parámetros (permite Sobrecarga).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Propiedades -->
+            <div id="propiedades" class="mb-10 scroll-mt-24">
+                <h3 class="text-xl font-bold text-brand-600 mb-4 flex items-center"><i class="fas fa-shield-alt text-brand-400 mr-3"></i> Propiedades (Encapsulamiento)</h3>
+                <div class="pl-9">
+                    <p class="text-slate-700 mb-4 leading-relaxed">En ingeniería de software orientada a objetos, rara vez se expone un atributo de forma directa (haciéndolo <code>public</code>). En su lugar, se utilizan <strong>Propiedades</strong>. Una propiedad es una combinación conceptual de un atributo encapsulado y métodos de acceso que lo controlan.</p>
+                    <ul class="list-disc list-inside text-slate-600 mb-4 space-y-2">
+                        <li><strong>Métodos Getters (Obtener):</strong> Permiten leer el valor de un atributo desde el exterior sin modificarlo.</li>
+                        <li><strong>Métodos Setters (Establecer):</strong> Permiten modificar el valor de un atributo, pero <em>pasando por filtros de validación</em>, asegurando la integridad del objeto.</li>
+                    </ul>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r text-sm text-yellow-800">
+                        <i class="fas fa-exclamation-triangle mr-2"></i><strong>Integridad:</strong> Si tuviéramos un atributo <code>edad</code> público, alguien podría asignarle <code>-5</code>. Al usar una Propiedad (un Setter), podemos incluir lógica que lance un error si la edad provista es menor que cero.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ejemplos -->
+            <div id="ejemplos" class="mb-10 scroll-mt-24">
+                <h3 class="text-xl font-bold text-brand-600 mb-6 flex items-center"><i class="fas fa-code text-brand-400 mr-3"></i> Ejemplos Prácticos en Java</h3>
+                <div class="pl-9 space-y-12">
+                    
+                    <!-- Ejemplo 1 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">Ejemplo 1: Cuenta Bancaria (Conceptos Básicos)</h4>
+                        <p class="text-sm text-slate-600 mb-4">Muestra la definición clásica de Atributos, Constructor, Métodos y el encapsulamiento de un saldo que no puede ser negativo.</p>
+                        
+                        <div class="bg-slate-900 rounded-lg overflow-hidden shadow-xl mb-4">
+                            <div class="bg-slate-800 px-4 py-2 flex justify-between items-center border-b border-slate-700">
+                                <span class="text-xs text-slate-400 font-mono"><i class="fab fa-java text-orange-400 mr-2"></i>CuentaBancaria.java</span>
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                            </div>
+                            <div class="p-4 overflow-x-auto code-block text-sm text-slate-300">
+<pre><code><span class="text-purple-400">public class</span> <span class="text-yellow-300">CuentaBancaria</span> {
+    <span class="text-slate-500">// Atributos encapsulados (privados)</span>
+    <span class="text-purple-400">private</span> <span class="text-purple-400">String</span> titular;
+    <span class="text-purple-400">private</span> <span class="text-purple-400">double</span> saldo; 
+
+    <span class="text-slate-500">// Constructor</span>
+    <span class="text-purple-400">public</span> <span class="text-blue-300">CuentaBancaria</span>(<span class="text-purple-400">String</span> titular) {
+        <span class="text-blue-400">this</span>.titular = titular;
+        <span class="text-blue-400">this</span>.saldo = <span class="text-orange-300">0.0</span>; <span class="text-slate-500">// Estado inicial</span>
+    }
+
+    <span class="text-slate-500">// Getter: Solo lectura</span>
+    <span class="text-purple-400">public</span> <span class="text-purple-400">double</span> <span class="text-blue-300">getSaldo</span>() {
+        <span class="text-purple-400">return</span> <span class="text-blue-400">this</span>.saldo;
+    }
+
+    <span class="text-slate-500">// Métodos de comportamiento</span>
+    <span class="text-purple-400">public</span> <span class="text-purple-400">void</span> <span class="text-blue-300">depositar</span>(<span class="text-purple-400">double</span> cantidad) {
+        <span class="text-purple-400">if</span> (cantidad > <span class="text-orange-300">0</span>) {
+            <span class="text-blue-400">this</span>.saldo += cantidad;
+            System.out.println(<span class="text-green-300">"Depósito exitoso."</span>);
+        }
+    }
+
+    <span class="text-purple-400">public</span> <span class="text-purple-400">boolean</span> <span class="text-blue-300">retirar</span>(<span class="text-purple-400">double</span> cantidad) {
+        <span class="text-slate-500">// Lógica de protección: No se puede retirar más de lo que hay</span>
+        <span class="text-purple-400">if</span> (cantidad > <span class="text-orange-300">0</span> && <span class="text-blue-400">this</span>.saldo >= cantidad) {
+            <span class="text-blue-400">this</span>.saldo -= cantidad;
+            <span class="text-purple-400">return true</span>;
+        }
+        <span class="text-purple-400">return false</span>; 
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 2 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">Ejemplo 2: Vehículos (Instancias Múltiples)</h4>
+                        <p class="text-sm text-slate-600 mb-4">Demuestra cómo a partir de una sola clase podemos crear múltiples objetos, cada uno con su propia "Identidad" y "Estado" en memoria.</p>
+                        
+                        <div class="bg-slate-900 rounded-lg overflow-hidden shadow-xl mb-4">
+                            <div class="bg-slate-800 px-4 py-2 flex justify-between items-center border-b border-slate-700">
+                                <span class="text-xs text-slate-400 font-mono"><i class="fab fa-java text-orange-400 mr-2"></i>Vehiculo.java</span>
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                            </div>
+                            <div class="p-4 overflow-x-auto code-block text-sm text-slate-300">
+<pre><code><span class="text-purple-400">public class</span> <span class="text-yellow-300">Vehiculo</span> {
+    <span class="text-purple-400">private</span> <span class="text-purple-400">String</span> marca;
+    <span class="text-purple-400">private</span> <span class="text-purple-400">int</span> velocidadActual;
+
+    <span class="text-purple-400">public</span> <span class="text-blue-300">Vehiculo</span>(<span class="text-purple-400">String</span> marca) {
+        <span class="text-blue-400">this</span>.marca = marca;
+        <span class="text-blue-400">this</span>.velocidadActual = <span class="text-orange-300">0</span>;
+    }
+
+    <span class="text-purple-400">public</span> <span class="text-purple-400">void</span> <span class="text-blue-300">acelerar</span>(<span class="text-purple-400">int</span> incremento) {
+        <span class="text-blue-400">this</span>.velocidadActual += incremento;
+    }
+
+    <span class="text-purple-400">public</span> <span class="text-purple-400">String</span> <span class="text-blue-300">getEstado</span>() {
+        <span class="text-purple-400">return</span> <span class="text-green-300">"El vehículo "</span> + <span class="text-blue-400">this</span>.marca + <span class="text-green-300">" va a "</span> + <span class="text-blue-400">this</span>.velocidadActual + <span class="text-green-300">" km/h"</span>;
+    }
+}
+
+<span class="text-slate-500">// --- Clase Ejecutable ---</span>
+<span class="text-purple-400">class</span> <span class="text-yellow-300">MainVehiculos</span> {
+    <span class="text-purple-400">public static void</span> <span class="text-blue-300">main</span>(String[] args) {
+        <span class="text-slate-500">// Creando dos instancias DISTINTAS de la misma clase</span>
+        Vehiculo coche1 = <span class="text-purple-400">new</span> Vehiculo(<span class="text-green-300">"Toyota"</span>);
+        Vehiculo coche2 = <span class="text-purple-400">new</span> Vehiculo(<span class="text-green-300">"Ford"</span>);
+
+        <span class="text-slate-500">// Modificando estados de manera independiente</span>
+        coche1.acelerar(<span class="text-orange-300">50</span>);
+        coche2.acelerar(<span class="text-orange-300">80</span>);
+
+        System.out.println(coche1.getEstado()); <span class="text-slate-500">// Imprime: ...Toyota va a 50 km/h</span>
+        System.out.println(coche2.getEstado()); <span class="text-slate-500">// Imprime: ...Ford va a 80 km/h</span>
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 3 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">Ejemplo 3: Estudiante (Setters y Validaciones)</h4>
+                        <p class="text-sm text-slate-600 mb-4">Enfocado en demostrar por qué usamos los métodos "Set" en lugar de hacer la variable pública. Observa cómo el sistema rechaza una calificación imposible.</p>
+                        
+                        <div class="bg-slate-900 rounded-lg overflow-hidden shadow-xl mb-4">
+                            <div class="bg-slate-800 px-4 py-2 flex justify-between items-center border-b border-slate-700">
+                                <span class="text-xs text-slate-400 font-mono"><i class="fab fa-java text-orange-400 mr-2"></i>Estudiante.java</span>
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                            </div>
+                            <div class="p-4 overflow-x-auto code-block text-sm text-slate-300">
+<pre><code><span class="text-purple-400">public class</span> <span class="text-yellow-300">Estudiante</span> {
+    <span class="text-purple-400">private</span> <span class="text-purple-400">String</span> nombre;
+    <span class="text-purple-400">private</span> <span class="text-purple-400">double</span> notaFinal;
+
+    <span class="text-purple-400">public</span> <span class="text-blue-300">Estudiante</span>(<span class="text-purple-400">String</span> nombre) {
+        <span class="text-blue-400">this</span>.nombre = nombre;
+        <span class="text-blue-400">this</span>.notaFinal = <span class="text-orange-300">0.0</span>;
+    }
+
+    <span class="text-slate-500">// Setter con validación de datos (Filtro)</span>
+    <span class="text-purple-400">public void</span> <span class="text-blue-300">setNotaFinal</span>(<span class="text-purple-400">double</span> nota) {
+        <span class="text-purple-400">if</span> (nota >= <span class="text-orange-300">0.0</span> && nota <= <span class="text-orange-300">10.0</span>) {
+            <span class="text-blue-400">this</span>.notaFinal = nota;
+            System.out.println(<span class="text-green-300">"Nota actualizada con éxito."</span>);
+        } <span class="text-purple-400">else</span> {
+            System.err.println(<span class="text-green-300">"Error: La nota debe estar entre 0.0 y 10.0"</span>);
+        }
+    }
+}
+
+<span class="text-slate-500">// --- Uso en el Main ---</span>
+<span class="text-slate-500">// Estudiante est = new Estudiante("Ana");</span>
+<span class="text-slate-500">// est.setNotaFinal(8.5);  // Válido, se asigna.</span>
+<span class="text-slate-500">// est.setNotaFinal(12.0); // Inválido, imprime el Error y el estado no cambia.</span>
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 4 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">Ejemplo 4: Libro (Comportamientos como Estados Lógicos)</h4>
+                        <p class="text-sm text-slate-600 mb-4">Muestra un objeto que cambia de un estado lógico a otro mediante métodos, representando un libro en una biblioteca que puede ser prestado y devuelto.</p>
+                        
+                        <div class="bg-slate-900 rounded-lg overflow-hidden shadow-xl mb-4">
+                            <div class="bg-slate-800 px-4 py-2 flex justify-between items-center border-b border-slate-700">
+                                <span class="text-xs text-slate-400 font-mono"><i class="fab fa-java text-orange-400 mr-2"></i>Libro.java</span>
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                            </div>
+                            <div class="p-4 overflow-x-auto code-block text-sm text-slate-300">
+<pre><code><span class="text-purple-400">public class</span> <span class="text-yellow-300">Libro</span> {
+    <span class="text-purple-400">private</span> <span class="text-purple-400">String</span> titulo;
+    <span class="text-purple-400">private</span> <span class="text-purple-400">boolean</span> estaPrestado; <span class="text-slate-500">// Atributo booleano de estado</span>
+
+    <span class="text-purple-400">public</span> <span class="text-blue-300">Libro</span>(<span class="text-purple-400">String</span> titulo) {
+        <span class="text-blue-400">this</span>.titulo = titulo;
+        <span class="text-blue-400">this</span>.estaPrestado = <span class="text-purple-400">false</span>; <span class="text-slate-500">// Por defecto está en la biblioteca</span>
+    }
+
+    <span class="text-slate-500">// Método que muta el estado a 'Prestado'</span>
+    <span class="text-purple-400">public void</span> <span class="text-blue-300">prestar</span>() {
+        <span class="text-purple-400">if</span> (!<span class="text-blue-400">this</span>.estaPrestado) {
+            <span class="text-blue-400">this</span>.estaPrestado = <span class="text-purple-400">true</span>;
+            System.out.println(<span class="text-green-300">"El libro '"</span> + <span class="text-blue-400">this</span>.titulo + <span class="text-green-300">"' ha sido prestado."</span>);
+        } <span class="text-purple-400">else</span> {
+            System.out.println(<span class="text-green-300">"Lo sentimos, el libro ya está prestado."</span>);
+        }
+    }
+
+    <span class="text-slate-500">// Método que muta el estado a 'Disponible'</span>
+    <span class="text-purple-400">public void</span> <span class="text-blue-300">devolver</span>() {
+        <span class="text-purple-400">if</span> (<span class="text-blue-400">this</span>.estaPrestado) {
+            <span class="text-blue-400">this</span>.estaPrestado = <span class="text-purple-400">false</span>;
+            System.out.println(<span class="text-green-300">"Gracias por devolver '"</span> + <span class="text-blue-400">this</span>.titulo + <span class="text-green-300">"'."</span>);
+        } <span class="text-purple-400">else</span> {
+            System.out.println(<span class="text-green-300">"Este libro ya estaba en la biblioteca."</span>);
+        }
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        // Simple scrollspy to highlight active sidebar link
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section, div[id]');
+            const navLinks = document.querySelectorAll('aside nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-brand-600', 'bg-brand-50', 'font-bold');
+                    if (link.getAttribute('href').includes(current) && current !== null) {
+                        link.classList.add('text-brand-600', 'bg-brand-50', 'font-bold');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

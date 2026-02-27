@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuaderno de Telemática: Programación en Java</title>
+    
+    <!-- Tailwind CSS para los estilos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- PrismJS para el resaltado de sintaxis de código -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        code, pre {
+            font-family: 'Fira Code', monospace !important;
+            font-size: 0.9em !important;
+        }
+        .sidebar-link.active {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            border-left: 4px solid #1d4ed8;
+            font-weight: 600;
+        }
+        /* Ajuste para el scroll fijo */
+        section {
+            scroll-margin-top: 5rem;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <!-- Navbar Superior -->
+    <nav class="bg-blue-900 text-white shadow-lg fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-3">
+                    <svg class="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24"><path d="M11.96 0c-.39 0-.74.21-.92.56L.28 21.44c-.2.39-.18.86.07 1.22.25.37.66.59 1.11.59h21.08c.45 0 .86-.22 1.11-.59.25-.37.27-.84.07-1.22L12.88.56c-.18-.35-.53-.56-.92-.56zM12 2l9.64 19H2.36L12 2zm.06 14.12A1.69 1.69 0 0010.4 17.8c0 .94.76 1.7 1.7 1.7.94 0 1.7-.76 1.7-1.7 0-.94-.76-1.7-1.7-1.7zM11.3 7v8h1.4V7h-1.4z"/></svg>
+                    <span class="font-bold text-xl tracking-wide">Cuaderno de Telemática</span>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#fundamentos" class="hover:text-blue-300 transition-colors">Fundamentos</a>
+                    <a href="#entorno" class="hover:text-blue-300 transition-colors">Entorno</a>
+                    <a href="#instrucciones" class="hover:text-blue-300 transition-colors">Instrucciones</a>
+                    <a href="#funciones" class="hover:text-blue-300 transition-colors">Funciones</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor Principal -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 flex">
+        
+        <!-- Sidebar Izquierdo (Navegación) -->
+        <aside class="hidden lg:block w-64 flex-shrink-0 relative">
+            <div class="sticky top-24 bg-white rounded-xl shadow-md p-4 border border-gray-100">
+                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Índice del Contenido</h3>
+                <nav class="space-y-1" id="toc">
+                    <a href="#introduccion" class="sidebar-link block px-3 py-2 text-sm text-gray-600 rounded-md hover:bg-gray-50 border-left-transparent transition-all">Introducción</a>
+                    <a href="#fundamentos" class="sidebar-link block px-3 py-2 text-sm text-gray-600 rounded-md hover:bg-gray-50 border-left-transparent transition-all">1. Fundamentos de Java</a>
+                    <a href="#entorno" class="sidebar-link block px-3 py-2 text-sm text-gray-600 rounded-md hover:bg-gray-50 border-left-transparent transition-all">2. Entorno de Programación</a>
+                    <a href="#instrucciones" class="sidebar-link block px-3 py-2 text-sm text-gray-600 rounded-md hover:bg-gray-50 border-left-transparent transition-all">3. Instrucciones y Control</a>
+                    <a href="#funciones" class="sidebar-link block px-3 py-2 text-sm text-gray-600 rounded-md hover:bg-gray-50 border-left-transparent transition-all">4. Funciones (Métodos)</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Contenido Central -->
+        <main class="flex-1 lg:ml-10 min-w-0">
+            
+            <!-- Cabecera del Curso -->
+            <header id="introduccion" class="mb-12 text-center lg:text-left">
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+                    Programación en <span class="text-blue-600">Java</span>
+                </h1>
+                <p class="text-xl text-slate-600 max-w-3xl">
+                    Bienvenido al módulo de desarrollo de software. Como docentes e ingenieros, exploraremos desde la arquitectura subyacente de la Máquina Virtual de Java hasta la construcción de algoritmos estructurados usando métodos y funciones.
+                </p>
+            </header>
+
+            <!-- SECCIÓN 1: FUNDAMENTOS -->
+            <section id="fundamentos" class="mb-16 bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="bg-blue-100 p-3 rounded-lg text-blue-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-800">1. Fundamentos de Java</h2>
+                </div>
+                
+                <div class="prose prose-blue max-w-none text-gray-600 space-y-6">
+                    <p>
+                        Creado por Sun Microsystems (ahora propiedad de Oracle) en 1995, Java es un lenguaje de programación de propósito general, tipado estáticamente y diseñado para tener la menor cantidad de dependencias de implementación posible.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold text-slate-800 border-b pb-2">Características Principales</h3>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Orientado a Objetos (POO):</strong> En Java, "todo es un objeto". Los programas se construyen modelando entidades del mundo real mediante clases y objetos, lo que facilita la reutilización y el mantenimiento del código (Encapsulamiento, Herencia, Polimorfismo).</li>
+                        <li><strong>Independencia de la Plataforma (WORA):</strong> <em>"Write Once, Run Anywhere"</em> (Escribe una vez, ejecuta donde sea). El código fuente de Java se compila a un código intermedio llamado <strong>Bytecode</strong>, el cual es interpretado por la Máquina Virtual de Java (JVM) de cualquier sistema operativo.</li>
+                        <li><strong>Robusto y Seguro:</strong> Gestión automática de memoria (Garbage Collector), manejo fuerte de tipos, y control estricto de excepciones. Java elimina los punteros explícitos (comunes en C/C++) reduciendo errores de acceso a memoria.</li>
+                        <li><strong>Multihilo (Multithreading):</strong> Capacidad nativa para ejecutar múltiples tareas simultáneamente, esencial en el desarrollo moderno y aplicaciones en red (Telemática).</li>
+                    </ul>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg mt-6">
+                        <p class="text-sm text-blue-800 font-medium">
+                            <strong>Nota del Docente:</strong> La filosofía central de Java radica en su Máquina Virtual (JVM). Mientras que C o C++ compilan directamente a código máquina dependiente del hardware, Java introduce una capa de abstracción. Esto es vital para sistemas telemáticos donde el software debe correr en múltiples arquitecturas heterogéneas.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: ENTORNO DE PROGRAMACIÓN -->
+            <section id="entorno" class="mb-16 bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="bg-indigo-100 p-3 rounded-lg text-indigo-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-800">2. Entorno de Programación Java</h2>
+                </div>
+
+                <div class="space-y-6 text-gray-600">
+                    <p>
+                        Para desarrollar aplicaciones, necesitamos configurar nuestro entorno. El ecosistema se divide en tres componentes arquitectónicos fundamentales:
+                    </p>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                            <h4 class="font-bold text-slate-800 mb-2">1. JDK (Java Development Kit)</h4>
+                            <p class="text-sm">Es el kit completo para el programador. Contiene el compilador (<code>javac</code>), depuradores, herramientas de empaquetado y documentación. <strong>Es lo que debes instalar para programar.</strong></p>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                            <h4 class="font-bold text-slate-800 mb-2">2. JRE (Java Runtime Environment)</h4>
+                            <p class="text-sm">El entorno de ejecución. Contiene las bibliotecas estándar de Java (APIs) y la JVM. Permite <em>ejecutar</em> programas Java, pero no compilarlos.</p>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                            <h4 class="font-bold text-slate-800 mb-2">3. JVM (Java Virtual Machine)</h4>
+                            <p class="text-sm">El "corazón" de Java. Es el motor virtual que toma el código compilado (Bytecode) y lo traduce a instrucciones binarias entendibles por el procesador local (Windows, Mac, Linux).</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-slate-800 border-b pb-2 mt-8">El Ciclo de Vida de un Programa</h3>
+                    
+                    <div class="bg-gray-800 rounded-lg p-6 text-gray-300 font-mono text-sm overflow-x-auto shadow-inner">
+                        1. Edición: Escribimos el código fuente en un archivo de texto.
+                        <span class="text-green-400">Archivo: HolaMundo.java</span>
+
+                        <br><br>
+                        2. Compilación: Usamos el compilador del JDK.
+                        <span class="text-yellow-400">$ javac HolaMundo.java</span>
+                        > (Esto genera un archivo <span class="text-green-400">HolaMundo.class</span> que contiene el Bytecode)
+
+                        <br><br>
+                        3. Ejecución: Invocamos a la JVM para correr el programa.
+                        <span class="text-yellow-400">$ java HolaMundo</span>
+                        > (Salida en pantalla)
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-slate-800 border-b pb-2 mt-8">Estructura Mínima de un Programa (Hola Mundo)</h3>
+                    <p>Todo programa en Java debe existir dentro de una <code>class</code>, y el punto de entrada principal es siempre el método <code>main</code>.</p>
+                    
+<pre><code class="language-java">/**
+ * Todo programa en Java es una clase.
+ * El nombre del archivo debe coincidir EXACTAMENTE con el de la clase pública.
+ */
+public class HolaMundo {
+    
+    // Método principal: punto de entrada de la ejecución
+    public static void main(String[] args) {
+        // Instrucción para imprimir por consola
+        System.out.println("¡Hola, mundo telemático!");
+    }
+}
+</code></pre>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: INSTRUCCIONES -->
+            <section id="instrucciones" class="mb-16 bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="bg-emerald-100 p-3 rounded-lg text-emerald-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-800">3. Instrucciones y Tipos de Datos</h2>
+                </div>
+
+                <div class="space-y-6 text-gray-600">
+                    <p>
+                        Java es un lenguaje fuertemente tipado; cada variable debe ser declarada con un tipo de dato antes de ser utilizada.
+                    </p>
+
+                    <h3 class="text-xl font-semibold text-slate-800 border-b pb-2">Tipos de Datos Primitivos</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                        <div class="bg-gray-50 p-3 rounded border text-center">
+                            <span class="block font-bold text-blue-600 font-mono">int</span>
+                            Enteros (32 bits)
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded border text-center">
+                            <span class="block font-bold text-blue-600 font-mono">double</span>
+                            Decimales (64 bits)
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded border text-center">
+                            <span class="block font-bold text-blue-600 font-mono">boolean</span>
+                            true / false
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded border text-center">
+                            <span class="block font-bold text-blue-600 font-mono">char</span>
+                            Carácter (16 bits)
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-slate-800 border-b pb-2 mt-8">Declaración y Operadores</h3>
+<pre><code class="language-java">// Declaración y asignación
+int edad = 25;
+double temperatura = 36.5;
+boolean estaEncendido = true;
+char calificacion = 'A'; // Comillas simples para char
+
+// Operadores Aritméticos: +, -, *, /, % (módulo)
+int suma = 10 + 5; 
+
+// Operadores Lógicos: && (AND), || (OR), ! (NOT)
+boolean esValido = (edad > 18) && estaEncendido;
+</code></pre>
+
+                    <h3 class="text-xl font-semibold text-slate-800 border-b pb-2 mt-8">Estructuras de Control de Flujo</h3>
+                    <p>Las estructuras de control determinan la ruta de ejecución del programa basándose en condiciones y lógicas repetitivas.</p>
+
+                    <h4 class="font-bold text-slate-700 mt-4">1. Condicionales (if / else / switch)</h4>
+<pre><code class="language-java">int velocidad = 85;
+
+// Condicional IF-ELSE
+if (velocidad > 100) {
+    System.out.println("Multa por exceso de velocidad.");
+} else if (velocidad < 40) {
+    System.out.println("Velocidad peligrosamente baja.");
+} else {
+    System.out.println("Velocidad normal.");
+}
+
+// Estructura SWITCH (Ideal para menús o estados)
+int diaSemana = 3;
+switch (diaSemana) {
+    case 1:
+        System.out.println("Lunes");
+        break;
+    case 2:
+        System.out.println("Martes");
+        break;
+    case 3:
+        System.out.println("Miércoles");
+        break;
+    default:
+        System.out.println("Otro día");
+}
+</code></pre>
+
+                    <h4 class="font-bold text-slate-700 mt-4">2. Bucles / Ciclos (for / while / do-while)</h4>
+<pre><code class="language-java">// Bucle FOR: Se usa cuando se conoce la cantidad de iteraciones.
+// (Inicialización ; Condición ; Incremento)
+for (int i = 0; i < 5; i++) {
+    System.out.println("Iteración número: " + i);
+}
+
+// Bucle WHILE: Se usa cuando NO se conoce el número exacto, depende de una condición.
+int contador = 10;
+while (contador > 0) {
+    System.out.println("Cuenta regresiva: " + contador);
+    contador--; // Decremento
+}
+
+// Bucle DO-WHILE: Garantiza que el código se ejecute AL MENOS UNA VEZ.
+int clave;
+do {
+    // Supongamos un método que lee del teclado
+    clave = leerTeclado(); 
+} while (clave != 1234);
+</code></pre>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 4: FUNCIONES -->
+            <section id="funciones" class="mb-16 bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="bg-purple-100 p-3 rounded-lg text-purple-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-800">4. Funciones (Métodos en Java)</h2>
+                </div>
+
+                <div class="space-y-6 text-gray-600">
+                    <p>
+                        En la Programación Orientada a Objetos, a las "funciones" se les conoce como <strong>Métodos</strong>, ya que pertenecen a una Clase. Son bloques de código reutilizables que realizan una tarea específica.
+                    </p>
+
+                    <div class="bg-white border-l-4 border-purple-500 p-6 shadow-sm mb-6 rounded">
+                        <h4 class="font-bold text-slate-800 mb-2">Anatomía de un Método en Java:</h4>
+                        <code class="text-sm bg-gray-100 px-2 py-1 rounded">[Modificador] [Tipo de Retorno] [Nombre]([Parámetros]) { ... }</code>
+                        <ul class="list-disc pl-5 mt-3 space-y-1 text-sm">
+                            <li><strong>Modificador:</strong> <code>public</code>, <code>private</code>, <code>static</code> (determina quién puede invocarlo y cómo).</li>
+                            <li><strong>Tipo de Retorno:</strong> Qué devuelve la función. Puede ser <code>int</code>, <code>String</code>, etc., o <code>void</code> si no devuelve nada.</li>
+                            <li><strong>Nombre:</strong> Identificador (usar notación <em>camelCase</em>, ej: <code>calcularSuma</code>).</li>
+                            <li><strong>Parámetros:</strong> Variables que recibe para procesar (pueden ser vacíos).</li>
+                        </ul>
+                    </div>
+
+<pre><code class="language-java">public class Calculadora {
+
+    // 1. Método que no recibe parámetros y no retorna valor (void)
+    public void saludar() {
+        System.out.println("Bienvenido a la Calculadora");
+    }
+
+    // 2. Método que recibe parámetros y retorna un entero
+    public int sumar(int a, int b) {
+        int resultado = a + b;
+        return resultado; // La palabra reservada 'return' devuelve el valor
+    }
+
+    // 3. Método estático (static)
+    // Puede ser llamado sin instanciar un objeto de la clase Calculadora
+    public static double calcularAreaCirculo(double radio) {
+        return Math.PI * (radio * radio);
+    }
+
+    public static void main(String[] args) {
+        // Uso de métodos estáticos (Directo desde la clase)
+        double area = Calculadora.calcularAreaCirculo(5.0);
+        
+        // Uso de métodos de instancia (Requiere crear un objeto primero)
+        Calculadora miCalc = new Calculadora();
+        miCalc.saludar();
+        
+        int total = miCalc.sumar(10, 25);
+        System.out.println("La suma es: " + total);
+    }
+}
+</code></pre>
+
+                    <h3 class="text-xl font-semibold text-slate-800 border-b pb-2 mt-8">Sobrecarga de Métodos (Overloading)</h3>
+                    <p>Java permite tener múltiples métodos con el <strong>mismo nombre</strong> dentro de la misma clase, siempre y cuando sus parámetros (cantidad o tipo) sean diferentes. Esto aporta gran flexibilidad.</p>
+<pre><code class="language-java">public class Impresora {
+    // Método original
+    public void imprimir(int numero) {
+        System.out.println("Imprimiendo número: " + numero);
+    }
+
+    // Método sobrecargado (diferente tipo de dato)
+    public void imprimir(String texto) {
+        System.out.println("Imprimiendo texto: " + texto);
+    }
+
+    // Método sobrecargado (diferente cantidad de parámetros)
+    public void imprimir(String texto, int copias) {
+        for(int i=0; i < copias; i++) {
+            System.out.println("Copia " + (i+1) + ": " + texto);
+        }
+    }
+}
+</code></pre>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg mt-6">
+                        <p class="text-sm text-blue-800 font-medium">
+                            <strong>Nota del Docente:</strong> Cuando pases datos a un método en Java (Paso de Parámetros), recuerda que en Java los tipos primitivos (int, double, char) se pasan por <strong>valor</strong> (se envía una copia). Los objetos y arreglos también se pasan por valor, pero ese valor es la <strong>referencia en memoria</strong>, por lo que modificar un arreglo dentro de un método alterará el arreglo original.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center">
+        <p class="mb-2">Documento generado para el módulo de Telemática e Ingeniería de Software.</p>
+        <p class="text-sm">© 2026 - Material Educativo Abierto</p>
+    </footer>
+
+    <!-- Script para actualizar la navegación activa (Scroll Spy) y PrismJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section, header');
+            const navLinks = document.querySelectorAll('.sidebar-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

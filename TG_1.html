@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Grado I - Epistemología</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a', // blue-900
+                        secondary: '#3b82f6', // blue-500
+                        accent: '#f59e0b', // amber-500
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .prose-custom p { margin-bottom: 1rem; line-height: 1.7; color: #374151; }
+        .prose-custom h3 { color: #1e3a8a; font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; border-bottom: 2px solid #e5e7eb; padding-bottom: 0.5rem;}
+        .prose-custom h4 { color: #2563eb; font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose-custom ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #374151; }
+        .prose-custom li { margin-bottom: 0.5rem; }
+        
+        /* Hide scrollbar for sidebar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            max-height: 500px; /* Arbitrary large number */
+            padding-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="bg-primary text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-university text-2xl"></i>
+                    <span class="font-bold text-xl tracking-wider">TALLER DE GRADO I</span>
+                </div>
+                <div class="hidden md:block">
+                    <span class="text-sm bg-blue-800 px-3 py-1 rounded-full"><i class="fas fa-chalkboard-teacher mr-2"></i>Docente Metodólogo</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full lg:w-1/4 lg:sticky lg:top-24 lg:h-[calc(100vh-8rem)] overflow-y-auto no-scrollbar hidden lg:block">
+            <div class="bg-white rounded-xl shadow-sm p-5 border border-slate-100">
+                <h2 class="font-bold text-lg mb-4 text-primary">Contenido de la Clase</h2>
+                <ul class="space-y-2 text-sm text-slate-600 font-medium" id="nav-menu">
+                    <li><a href="#intro" class="nav-link block p-2 rounded hover:bg-blue-50 hover:text-secondary transition-colors transition-colors"><i class="fas fa-book-open w-5"></i> 1. Epistemología</a></li>
+                    <li><a href="#razonamiento" class="nav-link block p-2 rounded hover:bg-blue-50 hover:text-secondary transition-colors"><i class="fas fa-brain w-5"></i> 1.1. Razonamiento Lógico</a></li>
+                    <li><a href="#principios-ded-ind" class="nav-link block p-2 rounded hover:bg-blue-50 hover:text-secondary transition-colors"><i class="fas fa-exchange-alt w-5"></i> 1.2. Deducción e Inducción</a></li>
+                    <li><a href="#demostracion" class="nav-link block p-2 rounded hover:bg-blue-50 hover:text-secondary transition-colors"><i class="fas fa-search w-5"></i> 1.3. Análisis y Síntesis</a></li>
+                    <li><a href="#definicion" class="nav-link block p-2 rounded hover:bg-blue-50 hover:text-secondary transition-colors"><i class="fas fa-quote-right w-5"></i> 1.4. Definición Científica</a></li>
+                    <li><a href="#clasificacion" class="nav-link block p-2 rounded hover:bg-blue-50 hover:text-secondary transition-colors"><i class="fas fa-sitemap w-5"></i> 1.5. Clasificación Conceptual</a></li>
+                    <ul class="pl-6 space-y-2 mt-2 border-l-2 border-slate-100 ml-2">
+                        <li><a href="#div-int" class="nav-link block p-2 rounded hover:bg-blue-50 hover:text-secondary transition-colors">1.5.1. División e Integración</a></li>
+                        <li><a href="#consistencia" class="nav-link block p-2 rounded hover:bg-blue-50 hover:text-secondary transition-colors">1.5.2. Consistencia Lógica</a></li>
+                        <li><a href="#falacias" class="nav-link block p-2 rounded hover:bg-blue-50 hover:text-secondary transition-colors">1.5.3. Falacias</a></li>
+                    </ul>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="w-full lg:w-3/4 prose-custom pb-24">
+            
+            <!-- Header Section -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-bl-full -z-10 opacity-50"></div>
+                <h1 class="text-4xl font-extrabold text-primary tracking-tight mb-4">1. EPISTEMOLOGÍA (TEORÍA DEL CONOCIMIENTO)</h1>
+                <p class="text-xl text-slate-600 mb-6">Fundamentos filosóficos y lógicos para la construcción del Proyecto de Grado.</p>
+                
+                <div class="bg-blue-50 border-l-4 border-secondary p-4 rounded-r-lg">
+                    <h4 class="flex items-center text-secondary font-bold m-0 text-lg"><i class="fas fa-lightbulb mr-2"></i> Mensaje del Docente</h4>
+                    <p class="m-0 mt-2 text-sm text-slate-700">Bienvenidos a Taller de Grado I. Antes de recolectar datos o aplicar encuestas, debemos entender <strong>cómo se construye el conocimiento científico</strong>. La epistemología no es filosofía abstracta; es la columna vertebral de tu marco teórico y metodológico. Si los cimientos lógicos de tu tesis son débiles, todo el edificio se derrumbará durante la defensa. Comencemos.</p>
+                </div>
+            </div>
+
+            <!-- 1.1 -->
+            <section id="razonamiento" class="scroll-mt-24 bg-white rounded-xl shadow-sm p-8 mb-8">
+                <h3 id="intro"><span class="text-secondary mr-2">1.1.</span> Razonamiento lógico</h3>
+                <p>El <strong>razonamiento lógico</strong> es el proceso mental mediante el cual estructuramos ideas para llegar a una conclusión válida a partir de premisas conocidas. En investigación, no basta con tener "intuiciones" o "creencias"; debemos articular nuestros argumentos de manera que cualquier otro investigador pueda seguir nuestro hilo conductor y llegar a la misma conclusión empírica o teórica.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div class="border border-slate-200 rounded-lg p-5 hover:shadow-md transition">
+                        <h4 class="text-primary mt-0"><i class="fas fa-cube mr-2 text-slate-400"></i>Estructura Básica</h4>
+                        <p class="text-sm">Todo razonamiento en tu tesis consta de <strong>Premisas</strong> (los antecedentes, teorías, o datos iniciales) y una <strong>Conclusión</strong> (tu hipótesis, diagnóstico o propuesta).</p>
+                    </div>
+                    <div class="border border-slate-200 rounded-lg p-5 hover:shadow-md transition">
+                        <h4 class="text-primary mt-0"><i class="fas fa-shield-alt mr-2 text-slate-400"></i>Validez vs. Verdad</h4>
+                        <p class="text-sm">Un argumento puede ser lógico (válido en su estructura) pero falso en la realidad si las premisas iniciales son falsas. En tu marco teórico debes garantizar ambas: <strong>estructura válida y datos verídicos</strong>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1.2 -->
+            <section id="principios-ded-ind" class="scroll-mt-24 bg-white rounded-xl shadow-sm p-8 mb-8">
+                <h3><span class="text-secondary mr-2">1.2.</span> Principios lógicos deductivos e inductivos</h3>
+                <p>Para construir el conocimiento científico en tu proyecto, utilizarás dos vías principales para razonar. La elección entre una u otra dependerá a menudo de si tu enfoque es Cuantitativo (tiende a lo deductivo) o Cualitativo (tiende a lo inductivo).</p>
+
+                <div class="flex flex-col md:flex-row gap-6 mt-6">
+                    <!-- Deductivo -->
+                    <div class="flex-1 bg-gradient-to-br from-blue-50 to-white border border-blue-100 rounded-xl p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">De lo General a lo Particular</div>
+                        <h4 class="text-blue-800 mt-2"><i class="fas fa-arrow-down mr-2"></i>Método Deductivo</h4>
+                        <p class="text-sm text-slate-700">Parte de una ley, teoría o principio general y lo aplica a un caso específico. Es el método por excelencia para comprobar hipótesis.</p>
+                        <ul class="text-sm mt-3">
+                            <li><strong>Premisa Mayor:</strong> Todas las empresas con mala comunicación interna tienen alta rotación de personal. (Teoría)</li>
+                            <li><strong>Premisa Menor:</strong> La empresa "XYZ" tiene mala comunicación interna. (Caso)</li>
+                            <li><strong>Conclusión:</strong> La empresa "XYZ" sufrirá de alta rotación. (Hipótesis a probar)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Inductivo -->
+                    <div class="flex-1 bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 rounded-xl p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">De lo Particular a lo General</div>
+                        <h4 class="text-emerald-800 mt-2"><i class="fas fa-arrow-up mr-2"></i>Método Inductivo</h4>
+                        <p class="text-sm text-slate-700">Observa casos específicos y repetitivos para generar a partir de ellos una generalización, patrón o nueva teoría.</p>
+                        <ul class="text-sm mt-3">
+                            <li><strong>Observación 1:</strong> El estudiante A mejoró sus notas usando IA.</li>
+                            <li><strong>Observación 2:</strong> El estudiante B mejoró sus notas usando IA.</li>
+                            <li><strong>Conclusión:</strong> El uso de IA (probablemente) mejora el rendimiento académico en esta población.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1.3 -->
+            <section id="demostracion" class="scroll-mt-24 bg-white rounded-xl shadow-sm p-8 mb-8">
+                <h3><span class="text-secondary mr-2">1.3.</span> Principios lógicos de demostración: Análisis y Síntesis</h3>
+                <p>En investigación, la demostración es el proceso mediante el cual pruebas que tu hipótesis es cierta o que tu propuesta es válida. Para lograrlo, los investigadores empleamos dos procesos mentales y operativos complementarios: <strong>el análisis y la síntesis</strong>.</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+                    <div>
+                        <div class="flex items-center mb-3">
+                            <div class="bg-red-100 text-red-600 p-3 rounded-full mr-4"><i class="fas fa-cut text-xl"></i></div>
+                            <h4 class="m-0 text-red-700">El Análisis (Desarmar)</h4>
+                        </div>
+                        <p class="text-sm">Es el proceso de dividir o desglosar un todo complejo en sus partes componentes para estudiar cada una de ellas por separado, comprender sus principios, naturaleza y la relación que guardan entre sí.</p>
+                        <p class="text-sm bg-slate-50 p-3 rounded border border-slate-200 mt-2"><strong>Ejemplo en Tesis:</strong> Cuando tomas tu "Variable Dependiente" (ej. Clima Organizacional) y la divides en "Dimensiones" (Liderazgo, Motivación, Comunicación) para poder medirlas en una encuesta.</p>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center mb-3">
+                            <div class="bg-indigo-100 text-indigo-600 p-3 rounded-full mr-4"><i class="fas fa-puzzle-piece text-xl"></i></div>
+                            <h4 class="m-0 text-indigo-700">La Síntesis (Armar)</h4>
+                        </div>
+                        <p class="text-sm">Es la recomposición de un todo a partir de sus elementos previamente analizados. Consiste en reunir elementos dispersos para formar una nueva totalidad comprensiva, estableciendo las conexiones que los unen.</p>
+                        <p class="text-sm bg-slate-50 p-3 rounded border border-slate-200 mt-2"><strong>Ejemplo en Tesis:</strong> Cuando terminas de procesar todas las preguntas de tu encuesta (datos aislados) y redactas el capítulo de "Conclusiones" o formulas tu "Propuesta de Solución" integrando todo lo hallado.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1.4 -->
+            <section id="definicion" class="scroll-mt-24 bg-white rounded-xl shadow-sm p-8 mb-8">
+                <h3><span class="text-secondary mr-2">1.4.</span> Definición como elemento del conocimiento</h3>
+                <p>Uno de los errores más comunes en los TFM (Trabajos de Fin de Máster/Grado) es la ambigüedad lingüística. <strong>Definir</strong> (del latín <em>definire</em>: poner límites) es fijar con claridad, exactitud y precisión el significado de una palabra o la naturaleza de una cosa.</p>
+                <p>En la investigación científica, no puedes dar por sentado que el lector entiende lo mismo que tú por un concepto. Existen dos tipos críticos de definiciones que debes aplicar en tu tesis:</p>
+
+                <div class="bg-slate-800 text-white rounded-xl p-6 mt-6 shadow-inner">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-accent mt-0 border-b border-slate-600 pb-2">1. Definición Conceptual</h4>
+                            <p class="text-sm text-slate-300">Es la definición teórica, la que encuentras en diccionarios especializados o libros de autores reconocidos. Explica el "qué es" el fenómeno.</p>
+                            <p class="text-sm italic text-slate-400 mt-2">"El estrés laboral es un desequilibrio percibido entre las demandas profesionales y la capacidad de respuesta del individuo (OMS)."</p>
+                        </div>
+                        <div>
+                            <h4 class="text-accent mt-0 border-b border-slate-600 pb-2">2. Definición Operacional</h4>
+                            <p class="text-sm text-slate-300">Es la definición práctica para tu estudio. Indica <strong>cómo vas a medir</strong> ese concepto en la realidad empírica de tu investigación.</p>
+                            <p class="text-sm italic text-slate-400 mt-2">"El estrés laboral se medirá según el puntaje obtenido por los trabajadores en el Cuestionario de Maslach (Burnout Inventory)."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1.5 y subtemas -->
+            <section id="clasificacion" class="scroll-mt-24 bg-white rounded-xl shadow-sm p-8 mb-8">
+                <h3><span class="text-secondary mr-2">1.5.</span> Clasificación conceptual</h3>
+                <p>Una vez definidos los conceptos, la mente humana y la ciencia necesitan ordenarlos. La clasificación conceptual es la operación lógica que consiste en agrupar los objetos o conceptos según sus semejanzas y diferencias, basándose en un criterio determinado.</p>
+
+                <!-- 1.5.1 -->
+                <div id="div-int" class="scroll-mt-24 mt-8">
+                    <h4>1.5.1. División e Integración</h4>
+                    <p>Son operaciones complementarias a la clasificación:</p>
+                    <ul class="list-none pl-0 space-y-4">
+                        <li class="flex items-start bg-slate-50 p-4 rounded-lg border-l-4 border-primary">
+                            <i class="fas fa-network-wired mt-1 text-primary w-8 text-center"></i>
+                            <div>
+                                <strong>División (Taxonomía):</strong> Es la distribución de un "todo" genérico en sus "partes" específicas. Regla de oro en la tesis: la división debe ser exhaustiva (no dejar partes fuera) y mutuamente excluyente (una parte no puede estar dentro de otra al mismo nivel). <br><em>Ej: Clasificar a la población de estudio en: Menores de 18, de 18 a 35, y mayores de 35.</em>
+                            </div>
+                        </li>
+                        <li class="flex items-start bg-slate-50 p-4 rounded-lg border-l-4 border-secondary">
+                            <i class="fas fa-layer-group mt-1 text-secondary w-8 text-center"></i>
+                            <div>
+                                <strong>Integración:</strong> Es la capacidad de tomar sub-conceptos menores y agruparlos bajo una categoría o supra-concepto mayor para facilitar su manejo teórico en el marco referencial.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 1.5.2 -->
+                <div id="consistencia" class="scroll-mt-24 mt-8">
+                    <h4>1.5.2. Consistencia Lógica</h4>
+                    <p>La consistencia lógica implica la ausencia de contradicciones internas dentro de tu proyecto. El Tribunal evaluador revisará meticulosamente esto bajo el nombre de <strong>"Matriz de Congruencia"</strong>.</p>
+                    
+                    <div class="bg-amber-50 border border-amber-200 rounded-lg p-5 mt-4 text-sm text-amber-900">
+                        <h5 class="font-bold text-amber-600 uppercase text-xs tracking-wider mb-2"><i class="fas fa-exclamation-triangle mr-2"></i> Advertencia para Tesistas</h5>
+                        <p class="mb-2">Tu investigación <strong>carece de consistencia lógica</strong> si:</p>
+                        <ul class="list-disc pl-5 m-0 space-y-1">
+                            <li>Tu problema de investigación pregunta por "Causas", pero tu objetivo general dice "Describir el estado actual...".</li>
+                            <li>Tus objetivos específicos no suman el cumplimiento del objetivo general.</li>
+                            <li>Afirmas basarte en una teoría Marxista (paradigma crítico) pero usas encuestas estadísticas puramente positivistas sin justificar la triangulación.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 1.5.3 -->
+                <div id="falacias" class="scroll-mt-24 mt-8">
+                    <h4>1.5.3. Falacias</h4>
+                    <p>Una falacia es un razonamiento que, aunque lógicamente incorrecto, tiene la apariencia de ser válido o correcto. Son engaños (a veces involuntarios) que destruyen la validez científica de un estudio. A continuación, las falacias más comunes que los docentes encontramos en las tesis:</p>
+
+                    <div class="space-y-3 mt-6">
+                        <!-- Accordion Item 1 -->
+                        <div class="border border-slate-200 rounded-lg overflow-hidden">
+                            <button class="w-full text-left px-5 py-4 bg-slate-50 hover:bg-slate-100 flex justify-between items-center font-semibold text-slate-700 focus:outline-none" onclick="toggleAccordion('acc1', 'icon1')">
+                                <span>1. Falacia de Falsa Causa (Post hoc ergo propter hoc)</span>
+                                <i id="icon1" class="fas fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                            </button>
+                            <div id="acc1" class="accordion-content bg-white px-5">
+                                <p class="text-sm mt-3 border-l-2 border-red-400 pl-3"><strong>Error:</strong> Asumir que porque un evento ocurrió antes que otro, el primero causó el segundo. En investigación: confundir <em>correlación</em> con <em>causalidad</em>.</p>
+                                <p class="text-sm italic text-slate-600 bg-slate-50 p-2 rounded mb-3">Ejemplo en tesis: "Desde que se pintaron las oficinas de azul, subieron las ventas. Por lo tanto, el color azul genera ventas." (Ignorando que ese mismo mes hubo una campaña de marketing millonaria).</p>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 2 -->
+                        <div class="border border-slate-200 rounded-lg overflow-hidden">
+                            <button class="w-full text-left px-5 py-4 bg-slate-50 hover:bg-slate-100 flex justify-between items-center font-semibold text-slate-700 focus:outline-none" onclick="toggleAccordion('acc2', 'icon2')">
+                                <span>2. Falacia Ad Populum (Apelación a la multitud)</span>
+                                <i id="icon2" class="fas fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                            </button>
+                            <div id="acc2" class="accordion-content bg-white px-5">
+                                <p class="text-sm mt-3 border-l-2 border-red-400 pl-3"><strong>Error:</strong> Afirmar que algo es verdad o es la mejor solución porque "la mayoría de la gente" lo cree así o lo hace así, sin base científica empírica.</p>
+                                <p class="text-sm italic text-slate-600 bg-slate-50 p-2 rounded mb-3">Ejemplo en tesis: Justificar la implementación de un software diciendo "Debe ser el mejor sistema contable porque es el que más usan las empresas de la ciudad", en lugar de hacer un análisis técnico de sus módulos.</p>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 3 -->
+                        <div class="border border-slate-200 rounded-lg overflow-hidden">
+                            <button class="w-full text-left px-5 py-4 bg-slate-50 hover:bg-slate-100 flex justify-between items-center font-semibold text-slate-700 focus:outline-none" onclick="toggleAccordion('acc3', 'icon3')">
+                                <span>3. Falacia de Generalización Apresurada</span>
+                                <i id="icon3" class="fas fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                            </button>
+                            <div id="acc3" class="accordion-content bg-white px-5">
+                                <p class="text-sm mt-3 border-l-2 border-red-400 pl-3"><strong>Error:</strong> Llegar a una conclusión inductiva basada en una muestra estadística demasiado pequeña o poco representativa del universo.</p>
+                                <p class="text-sm italic text-slate-600 bg-slate-50 p-2 rounded mb-3">Ejemplo en tesis: Encuestar a 5 clientes insatisfechos a la salida de un banco que tiene 10,000 clientes, y concluir en el informe: "El 100% de la población rechaza el servicio del banco".</p>
+                            </div>
+                        </div>
+                        
+                         <!-- Accordion Item 4 -->
+                         <div class="border border-slate-200 rounded-lg overflow-hidden">
+                            <button class="w-full text-left px-5 py-4 bg-slate-50 hover:bg-slate-100 flex justify-between items-center font-semibold text-slate-700 focus:outline-none" onclick="toggleAccordion('acc4', 'icon4')">
+                                <span>4. Falacia Ad Verecundiam (Falsa Autoridad)</span>
+                                <i id="icon4" class="fas fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                            </button>
+                            <div id="acc4" class="accordion-content bg-white px-5">
+                                <p class="text-sm mt-3 border-l-2 border-red-400 pl-3"><strong>Error:</strong> Defender una conclusión apelando al respeto que se tiene a una figura famosa, pero que no es experta en la materia específica de tu investigación.</p>
+                                <p class="text-sm italic text-slate-600 bg-slate-50 p-2 rounded mb-3">Ejemplo en tesis: Citar a un famoso físico cuántico (como Einstein) para justificar una teoría macroeconómica en una tesis de Finanzas, solo porque "Einstein era un genio".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Footer del documento -->
+            <div class="text-center text-sm text-slate-500 mt-12 border-t border-slate-200 pt-6">
+                <p>Fin de la Unidad 1. Material preparado para Taller de Grado I.</p>
+                <p>Recuerda: Una investigación rigurosa comienza con un pensamiento ordenado.</p>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // Accordion functionality for Fallacies section
+        function toggleAccordion(id, iconId) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById(iconId);
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Close all others first (optional, but good for cleanliness)
+                const allContents = document.querySelectorAll('.accordion-content');
+                const allIcons = document.querySelectorAll('.fa-chevron-down');
+                allContents.forEach(c => c.classList.remove('open'));
+                allIcons.forEach(i => i.style.transform = 'rotate(0deg)');
+                
+                content.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Active link highlighting on scroll
+        const sections = document.querySelectorAll("section, div[id]");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 150)) { // Offset for sticky header
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("text-primary", "font-bold", "bg-blue-100");
+                link.classList.add("text-slate-600");
+                if (link.getAttribute("href").includes(current) && current !== "") {
+                    link.classList.add("text-primary", "font-bold", "bg-blue-100");
+                    link.classList.remove("text-slate-600");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

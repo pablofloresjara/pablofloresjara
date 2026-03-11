@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Grado I - Metodología de Investigación</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1e40af', // blue-800
+                        secondary: '#3b82f6', // blue-500
+                        accent: '#f59e0b', // amber-500
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .tree-box {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .tree-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Header -->
+    <header class="bg-primary text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <i class="fas fa-graduation-cap text-3xl text-accent"></i>
+                <h1 class="text-2xl font-bold tracking-tight">Taller de Grado I</h1>
+            </div>
+            <p class="hidden md:block text-sm font-medium text-blue-200">Guía de Metodología de Investigación</p>
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="hidden md:block w-full md:w-1/4 shrink-0">
+            <div class="sticky top-24 glass-card rounded-xl shadow-sm p-5">
+                <h3 class="font-bold text-lg mb-4 text-slate-800 border-b pb-2">Contenido del Curso</h3>
+                <nav class="space-y-2 text-sm font-medium">
+                    <a href="#perfil" class="block py-2 px-3 rounded hover:bg-blue-50 hover:text-primary transition-colors"><i class="fas fa-file-alt w-5"></i> ¿Qué es un Perfil?</a>
+                    <a href="#partes" class="block py-2 px-3 rounded hover:bg-blue-50 hover:text-primary transition-colors"><i class="fas fa-list-ul w-5"></i> Partes de un Perfil</a>
+                    <a href="#empezar" class="block py-2 px-3 rounded hover:bg-blue-50 hover:text-primary transition-colors"><i class="fas fa-play w-5"></i> ¿Cómo empezar?</a>
+                    <a href="#tema" class="block py-2 px-3 rounded hover:bg-blue-50 hover:text-primary transition-colors"><i class="fas fa-lightbulb w-5"></i> Decidir el Tema</a>
+                    <a href="#tipos" class="block py-2 px-3 rounded hover:bg-blue-50 hover:text-primary transition-colors"><i class="fas fa-balance-scale w-5"></i> Básica vs. Aplicada</a>
+                    <a href="#intro" class="block py-2 px-3 rounded hover:bg-blue-50 hover:text-primary transition-colors"><i class="fas fa-door-open w-5"></i> Introducción</a>
+                    <a href="#antecedentes" class="block py-2 px-3 rounded hover:bg-blue-50 hover:text-primary transition-colors"><i class="fas fa-history w-5"></i> Antecedentes</a>
+                    <a href="#planteamiento" class="block py-2 px-3 rounded hover:bg-blue-50 hover:text-primary transition-colors"><i class="fas fa-exclamation-circle w-5"></i> Planteamiento del Problema</a>
+                    <a href="#problema" class="block py-2 px-3 rounded hover:bg-blue-50 hover:text-primary transition-colors"><i class="fas fa-question w-5"></i> Problema de Investigación</a>
+                    <a href="#arbol" class="block py-2 px-3 rounded hover:bg-blue-50 hover:text-primary transition-colors"><i class="fas fa-tree w-5"></i> Árbol de Problemas</a>
+                    <a href="#ejemplos" class="block py-2 px-3 rounded hover:bg-blue-50 hover:text-primary transition-colors"><i class="fas fa-laptop-code w-5"></i> Ejemplos en Sistemas</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="w-full md:w-3/4 space-y-12">
+
+            <!-- Welcome -->
+            <div class="bg-gradient-to-r from-blue-900 to-primary rounded-2xl p-8 text-white shadow-lg">
+                <h2 class="text-3xl font-bold mb-4">¡Bienvenido a tu camino de titulación!</h2>
+                <p class="text-lg text-blue-100 leading-relaxed">
+                    Soy tu docente guía. En esta plataforma abordaremos de manera estructurada y profesional los fundamentos para construir tu proyecto de grado. La investigación no es solo un requisito académico; es la oportunidad de aplicar tu conocimiento para resolver problemas reales, especialmente en áreas de ingeniería.
+                </p>
+            </div>
+
+            <!-- Section: Perfil -->
+            <section id="perfil" class="bg-white rounded-2xl shadow-sm p-8 border border-slate-100 scroll-mt-24">
+                <div class="flex items-center mb-6 text-primary">
+                    <i class="fas fa-file-alt text-3xl mr-4"></i>
+                    <h2 class="text-2xl font-bold">¿Qué es un Perfil de Proyecto de Grado?</h2>
+                </div>
+                <p class="text-slate-600 leading-relaxed mb-4">
+                    El <strong>Perfil de Proyecto</strong> (también conocido como protocolo o propuesta de investigación) es un documento formal, breve y conciso en el que se esbozan los aspectos básicos y fundamentales de la investigación que planeas realizar.
+                </p>
+                <div class="bg-blue-50 border-l-4 border-secondary p-4 rounded-r-lg">
+                    <p class="text-slate-700">
+                        <strong>Su propósito principal:</strong> Servir como un "plano arquitectónico" que demuestra a los evaluadores que tu idea es válida, que el problema es real y merece ser investigado, y que posees la ruta metodológica adecuada (factibilidad) para llevarlo a cabo.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section: Partes -->
+            <section id="partes" class="bg-white rounded-2xl shadow-sm p-8 border border-slate-100 scroll-mt-24">
+                <div class="flex items-center mb-6 text-primary">
+                    <i class="fas fa-list-ul text-3xl mr-4"></i>
+                    <h2 class="text-2xl font-bold">Partes de un Perfil</h2>
+                </div>
+                <p class="text-slate-600 leading-relaxed mb-6">Aunque los formatos pueden variar ligeramente según la universidad, un perfil estándar y riguroso incluye los siguientes componentes:</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start p-4 bg-slate-50 rounded-lg">
+                        <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3 shrink-0">1</span>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Título</h4>
+                            <p class="text-sm text-slate-600 mt-1">Claro, preciso y delimitado. Debe reflejar el "qué", "dónde" y "cuándo".</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-slate-50 rounded-lg">
+                        <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3 shrink-0">2</span>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Introducción</h4>
+                            <p class="text-sm text-slate-600 mt-1">Presentación general del tema y motivación del estudio.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-slate-50 rounded-lg">
+                        <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3 shrink-0">3</span>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Antecedentes</h4>
+                            <p class="text-sm text-slate-600 mt-1">Revisión de estudios previos y contexto histórico del problema.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-slate-50 rounded-lg">
+                        <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3 shrink-0">4</span>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Planteamiento del Problema</h4>
+                            <p class="text-sm text-slate-600 mt-1">Descripción de la situación negativa actual (incluye la formulación del problema).</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-slate-50 rounded-lg">
+                        <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3 shrink-0">5</span>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Objetivos (General y Específicos)</h4>
+                            <p class="text-sm text-slate-600 mt-1">El "para qué". Las metas cognitivas o prácticas a alcanzar.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-slate-50 rounded-lg">
+                        <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3 shrink-0">6</span>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Justificación y Alcance</h4>
+                            <p class="text-sm text-slate-600 mt-1">El "por qué" se investiga (impacto tecnológico, social) y los límites del proyecto.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-slate-50 rounded-lg">
+                        <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3 shrink-0">7</span>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Marco Teórico Inicial</h4>
+                            <p class="text-sm text-slate-600 mt-1">Conceptos y teorías fundamentales que sustentarán el trabajo.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-slate-50 rounded-lg">
+                        <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3 shrink-0">8</span>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Diseño Metodológico</h4>
+                            <p class="text-sm text-slate-600 mt-1">El "cómo". Tipo de estudio, métodos, técnicas y herramientas a utilizar.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Empezar y Tema -->
+            <section id="empezar" class="bg-white rounded-2xl shadow-sm p-8 border border-slate-100 scroll-mt-24">
+                <div class="flex items-center mb-6 text-primary">
+                    <i class="fas fa-rocket text-3xl mr-4"></i>
+                    <h2 class="text-2xl font-bold">¿Cómo empezar y Decidir el Tema?</h2>
+                </div>
+                
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-3" id="tema">El punto de partida</h3>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            Toda investigación nace de una <strong>idea</strong>. Esta idea surge de la observación de la realidad, la lectura de artículos científicos, problemas en tu entorno laboral o vacíos en el conocimiento que identificaste durante la carrera.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-800 mb-4"><i class="fas fa-check-circle text-green-500 mr-2"></i> Criterios para Decidir el Tema</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-heart text-red-400 mt-1 mr-3"></i>
+                                <div>
+                                    <strong class="text-slate-800">Interés personal:</strong> Debe apasionarte. Pasarás meses leyendo y trabajando en esto. Si no te interesa, será una tortura.
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-cogs text-blue-400 mt-1 mr-3"></i>
+                                <div>
+                                    <strong class="text-slate-800">Pertinencia con tu carrera:</strong> Si eres de Ingeniería de Sistemas, tu tema debe requerir la aplicación de la ciencia de la computación, desarrollo de software, redes, IA, etc.
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-orange-400 mt-1 mr-3"></i>
+                                <div>
+                                    <strong class="text-slate-800">Relevancia social o tecnológica:</strong> ¿Resuelve un problema real en una empresa, comunidad o aporta algo nuevo al conocimiento?
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-square text-green-600 mt-1 mr-3"></i>
+                                <div>
+                                    <strong class="text-slate-800">Factibilidad:</strong> ¿Tienes acceso a los datos, los recursos informáticos, el tiempo y los conocimientos técnicos necesarios para hacerlo?
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Tipos de Investigación -->
+            <section id="tipos" class="bg-white rounded-2xl shadow-sm p-8 border border-slate-100 scroll-mt-24">
+                <div class="flex items-center mb-6 text-primary">
+                    <i class="fas fa-balance-scale text-3xl mr-4"></i>
+                    <h2 class="text-2xl font-bold">Investigación Básica vs. Investigación Aplicada</h2>
+                </div>
+                <p class="text-slate-600 mb-6">Es crucial definir la naturaleza de tu proyecto. En el ámbito de las ingenierías, predominan los estudios aplicados, pero es vital entender la diferencia:</p>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-800">
+                                <th class="p-4 rounded-tl-lg border-b-2 border-slate-200">Característica</th>
+                                <th class="p-4 border-b-2 border-slate-200">Investigación Básica (Pura)</th>
+                                <th class="p-4 rounded-tr-lg border-b-2 border-slate-200">Investigación Aplicada</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-600">
+                            <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                                <td class="p-4 font-semibold text-slate-800">Objetivo Principal</td>
+                                <td class="p-4">Ampliar el conocimiento teórico y formular nuevas teorías.</td>
+                                <td class="p-4 bg-blue-50/30">Resolver problemas prácticos específicos de la sociedad o la industria.</td>
+                            </tr>
+                            <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                                <td class="p-4 font-semibold text-slate-800">Aplicación de resultados</td>
+                                <td class="p-4">A largo plazo (generalmente no tiene aplicación inmediata).</td>
+                                <td class="p-4 bg-blue-50/30">Inmediata o a corto plazo.</td>
+                            </tr>
+                            <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                                <td class="p-4 font-semibold text-slate-800">El foco</td>
+                                <td class="p-4">Conocer el "por qué" de los fenómenos.</td>
+                                <td class="p-4 bg-blue-50/30">Crear tecnología, software, métodos para el "cómo" solucionar.</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-4 font-semibold text-slate-800 rounded-bl-lg">Ejemplo en Sistemas</td>
+                                <td class="p-4">Desarrollar un nuevo algoritmo matemático de cifrado cuántico (sin aplicación actual aún).</td>
+                                <td class="p-4 bg-blue-50/30 rounded-br-lg"><strong>Desarrollar un sistema experto</strong> para diagnosticar fallas en servidores de la empresa X.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section: Primeros Capítulos -->
+            <section id="intro" class="bg-white rounded-2xl shadow-sm p-8 border border-slate-100 scroll-mt-24">
+                <div class="flex items-center mb-6 text-primary">
+                    <i class="fas fa-book-open text-3xl mr-4"></i>
+                    <h2 class="text-2xl font-bold">Introducción y Antecedentes</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Introducción -->
+                    <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-3">Introducción</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Es la carta de presentación de tu trabajo. Debe "enganchar" al lector. En ella se contextualiza brevemente el tema, se menciona la importancia del área de estudio, se anticipa la problemática que se abordará y, de forma resumida, la solución o enfoque que propone la investigación. Va de lo general (macro) a lo particular (micro).
+                        </p>
+                    </div>
+
+                    <!-- Antecedentes -->
+                    <div id="antecedentes" class="bg-white border border-slate-200 p-6 rounded-xl shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-accent"></div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-3">Antecedentes</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Responde a la pregunta: <em>¿Qué se ha hecho antes respecto a este problema?</em> Consiste en revisar el "Estado del Arte".
+                        </p>
+                        <ul class="mt-3 text-sm text-slate-600 list-disc list-inside space-y-1">
+                            <li><strong>Antecedentes Institucionales:</strong> Historia de la empresa o contexto donde existe el problema.</li>
+                            <li><strong>Antecedentes Investigativos:</strong> Tesis previas, papers o sistemas similares ya desarrollados a nivel local, nacional o internacional.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: El Problema -->
+            <section id="planteamiento" class="bg-white rounded-2xl shadow-sm p-8 border border-slate-100 scroll-mt-24">
+                <div class="flex items-center mb-6 text-primary">
+                    <i class="fas fa-exclamation-triangle text-3xl mr-4"></i>
+                    <h2 class="text-2xl font-bold">Planteamiento y Problema de Investigación</h2>
+                </div>
+                
+                <p class="text-slate-600 mb-6">El corazón de todo el proyecto de grado es el problema. Si no hay problema, no hay investigación.</p>
+
+                <div class="space-y-6">
+                    <div class="p-5 bg-red-50 rounded-lg border border-red-100">
+                        <h3 class="font-bold text-red-800 mb-2">1. Planteamiento del Problema (La Descripción)</h3>
+                        <p class="text-slate-700 text-sm">
+                            Es la narración detallada de la situación problemática. Consiste en describir los síntomas que se observan, las causas que los originan y las consecuencias o efectos negativos que esta situación produce si no se resuelve. Aquí se demuestra con datos (si es posible) que la situación es crítica.
+                        </p>
+                    </div>
+
+                    <div id="problema" class="p-5 bg-blue-50 rounded-lg border border-blue-100">
+                        <h3 class="font-bold text-blue-800 mb-2">2. Problema de Investigación (La Formulación)</h3>
+                        <p class="text-slate-700 text-sm">
+                            Es la reducción del planteamiento a una pregunta concreta o una afirmación categórica que el proyecto pretende responder o resolver.
+                        </p>
+                        <div class="mt-3 bg-white p-3 rounded shadow-sm border border-slate-200">
+                            <strong class="text-slate-800 text-sm">Fórmula típica (Pregunta):</strong>
+                            <p class="text-slate-600 italic text-sm mt-1">¿De qué manera [propuesta/tecnología] mejorará/solucionará [variable dependiente/efecto negativo] en [población/empresa] durante [tiempo]?</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Árbol de Problemas -->
+            <section id="arbol" class="bg-slate-800 rounded-2xl shadow-lg p-8 border border-slate-700 text-white scroll-mt-24">
+                <div class="flex items-center mb-6 text-accent">
+                    <i class="fas fa-tree text-3xl mr-4"></i>
+                    <h2 class="text-2xl font-bold text-white">El Árbol de Problemas</h2>
+                </div>
+                
+                <p class="text-slate-300 mb-8 leading-relaxed">
+                    Es una técnica participativa visual que ayuda a desarrollar ideas creativas al identificar un problema y organizar la información recopilada, definiendo un problema central, sus causas y sus efectos.
+                </p>
+
+                <!-- Visual Diagram -->
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <!-- Ramas / Efectos -->
+                    <div class="text-center">
+                        <h4 class="text-accent font-bold mb-3 tracking-widest uppercase text-sm">Las Ramas: Efectos / Consecuencias</h4>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <div class="tree-box bg-slate-700/80 border border-slate-600 p-4 rounded-xl w-40 text-center shadow-md">
+                                <span class="text-sm font-medium">Pérdida de dinero</span>
+                            </div>
+                            <div class="tree-box bg-slate-700/80 border border-slate-600 p-4 rounded-xl w-40 text-center shadow-md">
+                                <span class="text-sm font-medium">Clientes insatisfechos</span>
+                            </div>
+                            <div class="tree-box bg-slate-700/80 border border-slate-600 p-4 rounded-xl w-40 text-center shadow-md">
+                                <span class="text-sm font-medium">Toma de decisiones erróneas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tronco / Problema Central -->
+                    <div class="flex justify-center relative py-6">
+                        <div class="absolute h-full w-2 bg-accent/30 z-0"></div> <!-- Línea conectora -->
+                        <div class="tree-box bg-red-600/90 border-2 border-red-400 p-5 rounded-2xl w-full max-w-md text-center z-10 shadow-lg shadow-red-900/50">
+                            <h4 class="text-red-100 font-bold mb-1 uppercase text-xs tracking-wider">El Tronco</h4>
+                            <p class="font-bold text-lg text-white">Problema Central (Definido como estado negativo)</p>
+                        </div>
+                    </div>
+
+                    <!-- Raíces / Causas -->
+                    <div class="text-center">
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <div class="tree-box bg-slate-700/80 border border-slate-600 p-4 rounded-xl w-40 text-center shadow-md">
+                                <span class="text-sm font-medium">Procesos manuales (papel)</span>
+                            </div>
+                            <div class="tree-box bg-slate-700/80 border border-slate-600 p-4 rounded-xl w-40 text-center shadow-md">
+                                <span class="text-sm font-medium">Sistemas obsoletos no integrados</span>
+                            </div>
+                            <div class="tree-box bg-slate-700/80 border border-slate-600 p-4 rounded-xl w-40 text-center shadow-md">
+                                <span class="text-sm font-medium">Falta de capacitación del personal</span>
+                            </div>
+                        </div>
+                        <h4 class="text-accent font-bold mt-4 tracking-widest uppercase text-sm">Las Raíces: Causas / Origen</h4>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Ejemplos Ingeniería -->
+            <section id="ejemplos" class="bg-white rounded-2xl shadow-sm p-8 border border-slate-100 scroll-mt-24 mb-12">
+                <div class="flex items-center mb-6 text-primary">
+                    <i class="fas fa-laptop-code text-3xl mr-4"></i>
+                    <h2 class="text-2xl font-bold">Ejemplos de Árbol de Problemas en Ingeniería de Sistemas</h2>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Ejemplo 1 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden">
+                        <div class="bg-slate-50 border-b border-slate-200 p-4">
+                            <h3 class="font-bold text-slate-800 flex items-center">
+                                <i class="fas fa-database text-secondary mr-2"></i> 
+                                Ejemplo 1: Gestión de Información (Desarrollo de Software)
+                            </h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="mb-4">
+                                <span class="inline-block bg-red-100 text-red-800 text-xs px-2 py-1 rounded font-bold mb-2">PROBLEMA CENTRAL (TRONCO)</span>
+                                <p class="font-semibold text-slate-800 border-l-4 border-red-500 pl-3">Alta deficiencia e inconsistencia en el control de inventarios y ventas en la "Ferretería XYZ".</p>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                                <div>
+                                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded font-bold mb-2">CAUSAS (RAÍCES)</span>
+                                    <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                                        <li>Registro manual de entradas y salidas en cuadernos.</li>
+                                        <li>Ausencia de una base de datos centralizada.</li>
+                                        <li>Carencia de alertas automatizadas de stock mínimo.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <span class="inline-block bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded font-bold mb-2">EFECTOS (RAMAS)</span>
+                                    <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                                        <li>Pérdida de ventas por productos agotados no detectados.</li>
+                                        <li>Diferencias financieras entre inventario físico y registros.</li>
+                                        <li>Demora excesiva en la atención al cliente.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-100">
+                                <p class="text-sm text-slate-700"><strong>Posible Título de Proyecto:</strong> Desarrollo de un Sistema Web de Gestión de Inventarios y Facturación Electrónica para optimizar el control de almacén en la Ferretería XYZ.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 2 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden">
+                        <div class="bg-slate-50 border-b border-slate-200 p-4">
+                            <h3 class="font-bold text-slate-800 flex items-center">
+                                <i class="fas fa-network-wired text-secondary mr-2"></i> 
+                                Ejemplo 2: Infraestructura y Seguridad (Redes)
+                            </h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="mb-4">
+                                <span class="inline-block bg-red-100 text-red-800 text-xs px-2 py-1 rounded font-bold mb-2">PROBLEMA CENTRAL (TRONCO)</span>
+                                <p class="font-semibold text-slate-800 border-l-4 border-red-500 pl-3">Alta vulnerabilidad e interrupciones constantes en la red de comunicaciones de la Clínica Médica ABC.</p>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                                <div>
+                                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded font-bold mb-2">CAUSAS (RAÍCES)</span>
+                                    <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                                        <li>Topología de red deficiente y equipos obsoletos.</li>
+                                        <li>Ausencia de políticas de seguridad lógica (Firewalls).</li>
+                                        <li>Cableado estructurado fuera de normativas estándar.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <span class="inline-block bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded font-bold mb-2">EFECTOS (RAMAS)</span>
+                                    <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                                        <li>Fuga o secuestro de datos confidenciales de pacientes (Ransomware).</li>
+                                        <li>Imposibilidad de acceso al historial clínico durante emergencias.</li>
+                                        <li>Pérdidas económicas por inactividad operativa del sistema.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-100">
+                                <p class="text-sm text-slate-700"><strong>Posible Título de Proyecto:</strong> Diseño e Implementación de una Arquitectura de Red Segura y Escalable basada en normas ISO 27001 para la Clínica Médica ABC.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800">
+        <p class="mb-2">Documento elaborado para Taller de Grado I - Metodología de la Investigación.</p>
+        <p class="text-sm text-slate-500"><i class="fas fa-laptop-code"></i> Orientado a Proyectos de Ingeniería</p>
+    </footer>
+
+    <!-- Script for mobile menu -->
+    <script>
+        document.getElementById('menu-btn').addEventListener('click', () => {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+            if(!sidebar.classList.contains('hidden')) {
+                sidebar.classList.add('absolute', 'z-40', 'w-full', 'px-4', 'mt-4');
+                // Auto hide logic on link click for mobile
+                const links = sidebar.querySelectorAll('a');
+                links.forEach(link => {
+                    link.addEventListener('click', () => {
+                        sidebar.classList.add('hidden');
+                    });
+                });
+            } else {
+                sidebar.classList.remove('absolute', 'z-40', 'w-full', 'px-4', 'mt-4');
+            }
+        });
+    </script>
+</body>
+</html>

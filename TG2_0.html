@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Grado II - Metodología de Investigación</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .var-indep { color: #2563eb; font-weight: 600; } /* Blue */
+        .var-dep { color: #dc2626; font-weight: 600; } /* Red */
+        .poblacion { color: #16a34a; font-weight: 600; } /* Green */
+        .contexto { color: #d97706; font-weight: 600; } /* Orange */
+        .temporalidad { color: #9333ea; font-weight: 600; } /* Purple */
+        
+        .bg-var-indep { background-color: #eff6ff; border-left: 4px solid #2563eb; }
+        .bg-var-dep { background-color: #fef2f2; border-left: 4px solid #dc2626; }
+        .bg-poblacion { background-color: #f0fdf4; border-left: 4px solid #16a34a; }
+        .bg-contexto { background-color: #fffbeb; border-left: 4px solid #d97706; }
+        .bg-temporalidad { background-color: #faf5ff; border-left: 4px solid #9333ea; }
+
+        .tab-btn.active {
+            border-bottom: 2px solid #1e40af;
+            color: #1e40af;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-blue-200">
+
+    <!-- Header -->
+    <header class="bg-slate-900 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex-1 min-w-0">
+                    <h2 class="text-sm font-semibold text-blue-400 tracking-wide uppercase">Taller de Grado II</h2>
+                    <h1 class="mt-2 text-3xl font-bold leading-7 text-white sm:text-4xl sm:truncate">
+                        Construcción del Objeto de Estudio
+                    </h1>
+                    <p class="mt-3 text-lg text-slate-300 max-w-3xl">
+                        Guía metodológica para estudiantes de Ingeniería (Sistemas, Telecomunicaciones, Electromecánica y Ambiental). Aprende a estructurar tu perfil de tesis paso a paso.
+                    </p>
+                </div>
+                <div class="mt-4 flex md:mt-0 md:ml-4">
+                    <svg class="h-24 w-24 text-blue-500 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Section 1: Los 5 Elementos -->
+        <section class="mb-16">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold text-gray-900">Los 5 Elementos Fundamentales</h2>
+                <p class="mt-4 text-lg text-gray-500">Todo proyecto de ingeniería debe tener claramente delimitados estos cinco componentes para ser viable, medible y metodológicamente correcto.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- V. Independiente -->
+                <div class="bg-var-indep p-6 rounded-r-lg shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-blue-700 mb-2">1. Variable Independiente (VI)</h3>
+                    <p class="text-gray-700 text-sm">Es la <strong>causa</strong>, la propuesta o la tecnología que el ingeniero va a implementar, desarrollar o manipular. Es tu "solución".</p>
+                    <p class="mt-2 text-xs text-blue-600 italic">Ej: Un algoritmo, un nuevo material, un sistema automatizado.</p>
+                </div>
+                <!-- V. Dependiente -->
+                <div class="bg-var-dep p-6 rounded-r-lg shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-red-700 mb-2">2. Variable Dependiente (VD)</h3>
+                    <p class="text-gray-700 text-sm">Es el <strong>efecto</strong>, el problema a resolver o el parámetro que se va a medir para ver si tu propuesta (VI) funcionó.</p>
+                    <p class="mt-2 text-xs text-red-600 italic">Ej: Tiempos de latencia, eficiencia energética, niveles de contaminación.</p>
+                </div>
+                <!-- Población -->
+                <div class="bg-poblacion p-6 rounded-r-lg shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-green-700 mb-2">3. Población / Muestra</h3>
+                    <p class="text-gray-700 text-sm">Los sujetos, objetos, máquinas o datos sobre los cuales se aplicará el estudio y se medirán los resultados.</p>
+                    <p class="mt-2 text-xs text-green-600 italic">Ej: Red de servidores, motores trifásicos, aguas residuales del río X.</p>
+                </div>
+                <!-- Contexto -->
+                <div class="bg-contexto p-6 rounded-r-lg shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-orange-700 mb-2">4. Contexto / Espacio</h3>
+                    <p class="text-gray-700 text-sm">El lugar físico, institucional o virtual geográficamente delimitado donde ocurre el problema.</p>
+                    <p class="mt-2 text-xs text-orange-600 italic">Ej: Empresa "Y", Municipio de Cercado, Red Corporativa de un Banco.</p>
+                </div>
+                <!-- Temporalidad -->
+                <div class="bg-temporalidad p-6 rounded-r-lg shadow-sm hover:shadow-md transition lg:col-start-2">
+                    <h3 class="text-xl font-bold text-purple-700 mb-2">5. Temporalidad</h3>
+                    <p class="text-gray-700 text-sm">El periodo de tiempo en el que se enmarca la recolección de datos y la ejecución de la investigación.</p>
+                    <p class="mt-2 text-xs text-purple-600 italic">Ej: Gestión 2026, Semestre II-2025.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: La Fórmula -->
+        <section class="mb-16 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+            <div class="bg-slate-800 px-6 py-4">
+                <h2 class="text-2xl font-bold text-white">La Matriz de Relación (El ADN del Proyecto)</h2>
+            </div>
+            <div class="p-6 md:p-8">
+                <p class="mb-6 text-gray-600">Una vez que tienes los 5 elementos, redactar la Pregunta, el Objetivo y el Título es simplemente armar un rompecabezas aplicando fórmulas lógicas. <strong>Los tres elementos deben estar perfectamente alineados.</strong></p>
+
+                <div class="space-y-6">
+                    <!-- Pregunta -->
+                    <div class="p-4 rounded-lg bg-gray-50 border border-gray-200">
+                        <h4 class="font-bold text-lg mb-2 text-slate-800">1. La Pregunta de Investigación</h4>
+                        <p class="text-gray-700">¿De qué manera / Cómo influye <span class="var-indep">[VI]</span> en <span class="var-dep">[VD]</span> en <span class="poblacion">[Población]</span> de <span class="contexto">[Contexto]</span> durante <span class="temporalidad">[Temporalidad]</span>?</p>
+                    </div>
+                    
+                    <!-- Objetivo -->
+                    <div class="p-4 rounded-lg bg-gray-50 border border-gray-200">
+                        <h4 class="font-bold text-lg mb-2 text-slate-800">2. El Objetivo General</h4>
+                        <p class="text-gray-700"><span class="font-bold underline">Verbo Infinitivo (Ej: Determinar, Evaluar, Diseñar)</span> el impacto de <span class="var-indep">[VI]</span> en <span class="var-dep">[VD]</span> en <span class="poblacion">[Población]</span> de <span class="contexto">[Contexto]</span> durante <span class="temporalidad">[Temporalidad]</span>.</p>
+                    </div>
+
+                    <!-- Titulo -->
+                    <div class="p-4 rounded-lg bg-gray-50 border border-gray-200">
+                        <h4 class="font-bold text-lg mb-2 text-slate-800">3. El Título del Proyecto</h4>
+                        <p class="text-gray-700"><span class="var-indep">[VI]</span> para la mejora/reducción de <span class="var-dep">[VD]</span> en <span class="poblacion">[Población]</span> de <span class="contexto">[Contexto]</span>, <span class="temporalidad">[Temporalidad]</span>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Ejemplos por Carrera -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold text-gray-900">Ejemplos Prácticos por Carrera</h2>
+                <p class="mt-4 text-lg text-gray-500">Selecciona tu carrera para ver cómo se aplica esta metodología a proyectos reales de ingeniería.</p>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="flex flex-wrap border-b border-gray-200 mb-8" id="tabs-nav">
+                <button class="tab-btn active px-4 py-3 text-gray-600 hover:text-blue-800 focus:outline-none transition-colors" data-target="sistemas">Ing. de Sistemas</button>
+                <button class="tab-btn px-4 py-3 text-gray-600 hover:text-blue-800 focus:outline-none transition-colors" data-target="telecom">Ing. Telecomunicaciones</button>
+                <button class="tab-btn px-4 py-3 text-gray-600 hover:text-blue-800 focus:outline-none transition-colors" data-target="electromecanica">Ing. Electromecánica</button>
+                <button class="tab-btn px-4 py-3 text-gray-600 hover:text-blue-800 focus:outline-none transition-colors" data-target="ambiental">Ing. Ambiental</button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div id="tabs-content">
+                
+                <!-- ING. SISTEMAS -->
+                <div class="tab-pane block" id="sistemas">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Ejemplo 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow border border-gray-200">
+                            <h3 class="text-xl font-bold text-gray-800 border-b pb-2 mb-4">Ejemplo 1: Inteligencia Artificial</h3>
+                            <ul class="text-sm space-y-1 mb-4">
+                                <li><span class="var-indep">VI:</span> Algoritmo de Machine Learning (Random Forest)</li>
+                                <li><span class="var-dep">VD:</span> Precisión en la detección de fraudes</li>
+                                <li><span class="poblacion">Población:</span> Transacciones bancarias digitales</li>
+                                <li><span class="contexto">Contexto:</span> Banco "Ficohsa" sede Cochabamba</li>
+                                <li><span class="temporalidad">Temporalidad:</span> Gestión 2026</li>
+                            </ul>
+                            <div class="space-y-3 text-sm">
+                                <p><strong>Pregunta:</strong> ¿En qué medida la implementación de un <span class="var-indep">algoritmo de Machine Learning</span> influye en la <span class="var-dep">precisión de la detección de fraudes</span> en las <span class="poblacion">transacciones bancarias digitales</span> del <span class="contexto">Banco "Ficohsa" sede Cochabamba</span> durante la <span class="temporalidad">gestión 2026</span>?</p>
+                                <p><strong>Objetivo Gen:</strong> Evaluar la influencia de un <span class="var-indep">algoritmo de Machine Learning</span> en la <span class="var-dep">precisión de la detección de fraudes</span> en las <span class="poblacion">transacciones bancarias digitales</span> del <span class="contexto">Banco "Ficohsa" sede Cochabamba</span> durante la <span class="temporalidad">gestión 2026</span>.</p>
+                                <p><strong>Título:</strong> <span class="var-indep">Algoritmo de Machine Learning</span> para incrementar la <span class="var-dep">precisión en la detección de fraudes</span> en <span class="poblacion">transacciones digitales</span> del <span class="contexto">Banco "Ficohsa"</span>, <span class="temporalidad">2026</span>.</p>
+                            </div>
+                        </div>
+                        <!-- Ejemplo 2 -->
+                        <div class="bg-white p-6 rounded-xl shadow border border-gray-200">
+                            <h3 class="text-xl font-bold text-gray-800 border-b pb-2 mb-4">Ejemplo 2: Arquitectura de Software</h3>
+                            <ul class="text-sm space-y-1 mb-4">
+                                <li><span class="var-indep">VI:</span> Arquitectura basada en Microservicios</li>
+                                <li><span class="var-dep">VD:</span> Nivel de escalabilidad y tolerancia a fallos</li>
+                                <li><span class="poblacion">Población:</span> Plataforma de E-commerce</li>
+                                <li><span class="contexto">Contexto:</span> Empresa de Retail "MegaMarket"</li>
+                                <li><span class="temporalidad">Temporalidad:</span> Periodo 2025-2026</li>
+                            </ul>
+                            <div class="space-y-3 text-sm">
+                                <p><strong>Pregunta:</strong> ¿Cómo impacta una <span class="var-indep">arquitectura basada en microservicios</span> en el <span class="var-dep">nivel de escalabilidad y tolerancia a fallos</span> de la <span class="poblacion">plataforma de e-commerce</span> de la <span class="contexto">Empresa "MegaMarket"</span> en el <span class="temporalidad">periodo 2025-2026</span>?</p>
+                                <p><strong>Objetivo Gen:</strong> Determinar el impacto de una <span class="var-indep">arquitectura basada en microservicios</span> sobre el <span class="var-dep">nivel de escalabilidad y tolerancia a fallos</span> de la <span class="poblacion">plataforma de e-commerce</span> de la <span class="contexto">Empresa "MegaMarket"</span>, <span class="temporalidad">periodo 2025-2026</span>.</p>
+                                <p><strong>Título:</strong> <span class="var-indep">Arquitectura de microservicios</span> orientada a mejorar la <span class="var-dep">escalabilidad y tolerancia a fallos</span> en la <span class="poblacion">plataforma e-commerce</span> de <span class="contexto">"MegaMarket"</span>, <span class="temporalidad">2025-2026</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ING. TELECOMUNICACIONES -->
+                <div class="tab-pane hidden" id="telecom">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Ejemplo 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow border border-gray-200">
+                            <h3 class="text-xl font-bold text-gray-800 border-b pb-2 mb-4">Ejemplo 1: Internet de las Cosas (IoT)</h3>
+                            <ul class="text-sm space-y-1 mb-4">
+                                <li><span class="var-indep">VI:</span> Red de sensores inalámbricos LoRaWAN</li>
+                                <li><span class="var-dep">VD:</span> Eficiencia en el monitoreo de humedad</li>
+                                <li><span class="poblacion">Población:</span> Cultivos de maíz (20 hectáreas)</li>
+                                <li><span class="contexto">Contexto:</span> Finca Agrícola "El Valle"</li>
+                                <li><span class="temporalidad">Temporalidad:</span> Semestre I-2026</li>
+                            </ul>
+                            <div class="space-y-3 text-sm">
+                                <p><strong>Pregunta:</strong> ¿De qué manera la implementación de una <span class="var-indep">red de sensores LoRaWAN</span> mejora la <span class="var-dep">eficiencia en el monitoreo de humedad</span> en los <span class="poblacion">cultivos de maíz</span> de la <span class="contexto">Finca Agrícola "El Valle"</span> durante el <span class="temporalidad">semestre I-2026</span>?</p>
+                                <p><strong>Objetivo Gen:</strong> Implementar una <span class="var-indep">red de sensores LoRaWAN</span> para mejorar la <span class="var-dep">eficiencia en el monitoreo de humedad</span> en <span class="poblacion">cultivos de maíz</span> de la <span class="contexto">Finca "El Valle"</span> durante el <span class="temporalidad">semestre I-2026</span>.</p>
+                                <p><strong>Título:</strong> <span class="var-indep">Red de sensores inalámbricos LoRaWAN</span> para la optimización de la <span class="var-dep">eficiencia del monitoreo de humedad</span> en <span class="poblacion">cultivos de maíz</span>, <span class="contexto">Finca "El Valle"</span>, <span class="temporalidad">Semestre I-2026</span>.</p>
+                            </div>
+                        </div>
+                        <!-- Ejemplo 2 -->
+                        <div class="bg-white p-6 rounded-xl shadow border border-gray-200">
+                            <h3 class="text-xl font-bold text-gray-800 border-b pb-2 mb-4">Ejemplo 2: Infraestructura de Red</h3>
+                            <ul class="text-sm space-y-1 mb-4">
+                                <li><span class="var-indep">VI:</span> Arquitectura SD-WAN (Software-Defined)</li>
+                                <li><span class="var-dep">VD:</span> Disponibilidad y balanceo de carga de la red</li>
+                                <li><span class="poblacion">Población:</span> Enlaces de telecomunicación entre sucursales</li>
+                                <li><span class="contexto">Contexto:</span> Corporación Logística "FastTrack"</li>
+                                <li><span class="temporalidad">Temporalidad:</span> Gestión 2026</li>
+                            </ul>
+                            <div class="space-y-3 text-sm">
+                                <p><strong>Pregunta:</strong> ¿Cuál es el impacto de una <span class="var-indep">arquitectura SD-WAN</span> sobre la <span class="var-dep">disponibilidad y balanceo de carga</span> en los <span class="poblacion">enlaces de telecomunicación</span> de la <span class="contexto">Corporación "FastTrack"</span> en la <span class="temporalidad">gestión 2026</span>?</p>
+                                <p><strong>Objetivo Gen:</strong> Evaluar el impacto de una <span class="var-indep">arquitectura SD-WAN</span> en la <span class="var-dep">disponibilidad y balanceo de carga</span> de los <span class="poblacion">enlaces de telecomunicación</span> de la <span class="contexto">Corporación "FastTrack"</span>, <span class="temporalidad">gestión 2026</span>.</p>
+                                <p><strong>Título:</strong> <span class="var-indep">Arquitectura SD-WAN</span> para incrementar la <span class="var-dep">disponibilidad y el balanceo de carga</span> en <span class="poblacion">enlaces de telecomunicaciones</span> de la <span class="contexto">Corporación "FastTrack"</span>, <span class="temporalidad">2026</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ING. ELECTROMECANICA -->
+                <div class="tab-pane hidden" id="electromecanica">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Ejemplo 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow border border-gray-200">
+                            <h3 class="text-xl font-bold text-gray-800 border-b pb-2 mb-4">Ejemplo 1: Control Industrial</h3>
+                            <ul class="text-sm space-y-1 mb-4">
+                                <li><span class="var-indep">VI:</span> Sistema de control difuso (Fuzzy Logic)</li>
+                                <li><span class="var-dep">VD:</span> Consumo energético</li>
+                                <li><span class="poblacion">Población:</span> Motores de inducción de la línea de ensamble</li>
+                                <li><span class="contexto">Contexto:</span> Planta Embotelladora "AquaVida"</li>
+                                <li><span class="temporalidad">Temporalidad:</span> Año 2026</li>
+                            </ul>
+                            <div class="space-y-3 text-sm">
+                                <p><strong>Pregunta:</strong> ¿Cómo influye un <span class="var-indep">sistema de control difuso</span> en la reducción del <span class="var-dep">consumo energético</span> de los <span class="poblacion">motores de inducción</span> en la <span class="contexto">Planta Embotelladora "AquaVida"</span> durante el <span class="temporalidad">año 2026</span>?</p>
+                                <p><strong>Objetivo Gen:</strong> Diseñar un <span class="var-indep">sistema de control difuso</span> para reducir el <span class="var-dep">consumo energético</span> en los <span class="poblacion">motores de inducción</span> de la <span class="contexto">Planta Embotelladora "AquaVida"</span> en el <span class="temporalidad">año 2026</span>.</p>
+                                <p><strong>Título:</strong> <span class="var-indep">Sistema de control difuso</span> aplicado a la minimización del <span class="var-dep">consumo energético</span> de <span class="poblacion">motores de inducción</span> en la <span class="contexto">Planta "AquaVida"</span>, <span class="temporalidad">2026</span>.</p>
+                            </div>
+                        </div>
+                        <!-- Ejemplo 2 -->
+                        <div class="bg-white p-6 rounded-xl shadow border border-gray-200">
+                            <h3 class="text-xl font-bold text-gray-800 border-b pb-2 mb-4">Ejemplo 2: Mantenimiento Predictivo</h3>
+                            <ul class="text-sm space-y-1 mb-4">
+                                <li><span class="var-indep">VI:</span> Plan de mantenimiento predictivo basado en análisis de vibraciones</li>
+                                <li><span class="var-dep">VD:</span> Índice de fallas mecánicas imprevistas</li>
+                                <li><span class="poblacion">Población:</span> Turbinas generadoras principales</li>
+                                <li><span class="contexto">Contexto:</span> Central Hidroeléctrica "Corani"</li>
+                                <li><span class="temporalidad">Temporalidad:</span> Gestión 2025-2026</li>
+                            </ul>
+                            <div class="space-y-3 text-sm">
+                                <p><strong>Pregunta:</strong> ¿De qué forma un <span class="var-indep">plan de mantenimiento predictivo por vibraciones</span> disminuye el <span class="var-dep">índice de fallas imprevistas</span> en las <span class="poblacion">turbinas generadoras</span> de la <span class="contexto">Central Hidroeléctrica "Corani"</span> en la <span class="temporalidad">gestión 2025-2026</span>?</p>
+                                <p><strong>Objetivo Gen:</strong> Proponer un <span class="var-indep">plan de mantenimiento predictivo por análisis de vibraciones</span> para disminuir el <span class="var-dep">índice de fallas imprevistas</span> en <span class="poblacion">turbinas generadoras</span> de la <span class="contexto">Central Hidroeléctrica "Corani"</span>, <span class="temporalidad">2025-2026</span>.</p>
+                                <p><strong>Título:</strong> <span class="var-indep">Mantenimiento predictivo mediante análisis de vibraciones</span> para la reducción del <span class="var-dep">índice de fallas</span> en <span class="poblacion">turbinas generadoras</span>, <span class="contexto">Central Hidroeléctrica "Corani"</span> (<span class="temporalidad">2025-2026</span>).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ING. AMBIENTAL -->
+                <div class="tab-pane hidden" id="ambiental">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Ejemplo 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow border border-gray-200">
+                            <h3 class="text-xl font-bold text-gray-800 border-b pb-2 mb-4">Ejemplo 1: Biorremediación</h3>
+                            <ul class="text-sm space-y-1 mb-4">
+                                <li><span class="var-indep">VI:</span> Sistema de fitorremediación con Totora (Schoenoplectus californicus)</li>
+                                <li><span class="var-dep">VD:</span> Concentración de metales pesados (Plomo y Cadmio)</li>
+                                <li><span class="poblacion">Población:</span> Aguas residuales industriales</li>
+                                <li><span class="contexto">Contexto:</span> Río Rocha, Sector Curtiembres</li>
+                                <li><span class="temporalidad">Temporalidad:</span> Época seca (Agosto-Noviembre 2026)</li>
+                            </ul>
+                            <div class="space-y-3 text-sm">
+                                <p><strong>Pregunta:</strong> ¿Qué efecto tiene un <span class="var-indep">sistema de fitorremediación con Totora</span> en la <span class="var-dep">concentración de metales pesados</span> presentes en las <span class="poblacion">aguas residuales industriales</span> del <span class="contexto">Río Rocha, sector curtiembres</span>, durante la <span class="temporalidad">época seca de 2026</span>?</p>
+                                <p><strong>Objetivo Gen:</strong> Evaluar el efecto de un <span class="var-indep">sistema de fitorremediación con Totora</span> sobre la <span class="var-dep">concentración de metales pesados</span> en <span class="poblacion">aguas residuales industriales</span> del <span class="contexto">Río Rocha</span> durante la <span class="temporalidad">época seca de 2026</span>.</p>
+                                <p><strong>Título:</strong> <span class="var-indep">Fitorremediación con Totora (Schoenoplectus californicus)</span> para la disminución de la <span class="var-dep">concentración de metales pesados</span> en <span class="poblacion">aguas residuales</span> del <span class="contexto">Río Rocha</span>, <span class="temporalidad">época seca 2026</span>.</p>
+                            </div>
+                        </div>
+                        <!-- Ejemplo 2 -->
+                        <div class="bg-white p-6 rounded-xl shadow border border-gray-200">
+                            <h3 class="text-xl font-bold text-gray-800 border-b pb-2 mb-4">Ejemplo 2: Gestión de Residuos</h3>
+                            <ul class="text-sm space-y-1 mb-4">
+                                <li><span class="var-indep">VI:</span> Planta de compostaje automatizado con aireación forzada</li>
+                                <li><span class="var-dep">VD:</span> Tiempo de degradación aeróbica</li>
+                                <li><span class="poblacion">Población:</span> Residuos sólidos orgánicos municipales</li>
+                                <li><span class="contexto">Contexto:</span> Botadero Municipal de K'ara K'ara</li>
+                                <li><span class="temporalidad">Temporalidad:</span> Gestión 2026</li>
+                            </ul>
+                            <div class="space-y-3 text-sm">
+                                <p><strong>Pregunta:</strong> ¿En qué medida el uso de una <span class="var-indep">planta de compostaje automatizado con aireación forzada</span> reduce el <span class="var-dep">tiempo de degradación aeróbica</span> de los <span class="poblacion">residuos sólidos orgánicos</span> en el <span class="contexto">Botadero Municipal de K'ara K'ara</span> durante la <span class="temporalidad">gestión 2026</span>?</p>
+                                <p><strong>Objetivo Gen:</strong> Determinar la reducción del <span class="var-dep">tiempo de degradación aeróbica</span> de <span class="poblacion">residuos sólidos orgánicos</span> mediante una <span class="var-indep">planta de compostaje automatizado</span> en el <span class="contexto">Botadero K'ara K'ara</span>, <span class="temporalidad">gestión 2026</span>.</p>
+                                <p><strong>Título:</strong> <span class="var-indep">Compostaje automatizado con aireación forzada</span> para acelerar el <span class="var-dep">tiempo de degradación</span> de <span class="poblacion">residuos orgánicos</span> en el <span class="contexto">Botadero de K'ara K'ara</span>, <span class="temporalidad">2026</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer / Advice -->
+        <div class="mt-16 bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+            <h4 class="text-lg font-bold text-blue-800 mb-2">📌 Consejo del Docente:</h4>
+            <p class="text-gray-700">Recuerden que la <strong>coherencia metodológica</strong> es vital. Si en la pregunta cuestionan "¿Cómo influye...?", en el objetivo el verbo debe responder a esa acción (Evaluar o Determinar). El título es simplemente la versión afirmativa e integradora de estos mismos 5 elementos. ¡Éxito en sus perfiles de tesis!</p>
+        </div>
+    </main>
+
+    <script>
+        // Simple script for Tab functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.tab-btn');
+            const panes = document.querySelectorAll('.tab-pane');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active from all buttons
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    // Hide all panes
+                    panes.forEach(pane => {
+                        pane.classList.remove('block');
+                        pane.classList.add('hidden');
+                    });
+
+                    // Add active to clicked button
+                    button.classList.add('active');
+                    // Show target pane
+                    const targetId = button.getAttribute('data-target');
+                    const targetPane = document.getElementById(targetId);
+                    targetPane.classList.remove('hidden');
+                    targetPane.classList.add('block');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

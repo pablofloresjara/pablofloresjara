@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Grado I - El Árbol de Problemas</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            700: '#0f766e',
+                            900: '#134e4a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Estilos para el diagrama del árbol */
+        .tree-node {
+            position: relative;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 2px solid transparent;
+            text-align: center;
+            z-index: 10;
+        }
+        .tree-node.effect { border-color: #ef4444; background-color: #fef2f2; } /* Rojo para efectos */
+        .tree-node.problem { border-color: #f59e0b; background-color: #fffbeb; font-weight: bold; transform: scale(1.05); } /* Amarillo para problema */
+        .tree-node.cause { border-color: #10b981; background-color: #ecfdf5; } /* Verde para causas */
+        
+        /* Conectores visuales simplificados usando bordes */
+        .connector-vertical {
+            width: 2px;
+            height: 2rem;
+            background-color: #cbd5e1;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased font-sans">
+
+    <!-- Header / Hero Section -->
+    <header class="bg-brand-900 text-white py-16 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="max-w-5xl mx-auto relative z-10 text-center">
+            <span class="bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block">Módulo Metodológico</span>
+            <h1 class="text-4xl md:text-5xl font-serif mb-4">Taller de Grado I</h1>
+            <p class="text-xl md:text-2xl font-light text-brand-100 max-w-3xl mx-auto">
+                Metodología para la construcción del <strong class="font-bold text-white">Árbol de Problemas</strong>
+            </p>
+            <p class="mt-6 text-sm text-brand-100 italic">"Un problema bien planteado es un problema medio resuelto." - Charles Kettering</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        
+        <!-- Explicación Teórica -->
+        <section class="mb-16 bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="md:w-2/3">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center">
+                        <i data-lucide="book-open" class="text-brand-500 mr-3 h-8 w-8"></i>
+                        ¿Qué es el Árbol de Problemas?
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-4 leading-relaxed">
+                        Estimados estudiantes, en la investigación en ingeniería, no podemos proponer una solución (software, máquina, red o planta de tratamiento) sin antes comprender profundamente la falla o necesidad existente. El <strong>Árbol de Problemas</strong> es una técnica participativa que ayuda a desarrollar ideas creativas al identificar el problema central y mapear sus causas y efectos.
+                    </p>
+                    <ul class="space-y-4 mt-6">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-red-100 flex items-center justify-center border border-red-300 mt-1">
+                                <i data-lucide="leaf" class="h-3 w-3 text-red-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="text-md font-bold text-gray-900">Las Hojas y Ramas (Efectos)</h3>
+                                <p class="text-sm text-gray-600">Son las consecuencias del problema. Lo que vemos y sufrimos en la actualidad. Si no resolvemos el problema, estos efectos seguirán ocurringo (Ej: Pérdida económica, daños, quejas).</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-yellow-100 flex items-center justify-center border border-yellow-300 mt-1">
+                                <i data-lucide="circle-dot" class="h-3 w-3 text-yellow-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="text-md font-bold text-gray-900">El Tronco (Problema Central)</h3>
+                                <p class="text-sm text-gray-600">Es la situación negativa principal que queremos investigar y resolver. Debe ser claro, específico y estar en estado negativo (Ej: "Alta latencia en...", "Deficiente gestión de...").</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center border border-green-300 mt-1">
+                                <i data-lucide="git-merge" class="h-3 w-3 text-green-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="text-md font-bold text-gray-900">Las Raíces (Causas)</h3>
+                                <p class="text-sm text-gray-600">Es el origen del problema. Sobre estas causas es donde atacará nuestra propuesta técnica de grado. (Ej: Código obsoleto, materiales defectuosos).</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:w-1/3 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=400" alt="Árbol representando crecimiento y raíces" class="rounded-xl shadow-lg object-cover h-80 w-full">
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Examples Section -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900">Ejemplos Dinámicos por Carrera</h2>
+                <p class="text-gray-600 mt-3 max-w-2xl mx-auto">Selecciona tu área de ingeniería para ver casos prácticos de cómo estructurar correctamente un Árbol de Problemas para tu perfil de tesis.</p>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8 bg-white p-2 rounded-xl shadow-sm">
+                <button onclick="openTab('sistemas')" class="tab-btn active px-6 py-3 rounded-lg font-semibold transition-all text-brand-700 bg-brand-50 border-b-2 border-brand-500 hover:bg-brand-100 flex items-center" id="btn-sistemas">
+                    <i data-lucide="cpu" class="mr-2 h-5 w-5"></i> Ing. de Sistemas
+                </button>
+                <button onclick="openTab('telecom')" class="tab-btn px-6 py-3 rounded-lg font-semibold transition-all text-gray-500 hover:text-brand-700 hover:bg-brand-50 border-b-2 border-transparent flex items-center" id="btn-telecom">
+                    <i data-lucide="radio" class="mr-2 h-5 w-5"></i> Ing. de Telecomunicaciones
+                </button>
+                <button onclick="openTab('electro')" class="tab-btn px-6 py-3 rounded-lg font-semibold transition-all text-gray-500 hover:text-brand-700 hover:bg-brand-50 border-b-2 border-transparent flex items-center" id="btn-electro">
+                    <i data-lucide="settings" class="mr-2 h-5 w-5"></i> Ing. Electromecánica
+                </button>
+                <button onclick="openTab('ambiental')" class="tab-btn px-6 py-3 rounded-lg font-semibold transition-all text-gray-500 hover:text-brand-700 hover:bg-brand-50 border-b-2 border-transparent flex items-center" id="btn-ambiental">
+                    <i data-lucide="leaf" class="mr-2 h-5 w-5"></i> Ing. Ambiental
+                </button>
+            </div>
+
+            <!-- TAB CONTENT: SISTEMAS -->
+            <div id="sistemas" class="tab-content active">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Ejemplo 1 -->
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                        <h3 class="text-xl font-bold text-center mb-6 text-brand-900 border-b pb-2">Ejemplo 1: Rendimiento Web</h3>
+                        <div class="flex flex-col items-center">
+                            <!-- Efectos -->
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Indirecto</span>Pérdida de ventas e ingresos</div>
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Directo</span>Frustración y abandono de usuarios</div>
+                            </div>
+                            <div class="flex gap-16"><div class="connector-vertical"></div><div class="connector-vertical"></div></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 relative top-[-2px] mx-auto" style="width: 50%;"></div>
+                            <div class="connector-vertical"></div>
+                            
+                            <!-- Problema Central -->
+                            <div class="tree-node problem w-5/6">
+                                <span class="text-xs uppercase tracking-wider text-yellow-600 block mb-1">Problema Central</span>
+                                Alta latencia y caídas frecuentes en la plataforma e-commerce de la empresa X
+                            </div>
+                            
+                            <!-- Causas -->
+                            <div class="connector-vertical"></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 mx-auto" style="width: 66%;"></div>
+                            <div class="flex justify-around w-full mt-[-2px]">
+                                <div class="connector-vertical"></div>
+                                <div class="connector-vertical"></div>
+                                <div class="connector-vertical"></div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 w-full">
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 1</span>Arquitectura monolítica obsoleta</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 2</span>Consultas a Base de Datos ineficientes</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 3</span>Servidor sin balanceo de carga</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 2 -->
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                        <h3 class="text-xl font-bold text-center mb-6 text-brand-900 border-b pb-2">Ejemplo 2: Seguridad Informática</h3>
+                        <div class="flex flex-col items-center">
+                            <!-- Efectos -->
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Indirecto</span>Multas legales y pérdida de reputación</div>
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Directo</span>Robo y fuga de datos confidenciales</div>
+                            </div>
+                            <div class="flex gap-16"><div class="connector-vertical"></div><div class="connector-vertical"></div></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 relative top-[-2px] mx-auto" style="width: 50%;"></div>
+                            <div class="connector-vertical"></div>
+                            
+                            <!-- Problema Central -->
+                            <div class="tree-node problem w-5/6">
+                                <span class="text-xs uppercase tracking-wider text-yellow-600 block mb-1">Problema Central</span>
+                                Recurrentes vulnerabilidades y brechas de seguridad en el Sistema Académico
+                            </div>
+                            
+                            <!-- Causas -->
+                            <div class="connector-vertical"></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 mx-auto" style="width: 66%;"></div>
+                            <div class="flex justify-around w-full mt-[-2px]">
+                                <div class="connector-vertical"></div>
+                                <div class="connector-vertical"></div>
+                                <div class="connector-vertical"></div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 w-full">
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 1</span>Falta de encriptación de datos sensibles</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 2</span>Ausencia de validación de entradas (Inyección SQL)</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 3</span>Software y dependencias desactualizadas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT: TELECOMUNICACIONES -->
+            <div id="telecom" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Ejemplo 1 -->
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                        <h3 class="text-xl font-bold text-center mb-6 text-brand-900 border-b pb-2">Ejemplo 1: Redes Inalámbricas</h3>
+                        <div class="flex flex-col items-center">
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Indirecto</span>Brecha digital y reclamos constantes</div>
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Directo</span>Imposibilidad de establecer llamadas de voz/datos</div>
+                            </div>
+                            <div class="flex gap-16"><div class="connector-vertical"></div><div class="connector-vertical"></div></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 relative top-[-2px] mx-auto" style="width: 50%;"></div>
+                            <div class="connector-vertical"></div>
+                            <div class="tree-node problem w-5/6">
+                                <span class="text-xs uppercase tracking-wider text-yellow-600 block mb-1">Problema Central</span>
+                                Deficiente cobertura de red móvil 4G/LTE en zonas periurbanas del municipio Y
+                            </div>
+                            <div class="connector-vertical"></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 mx-auto" style="width: 66%;"></div>
+                            <div class="flex justify-around w-full mt-[-2px]">
+                                <div class="connector-vertical"></div><div class="connector-vertical"></div><div class="connector-vertical"></div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 w-full">
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 1</span>Insuficiente densidad de radiobases (antenas)</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 2</span>Topografía del terreno bloquea la señal (zona montañosa)</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 3</span>Equipos de transmisión con baja potencia configurada</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 2 -->
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                        <h3 class="text-xl font-bold text-center mb-6 text-brand-900 border-b pb-2">Ejemplo 2: Fibra Óptica</h3>
+                        <div class="flex flex-col items-center">
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Indirecto</span>Incremento de costos por mantenimiento correctivo</div>
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Directo</span>Intermitencia en el servicio y baja velocidad</div>
+                            </div>
+                            <div class="flex gap-16"><div class="connector-vertical"></div><div class="connector-vertical"></div></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 relative top-[-2px] mx-auto" style="width: 50%;"></div>
+                            <div class="connector-vertical"></div>
+                            <div class="tree-node problem w-5/6">
+                                <span class="text-xs uppercase tracking-wider text-yellow-600 block mb-1">Problema Central</span>
+                                Alta tasa de atenuación y pérdida de paquetes en el enlace de fibra óptica troncal
+                            </div>
+                            <div class="connector-vertical"></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 mx-auto" style="width: 66%;"></div>
+                            <div class="flex justify-around w-full mt-[-2px]">
+                                <div class="connector-vertical"></div><div class="connector-vertical"></div><div class="connector-vertical"></div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 w-full">
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 1</span>Empalmes de fusión defectuosos en la instalación</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 2</span>Curvaturas excesivas que superan el límite del cable</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 3</span>Degradación del revestimiento por exposición ambiental</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT: ELECTROMECÁNICA -->
+            <div id="electro" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Ejemplo 1 -->
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                        <h3 class="text-xl font-bold text-center mb-6 text-brand-900 border-b pb-2">Ejemplo 1: Mantenimiento Industrial</h3>
+                        <div class="flex flex-col items-center">
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Indirecto</span>Retrasos en entregas y altos costos de repuestos</div>
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Directo</span>Paradas imprevistas en la línea de producción</div>
+                            </div>
+                            <div class="flex gap-16"><div class="connector-vertical"></div><div class="connector-vertical"></div></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 relative top-[-2px] mx-auto" style="width: 50%;"></div>
+                            <div class="connector-vertical"></div>
+                            <div class="tree-node problem w-5/6">
+                                <span class="text-xs uppercase tracking-wider text-yellow-600 block mb-1">Problema Central</span>
+                                Frecuentes fallas por sobrecalentamiento en los motores de la cinta transportadora principal
+                            </div>
+                            <div class="connector-vertical"></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 mx-auto" style="width: 66%;"></div>
+                            <div class="flex justify-around w-full mt-[-2px]">
+                                <div class="connector-vertical"></div><div class="connector-vertical"></div><div class="connector-vertical"></div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 w-full">
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 1</span>Sobrecarga de peso operativo más allá del diseño</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 2</span>Falta de un plan de lubricación de rodamientos</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 3</span>Ventilación inadecuada en el área de la planta</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 2 -->
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                        <h3 class="text-xl font-bold text-center mb-6 text-brand-900 border-b pb-2">Ejemplo 2: Eficiencia Energética</h3>
+                        <div class="flex flex-col items-center">
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Indirecto</span>Pérdida de competitividad de la empresa</div>
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Directo</span>Incremento drástico en la facturación eléctrica mensual</div>
+                            </div>
+                            <div class="flex gap-16"><div class="connector-vertical"></div><div class="connector-vertical"></div></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 relative top-[-2px] mx-auto" style="width: 50%;"></div>
+                            <div class="connector-vertical"></div>
+                            <div class="tree-node problem w-5/6">
+                                <span class="text-xs uppercase tracking-wider text-yellow-600 block mb-1">Problema Central</span>
+                                Excesivo consumo de energía eléctrica en el sistema de bombeo de la planta
+                            </div>
+                            <div class="connector-vertical"></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 mx-auto" style="width: 66%;"></div>
+                            <div class="flex justify-around w-full mt-[-2px]">
+                                <div class="connector-vertical"></div><div class="connector-vertical"></div><div class="connector-vertical"></div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 w-full">
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 1</span>Motores operando continuamente a máxima capacidad (sin variadores de frecuencia)</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 2</span>Bombas sobredimensionadas para la demanda real</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 3</span>Fricción elevada por incrustaciones en tuberías antiguas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT: AMBIENTAL -->
+            <div id="ambiental" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Ejemplo 1 -->
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                        <h3 class="text-xl font-bold text-center mb-6 text-brand-900 border-b pb-2">Ejemplo 1: Contaminación Hídrica</h3>
+                        <div class="flex flex-col items-center">
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Indirecto</span>Enfermedades gastrointestinales en poblaciones ribereñas</div>
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Directo</span>Alta mortandad de la fauna acuática (peces)</div>
+                            </div>
+                            <div class="flex gap-16"><div class="connector-vertical"></div><div class="connector-vertical"></div></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 relative top-[-2px] mx-auto" style="width: 50%;"></div>
+                            <div class="connector-vertical"></div>
+                            <div class="tree-node problem w-5/6">
+                                <span class="text-xs uppercase tracking-wider text-yellow-600 block mb-1">Problema Central</span>
+                                Elevada concentración de metales pesados (Plomo y Mercurio) en las aguas del Río Z
+                            </div>
+                            <div class="connector-vertical"></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 mx-auto" style="width: 66%;"></div>
+                            <div class="flex justify-around w-full mt-[-2px]">
+                                <div class="connector-vertical"></div><div class="connector-vertical"></div><div class="connector-vertical"></div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 w-full">
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 1</span>Descarga directa de efluentes de fábricas sin tratamiento previo</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 2</span>Filtración de lixiviados provenientes de minería ilegal</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 3</span>Ausencia de monitoreo y fiscalización por autoridades</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 2 -->
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                        <h3 class="text-xl font-bold text-center mb-6 text-brand-900 border-b pb-2">Ejemplo 2: Gestión de Residuos</h3>
+                        <div class="flex flex-col items-center">
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Indirecto</span>Aumento de emisiones de gases de efecto invernadero (metano)</div>
+                                <div class="tree-node effect"><span class="text-xs font-bold text-red-500 block mb-1">Efecto Directo</span>Contaminación visual, malos olores y plagas locales</div>
+                            </div>
+                            <div class="flex gap-16"><div class="connector-vertical"></div><div class="connector-vertical"></div></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 relative top-[-2px] mx-auto" style="width: 50%;"></div>
+                            <div class="connector-vertical"></div>
+                            <div class="tree-node problem w-5/6">
+                                <span class="text-xs uppercase tracking-wider text-yellow-600 block mb-1">Problema Central</span>
+                                Colapso prematuro y superación de la capacidad instalada del relleno sanitario municipal
+                            </div>
+                            <div class="connector-vertical"></div>
+                            <div class="w-full h-2 border-t-2 border-gray-300 mx-auto" style="width: 66%;"></div>
+                            <div class="flex justify-around w-full mt-[-2px]">
+                                <div class="connector-vertical"></div><div class="connector-vertical"></div><div class="connector-vertical"></div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 w-full">
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 1</span>Nula cultura de separación de residuos sólidos en origen (hogares)</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 2</span>Acelerado crecimiento demográfico no planificado</div>
+                                <div class="tree-node cause text-sm"><span class="text-xs font-bold text-green-600 block mb-1">Causa 3</span>Falta de maquinaria pesada para una compactación adecuada</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusión del Docente -->
+        <section class="mt-16 bg-brand-50 rounded-2xl p-8 border border-brand-200 text-center relative">
+            <i data-lucide="graduation-cap" class="h-12 w-12 text-brand-500 mx-auto mb-4"></i>
+            <h3 class="text-2xl font-bold text-brand-900 mb-3">Nota del Docente</h3>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                Recuerden: Una vez que tengan bien definidas las <strong>Causas</strong> (raíces) en su árbol, estas se convertirán en la base para diseñar sus <strong>Objetivos Específicos</strong>. Si atacan las causas correctas con su propuesta de grado, el problema central se resolverá y los efectos negativos desaparecerán. ¡Mucho éxito en sus perfiles de tesis!
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center mt-12">
+        <p>Taller de Grado I &copy; 2026 - Material Educativo de Metodología de Investigación</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Inicializar iconos de Lucide
+        lucide.createIcons();
+
+        // Lógica de pestañas
+        function openTab(tabName) {
+            // Ocultar todos los contenidos
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Quitar clase activa de todos los botones
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('text-brand-700', 'bg-brand-50', 'border-brand-500');
+                btn.classList.add('text-gray-500', 'border-transparent');
+            });
+
+            // Mostrar el contenido seleccionado
+            document.getElementById(tabName).classList.add('active');
+
+            // Resaltar el botón seleccionado
+            const activeBtn = document.getElementById('btn-' + tabName);
+            activeBtn.classList.remove('text-gray-500', 'border-transparent');
+            activeBtn.classList.add('text-brand-700', 'bg-brand-50', 'border-brand-500');
+        }
+    </script>
+</body>
+</html>

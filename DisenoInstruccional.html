@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño Instruccional con IA: NotebookLM y Gemini</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .step-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .step-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .prompt-box {
+            background: #1e293b;
+            color: #a7f3d0;
+            font-family: monospace;
+        }
+        .tab-btn.active {
+            background-color: #e0e7ff;
+            color: #4f46e5;
+            border-left: 4px solid #4f46e5;
+            font-weight: 600;
+        }
+        .tab-btn {
+            border-left: 4px solid transparent;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex-1 min-w-0">
+                    <h2 class="text-3xl font-bold leading-7 text-white sm:text-4xl sm:truncate">
+                        <i class="fa-solid fa-microchip mr-2"></i> Diseño Instruccional con IA
+                    </h2>
+                    <p class="mt-2 text-indigo-100 text-lg">
+                        Metodología Dual: NotebookLM (Cerebro Documental) + Gemini (Asistente Creativo)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full lg:w-1/4">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden sticky top-8">
+                <div class="p-4 bg-slate-50 border-b border-slate-200">
+                    <h3 class="font-semibold text-slate-700">Ruta de Trabajo</h3>
+                </div>
+                <nav class="flex flex-col" id="nav-tabs">
+                    <button onclick="showStep(1)" class="tab-btn active w-full text-left px-6 py-4 hover:bg-slate-50 transition-colors flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold">1</div>
+                        <span>Preparación del Material</span>
+                    </button>
+                    <button onclick="showStep(2)" class="tab-btn w-full text-left px-6 py-4 hover:bg-slate-50 transition-colors flex items-center gap-3 border-t border-slate-100">
+                        <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold">2</div>
+                        <span>Elaboración de Contenido</span>
+                    </button>
+                    <button onclick="showStep(3)" class="tab-btn w-full text-left px-6 py-4 hover:bg-slate-50 transition-colors flex items-center gap-3 border-t border-slate-100">
+                        <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold">3</div>
+                        <span>Actividades Evaluativas</span>
+                    </button>
+                    <button onclick="showStep(4)" class="tab-btn w-full text-left px-6 py-4 hover:bg-slate-50 transition-colors flex items-center gap-3 border-t border-slate-100">
+                        <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold">4</div>
+                        <span>Rúbricas de Evaluación</span>
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <section class="w-full lg:w-3/4">
+            
+            <!-- Step 1 -->
+            <div id="step-1" class="step-content active">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-blue-100 text-blue-600 rounded-lg">
+                            <i class="fa-solid fa-book-journal-whills text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-slate-800">Paso 1: Preparación con NotebookLM</h2>
+                    </div>
+                    
+                    <p class="text-slate-600 mb-6 text-lg">
+                        El primer paso es consolidar nuestra bibliografía base. NotebookLM es ideal para esto porque evita las "alucinaciones"; sus respuestas se basan estrictamente en los documentos cargados.
+                    </p>
+
+                    <div class="mb-8 rounded-xl overflow-hidden bg-slate-100 relative h-64 flex items-center justify-center border border-slate-200">
+                        <p class="text-slate-400 italic"></p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-slate-800">Creación del Cuaderno</h4>
+                                <p class="text-slate-600">Creamos un nuevo cuaderno de trabajo llamado <em>"Tecnologías Emergentes y Adaptabilidad Digital"</em> en NotebookLM.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">2</div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-slate-800">Carga de Fuentes</h4>
+                                <p class="text-slate-600">Subimos nuestros PDFs clave (ej. Capacitación para Docentes, Manual del Docente Innovador, etc.).</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">3</div>
+                            <div class="w-full">
+                                <h4 class="font-semibold text-lg text-slate-800">Interacción y Síntesis (Prompt)</h4>
+                                <p class="text-slate-600 mb-3">Utiliza este prompt en el chat de NotebookLM para extraer lo esencial:</p>
+                                
+                                <div class="relative">
+                                    <div class="prompt-box p-4 rounded-lg text-sm mb-2" id="prompt-1">
+                                        "Actúa como un investigador educativo. Analiza los documentos cargados y extrae las 5 competencias digitales esenciales que un estudiante universitario debe desarrollar este semestre. Además, resume los casos de éxito de implementación de IA mencionados en las guías."
+                                    </div>
+                                    <button onclick="copyPrompt('prompt-1', this)" class="absolute top-2 right-2 bg-slate-700 hover:bg-slate-600 text-white text-xs px-3 py-1 rounded transition">
+                                        <i class="fa-regular fa-copy"></i> Copiar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">4</div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-slate-800">Generación de Audio (Flipped Classroom)</h4>
+                                <p class="text-slate-600">Utilizamos la función de <strong>Audio Overview</strong> para generar un podcast debate sobre los documentos y enviarlo a los alumnos antes de clase.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div id="step-2" class="step-content">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-purple-100 text-purple-600 rounded-lg">
+                            <i class="fa-solid fa-wand-magic-sparkles text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-slate-800">Paso 2: Asistente Creativo con Gemini</h2>
+                    </div>
+                    
+                    <p class="text-slate-600 mb-6 text-lg">
+                        Con el extracto técnico validado por NotebookLM, pasamos a <strong>Gemini</strong> para darle forma pedagógica, estructurar las sesiones y añadir elementos de <em>storytelling</em> para captar la atención.
+                    </p>
+
+                    <div class="space-y-8">
+                        <!-- Estructura del Sílabo -->
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                            <h3 class="text-xl font-bold text-slate-800 mb-2"><i class="fa-solid fa-list-check text-purple-600 mr-2"></i> 1. Estructura del Sílabo</h3>
+                            <p class="text-slate-600 mb-4">Pedimos a Gemini que diseñe la secuencia basada en los datos de NotebookLM.</p>
+                            
+                            <div class="relative">
+                                <div class="prompt-box p-4 rounded-lg text-sm" id="prompt-2">
+                                    "Eres un experto en diseño instruccional universitario y gamificación. Basado en estos temas [PEGA AQUÍ LOS TEMAS DE NOTEBOOKLM], diseña una secuencia didáctica de 4 semanas (2 sesiones semanales de 90 minutos) para estudiantes de la UPDS en Cochabamba. La metodología debe ser activa, con enfoque en aprendizaje basado en retos (CBR)."
+                                </div>
+                                <button onclick="copyPrompt('prompt-2', this)" class="absolute top-2 right-2 bg-slate-700 hover:bg-slate-600 text-white text-xs px-3 py-1 rounded transition">
+                                    <i class="fa-regular fa-copy"></i> Copiar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Storytelling -->
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                            <h3 class="text-xl font-bold text-slate-800 mb-2"><i class="fa-solid fa-jedi text-purple-600 mr-2"></i> 2. Creación del "Gancho" (Storytelling)</h3>
+                            <p class="text-slate-600 mb-4">Para romper el hielo en la sesión inaugural, creamos una introducción inmersiva.</p>
+                            
+                            <div class="relative">
+                                <div class="prompt-box p-4 rounded-lg text-sm" id="prompt-3">
+                                    "Escribe un mensaje de bienvenida y presentación del módulo de 'Inteligencia Artificial', pero redactado con el estilo épico del texto de apertura de las películas de Star Wars (opening crawl). Debe transmitir que la adaptabilidad digital es 'La Fuerza' que los guiará en el nuevo paradigma profesional. Sé inspirador y creativo."
+                                </div>
+                                <button onclick="copyPrompt('prompt-3', this)" class="absolute top-2 right-2 bg-slate-700 hover:bg-slate-600 text-white text-xs px-3 py-1 rounded transition">
+                                    <i class="fa-regular fa-copy"></i> Copiar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div id="step-3" class="step-content">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-emerald-100 text-emerald-600 rounded-lg">
+                            <i class="fa-solid fa-users-gear text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-slate-800">Paso 3: Actividades Evaluativas (Aplicación)</h2>
+                    </div>
+                    
+                    <p class="text-slate-600 mb-6 text-lg">
+                        Pasamos de la teoría a la práctica. Diseñaremos un proyecto donde los estudiantes apliquen las tecnologías emergentes (ChatGPT, Claude, Gemini) para resolver problemas locales reales.
+                    </p>
+
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-6">
+                        <h4 class="font-bold text-emerald-800 mb-2">Contexto del Reto:</h4>
+                        <ul class="list-disc list-inside text-emerald-700 space-y-1">
+                            <li>Trabajo grupal (3 personas).</li>
+                            <li>Enfoque: Tejido empresarial de Cochabamba.</li>
+                            <li>Entregables: Mapa mental, lista de prompts, prototipo.</li>
+                        </ul>
+                    </div>
+
+                    <div class="relative">
+                        <h3 class="font-semibold text-slate-700 mb-2">Prompt para generar las instrucciones de la actividad:</h3>
+                        <div class="prompt-box p-4 rounded-lg text-sm whitespace-pre-line" id="prompt-4">"Actúa como un profesor universitario de innovación. Diseña una actividad evaluativa formativa de nivel intermedio para aplicar lo aprendido sobre herramientas de IA generativa. 
+Contexto: Trabajo grupal (3 personas).
+Reto: Los estudiantes deben identificar un problema real en el tejido empresarial de Cochabamba y proponer una solución optimizada utilizando IA.
+Entregables requeridos: 
+1) Un mapa mental del problema.
+2) Una lista de 5 prompts avanzados que utilizaron para idear la solución.
+3) Un prototipo conceptual o presentación final. 
+Detalla las instrucciones paso a paso que le entregaré a los alumnos y establece un tiempo estimado para cada fase."</div>
+                        <button onclick="copyPrompt('prompt-4', this)" class="absolute top-10 right-2 bg-slate-700 hover:bg-slate-600 text-white text-xs px-3 py-1 rounded transition">
+                            <i class="fa-regular fa-copy"></i> Copiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div id="step-4" class="step-content">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-amber-100 text-amber-600 rounded-lg">
+                            <i class="fa-solid fa-table-list text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-slate-800">Paso 4: Rúbricas de Evaluación</h2>
+                    </div>
+                    
+                    <p class="text-slate-600 mb-6 text-lg">
+                        Necesitamos una forma objetiva de evaluar el proceso y el producto final, priorizando el pensamiento crítico sobre el simple uso de la herramienta.
+                    </p>
+
+                    <div class="relative mb-8">
+                        <div class="prompt-box p-4 rounded-lg text-sm whitespace-pre-line" id="prompt-5">"Diseña una rúbrica analítica en formato de tabla para evaluar la actividad de 'Resolución de problemas empresariales con IA'. 
+La rúbrica debe tener 4 niveles de desempeño: Excelente, Bueno, En Desarrollo y Requiere Mejora.
+Los criterios a evaluar son:
+1. Profundidad del análisis del problema local.
+2. Calidad técnica e iteración de los prompts utilizados (Ingeniería de Prompts).
+3. Nivel de innovación de la propuesta tecnológica.
+4. Ética y consideración de sesgos en el uso de la IA.
+5. Claridad de la presentación oral.
+Redacta los descriptores de cada celda con un lenguaje claro, enfocado en las competencias demostradas."</div>
+                        <button onclick="copyPrompt('prompt-5', this)" class="absolute top-2 right-2 bg-slate-700 hover:bg-slate-600 text-white text-xs px-3 py-1 rounded transition">
+                            <i class="fa-regular fa-copy"></i> Copiar
+                        </button>
+                    </div>
+
+                    <!-- Ejemplo de Salida (Mockup) -->
+                    <div class="mt-8">
+                        <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-eye text-amber-500"></i> Ejemplo de resultado generado (Previsualización)
+                        </h3>
+                        <div class="overflow-x-auto rounded-lg border border-slate-200 shadow-sm">
+                            <table class="min-w-full text-sm text-left text-slate-600">
+                                <thead class="bg-slate-50 text-slate-700 font-semibold uppercase text-xs">
+                                    <tr>
+                                        <th class="px-4 py-3 border-b">Criterio</th>
+                                        <th class="px-4 py-3 border-b border-l bg-green-50">Excelente</th>
+                                        <th class="px-4 py-3 border-b border-l bg-blue-50">Bueno</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b hover:bg-slate-50">
+                                        <td class="px-4 py-3 font-medium text-slate-800">2. Ingeniería de Prompts</td>
+                                        <td class="px-4 py-3 border-l">Usa roles, contexto detallado e itera los prompts estratégicamente para mejorar respuestas.</td>
+                                        <td class="px-4 py-3 border-l">Prompts claros pero con iteración limitada o falta de especificidad en el contexto.</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="px-4 py-3 font-medium text-slate-800">4. Ética y Sesgos</td>
+                                        <td class="px-4 py-3 border-l">Identifica proactivamente posibles sesgos de la IA y propone medidas de mitigación reales.</td>
+                                        <td class="px-4 py-3 border-l">Menciona aspectos éticos pero sin profundizar en las consecuencias directas.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2"><i class="fa-solid fa-circle-info"></i> Puedes copiar esta tabla directamente desde Gemini hacia Google Sheets o Canvas/Moodle.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        // Función para cambiar de paso (tabs)
+        function showStep(stepNumber) {
+            // Ocultar todos los contenidos
+            document.querySelectorAll('.step-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Quitar clase activa de todos los botones y restaurar estilos base
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach((btn, index) => {
+                btn.classList.remove('active');
+                // Restaurar el color del círculo numérico
+                const circle = btn.querySelector('div');
+                circle.classList.remove('bg-indigo-100', 'text-indigo-600');
+                circle.classList.add('bg-slate-100', 'text-slate-600');
+            });
+
+            // Mostrar el contenido seleccionado
+            document.getElementById(`step-${stepNumber}`).classList.add('active');
+            
+            // Marcar el botón como activo
+            const activeBtn = buttons[stepNumber - 1];
+            activeBtn.classList.add('active');
+            const activeCircle = activeBtn.querySelector('div');
+            activeCircle.classList.remove('bg-slate-100', 'text-slate-600');
+            activeCircle.classList.add('bg-indigo-100', 'text-indigo-600');
+        }
+
+        // Función para copiar texto al portapapeles usando document.execCommand como respaldo seguro en iframes
+        function copyPrompt(elementId, btnElement) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            
+            // Crear un textarea oculto
+            const textArea = document.createElement("textarea");
+            textArea.value = textToCopy;
+            
+            // Evitar scroll en pantalla
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if(successful) {
+                    // Cambiar botón a "Copiado!" temporalmente
+                    const originalHTML = btnElement.innerHTML;
+                    btnElement.innerHTML = '<i class="fa-solid fa-check text-green-400"></i> Copiado';
+                    btnElement.classList.remove('bg-slate-700', 'hover:bg-slate-600');
+                    btnElement.classList.add('bg-green-800');
+                    
+                    setTimeout(() => {
+                        btnElement.innerHTML = originalHTML;
+                        btnElement.classList.add('bg-slate-700', 'hover:bg-slate-600');
+                        btnElement.classList.remove('bg-green-800');
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('Error al copiar', err);
+                alert('No se pudo copiar el texto. Seleccionalo manualmente.');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+    </script>
+</body>
+</html>

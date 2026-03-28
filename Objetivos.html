@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Grado I - Formulación de Objetivos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tab-active {
+            border-bottom: 2px solid #0ea5e9;
+            color: #0369a1;
+            font-weight: 600;
+        }
+        .tab-inactive {
+            border-bottom: 2px solid transparent;
+            color: #6b7280;
+        }
+        .tab-inactive:hover {
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .smart-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-brand-700 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0v7" />
+                    </svg>
+                    <span class="font-bold text-xl text-gray-900">Metodología de la Investigación</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#conceptos" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Conceptos</a>
+                    <a href="#smart" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Metodología SMART</a>
+                    <a href="#ejemplos" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Ejemplos por Carrera</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-brand-900 text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M0 40L40 0H20L0 20M40 40V20L20 40" stroke="currentColor" stroke-width="1" fill="none"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid-pattern)"></rect>
+            </svg>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Taller de Grado I</h1>
+            <h2 class="text-2xl md:text-3xl font-serif text-brand-100 mb-6">La Brújula de tu Investigación: Formulación de Objetivos</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-300">
+                Aprende a estructurar el objetivo general y los específicos de tu proyecto de grado utilizando la metodología SMART para las carreras de ingeniería.
+            </p>
+        </div>
+    </header>
+
+    <!-- Conceptos Section -->
+    <section id="conceptos" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">¿Qué son los Objetivos de Investigación?</h2>
+                <div class="w-24 h-1 bg-brand-500 mx-auto mt-4 rounded"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm mb-6 border border-gray-100">
+                        <h3 class="text-xl font-bold text-brand-700 mb-3 flex items-center">
+                            <svg class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" /></svg>
+                            Objetivo General
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Es la meta principal o el propósito global de tu trabajo de grado. Expresa de manera clara, concisa y realista el resultado final que pretendes alcanzar. Responde directamente a la pregunta principal de tu investigación. Siempre debe iniciar con un <strong>verbo en infinitivo</strong> (ej. <em>Diseñar, Desarrollar, Evaluar, Implementar</em>).
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="text-xl font-bold text-brand-700 mb-3 flex items-center">
+                            <svg class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+                            Objetivos Específicos
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Son los pasos lógicos, analíticos y secuenciales que debes dar para alcanzar el Objetivo General. Representan los logros parciales de tu investigación. No son "actividades" rutinarias (como <em>"leer un libro" o "hacer encuestas"</em>), sino <strong>resultados medibles</strong> de etapas del proyecto.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="relative rounded-lg overflow-hidden shadow-xl border-4 border-white bg-gray-200 w-full max-w-md aspect-[4/3] flex items-center justify-center">
+                        <span class="text-gray-500 italic"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SMART Section -->
+    <section id="smart" class="py-16 bg-gray-50 border-t border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900">La Metodología SMART</h2>
+                <p class="mt-4 text-lg text-gray-600">Una regla de oro en ingeniería para redactar objetivos que no fallen ante el tribunal.</p>
+                <div class="w-24 h-1 bg-brand-500 mx-auto mt-4 rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                <!-- S -->
+                <div class="smart-card bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-500 transition-all duration-300">
+                    <div class="text-4xl font-black text-blue-500 mb-2">S</div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Específico</h4>
+                    <span class="text-xs font-semibold text-blue-600 uppercase tracking-wide">Specific</span>
+                    <p class="mt-3 text-sm text-gray-600">¿Qué exactamente vas a hacer? El objetivo debe ser detallado y no dejar lugar a ambigüedades. Evita términos vagos.</p>
+                </div>
+                <!-- M -->
+                <div class="smart-card bg-white p-6 rounded-xl shadow-sm border-t-4 border-green-500 transition-all duration-300">
+                    <div class="text-4xl font-black text-green-500 mb-2">M</div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Medible</h4>
+                    <span class="text-xs font-semibold text-green-600 uppercase tracking-wide">Measurable</span>
+                    <p class="mt-3 text-sm text-gray-600">¿Cómo sabrás que lo lograste? Debe haber criterios o indicadores (rendimiento, eficiencia, reducción de costos) para evaluar el éxito.</p>
+                </div>
+                <!-- A -->
+                <div class="smart-card bg-white p-6 rounded-xl shadow-sm border-t-4 border-yellow-500 transition-all duration-300">
+                    <div class="text-4xl font-black text-yellow-500 mb-2">A</div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Alcanzable</h4>
+                    <span class="text-xs font-semibold text-yellow-600 uppercase tracking-wide">Achievable</span>
+                    <p class="mt-3 text-sm text-gray-600">¿Es posible lograrlo con tus conocimientos y recursos? Debe ser un reto, pero técnica y financieramente factible para un estudiante.</p>
+                </div>
+                <!-- R -->
+                <div class="smart-card bg-white p-6 rounded-xl shadow-sm border-t-4 border-red-500 transition-all duration-300">
+                    <div class="text-4xl font-black text-red-500 mb-2">R</div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Relevante</h4>
+                    <span class="text-xs font-semibold text-red-600 uppercase tracking-wide">Relevant</span>
+                    <p class="mt-3 text-sm text-gray-600">¿Por qué importa? Debe resolver un problema real y aportar conocimiento o una solución útil a la sociedad o industria.</p>
+                </div>
+                <!-- T -->
+                <div class="smart-card bg-white p-6 rounded-xl shadow-sm border-t-4 border-purple-500 transition-all duration-300">
+                    <div class="text-4xl font-black text-purple-500 mb-2">T</div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Temporal</h4>
+                    <span class="text-xs font-semibold text-purple-600 uppercase tracking-wide">Time-bound</span>
+                    <p class="mt-3 text-sm text-gray-600">¿Cuándo se terminará? En un proyecto de grado, implica delimitar el tiempo (gestión académica, meses) y el lugar geográfico.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white p-6 rounded-lg shadow border-l-4 border-brand-500 flex items-center justify-between flex-wrap gap-4">
+                <div>
+                    <h4 class="font-bold text-gray-900">Fórmula de redacción sugerida:</h4>
+                    <p class="text-gray-700 mt-1">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-mono">Verbo en Infinitivo</span> + 
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-mono">¿Qué se hará?</span> + 
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm font-mono">¿Mediante qué método/tecnología?</span> + 
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm font-mono">¿Para qué/Dónde/Cuándo?</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ejemplos por Carrera Section -->
+    <section id="ejemplos" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900">Ejemplos Prácticos por Carrera</h2>
+                <p class="mt-4 text-lg text-gray-600">Selecciona tu carrera para ver cómo se aplican estos conceptos en temas reales de Tesis/Proyecto de Grado.</p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="border-b border-gray-200">
+                <nav class="flex justify-center space-x-4 md:space-x-8 overflow-x-auto pb-[-1px]" aria-label="Tabs">
+                    <button onclick="switchTab('sistemas')" id="tab-sistemas" class="tab-active whitespace-nowrap py-4 px-1 font-medium text-sm md:text-base cursor-pointer focus:outline-none flex items-center">
+                        <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        Ing. de Sistemas
+                    </button>
+                    <button onclick="switchTab('telecom')" id="tab-telecom" class="tab-inactive whitespace-nowrap py-4 px-1 font-medium text-sm md:text-base cursor-pointer focus:outline-none flex items-center">
+                        <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" /></svg>
+                        Ing. Telecomunicaciones
+                    </button>
+                    <button onclick="switchTab('electro')" id="tab-electro" class="tab-inactive whitespace-nowrap py-4 px-1 font-medium text-sm md:text-base cursor-pointer focus:outline-none flex items-center">
+                        <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        Ing. Electromecánica
+                    </button>
+                    <button onclick="switchTab('ambiental')" id="tab-ambiental" class="tab-inactive whitespace-nowrap py-4 px-1 font-medium text-sm md:text-base cursor-pointer focus:outline-none flex items-center">
+                        <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Ing. Ambiental
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="mt-8">
+                
+                <!-- SISTEMAS -->
+                <div id="content-sistemas" class="tab-content active">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Ejemplo 1 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-200 shadow-sm">
+                            <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-4">Ejemplo 1 - Machine Learning</span>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Sistema Predictivo Agrícola</h3>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-bold text-brand-700 text-sm uppercase">Objetivo General</h4>
+                                <p class="mt-2 text-gray-800 p-3 bg-white rounded border-l-4 border-brand-500">
+                                    <strong>Desarrollar</strong> una aplicación web basada en algoritmos de aprendizaje automático (Redes Neuronales Convolucionales) para la detección temprana de la enfermedad del tizón tardío en cultivos de papa en el municipio de Morochata, mejorando la precisión del diagnóstico en un 85% durante la gestión 2026.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-3 rounded text-xs text-blue-900 mb-4 border border-blue-100">
+                                <strong>Análisis SMART:</strong><br>
+                                <b>S:</b> App web con Machine Learning para detectar tizón tardío.<br>
+                                <b>M:</b> Mejorar precisión al 85%.<br>
+                                <b>A:</b> Se usarán algoritmos CNN estándar y bases de datos fotográficas.<br>
+                                <b>R:</b> Reduce pérdidas agrícolas en una zona productora clave.<br>
+                                <b>T:</b> Gestión 2026, Municipio de Morochata.
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">Objetivos Específicos</h4>
+                                <ul class="mt-2 space-y-2 text-gray-700 list-disc list-inside">
+                                    <li><strong>Recopilar</strong> un conjunto de datos (dataset) de imágenes de hojas de papa sanas y enfermas provenientes de parcelas locales.</li>
+                                    <li><strong>Diseñar</strong> la arquitectura de la red neuronal convolucional para el procesamiento e inferencia de imágenes.</li>
+                                    <li><strong>Entrenar</strong> y probar el modelo predictivo ajustando los hiperparámetros para reducir el margen de error.</li>
+                                    <li><strong>Construir</strong> la interfaz de usuario web integrando la API del modelo predictivo para el acceso de los agricultores.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Ejemplo 2 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-200 shadow-sm">
+                            <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-4">Ejemplo 2 - Seguridad / Blockchain</span>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Verificación de Credenciales Académicas</h3>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-bold text-brand-700 text-sm uppercase">Objetivo General</h4>
+                                <p class="mt-2 text-gray-800 p-3 bg-white rounded border-l-4 border-brand-500">
+                                    <strong>Implementar</strong> un prototipo de sistema de validación de títulos universitarios utilizando tecnología Blockchain (Smart Contracts en Ethereum) para reducir el tiempo de verificación de credenciales a menos de 1 minuto en la Universidad XYZ durante el semestre II-2026.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-3 rounded text-xs text-blue-900 mb-4 border border-blue-100">
+                                <strong>Análisis SMART:</strong><br>
+                                <b>S:</b> Sistema de validación de títulos usando Blockchain.<br>
+                                <b>M:</b> Reducir tiempo a menos de 1 minuto.<br>
+                                <b>A:</b> Prototipo funcional usando redes de prueba (testnets) de Ethereum.<br>
+                                <b>R:</b> Combate la falsificación y agiliza procesos burocráticos.<br>
+                                <b>T:</b> Semestre II-2026, Universidad XYZ.
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">Objetivos Específicos</h4>
+                                <ul class="mt-2 space-y-2 text-gray-700 list-disc list-inside">
+                                    <li><strong>Analizar</strong> el flujo actual del proceso de emisión y legalización de títulos en la universidad.</li>
+                                    <li><strong>Programar</strong> los Contratos Inteligentes (Smart Contracts) para el registro inmutable de las credenciales.</li>
+                                    <li><strong>Desarrollar</strong> una DApp (Aplicación Descentralizada) para la interacción entre administradores y empleadores.</li>
+                                    <li><strong>Evaluar</strong> el rendimiento y los costos de transacción (Gas) del prototipo en una red de pruebas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TELECOMUNICACIONES -->
+                <div id="content-telecom" class="tab-content">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Ejemplo 1 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-200 shadow-sm">
+                            <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs font-bold mb-4">Ejemplo 1 - Internet de las Cosas (IoT)</span>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Red de Monitoreo Ambiental</h3>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-bold text-brand-700 text-sm uppercase">Objetivo General</h4>
+                                <p class="mt-2 text-gray-800 p-3 bg-white rounded border-l-4 border-indigo-500">
+                                    <strong>Diseñar</strong> una red de sensores inalámbricos (WSN) basada en el protocolo LoRaWAN para el monitoreo en tiempo real del material particulado (PM2.5 y PM10) en la zona sur de Cochabamba, asegurando una cobertura de 5km de radio, para el año 2026.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-indigo-50 p-3 rounded text-xs text-indigo-900 mb-4 border border-indigo-100">
+                                <strong>Análisis SMART:</strong><br>
+                                <b>S:</b> Red de sensores inalámbricos usando LoRaWAN.<br>
+                                <b>M:</b> Cobertura comprobada de 5km de radio, monitoreo PM2.5/PM10 en tiempo real.<br>
+                                <b>A:</b> Se usarán módulos LoRa accesibles y sensores de aire estándar.<br>
+                                <b>R:</b> Permite tomar decisiones de salud pública ante la contaminación.<br>
+                                <b>T:</b> Año 2026, Zona Sur de Cochabamba.
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">Objetivos Específicos</h4>
+                                <ul class="mt-2 space-y-2 text-gray-700 list-disc list-inside">
+                                    <li><strong>Determinar</strong> la ubicación óptima de los nodos sensores y el Gateway mediante software de simulación de cobertura de radiofrecuencia.</li>
+                                    <li><strong>Ensamblar</strong> los nodos sensores integrando microcontroladores, módulos de comunicación LoRa y sensores de calidad del aire.</li>
+                                    <li><strong>Configurar</strong> el servidor de red (Network Server) y el dashboard para la visualización de los datos recolectados.</li>
+                                    <li><strong>Validar</strong> la tasa de pérdida de paquetes y el consumo energético de los nodos en pruebas de campo.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Ejemplo 2 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-200 shadow-sm">
+                            <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs font-bold mb-4">Ejemplo 2 - Redes Ópticas/5G</span>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Optimización de Enlaces Backhaul</h3>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-bold text-brand-700 text-sm uppercase">Objetivo General</h4>
+                                <p class="mt-2 text-gray-800 p-3 bg-white rounded border-l-4 border-indigo-500">
+                                    <strong>Proponer</strong> un modelo de optimización topológica para la red backhaul de fibra óptica en la ruta interdepartamental Cochabamba-Santa Cruz, que incremente la capacidad de transmisión en un 40% para soportar el tráfico futuro de redes 5G, aplicable en el periodo 2026-2027.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-indigo-50 p-3 rounded text-xs text-indigo-900 mb-4 border border-indigo-100">
+                                <strong>Análisis SMART:</strong><br>
+                                <b>S:</b> Modelo de optimización para red backhaul de fibra.<br>
+                                <b>M:</b> Incremento de capacidad de transmisión en 40%.<br>
+                                <b>A:</b> Diseño y simulación mediante software especializado (ej. OptiSystem).<br>
+                                <b>R:</b> Soluciona cuellos de botella para la inminente llegada de 5G.<br>
+                                <b>T:</b> Periodo 2026-2027, Ruta Cbba-Scz.
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">Objetivos Específicos</h4>
+                                <ul class="mt-2 space-y-2 text-gray-700 list-disc list-inside">
+                                    <li><strong>Diagnosticar</strong> el estado actual de la infraestructura óptica y los niveles de atenuación en la ruta seleccionada.</li>
+                                    <li><strong>Calcular</strong> la demanda de ancho de banda proyectada considerando los estándares técnicos de la tecnología 5G.</li>
+                                    <li><strong>Simular</strong> el desempeño de tecnologías de multiplexación DWDM para evaluar la mejora en la capacidad del enlace.</li>
+                                    <li><strong>Realizar</strong> un estudio de factibilidad económica para la implementación de las mejoras propuestas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ELECTROMECÁNICA -->
+                <div id="content-electro" class="tab-content">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Ejemplo 1 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-200 shadow-sm">
+                            <span class="inline-block px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-bold mb-4">Ejemplo 1 - Energías Renovables</span>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Sistema Híbrido de Generación</h3>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-bold text-brand-700 text-sm uppercase">Objetivo General</h4>
+                                <p class="mt-2 text-gray-800 p-3 bg-white rounded border-l-4 border-orange-500">
+                                    <strong>Dimensionar</strong> un sistema de generación de energía híbrido (solar-eólico) off-grid para garantizar un suministro ininterrumpido de 5 kW a la Unidad Educativa "El Progreso" en el área rural de Tiraque durante el año 2026.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-orange-50 p-3 rounded text-xs text-orange-900 mb-4 border border-orange-100">
+                                <strong>Análisis SMART:</strong><br>
+                                <b>S:</b> Sistema de generación híbrido (solar-eólico) fuera de la red (off-grid).<br>
+                                <b>M:</b> Suministrar capacidad de 5 kW de manera continua.<br>
+                                <b>A:</b> Cálculos de ingeniería y selección de componentes del mercado.<br>
+                                <b>R:</b> Provee energía limpia a una escuela sin acceso a la red eléctrica.<br>
+                                <b>T:</b> Año 2026, Unidad Educativa rural de Tiraque.
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">Objetivos Específicos</h4>
+                                <ul class="mt-2 space-y-2 text-gray-700 list-disc list-inside">
+                                    <li><strong>Evaluar</strong> el potencial energético solar (irradiancia) y eólico (velocidad de vientos) de la zona mediante datos meteorológicos históricos.</li>
+                                    <li><strong>Determinar</strong> el perfil de carga y la demanda energética diaria de los equipos de la unidad educativa.</li>
+                                    <li><strong>Seleccionar</strong> los componentes electromecánicos (paneles, aerogenerador, inversor, banco de baterías) óptimos según los cálculos de diseño.</li>
+                                    <li><strong>Elaborar</strong> los planos eléctricos y mecánicos de la instalación del sistema.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Ejemplo 2 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-200 shadow-sm">
+                            <span class="inline-block px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-bold mb-4">Ejemplo 2 - Automatización Industrial</span>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Cinta Transportadora Clasificadora</h3>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-bold text-brand-700 text-sm uppercase">Objetivo General</h4>
+                                <p class="mt-2 text-gray-800 p-3 bg-white rounded border-l-4 border-orange-500">
+                                    <strong>Diseñar</strong> un prototipo de cinta transportadora automatizada con visión artificial y actuadores neumáticos para la clasificación por color de envases PET reciclados, logrando una tasa de error menor al 5% en la planta "ReciclaBol" durante el primer semestre de 2026.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-orange-50 p-3 rounded text-xs text-orange-900 mb-4 border border-orange-100">
+                                <strong>Análisis SMART:</strong><br>
+                                <b>S:</b> Prototipo de cinta clasificadora con visión artificial y neumática.<br>
+                                <b>M:</b> Tasa de error en la clasificación menor al 5%.<br>
+                                <b>A:</b> Prototipo a escala usando PLC, cámara industrial y cilindros neumáticos.<br>
+                                <b>R:</b> Optimiza los tiempos de la industria del reciclaje plástico.<br>
+                                <b>T:</b> Primer semestre de 2026, Planta "ReciclaBol".
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">Objetivos Específicos</h4>
+                                <ul class="mt-2 space-y-2 text-gray-700 list-disc list-inside">
+                                    <li><strong>Calcular</strong> los requerimientos mecánicos (torque, velocidad, potencia) de los motores de la cinta transportadora.</li>
+                                    <li><strong>Implementar</strong> el algoritmo de procesamiento de imágenes para la detección y diferenciación de colores de los envases.</li>
+                                    <li><strong>Programar</strong> la lógica de control en el Controlador Lógico Programable (PLC) para la sincronización de la cámara con los actuadores neumáticos.</li>
+                                    <li><strong>Realizar</strong> pruebas de puesta en marcha para calibrar los sensores y medir la eficiencia de clasificación.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AMBIENTAL -->
+                <div id="content-ambiental" class="tab-content">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Ejemplo 1 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-200 shadow-sm">
+                            <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold mb-4">Ejemplo 1 - Control de Contaminación</span>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Biorremediación de Aguas Residuales</h3>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-bold text-brand-700 text-sm uppercase">Objetivo General</h4>
+                                <p class="mt-2 text-gray-800 p-3 bg-white rounded border-l-4 border-green-500">
+                                    <strong>Evaluar</strong> la eficiencia del uso de microalgas (Chlorella vulgaris) en un fotobiorreactor a escala de laboratorio para la reducción de la Demanda Biológica de Oxígeno (DBO) y metales pesados en las aguas residuales industriales del Río Rocha durante la gestión 2026.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-green-50 p-3 rounded text-xs text-green-900 mb-4 border border-green-100">
+                                <strong>Análisis SMART:</strong><br>
+                                <b>S:</b> Evaluar eficiencia de microalgas en fotobiorreactor para tratamiento de agua.<br>
+                                <b>M:</b> Medir el % de reducción de la DBO y metales pesados.<br>
+                                <b>A:</b> Experimento controlado a escala de laboratorio con equipos disponibles.<br>
+                                <b>R:</b> Ofrece una alternativa biológica y económica a un grave problema hídrico.<br>
+                                <b>T:</b> Gestión 2026, Muestras del Río Rocha.
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">Objetivos Específicos</h4>
+                                <ul class="mt-2 space-y-2 text-gray-700 list-disc list-inside">
+                                    <li><strong>Caracterizar</strong> fisicoquímicamente las muestras de agua residual recolectadas antes del tratamiento.</li>
+                                    <li><strong>Cultivar</strong> la cepa de microalgas bajo condiciones controladas de luz y temperatura en el laboratorio.</li>
+                                    <li><strong>Medir</strong> la concentración de contaminantes (DBO, DQO, metales) a intervalos regulares durante el proceso de biorremediación.</li>
+                                    <li><strong>Comparar</strong> los resultados finales con los límites permisibles establecidos por la Ley de Medio Ambiente (Ley 1333).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Ejemplo 2 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-200 shadow-sm">
+                            <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold mb-4">Ejemplo 2 - Economía Circular</span>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Bioplásticos a partir de Residuos</h3>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-bold text-brand-700 text-sm uppercase">Objetivo General</h4>
+                                <p class="mt-2 text-gray-800 p-3 bg-white rounded border-l-4 border-green-500">
+                                    <strong>Formular</strong> un polímero biodegradable (bioplástico) utilizando almidón extraído de los residuos de la cáscara de plátano, que alcance una resistencia a la tracción mínima de 5 MPa, para ofrecer una alternativa a los plásticos de un solo uso en Cercado, Cochabamba (2026).
+                                </p>
+                            </div>
+                            
+                            <div class="bg-green-50 p-3 rounded text-xs text-green-900 mb-4 border border-green-100">
+                                <strong>Análisis SMART:</strong><br>
+                                <b>S:</b> Crear un bioplástico usando almidón de cáscara de plátano.<br>
+                                <b>M:</b> Alcanzar una resistencia a la tracción de al menos 5 MPa.<br>
+                                <b>A:</b> Metodología de laboratorio conocida (gelatinización de almidón).<br>
+                                <b>R:</b> Reduce volumen de residuos orgánicos y contaminación por plásticos.<br>
+                                <b>T:</b> Año 2026, municipio de Cercado, Cochabamba.
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">Objetivos Específicos</h4>
+                                <ul class="mt-2 space-y-2 text-gray-700 list-disc list-inside">
+                                    <li><strong>Extraer y cuantificar</strong> el rendimiento de almidón obtenido de las cáscaras de plátano desechadas en mercados locales.</li>
+                                    <li><strong>Sintetizar</strong> diferentes mezclas de películas biodegradables variando las concentraciones de plastificantes (ej. glicerina).</li>
+                                    <li><strong>Analizar</strong> las propiedades mecánicas (tracción, elongación) y de solubilidad en agua del bioplástico formulado.</li>
+                                    <li><strong>Determinar</strong> el tiempo de degradación del material en condiciones de compostaje simulado.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+            <svg class="h-10 w-10 text-brand-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0v7" />
+            </svg>
+            <p class="mb-2"><strong>Taller de Grado I</strong> - Material de Apoyo Didáctico</p>
+            <p class="text-sm text-gray-500">Basado en metodologías de investigación científica aplicadas a la ingeniería.</p>
+        </div>
+    </footer>
+
+    <!-- JS for Tabs -->
+    <script>
+        function switchTab(tabId) {
+            // Arrays con los IDs de las pestañas
+            const tabs = ['sistemas', 'telecom', 'electro', 'ambiental'];
+            
+            tabs.forEach(tab => {
+                const btn = document.getElementById('tab-' + tab);
+                const content = document.getElementById('content-' + tab);
+                
+                if (tab === tabId) {
+                    // Activar la pestaña y mostrar contenido
+                    btn.classList.remove('tab-inactive');
+                    btn.classList.add('tab-active');
+                    content.classList.add('active');
+                } else {
+                    // Desactivar las otras pestañas y ocultar contenido
+                    btn.classList.remove('tab-active');
+                    btn.classList.add('tab-inactive');
+                    content.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

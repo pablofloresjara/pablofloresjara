@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Grado - Metodología de la Investigación para Ingeniería</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#1e3a8a', secondary: '#2563eb', accent: '#f59e0b' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="gradient-bg text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-graduation-cap text-3xl text-accent mr-3"></i>
+                    <span class="font-bold text-xl tracking-tight">Taller de Grado</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="navigate('inicio')" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition">Inicio</button>
+                    <button onclick="navigate('fundamentos')" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition">Fundamentos</button>
+                    <button onclick="navigate('tipos')" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition">Enfoques y Tipos</button>
+                    <button onclick="navigate('casos')" class="bg-accent text-primary px-4 py-2 rounded-md text-sm font-bold shadow hover:bg-yellow-400 transition">Casos por Carrera</button>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-white hover:text-accent focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-blue-900 pb-3 px-2">
+            <button onclick="navigate('inicio'); toggleMobileMenu()" class="block w-full text-left text-white hover:bg-blue-800 px-3 py-2 rounded-md text-base font-medium">Inicio</button>
+            <button onclick="navigate('fundamentos'); toggleMobileMenu()" class="block w-full text-left text-white hover:bg-blue-800 px-3 py-2 rounded-md text-base font-medium">Fundamentos</button>
+            <button onclick="navigate('tipos'); toggleMobileMenu()" class="block w-full text-left text-white hover:bg-blue-800 px-3 py-2 rounded-md text-base font-medium">Enfoques y Tipos</button>
+            <button onclick="navigate('casos'); toggleMobileMenu()" class="block w-full text-left text-accent font-bold hover:bg-blue-800 px-3 py-2 rounded-md text-base">Casos por Carrera</button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <!-- Content will be injected here by JavaScript -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm">Material didáctico desarrollado para la asignatura <strong>Taller de Grado</strong>.</p>
+            <p class="text-xs mt-2 text-gray-500">Basado en metodologías de R. Hernández Sampieri, J. Hurtado de Barrera, N. Sapag Chain y normativas APA.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Data and Logic -->
+    <script>
+        // --- DATA OBJECTS ---
+        
+        const contentData = {
+            inicio: `
+                <div class="fade-in">
+                    <div class="text-center py-12 lg:py-20 bg-white rounded-2xl shadow-sm border border-gray-100 mb-8 overflow-hidden relative">
+                        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-accent"></div>
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Metodología de la Investigación<br><span class="text-primary">Aplicada a la Ingeniería</span></h1>
+                        <p class="text-lg text-gray-600 max-w-3xl mx-auto px-4">
+                            Bienvenidos a Taller de Grado I. Este espacio está diseñado para guiar a estudiantes de Ingeniería de Sistemas, Telecomunicaciones, Electromecánica y Ambiental en la estructuración científica y técnica de sus proyectos de tesis o proyectos de grado.
+                        </p>
+                        <div class="mt-8">
+                            <button onclick="navigate('fundamentos')" class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition shadow-lg mr-4">Comenzar a aprender</button>
+                            <button onclick="navigate('casos')" class="bg-white text-primary border border-primary px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition shadow">Ver Ejemplos</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="glass-card p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                            <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-cogs text-primary text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Ingeniería y Ciencia</h3>
+                            <p class="text-gray-600 text-sm">La ingeniería aplica el conocimiento científico para resolver problemas prácticos. Toda solución técnica requiere un respaldo metodológico riguroso.</p>
+                        </div>
+                        <div class="glass-card p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                            <div class="bg-yellow-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-lightbulb text-accent text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">De la Idea al Problema</h3>
+                            <p class="text-gray-600 text-sm">Aprenderemos a transformar ideas vagas en Planteamientos del Problema concretos, medibles y viables para un proyecto de grado.</p>
+                        </div>
+                        <div class="glass-card p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                            <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-file-contract text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Rigor Académico</h3>
+                            <p class="text-gray-600 text-sm">Aplicación de normas APA, redacción científica, validación de instrumentos y evaluación técnica-económica (factibilidad).</p>
+                        </div>
+                    </div>
+                </div>
+            `,
+            fundamentos: `
+                <div class="fade-in">
+                    <h2 class="text-3xl font-bold text-primary mb-6 border-b-2 border-accent pb-2 inline-block">Fundamentos de la Investigación</h2>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-question-circle text-primary mr-2"></i> 1. El Problema de Investigación</h3>
+                            <p class="text-gray-600 mb-4 text-justify">
+                                Según <em>Hernández Sampieri</em>, plantear el problema no es sino afinar y estructurar más formalmente la idea de investigación. En ingeniería, el problema suele surgir de una necesidad, una deficiencia en un sistema, una oportunidad de optimización o un vacío tecnológico.
+                            </p>
+                            <div class="bg-blue-50 border-l-4 border-primary p-4 rounded-r text-sm text-gray-700">
+                                <strong>Elementos clave:</strong>
+                                <ul class="list-disc pl-5 mt-2">
+                                    <li><strong>Síntomas:</strong> ¿Qué está ocurriendo?</li>
+                                    <li><strong>Causas:</strong> ¿Por qué ocurre?</li>
+                                    <li><strong>Pronóstico:</strong> ¿Qué pasará si no se soluciona?</li>
+                                    <li><strong>Control del pronóstico (Propuesta):</strong> ¿Cómo la ingeniería lo resuelve?</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-bullseye text-accent mr-2"></i> 2. Objetivos (J. Hurtado de Barrera)</h3>
+                            <p class="text-gray-600 mb-4 text-justify">
+                                Los objetivos establecen qué se pretende con la investigación. Deben expresarse con claridad y ser susceptibles de alcanzarse.
+                            </p>
+                            <div class="space-y-4 text-sm">
+                                <div class="bg-gray-50 p-3 rounded border border-gray-200">
+                                    <strong class="text-primary">Objetivo General:</strong> Es el propósito global. Debe responder al título y al problema de investigación. En ingeniería suele usar verbos como: <em>Diseñar, Desarrollar, Implementar, Evaluar, Optimizar.</em>
+                                </div>
+                                <div class="bg-gray-50 p-3 rounded border border-gray-200">
+                                    <strong class="text-primary">Objetivos Específicos:</strong> Son los pasos metodológicos (cronológicos) necesarios para alcanzar el objetivo general. Ej: <em>1. Diagnosticar... 2. Determinar requerimientos... 3. Diseñar... 4. Validar...</em>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-balance-scale text-green-600 mr-2"></i> 3. Justificación</h3>
+                            <p class="text-gray-600 mb-4 text-justify">
+                                Es exponer las razones por las cuales se realiza la investigación y sus beneficios. Todo proyecto de ingeniería debe responder a ciertos criterios de evaluación:
+                            </p>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i><strong>Conveniencia:</strong> ¿Para qué sirve?</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i><strong>Relevancia Social / Impacto:</strong> ¿Quiénes se benefician?</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i><strong>Implicaciones Prácticas:</strong> ¿Ayuda a resolver un problema real de la industria o sociedad?</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i><strong>Valor Tecnológico/Teórico:</strong> ¿Aporta nueva tecnología o mejora una existente?</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-book text-purple-600 mr-2"></i> 4. Marco Referencial</h3>
+                            <p class="text-gray-600 text-justify text-sm mb-3">
+                                Sustentar teóricamente el estudio. Implica analizar y exponer las teorías, enfoques teóricos, investigaciones previas y antecedentes en general.
+                            </p>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <div class="bg-purple-50 p-2 rounded"><strong>Estado del Arte:</strong> Lo más actual en la tecnología a usar (últimos 5 años).</div>
+                                <div class="bg-purple-50 p-2 rounded"><strong>Marco Teórico:</strong> Las leyes de la física, termodinámica, algoritmos matemáticos base.</div>
+                                <div class="bg-purple-50 p-2 rounded"><strong>Marco Conceptual:</strong> Glosario de términos técnicos (Normas IEEE, ISO).</div>
+                                <div class="bg-purple-50 p-2 rounded"><strong>Marco Legal:</strong> Normativas ambientales, leyes de telecomunicaciones vigentes.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            tipos: `
+                <div class="fade-in">
+                    <h2 class="text-3xl font-bold text-primary mb-6 border-b-2 border-accent pb-2 inline-block">Enfoques y Tipos de Investigación</h2>
+                    <p class="text-gray-600 mb-8">La metodología determina el <strong>cómo</strong> se abordará el problema. En las ciencias de la ingeniería, existe una fuerte tendencia hacia enfoques aplicados y experimentales, aunque no son los únicos.</p>
+
+                    <div class="mb-10">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4"><i class="fas fa-project-diagram mr-2 text-primary"></i>1. Enfoques (Rutas de Investigación)</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="border border-blue-200 bg-blue-50 p-5 rounded-lg">
+                                <h4 class="font-bold text-blue-800 text-lg mb-2">Cuantitativo</h4>
+                                <p class="text-sm text-gray-700 mb-3">Utiliza la recolección de datos para probar hipótesis, con base en la medición numérica y el análisis estadístico.</p>
+                                <span class="bg-blue-200 text-blue-800 text-xs px-2 py-1 rounded font-semibold">Muy común en Ingeniería</span>
+                                <p class="text-xs text-gray-500 mt-2">Ej: Medir tiempos de latencia de red, resistencia de materiales, eficiencia energética.</p>
+                            </div>
+                            <div class="border border-orange-200 bg-orange-50 p-5 rounded-lg">
+                                <h4 class="font-bold text-orange-800 text-lg mb-2">Cualitativo</h4>
+                                <p class="text-sm text-gray-700 mb-3">Recolección de datos sin medición numérica para descubrir o afinar preguntas de investigación (entrevistas, observación).</p>
+                                <span class="bg-orange-200 text-orange-800 text-xs px-2 py-1 rounded font-semibold">Menos común, apoyo de UX</span>
+                                <p class="text-xs text-gray-500 mt-2">Ej: Evaluar la experiencia de usuario (UX) en un software, impacto social de una obra.</p>
+                            </div>
+                            <div class="border border-green-200 bg-green-50 p-5 rounded-lg">
+                                <h4 class="font-bold text-green-800 text-lg mb-2">Mixto</h4>
+                                <p class="text-sm text-gray-700 mb-3">Integra sistemáticamente los métodos cuantitativo y cualitativo en un solo estudio para una visión más completa.</p>
+                                <span class="bg-green-200 text-green-800 text-xs px-2 py-1 rounded font-semibold">Creciente en Ingeniería Ambiental/Sistemas</span>
+                                <p class="text-xs text-gray-500 mt-2">Ej: Sistema informático (cuanti) y su nivel de adopción por usuarios (cuali).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4"><i class="fas fa-layer-group mr-2 text-accent"></i>2. Alcance o Nivel de la Investigación</h3>
+                        <p class="text-gray-600 text-sm mb-4">Define la profundidad con la que se aborda un fenómeno (Hernández Sampieri).</p>
+                        
+                        <div class="bg-white rounded-xl shadow overflow-hidden">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Alcance</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Propósito</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ejemplo en Ingeniería</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800">Exploratorio</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">Examinar un tema poco estudiado o tecnología muy emergente.</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">Primeras pruebas de computación cuántica en encriptación local.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800">Descriptivo</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">Especificar propiedades, características y perfiles de un sistema.</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">Diseño arquitectónico de una red WAN y descripción de sus componentes.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800">Correlacional</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">Conocer la relación o grado de asociación que existe entre dos o más variables.</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">Relación entre la temperatura ambiental y la eficiencia de paneles solares fotovoltaicos.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800">Explicativo / Experimental</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">Responder por las causas de los eventos, manipulación intencional de variables.</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">Desarrollo de un algoritmo X para reducir el tiempo de procesamiento Y en un 30%.</td>
+                                    </tr>
+                                    <tr class="bg-blue-50">
+                                        <td class="px-6 py-4 whitespace-nowrap font-bold text-primary">Proyecto Factible</td>
+                                        <td class="px-6 py-4 text-sm text-gray-700 italic" colspan="2">(Común en Taller de Grado): Elaboración de una propuesta de un modelo, sistema, tecnología o equipo para solucionar un problema práctico. Apoyado en evaluación de proyectos (Sapag Chain).</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `,
+            casos: `
+                <div class="fade-in flex flex-col md:flex-row gap-6 h-full">
+                    <!-- Sidebar menu for careers -->
+                    <div class="w-full md:w-1/4 bg-white rounded-xl shadow-sm border border-gray-100 p-4 shrink-0">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2">Seleccione su Carrera</h3>
+                        <div class="flex flex-col space-y-2" id="career-menu">
+                            <button onclick="showCareer('sistemas')" id="btn-sistemas" class="career-btn active w-full text-left px-4 py-3 rounded-lg text-sm font-semibold flex items-center justify-between bg-primary text-white transition">
+                                <span><i class="fas fa-laptop-code mr-2"></i> Ing. de Sistemas</span>
+                                <i class="fas fa-chevron-right text-xs"></i>
+                            </button>
+                            <button onclick="showCareer('telecom')" id="btn-telecom" class="career-btn w-full text-left px-4 py-3 rounded-lg text-sm font-semibold flex items-center justify-between text-gray-600 hover:bg-gray-100 transition">
+                                <span><i class="fas fa-satellite-dish mr-2"></i> Ing. Telecomunicaciones</span>
+                                <i class="fas fa-chevron-right text-xs"></i>
+                            </button>
+                            <button onclick="showCareer('electromecanica')" id="btn-electromecanica" class="career-btn w-full text-left px-4 py-3 rounded-lg text-sm font-semibold flex items-center justify-between text-gray-600 hover:bg-gray-100 transition">
+                                <span><i class="fas fa-cogs mr-2"></i> Ing. Electromecánica</span>
+                                <i class="fas fa-chevron-right text-xs"></i>
+                            </button>
+                            <button onclick="showCareer('ambiental')" id="btn-ambiental" class="career-btn w-full text-left px-4 py-3 rounded-lg text-sm font-semibold flex items-center justify-between text-gray-600 hover:bg-gray-100 transition">
+                                <span><i class="fas fa-leaf mr-2"></i> Ing. Ambiental</span>
+                                <i class="fas fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Content Area for Examples -->
+                    <div class="w-full md:w-3/4 bg-white rounded-xl shadow-sm border border-gray-100 p-6 relative min-h-[500px]" id="examples-container">
+                        <!-- Content injected via JS -->
+                    </div>
+                </div>
+            `
+        };
+
+        const careerData = {
+            sistemas: {
+                title: "Ingeniería de Sistemas",
+                icon: "fa-laptop-code",
+                color: "text-blue-600",
+                examples: [
+                    {
+                        title: "Ejemplo 1: Desarrollo de Software (Enfoque Experimental/Aplicado)",
+                        tema: "Sistema Inteligente para Detección de Fraudes Bancarios.",
+                        problema: "¿De qué manera la implementación de un algoritmo de Machine Learning (Random Forest) reduce el índice de falsos positivos en la detección de anomalías transaccionales en el Banco XYZ?",
+                        objetivoGen: "Desarrollar un sistema informático basado en algoritmos de Machine Learning para optimizar la detección de fraudes en transacciones bancarias electrónicas.",
+                        metodologia: [
+                            "<strong>Enfoque:</strong> Cuantitativo. Se medirán variables numéricas (tiempo de respuesta, % de precisión, % de falsos positivos).",
+                            "<strong>Alcance:</strong> Explicativo y Experimental. Se probará el algoritmo comparando un grupo de control (sistema actual) vs. el grupo experimental (nuevo modelo).",
+                            "<strong>Técnicas:</strong> Minería de datos, pruebas de estrés computacional."
+                        ]
+                    },
+                    {
+                        title: "Ejemplo 2: Auditoría/Evaluación (Enfoque Mixto/Descriptivo)",
+                        tema: "Evaluación de la Usabilidad y Accesibilidad en Plataformas de Telemedicina para Áreas Rurales.",
+                        problema: "¿Cuáles son los factores de usabilidad e interfaz de usuario (UI/UX) que limitan la adopción de la plataforma nacional de telemedicina por parte de adultos mayores en el municipio X?",
+                        objetivoGen: "Evaluar el nivel de usabilidad y accesibilidad de la plataforma de telemedicina 'SaludParaTodos' para proponer un rediseño de interfaz centrado en el usuario adulto mayor.",
+                        metodologia: [
+                            "<strong>Enfoque:</strong> Mixto. Cuantitativo (métricas de tiempo de uso, tasa de error) y Cualitativo (entrevistas sobre frustración o satisfacción).",
+                            "<strong>Alcance:</strong> Descriptivo y Correlacional. Identifica características del usuario y las correlaciona con la dificultad de uso.",
+                            "<strong>Técnicas:</strong> Encuestas (SUS - System Usability Scale), pruebas de usuario (Eyetracking o grabación de pantalla), entrevistas no estructuradas."
+                        ]
+                    }
+                ]
+            },
+            telecom: {
+                title: "Ingeniería de Telecomunicaciones",
+                icon: "fa-satellite-dish",
+                color: "text-indigo-600",
+                examples: [
+                    {
+                        title: "Ejemplo 1: Diseño de Red (Proyecto Factible / Descriptivo)",
+                        tema: "Diseño de una red FTTH (Fiber To The Home) para reducir la brecha digital en el área periurbana Y.",
+                        problema: "¿Qué características técnicas y económicas debe tener el diseño de una red óptica FTTH para garantizar acceso a banda ancha con calidad de servicio (QoS) en la zona periurbana Y?",
+                        objetivoGen: "Diseñar una infraestructura de red de telecomunicaciones FTTH que permita brindar servicios de internet de alta velocidad de manera viable a la zona Y.",
+                        metodologia: [
+                            "<strong>Enfoque:</strong> Cuantitativo (cálculos de atenuación, ancho de banda, presupuesto de potencia).",
+                            "<strong>Alcance:</strong> Proyecto Factible (Descriptivo y Propositivo). No necesariamente se construye físicamente en la tesis, sino que se demuestra su viabilidad técnica y financiera (Sapag Chain).",
+                            "<strong>Técnicas:</strong> Simulación de redes (Packet Tracer, OptiSystem), levantamiento topográfico de la zona, análisis de costos CAPEX/OPEX."
+                        ]
+                    },
+                    {
+                        title: "Ejemplo 2: Implementación y Análisis de Rendimiento (Experimental)",
+                        tema: "Análisis de rendimiento de una red IoT basada en LoRaWAN para el monitoreo de humedad en viñedos.",
+                        problema: "¿Cómo afecta la topografía irregular del terreno al nivel de pérdida de paquetes (Packet Loss) y latencia en una red de sensores LoRaWAN desplegada en los viñedos Z?",
+                        objetivoGen: "Implementar y evaluar el rendimiento de una red inalámbrica LoRaWAN para determinar su fiabilidad en la transmisión de datos agrometeorológicos en terrenos irregulares.",
+                        metodologia: [
+                            "<strong>Enfoque:</strong> Cuantitativo empírico.",
+                            "<strong>Alcance:</strong> Correlacional / Explicativo. Relaciona la variable independiente (topografía/distancia) con las variables dependientes (RSSI, SNR, latencia).",
+                            "<strong>Técnicas:</strong> Trabajo de campo, captura de tráfico de red (Wireshark), análisis estadístico de propagación de señales."
+                        ]
+                    }
+                ]
+            },
+            electromecanica: {
+                title: "Ingeniería Electromecánica",
+                icon: "fa-cogs",
+                color: "text-orange-600",
+                examples: [
+                    {
+                        title: "Ejemplo 1: Diseño y Construcción de Prototipo (Aplicado/Experimental)",
+                        tema: "Diseño y automatización de un túnel de secado solar-híbrido para la producción de frutos deshidratados.",
+                        problema: "¿Cómo optimizar el tiempo de secado y mantener la calidad organoléptica del durazno mediante la implementación de un sistema de control de temperatura y humedad en un secador solar-híbrido?",
+                        objetivoGen: "Diseñar y construir un prototipo de túnel de secado solar-híbrido automatizado para incrementar la eficiencia del proceso de deshidratación de frutas en la región W.",
+                        metodologia: [
+                            "<strong>Enfoque:</strong> Cuantitativo. Medición exacta de variables físicas (temperatura, humedad relativa, velocidad del aire, consumo eléctrico).",
+                            "<strong>Alcance:</strong> Experimental. Manipulación del sistema de control para ver efectos sobre el tiempo de secado.",
+                            "<strong>Técnicas:</strong> Modelado CAD 3D, cálculos termodinámicos, programación de PLCs/Microcontroladores, pruebas de laboratorio."
+                        ]
+                    },
+                    {
+                        title: "Ejemplo 2: Mantenimiento Industrial (Correlacional / Descriptivo)",
+                        tema: "Plan de Mantenimiento Predictivo mediante análisis de vibraciones para bombas centrífugas en la Planta de Tratamiento de Aguas.",
+                        problema: "¿Cuál es la relación entre el espectro de vibración de los rodamientos y el tiempo de falla catastrófica en los equipos de bombeo de la planta X?",
+                        objetivoGen: "Desarrollar un plan de mantenimiento predictivo basado en análisis de vibraciones para disminuir las paradas no programadas de las bombas centrífugas.",
+                        metodologia: [
+                            "<strong>Enfoque:</strong> Cuantitativo. Basado en datos históricos y mediciones de frecuencia y amplitud de vibración.",
+                            "<strong>Alcance:</strong> Correlacional y Descriptivo. Busca asociar las firmas de vibración con tipos de fallas mecánicas sin alterar el entorno (no es un experimento, se observa la máquina en funcionamiento normal).",
+                            "<strong>Técnicas:</strong> Recolección de datos con analizadores de vibración, análisis de confiabilidad (curva de bañera, Weibull)."
+                        ]
+                    }
+                ]
+            },
+            ambiental: {
+                title: "Ingeniería Ambiental",
+                icon: "fa-leaf",
+                color: "text-green-600",
+                examples: [
+                    {
+                        title: "Ejemplo 1: Evaluación de Impacto Ambiental (Mixto / Descriptivo-Explicativo)",
+                        tema: "Impacto de la actividad minera en la calidad físico-química del agua de la cuenca del Río A.",
+                        problema: "¿En qué medida la concentración de metales pesados (plomo y zinc) provenientes de efluentes mineros altera la calidad del agua superficial y afecta a las comunidades ribereñas en la cuenca A?",
+                        objetivoGen: "Evaluar el nivel de contaminación por metales pesados en las aguas del Río A para proponer estrategias de mitigación ambiental basadas en la normativa nacional vigente.",
+                        metodologia: [
+                            "<strong>Enfoque:</strong> Mixto. Cuantitativo (análisis de laboratorio de muestras de agua) y Cualitativo (impacto social/percepción de la comunidad).",
+                            "<strong>Alcance:</strong> Explicativo (causa: efluente minero -> efecto: alteración del agua) y Descriptivo.",
+                            "<strong>Técnicas:</strong> Muestreo sistemático espaciado en diferentes puntos del río, espectrometría de absorción atómica, contrastación con Límites Permisibles (Ley de Medio Ambiente)."
+                        ]
+                    },
+                    {
+                        title: "Ejemplo 2: Diseño de Tecnologías de Remediación (Aplicado/Experimental)",
+                        tema: "Implementación de fitorremediación utilizando la especie 'Eichhornia crassipes' (Tarope) para el tratamiento de aguas residuales lácteas.",
+                        problema: "¿Cuál es la eficiencia de la planta macrófita 'Eichhornia crassipes' en la reducción de Demanda Química de Oxígeno (DQO) y Nitrógeno Total en efluentes de la industria láctea bajo condiciones controladas?",
+                        objetivoGen: "Determinar la eficiencia depuradora de un sistema a escala de laboratorio de fitorremediación con 'E. crassipes' para el tratamiento preliminar de efluentes lácteos.",
+                        metodologia: [
+                            "<strong>Enfoque:</strong> Cuantitativo. Medición rigurosa de parámetros físico-químicos antes y después del tratamiento.",
+                            "<strong>Alcance:</strong> Experimental. Se crean reactores o piscinas a escala, controlando el tiempo de retención (variable independiente) para medir la reducción de DQO (variable dependiente).",
+                            "<strong>Técnicas:</strong> Diseño de reactores, análisis de DBO/DQO, análisis estadístico de varianza (ANOVA)."
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // --- NAVIGATION LOGIC ---
+        
+        function navigate(section) {
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = contentData[section];
+            
+            // If navigating to 'casos', initialize the first career tab (Sistemas)
+            if(section === 'casos') {
+                showCareer('sistemas');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // --- DYNAMIC CASES LOGIC ---
+        
+        function showCareer(careerId) {
+            // 1. Update active button styling
+            const buttons = document.querySelectorAll('.career-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-white', 'active');
+                btn.classList.add('text-gray-600', 'hover:bg-gray-100');
+            });
+            const activeBtn = document.getElementById(`btn-${careerId}`);
+            activeBtn.classList.remove('text-gray-600', 'hover:bg-gray-100');
+            activeBtn.classList.add('bg-primary', 'text-white', 'active');
+
+            // 2. Generate content for selected career
+            const data = careerData[careerId];
+            const container = document.getElementById('examples-container');
+            
+            let html = `
+                <div class="fade-in">
+                    <h2 class="text-2xl font-bold ${data.color} mb-6 flex items-center border-b pb-2">
+                        <i class="fas ${data.icon} mr-3 text-3xl"></i>
+                        Ejemplos de Tesis: ${data.title}
+                    </h2>
+                    <div class="space-y-6">
+            `;
+
+            data.examples.forEach((ex, index) => {
+                html += `
+                        <div class="border border-gray-200 rounded-lg overflow-hidden bg-gray-50 shadow-sm transition hover:shadow-md">
+                            <div class="bg-gray-100 px-4 py-3 border-b border-gray-200 flex justify-between items-center">
+                                <h3 class="font-bold text-gray-800">${ex.title}</h3>
+                            </div>
+                            <div class="p-4 bg-white">
+                                <p class="mb-3 text-sm"><strong class="text-primary">Tema:</strong> ${ex.tema}</p>
+                                <div class="bg-red-50 border-l-4 border-red-400 p-3 mb-3">
+                                    <strong class="text-red-700 block text-xs uppercase tracking-wide">Planteamiento del Problema (Pregunta)</strong>
+                                    <p class="text-sm mt-1 text-gray-700 italic">"${ex.problema}"</p>
+                                </div>
+                                <div class="bg-blue-50 border-l-4 border-blue-400 p-3 mb-3">
+                                    <strong class="text-blue-700 block text-xs uppercase tracking-wide">Objetivo General</strong>
+                                    <p class="text-sm mt-1 text-gray-700">${ex.objetivoGen}</p>
+                                </div>
+                                <div>
+                                    <strong class="text-gray-700 block text-xs uppercase tracking-wide mb-2 mt-4"><i class="fas fa-microscope mr-1 text-gray-500"></i> Diseño Metodológico Propuesto:</strong>
+                                    <ul class="text-sm text-gray-600 space-y-2 pl-2">
+                                        ${ex.metodologia.map(m => `<li><i class="fas fa-caret-right text-accent mr-2"></i>${m}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                `;
+            });
+
+            html += `</div></div>`;
+            container.innerHTML = html;
+        }
+
+        // Initialize default view on load
+        window.onload = () => {
+            navigate('inicio');
+        };
+
+    </script>
+</body>
+</html>

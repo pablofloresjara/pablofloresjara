@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Grado - Marcos de Investigación</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-900 to-indigo-800 text-white py-12 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Taller de Grado</h1>
+            <p class="text-xl md:text-2xl font-light text-blue-100 max-w-3xl">Guía Definitiva: Construcción del Marco Teórico y Marco Conceptual en Proyectos de Ingeniería.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+        <!-- Introducción y Conceptos -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-900">Fundamentos de la Investigación</h2>
+                <p class="mt-4 text-lg text-slate-600">Comprender la diferencia entre estos dos marcos es el pilar de una tesis sólida.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Marco Teórico Card -->
+                <div class="glass-card rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border-t-4 border-blue-600">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        <h3 class="text-2xl font-bold text-slate-900">El Marco Teórico</h3>
+                    </div>
+                    <p class="text-slate-600 mb-4 leading-relaxed">
+                        Es el <strong>sustento científico</strong> de tu investigación. Implica analizar y exponer las teorías, los enfoques teóricos, las investigaciones previas (Estado del Arte) y los antecedentes en general que se consideren válidos para el correcto encuadre del estudio.
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span> Responde a: ¿Qué teorías respaldan mi solución?</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span> Evita que cometas errores que otros ya superaron.</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span> Provee un marco de referencia para interpretar los resultados.</li>
+                    </ul>
+                </div>
+
+                <!-- Marco Conceptual Card -->
+                <div class="glass-card rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border-t-4 border-emerald-500">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                        <h3 class="text-2xl font-bold text-slate-900">El Marco Conceptual</h3>
+                    </div>
+                    <p class="text-slate-600 mb-4 leading-relaxed">
+                        Es la <strong>definición precisa</strong> de las variables, conceptos y términos clave que usarás en tu proyecto. Actúa como un "diccionario especializado" para que el lector entienda exactamente a qué te refieres cuando usas una palabra dentro del contexto de tu investigación.
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li class="flex items-start"><span class="text-emerald-500 mr-2">✓</span> Responde a: ¿Qué significan exactamente mis variables?</li>
+                        <li class="flex items-start"><span class="text-emerald-500 mr-2">✓</span> Evita ambigüedades (ej. "Ruido" en acústica vs. "Ruido" en telecomunicaciones).</li>
+                        <li class="flex items-start"><span class="text-emerald-500 mr-2">✓</span> Permite la operacionalización de las variables.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diferencias Clave -->
+        <section class="bg-white rounded-3xl shadow-sm p-8 border border-slate-100">
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-8">Diferencias Clave</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50">
+                            <th class="py-4 px-6 font-semibold text-slate-700 border-b-2 border-slate-200">Característica</th>
+                            <th class="py-4 px-6 font-semibold text-blue-800 border-b-2 border-blue-200 bg-blue-50/50">Marco Teórico</th>
+                            <th class="py-4 px-6 font-semibold text-emerald-800 border-b-2 border-emerald-200 bg-emerald-50/50">Marco Conceptual</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-600">
+                        <tr>
+                            <td class="py-4 px-6 font-medium">Naturaleza</td>
+                            <td class="py-4 px-6 bg-blue-50/20">Es un conjunto de <strong>teorías y enfoques</strong> (leyes, axiomas, modelos).</td>
+                            <td class="py-4 px-6 bg-emerald-50/20">Es un conjunto de <strong>definiciones</strong> claras y precisas.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium">Propósito principal</td>
+                            <td class="py-4 px-6 bg-blue-50/20">Explicar <em>por qué</em> y <em>cómo</em> ocurre el fenómeno estudiado.</td>
+                            <td class="py-4 px-6 bg-emerald-50/20">Estandarizar el lenguaje para que no haya confusiones al leer la tesis.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium">Extensión típica</td>
+                            <td class="py-4 px-6 bg-blue-50/20">Amplio (generalmente constituye el capítulo más largo de la tesis).</td>
+                            <td class="py-4 px-6 bg-emerald-50/20">Breve y conciso (similar a un glosario avanzado).</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium">Estructura</td>
+                            <td class="py-4 px-6 bg-blue-50/20">Prosa argumentativa, citando diversos autores y debatiendo posturas.</td>
+                            <td class="py-4 px-6 bg-emerald-50/20">Listado de términos o esquemas con definiciones directas y precisas.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Ejemplos por Carrera (Tabs) -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-900">Ejemplos Prácticos por Carrera</h2>
+                <p class="mt-4 text-lg text-slate-600">Selecciona tu carrera para ver cómo se aplican ambos marcos en proyectos reales de ingeniería.</p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8" role="tablist">
+                <button class="tab-btn active px-6 py-3 rounded-full font-medium text-sm transition-all bg-indigo-600 text-white shadow-md hover:bg-indigo-700" data-target="sistemas">Ing. de Sistemas</button>
+                <button class="tab-btn px-6 py-3 rounded-full font-medium text-sm transition-all bg-white text-slate-600 shadow-sm hover:bg-slate-50 border border-slate-200" data-target="telecom">Ing. de Telecomunicaciones</button>
+                <button class="tab-btn px-6 py-3 rounded-full font-medium text-sm transition-all bg-white text-slate-600 shadow-sm hover:bg-slate-50 border border-slate-200" data-target="electromecanica">Ing. Electromecánica</button>
+                <button class="tab-btn px-6 py-3 rounded-full font-medium text-sm transition-all bg-white text-slate-600 shadow-sm hover:bg-slate-50 border border-slate-200" data-target="ambiental">Ing. Ambiental</button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="bg-white rounded-3xl shadow-md p-8 border border-slate-100">
+                
+                <!-- Sistemas -->
+                <div id="sistemas" class="tab-content active">
+                    <h3 class="text-2xl font-bold text-indigo-800 mb-6 border-b pb-2 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        Ingeniería de Sistemas
+                    </h3>
+                    
+                    <div class="space-y-8">
+                        <div class="bg-indigo-50/50 p-6 rounded-2xl border border-indigo-100">
+                            <h4 class="text-xl font-bold text-slate-800 mb-2">Ejemplo 1: Sistema Predictivo de Diagnóstico Médico mediante Deep Learning.</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                <div>
+                                    <h5 class="font-bold text-blue-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-blue-600 mr-2"></span>Marco Teórico (Lo que estudias y fundamentas)</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li>Teoría de las Redes Neuronales Convolucionales (CNN) aplicada a imágenes.</li>
+                                        <li>Modelos matemáticos de la función de activación (ReLU, Sigmoid).</li>
+                                        <li>Estado del arte: Revisión de tesis previas sobre detección de tumores por IA en los últimos 5 años.</li>
+                                        <li>Fundamentos de la ética computacional en datos médicos de pacientes.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-emerald-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-emerald-600 mr-2"></span>Marco Conceptual (Lo que defines)</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li><strong>Deep Learning:</strong> Subcampo del machine learning basado en redes neuronales artificiales de múltiples capas.</li>
+                                        <li><strong>Dataset:</strong> Conjunto de datos (ej. 10,000 radiografías) usado para entrenar el modelo.</li>
+                                        <li><strong>Overfitting (Sobreajuste):</strong> Fenómeno donde el modelo memoriza los datos de entrenamiento pero falla ante datos nuevos.</li>
+                                        <li><strong>Precisión (Accuracy):</strong> Métrica que define el porcentaje de diagnósticos correctos del algoritmo.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-indigo-50/50 p-6 rounded-2xl border border-indigo-100">
+                            <h4 class="text-xl font-bold text-slate-800 mb-2">Ejemplo 2: Plataforma de Trazabilidad Logística basada en Tecnología Blockchain.</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                <div>
+                                    <h5 class="font-bold text-blue-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-blue-600 mr-2"></span>Marco Teórico (Lo que estudias y fundamentas)</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li>Teoría de Sistemas de Contabilidad Distribuida (DLT).</li>
+                                        <li>Fundamentos matemáticos de la criptografía asimétrica.</li>
+                                        <li>Teoría de juegos aplicada a la validación de consenso (ej. Proof of Work vs. Proof of Stake).</li>
+                                        <li>Modelos arquitectónicos de cadenas de suministro modernas.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-emerald-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-emerald-600 mr-2"></span>Marco Conceptual (Lo que defines)</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li><strong>Smart Contract (Contrato Inteligente):</strong> Código autoejecutable en la blockchain que opera cuando se cumplen condiciones predefinidas.</li>
+                                        <li><strong>Hash:</strong> Función matemática que convierte un archivo en una cadena de caracteres única e irrepetible.</li>
+                                        <li><strong>Nodo:</strong> Ordenador o servidor conectado a la red blockchain que mantiene una copia del registro.</li>
+                                        <li><strong>Trazabilidad Logística:</strong> Capacidad de rastrear un producto desde su origen hasta el consumidor final.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Telecomunicaciones -->
+                <div id="telecom" class="tab-content">
+                    <h3 class="text-2xl font-bold text-orange-600 mb-6 border-b pb-2 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path></svg>
+                        Ingeniería de Telecomunicaciones
+                    </h3>
+                    
+                    <div class="space-y-8">
+                        <div class="bg-orange-50/50 p-6 rounded-2xl border border-orange-100">
+                            <h4 class="text-xl font-bold text-slate-800 mb-2">Ejemplo 1: Diseño de una red de Small Cells 5G para zonas urbanas de alta densidad.</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                <div>
+                                    <h5 class="font-bold text-blue-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-blue-600 mr-2"></span>Marco Teórico</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li>Teoría electromagnética y modelos de propagación de ondas de radiofrecuencia (mmWave).</li>
+                                        <li>Arquitectura estándar de redes móviles 5G (SA y NSA) según la 3GPP.</li>
+                                        <li>Modelos matemáticos de atenuación de señales por obstáculos urbanos (edificios, lluvia).</li>
+                                        <li>Estado del arte sobre densificación de redes móviles.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-emerald-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-emerald-600 mr-2"></span>Marco Conceptual</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li><strong>Small Cells (Células pequeñas):</strong> Nodos de acceso de radio celular de baja potencia que operan en un rango de 10 a 200 metros.</li>
+                                        <li><strong>Latencia:</strong> Tiempo que tarda un paquete de datos en viajar desde el origen hasta el destino (en 5G, se busca < 1ms).</li>
+                                        <li><strong>Beamforming:</strong> Técnica de procesamiento de señales utilizada para dirigir la señal inalámbrica hacia un receptor específico.</li>
+                                        <li><strong>Ancho de banda:</strong> Capacidad máxima de transferencia de datos de una red.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-orange-50/50 p-6 rounded-2xl border border-orange-100">
+                            <h4 class="text-xl font-bold text-slate-800 mb-2">Ejemplo 2: Red de Sensores Inalámbricos (WSN) para monitoreo agrícola mediante IoT.</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                <div>
+                                    <h5 class="font-bold text-blue-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-blue-600 mr-2"></span>Marco Teórico</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li>Teoría de comunicación Máquina a Máquina (M2M).</li>
+                                        <li>Protocolos de enrutamiento energéticamente eficientes en redes de sensores.</li>
+                                        <li>Estándares del IEEE 802.15.4 (fundamento de Zigbee).</li>
+                                        <li>Fundamentos de topologías de red en malla (Mesh networks).</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-emerald-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-emerald-600 mr-2"></span>Marco Conceptual</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li><strong>IoT (Internet de las Cosas):</strong> Interconexión digital de objetos cotidianos con internet.</li>
+                                        <li><strong>LoRaWAN:</strong> Protocolo de red de área amplia y baja potencia, diseñado para comunicar dispositivos a largas distancias.</li>
+                                        <li><strong>Gateway (Puerta de enlace):</strong> Dispositivo que actúa como punto de conexión entre la red de sensores local y la nube.</li>
+                                        <li><strong>Consumo en reposo (Sleep Mode):</strong> Estado de bajo consumo de energía del sensor cuando no está transmitiendo datos.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Electromecánica -->
+                <div id="electromecanica" class="tab-content">
+                    <h3 class="text-2xl font-bold text-amber-600 mb-6 border-b pb-2 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        Ingeniería Electromecánica
+                    </h3>
+                    
+                    <div class="space-y-8">
+                        <div class="bg-amber-50/50 p-6 rounded-2xl border border-amber-100">
+                            <h4 class="text-xl font-bold text-slate-800 mb-2">Ejemplo 1: Diseño de un Sistema de Frenado Regenerativo para Vehículos Eléctricos.</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                <div>
+                                    <h5 class="font-bold text-blue-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-blue-600 mr-2"></span>Marco Teórico</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li>Leyes de la Termodinámica (Primera ley: Conservación de la energía).</li>
+                                        <li>Ley de Faraday-Lenz sobre inducción electromagnética.</li>
+                                        <li>Teoría de control automático moderno.</li>
+                                        <li>Estudios previos sobre eficiencia de inversores de potencia bidireccionales.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-emerald-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-emerald-600 mr-2"></span>Marco Conceptual</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li><strong>Energía Cinética:</strong> Energía que posee un cuerpo a causa de su movimiento.</li>
+                                        <li><strong>Inversor:</strong> Dispositivo electrónico que cambia corriente continua (DC) a corriente alterna (AC) y viceversa.</li>
+                                        <li><strong>Torque de frenado:</strong> Fuerza rotacional inversa aplicada por el motor eléctrico actuando como generador.</li>
+                                        <li><strong>Estado de Carga (SOC):</strong> Nivel de carga de una batería eléctrica en relación con su capacidad.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-amber-50/50 p-6 rounded-2xl border border-amber-100">
+                            <h4 class="text-xl font-bold text-slate-800 mb-2">Ejemplo 2: Optimización de un Brazo Robótico Industrial mediante Control PID.</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                <div>
+                                    <h5 class="font-bold text-blue-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-blue-600 mr-2"></span>Marco Teórico</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li>Cinemática y Dinámica de cuerpos rígidos (Parámetros de Denavit-Hartenberg).</li>
+                                        <li>Teoría de Control Clásico: Sintonización de controladores Proporcional-Integral-Derivativo (PID).</li>
+                                        <li>Mecánica de materiales para el análisis de esfuerzos del brazo.</li>
+                                        <li>Estado del arte en actuadores servomotores industriales.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-emerald-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-emerald-600 mr-2"></span>Marco Conceptual</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li><strong>Grados de Libertad (DOF):</strong> Número de parámetros independientes que definen la configuración del brazo.</li>
+                                        <li><strong>Actuador:</strong> Dispositivo mecánico capaz de transformar energía (eléctrica/neumática) en movimiento.</li>
+                                        <li><strong>Error en régimen permanente:</strong> Diferencia entre la posición deseada y la posición real alcanzada por el robot.</li>
+                                        <li><strong>Efector final (End-effector):</strong> Herramienta ubicada al final del brazo robótico (ej. pinza o soldador).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ambiental -->
+                <div id="ambiental" class="tab-content">
+                    <h3 class="text-2xl font-bold text-green-700 mb-6 border-b pb-2 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Ingeniería Ambiental
+                    </h3>
+                    
+                    <div class="space-y-8">
+                        <div class="bg-green-50/50 p-6 rounded-2xl border border-green-100">
+                            <h4 class="text-xl font-bold text-slate-800 mb-2">Ejemplo 1: Sistema de Tratamiento de Aguas Residuales Industriales mediante Microalgas.</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                <div>
+                                    <h5 class="font-bold text-blue-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-blue-600 mr-2"></span>Marco Teórico</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li>Teoría de la fitorremediación y biorremediación acuática.</li>
+                                        <li>Leyes de cinética química aplicadas a la degradación de contaminantes.</li>
+                                        <li>Ecología de poblaciones (Crecimiento poblacional de cepas de microalgas).</li>
+                                        <li>Normativas y estándares nacionales de calidad de vertimientos líquidos.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-emerald-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-emerald-600 mr-2"></span>Marco Conceptual</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li><strong>Demanda Biológica de Oxígeno (DBO):</strong> Cantidad de oxígeno consumido por microorganismos para degradar materia orgánica.</li>
+                                        <li><strong>Eutrofización:</strong> Enriquecimiento excesivo de nutrientes en un cuerpo de agua, provocando crecimiento desmedido de algas.</li>
+                                        <li><strong>Biomasa algal:</strong> Masa total de microalgas generadas tras el proceso, que puede reutilizarse.</li>
+                                        <li><strong>Metales pesados:</strong> Elementos químicos de alta densidad y toxicidad presentes en el efluente (ej. Plomo, Mercurio).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50/50 p-6 rounded-2xl border border-green-100">
+                            <h4 class="text-xl font-bold text-slate-800 mb-2">Ejemplo 2: Plan de Gestión Integral de Residuos Sólidos Urbanos basado en Economía Circular.</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                <div>
+                                    <h5 class="font-bold text-blue-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-blue-600 mr-2"></span>Marco Teórico</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li>Teoría de la Economía Circular frente al modelo lineal clásico.</li>
+                                        <li>Modelos de impacto ambiental y huella de carbono.</li>
+                                        <li>Teoría del comportamiento social hacia el reciclaje.</li>
+                                        <li>Políticas públicas ambientales comparadas (Estado del arte de programas exitosos en otras ciudades).</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-emerald-700 flex items-center mb-2"><span class="w-2 h-2 rounded-full bg-emerald-600 mr-2"></span>Marco Conceptual</h5>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                        <li><strong>Lixiviado:</strong> Líquido contaminante resultante de la degradación y percolación del agua a través de la basura.</li>
+                                        <li><strong>Residuos valorizables:</strong> Desechos que, mediante procesos, pueden reintroducirse en el ciclo productivo.</li>
+                                        <li><strong>Compostaje:</strong> Proceso biológico aerobio de transformación de la materia orgánica en abono natural.</li>
+                                        <li><strong>Ciclo de vida del producto:</strong> Etapas que atraviesa un producto desde la extracción de materia prima hasta su disposición final.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Tip de Oro -->
+        <section class="bg-gradient-to-br from-indigo-900 to-slate-800 rounded-3xl p-8 text-white shadow-xl text-center">
+            <h3 class="text-2xl font-bold mb-4">💡 El Tip del Docente</h3>
+            <p class="text-lg text-indigo-100 max-w-4xl mx-auto">
+                "Piensen en el <strong>Marco Teórico</strong> como los cimientos profundos de un edificio: nadie los ve, pero si están mal hechos, la estructura (tu tesis) colapsará. En cambio, el <strong>Marco Conceptual</strong> es como el manual de usuario del edificio: le dice al visitante cómo interpretar cada habitación."
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center mt-12">
+        <p>Desarrollado para la materia Taller de Grado - Metodología de la Investigación</p>
+    </footer>
+
+    <!-- Script para los Tabs -->
+    <script>
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active classes
+                tabBtns.forEach(b => {
+                    b.classList.remove('bg-indigo-600', 'text-white');
+                    b.classList.add('bg-white', 'text-slate-600');
+                });
+                tabContents.forEach(c => c.classList.remove('active'));
+
+                // Add active class to clicked button and content
+                btn.classList.remove('bg-white', 'text-slate-600');
+                btn.classList.add('bg-indigo-600', 'text-white');
+                
+                const targetId = btn.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

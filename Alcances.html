@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Grado - Justificación, Límites y Alcances</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#1e40af', // blue-800
+                        'secondary': '#3b82f6', // blue-500
+                        'accent': '#f59e0b', // amber-500
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Acordeón */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 1000px; /* Suficiente para el contenido */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .accordion-item.active .chevron-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-200">
+
+    <!-- Header -->
+    <header class="bg-primary text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl md:text-3xl font-bold flex items-center gap-3">
+                    <i class="fa-solid fa-graduation-cap text-accent"></i> 
+                    Taller de Grado I
+                </h1>
+                <p class="text-blue-200 mt-1 text-sm md:text-base">Módulo: Metodología de la Investigación para Ingenierías</p>
+            </div>
+            <div class="hidden md:flex items-center gap-2 bg-blue-900 px-4 py-2 rounded-lg border border-blue-700">
+                <i class="fa-solid fa-chalkboard-user text-accent"></i>
+                <span class="font-medium text-sm">Portal Docente</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        <!-- Welcome Section -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-10">
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">La Base de un Buen Proyecto</h2>
+            <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                Bienvenidos futuros ingenieros. Todo proyecto de investigación e ingeniería debe responder de manera convincente a tres preguntas fundamentales: <strong>¿Por qué lo hacemos? ¿Hasta dónde llegará? y ¿Qué restricciones existen?</strong> Las respuestas a estas interrogantes conforman la Justificación, los Alcances y los Límites de su Taller de Grado.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <div class="bg-blue-50 rounded-xl p-6 border border-blue-100 flex flex-col items-center text-center">
+                    <div class="w-14 h-14 bg-blue-100 text-primary rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-primary">Justificación</h3>
+                    <p class="text-sm text-slate-600">El "por qué" y el "para qué". Demuestra la relevancia, viabilidad e impacto de tu solución ingenieril.</p>
+                </div>
+                <div class="bg-emerald-50 rounded-xl p-6 border border-emerald-100 flex flex-col items-center text-center">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-expand"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-emerald-700">Alcances</h3>
+                    <p class="text-sm text-slate-600">Las fronteras de tus objetivos. Define claramente qué entregables, módulos o prototipos se van a lograr.</p>
+                </div>
+                <div class="bg-rose-50 rounded-xl p-6 border border-rose-100 flex flex-col items-center text-center">
+                    <div class="w-14 h-14 bg-rose-100 text-rose-700 rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-ban"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-rose-700">Límites</h3>
+                    <p class="text-sm text-slate-600">Las restricciones de tu proyecto. Lo que está explícitamente fuera del marco de tu investigación o desarrollo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Theory Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-book-open text-primary"></i> Fundamento Teórico
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Justificacion -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 relative overflow-hidden group hover:shadow-md transition">
+                    <div class="absolute top-0 right-0 w-2 h-full bg-primary"></div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">1. La Justificación del Proyecto</h3>
+                    <p class="text-slate-600 mb-4">
+                        Consiste en indicar las razones de peso que tiene el investigador para estudiar el problema. Según Hernández Sampieri, una justificación sólida debe evaluar:
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex gap-3"><i class="fa-solid fa-check text-green-500 mt-1"></i> <span><strong>Conveniencia:</strong> ¿Para qué sirve verdaderamente la investigación?</span></li>
+                        <li class="flex gap-3"><i class="fa-solid fa-check text-green-500 mt-1"></i> <span><strong>Relevancia Social:</strong> ¿Quiénes se beneficiarán con los resultados y de qué modo?</span></li>
+                        <li class="flex gap-3"><i class="fa-solid fa-check text-green-500 mt-1"></i> <span><strong>Implicaciones Prácticas:</strong> ¿Ayudará a resolver algún problema real y concreto en la industria o la sociedad?</span></li>
+                        <li class="flex gap-3"><i class="fa-solid fa-check text-green-500 mt-1"></i> <span><strong>Valor Teórico/Tecnológico:</strong> ¿Se logrará llenar algún hueco de conocimiento o se innovará un proceso existente?</span></li>
+                    </ul>
+                </div>
+
+                <!-- Alcances y Límites -->
+                <div class="flex flex-col gap-8">
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 relative overflow-hidden group hover:shadow-md transition">
+                        <div class="absolute top-0 right-0 w-2 h-full bg-emerald-500"></div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-3">2. Alcances</h3>
+                        <p class="text-slate-600 text-sm">
+                            El alcance define el nivel de profundidad del estudio. En ingeniería, esto se traduce en <strong>hasta dónde llegará la solución propuesta</strong>. ¿Será un diseño teórico? ¿Un prototipo simulado? ¿Un sistema en producción? Define la cobertura geográfica, temporal y demográfica del proyecto.
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 relative overflow-hidden group hover:shadow-md transition">
+                        <div class="absolute top-0 right-0 w-2 h-full bg-rose-500"></div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-3">3. Límites</h3>
+                        <p class="text-slate-600 text-sm">
+                            Todo proyecto es perfectible, pero los recursos son finitos. Los límites son los obstáculos, restricciones o exclusiones metodológicas, económicas, de tiempo o de tecnología. Indicar qué <strong>NO</strong> hará el proyecto protege al estudiante al momento de la defensa final.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Examples Section -->
+        <section id="ejemplos">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-800 mb-4">Ejemplos Prácticos por Especialidad</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Selecciona tu carrera para revisar ejemplos reales de cómo redactar correctamente la justificación, los alcances y los límites de un proyecto de grado.</p>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+                <button class="tab-btn active px-5 py-3 rounded-full font-semibold text-sm transition-all duration-300 bg-primary text-white shadow-md" data-tab="sistemas">
+                    <i class="fa-solid fa-laptop-code mr-2"></i>Ing. de Sistemas
+                </button>
+                <button class="tab-btn px-5 py-3 rounded-full font-semibold text-sm transition-all duration-300 bg-white text-slate-600 border border-slate-200 hover:bg-slate-100" data-tab="telecom">
+                    <i class="fa-solid fa-satellite-dish mr-2"></i>Ing. de Telecomunicaciones
+                </button>
+                <button class="tab-btn px-5 py-3 rounded-full font-semibold text-sm transition-all duration-300 bg-white text-slate-600 border border-slate-200 hover:bg-slate-100" data-tab="electromecanica">
+                    <i class="fa-solid fa-gears mr-2"></i>Ing. Electromecánica
+                </button>
+                <button class="tab-btn px-5 py-3 rounded-full font-semibold text-sm transition-all duration-300 bg-white text-slate-600 border border-slate-200 hover:bg-slate-100" data-tab="ambiental">
+                    <i class="fa-solid fa-leaf mr-2"></i>Ing. Ambiental
+                </button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-2 md:p-8">
+                
+                <!-- Tab: Sistemas -->
+                <div id="sistemas" class="tab-content active">
+                    <div class="mb-6 px-4">
+                        <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 inline-block">Ingeniería de Sistemas</h3>
+                        <p class="text-slate-500 mt-2">Enfocados en desarrollo de software, análisis de datos, inteligencia artificial y arquitecturas empresariales.</p>
+                    </div>
+
+                    <!-- Proyecto 1 -->
+                    <div class="accordion-item bg-slate-50 border border-slate-200 rounded-xl mb-4 overflow-hidden">
+                        <button class="w-full text-left px-6 py-4 font-bold text-slate-800 flex justify-between items-center hover:bg-slate-100 transition-colors focus:outline-none" onclick="toggleAccordion(this)">
+                            <span><span class="text-primary mr-2">Ejemplo 1:</span> Sistema Experto basado en Machine Learning para la Predicción de Deserción Universitaria.</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 chevron-icon"></i>
+                        </button>
+                        <div class="accordion-content px-6 bg-white border-t border-slate-100">
+                            <div class="space-y-4 text-sm text-slate-700">
+                                <div>
+                                    <h4 class="font-bold text-primary flex items-center gap-2"><i class="fa-solid fa-bullseye"></i> Justificación</h4>
+                                    <p class="mt-1"><strong>Justificación Práctica y Social:</strong> La deserción universitaria representa una pérdida económica y de capital humano para las instituciones y el país. Actualmente, la Universidad X detecta a los estudiantes en riesgo cuando ya han abandonado la carrera. Este proyecto se justifica al proporcionar una herramienta preventiva que, mediante análisis de patrones históricos, emitirá alertas tempranas, permitiendo al departamento de Bienestar Estudiantil intervenir a tiempo, salvaguardando el futuro profesional de cientos de estudiantes y optimizando los recursos institucionales.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-emerald-700 flex items-center gap-2"><i class="fa-solid fa-expand"></i> Alcances</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li>Recopilación y limpieza de datos históricos de los últimos 5 años de la Facultad de Ingeniería.</li>
+                                        <li>Desarrollo y entrenamiento de un modelo de Machine Learning (ej. Random Forest o Redes Neuronales).</li>
+                                        <li>Desarrollo de un dashboard web para el uso exclusivo del departamento de Bienestar Estudiantil, que mostrará el índice de riesgo de los estudiantes matriculados.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-rose-700 flex items-center gap-2"><i class="fa-solid fa-ban"></i> Límites</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li><strong>Poblacional:</strong> El modelo sólo aplicará a los estudiantes de la Facultad de Ingeniería de la Universidad X. No incluye a otras facultades debido a diferencias en los planes de estudio.</li>
+                                        <li><strong>Funcional:</strong> El sistema no tomará decisiones automáticas (ej. dar de baja o aprobar a un alumno), su función es estrictamente de recomendación/alerta.</li>
+                                        <li><strong>Temporal:</strong> Se utilizarán únicamente los datos comprendidos entre las gestiones 2018 y 2023.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2 -->
+                    <div class="accordion-item bg-slate-50 border border-slate-200 rounded-xl overflow-hidden">
+                        <button class="w-full text-left px-6 py-4 font-bold text-slate-800 flex justify-between items-center hover:bg-slate-100 transition-colors focus:outline-none" onclick="toggleAccordion(this)">
+                            <span><span class="text-primary mr-2">Ejemplo 2:</span> Sistema Web para la Gestión de Inventarios y Ventas en una Pyme de Retail.</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 chevron-icon"></i>
+                        </button>
+                        <div class="accordion-content px-6 bg-white border-t border-slate-100">
+                            <div class="space-y-4 text-sm text-slate-700">
+                                <div>
+                                    <h4 class="font-bold text-primary flex items-center gap-2"><i class="fa-solid fa-bullseye"></i> Justificación</h4>
+                                    <p class="mt-1"><strong>Justificación Económica y Tecnológica:</strong> La empresa "Comercializadora XYZ" actualmente lleva su registro de ventas e inventario en hojas de cálculo y cuadernos, lo que ocasiona descuadres diarios de hasta un 15% y retrasos en la atención al cliente. La implementación de un sistema web centralizado automatizará los procesos de registro, reduciendo errores humanos, minimizando el robo hormiga y mejorando los tiempos de respuesta. Tecnológicamente, moderniza la infraestructura de la empresa preparándola para la competitividad digital.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-emerald-700 flex items-center gap-2"><i class="fa-solid fa-expand"></i> Alcances</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li>Diseño de una arquitectura cliente-servidor alojada en la nube (Cloud).</li>
+                                        <li>Módulo de autenticación con roles de usuario (Administrador, Cajero, Almacenero).</li>
+                                        <li>Módulo de Gestión de Inventario (Entradas, salidas, alertas de stock mínimo).</li>
+                                        <li>Módulo de Ventas y generación de reportes diarios en PDF.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-rose-700 flex items-center gap-2"><i class="fa-solid fa-ban"></i> Límites</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li><strong>Integración:</strong> El sistema NO incluirá un módulo de facturación electrónica integrado con Impuestos Nacionales. Se limitará a generar notas de venta internas.</li>
+                                        <li><strong>Plataforma:</strong> Será un sistema puramente web (Responsive). No se desarrollará una aplicación móvil nativa (Android/iOS) por restricciones de tiempo.</li>
+                                        <li><strong>Hardware:</strong> El proyecto no cubre la adquisición de equipos de hardware (computadoras, lectores de códigos de barras) para la empresa.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Telecomunicaciones -->
+                <div id="telecom" class="tab-content">
+                    <div class="mb-6 px-4">
+                        <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 inline-block">Ingeniería de Telecomunicaciones</h3>
+                        <p class="text-slate-500 mt-2">Enfocados en infraestructura de redes, transmisión de datos, IoT, telefonía y radiofrecuencia.</p>
+                    </div>
+
+                    <!-- Proyecto 1 -->
+                    <div class="accordion-item bg-slate-50 border border-slate-200 rounded-xl mb-4 overflow-hidden">
+                        <button class="w-full text-left px-6 py-4 font-bold text-slate-800 flex justify-between items-center hover:bg-slate-100 transition-colors focus:outline-none" onclick="toggleAccordion(this)">
+                            <span><span class="text-primary mr-2">Ejemplo 1:</span> Rediseño de la Red LAN/WLAN usando Fibra Óptica para el Campus Universitario "Alfa".</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 chevron-icon"></i>
+                        </button>
+                        <div class="accordion-content px-6 bg-white border-t border-slate-100">
+                            <div class="space-y-4 text-sm text-slate-700">
+                                <div>
+                                    <h4 class="font-bold text-primary flex items-center gap-2"><i class="fa-solid fa-bullseye"></i> Justificación</h4>
+                                    <p class="mt-1"><strong>Justificación Técnica y Operativa:</strong> La red actual del campus fue diseñada hace 10 años, presenta constantes caídas, latencia alta y cuellos de botella severos afectando laboratorios y oficinas administrativas. El rediseño e implementación de un backbone de fibra óptica con distribución jerárquica justificará la inversión al garantizar velocidades de hasta 1 Gbps por usuario, soportando la nueva demanda de clases virtuales, transferencia masiva de datos y dotando a la institución de escalabilidad tecnológica para los próximos 15 años.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-emerald-700 flex items-center gap-2"><i class="fa-solid fa-expand"></i> Alcances</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li>Levantamiento de información y auditoría de la red actual.</li>
+                                        <li>Diseño topológico (Capa de núcleo, distribución y acceso).</li>
+                                        <li>Configuración en simuladores (Packet Tracer/GNS3) para validar VLANS, enrutamiento y seguridad.</li>
+                                        <li>Presupuesto de equipos y cronograma de instalación física propuesto.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-rose-700 flex items-center gap-2"><i class="fa-solid fa-ban"></i> Límites</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li><strong>Implementación Física:</strong> El proyecto llegará hasta el nivel de *Diseño de Ingeniería a Detalle* y Simulación. Por los altos costos involucrados, NO se realizará el tendido físico de fibra ni la compra de equipos reales.</li>
+                                        <li><strong>Geográfico:</strong> Solo abarca los bloques A, B y C del Campus "Alfa". Las sedes periféricas quedan excluidas.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2 -->
+                    <div class="accordion-item bg-slate-50 border border-slate-200 rounded-xl overflow-hidden">
+                        <button class="w-full text-left px-6 py-4 font-bold text-slate-800 flex justify-between items-center hover:bg-slate-100 transition-colors focus:outline-none" onclick="toggleAccordion(this)">
+                            <span><span class="text-primary mr-2">Ejemplo 2:</span> Implementación de una Red de Sensores IoT con protocolo LoRaWAN para el Monitoreo Agrícola.</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 chevron-icon"></i>
+                        </button>
+                        <div class="accordion-content px-6 bg-white border-t border-slate-100">
+                            <div class="space-y-4 text-sm text-slate-700">
+                                <div>
+                                    <h4 class="font-bold text-primary flex items-center gap-2"><i class="fa-solid fa-bullseye"></i> Justificación</h4>
+                                    <p class="mt-1"><strong>Justificación Práctica y Ambiental:</strong> En las zonas rurales, la falta de conectividad 4G/5G impide el monitoreo automatizado de los cultivos, derivando en un uso ineficiente del agua y pérdidas por heladas imprevistas. El uso de la tecnología LoRaWAN se justifica por su capacidad de transmisión de datos a largas distancias con consumo de energía ultra-bajo, ideal para el campo. Esto permitirá a los agricultores tomar decisiones basadas en datos (Humedad, Temperatura) en tiempo real, optimizando el riego y mejorando la producción.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-emerald-700 flex items-center gap-2"><i class="fa-solid fa-expand"></i> Alcances</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li>Ensamblaje y programación de 3 nodos sensores (humedad del suelo y temperatura ambiente).</li>
+                                        <li>Instalación de un Gateway LoRaWAN en un punto elevado de la comunidad agrícola elegida.</li>
+                                        <li>Desarrollo de una interfaz básica (dashboard local o integración con The Things Network) para visualizar las lecturas de los sensores.</li>
+                                        <li>Pruebas de cobertura y calidad de señal en campo (hasta 3 km a la redonda).</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-rose-700 flex items-center gap-2"><i class="fa-solid fa-ban"></i> Límites</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li><strong>Actuadores:</strong> El sistema será estrictamente de *monitoreo*. No accionará válvulas de riego ni bombas de agua de manera automática (no hay control de actuadores).</li>
+                                        <li><strong>Variables Múltiples:</strong> No se medirán variables químicas del suelo como niveles de NPK (Nitrógeno, Fósforo, Potasio) debido al alto costo de dichos sensores.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Electromecanica -->
+                <div id="electromecanica" class="tab-content">
+                    <div class="mb-6 px-4">
+                        <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 inline-block">Ingeniería Electromecánica</h3>
+                        <p class="text-slate-500 mt-2">Enfocados en diseño de máquinas, automatización industrial, sistemas térmicos y energías renovables.</p>
+                    </div>
+
+                    <!-- Proyecto 1 -->
+                    <div class="accordion-item bg-slate-50 border border-slate-200 rounded-xl mb-4 overflow-hidden">
+                        <button class="w-full text-left px-6 py-4 font-bold text-slate-800 flex justify-between items-center hover:bg-slate-100 transition-colors focus:outline-none" onclick="toggleAccordion(this)">
+                            <span><span class="text-primary mr-2">Ejemplo 1:</span> Diseño y Construcción de un Prototipo de Máquina Trituradora Automatizada para Plásticos PET.</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 chevron-icon"></i>
+                        </button>
+                        <div class="accordion-content px-6 bg-white border-t border-slate-100">
+                            <div class="space-y-4 text-sm text-slate-700">
+                                <div>
+                                    <h4 class="font-bold text-primary flex items-center gap-2"><i class="fa-solid fa-bullseye"></i> Justificación</h4>
+                                    <p class="mt-1"><strong>Justificación Ambiental y Tecnológica:</strong> La acumulación de plásticos PET en botaderos municipales es un problema ambiental crítico. Actualmente, las asociaciones de recicladores locales comercializan el plástico por volumen, ocupando mucho espacio de transporte y recibiendo baja rentabilidad. Este proyecto se justifica porque el diseño de una trituradora automatizada y de bajo costo para asociaciones permitirá procesar el material *in situ*, reduciendo el volumen de carga, aumentando el valor de venta del plástico triturado y mejorando los ingresos de estas microempresas, todo bajo parámetros de seguridad industrial estandarizados.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-emerald-700 flex items-center gap-2"><i class="fa-solid fa-expand"></i> Alcances</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li>Cálculo y diseño mecánico (ejes, cuchillas, motorreductores) en software CAD (SolidWorks o Inventor).</li>
+                                        <li>Construcción física del prototipo a escala industrial de baja capacidad (aprox. 50 kg/hora).</li>
+                                        <li>Diseño e implementación del tablero eléctrico de control automático (con botoneras, paros de emergencia e inversión de giro).</li>
+                                        <li>Pruebas de funcionamiento y granulometría del material resultante.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-rose-700 flex items-center gap-2"><i class="fa-solid fa-ban"></i> Límites</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li><strong>Tipo de material:</strong> La máquina solo estará diseñada para triturar plásticos tipo PET (Botellas). Excluye plásticos de alta densidad (HDPE, PVC) o metales, ya que dañarían el sistema de cuchillas calculado.</li>
+                                        <li><strong>Tratamiento del plástico:</strong> El alcance no incluye módulos de lavado ni secado del plástico, únicamente la trituración.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2 -->
+                    <div class="accordion-item bg-slate-50 border border-slate-200 rounded-xl overflow-hidden">
+                        <button class="w-full text-left px-6 py-4 font-bold text-slate-800 flex justify-between items-center hover:bg-slate-100 transition-colors focus:outline-none" onclick="toggleAccordion(this)">
+                            <span><span class="text-primary mr-2">Ejemplo 2:</span> Diseño de un Sistema de Bombeo de Agua Subterránea impulsado por Energía Fotovoltaica.</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 chevron-icon"></i>
+                        </button>
+                        <div class="accordion-content px-6 bg-white border-t border-slate-100">
+                            <div class="space-y-4 text-sm text-slate-700">
+                                <div>
+                                    <h4 class="font-bold text-primary flex items-center gap-2"><i class="fa-solid fa-bullseye"></i> Justificación</h4>
+                                    <p class="mt-1"><strong>Justificación Social y Energética:</strong> En la comunidad de "San Juan", las familias carecen de acceso a la red eléctrica convencional y sufren déficit de agua durante épocas secas. La justificación de este proyecto radica en aprovechar la alta radiación solar de la región para implementar un sistema de bombeo independiente y ecológico. Esto no solo dotará de agua constante para consumo animal y humano básico, sino que reducirá a cero los costos operativos derivados de usar bombas convencionales a diésel o gasolina, mitigando además las emisiones de CO2.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-emerald-700 flex items-center gap-2"><i class="fa-solid fa-expand"></i> Alcances</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li>Cálculo de la demanda hídrica de la comunidad.</li>
+                                        <li>Dimensionamiento del arreglo de paneles solares, inversor y bomba sumergible requerida, basado en el nivel freático del pozo existente.</li>
+                                        <li>Simulación energética del sistema mediante software especializado (ej. PVsyst).</li>
+                                        <li>Estudio de viabilidad económica (TIR, VAN) comparando con un sistema a combustible.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-rose-700 flex items-center gap-2"><i class="fa-solid fa-ban"></i> Límites</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li><strong>Instalación:</strong> Debido a la escala comunitaria, el proyecto se limitará al *Estudio a Diseño Final* (Ingeniería de detalle y planos). No se construirá ni instalará el sistema físico en la comunidad.</li>
+                                        <li><strong>Calidad del Agua:</strong> El proyecto asume bombear el agua disponible; no incluye un sistema de potabilización o filtrado de metales pesados.</li>
+                                        <li><strong>Perforación:</strong> Se asume que el pozo artesiano ya existe. El proyecto no contempla los estudios hidrológicos ni la perforación del terreno.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Ambiental -->
+                <div id="ambiental" class="tab-content">
+                    <div class="mb-6 px-4">
+                        <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 inline-block">Ingeniería Ambiental</h3>
+                        <p class="text-slate-500 mt-2">Enfocados en sostenibilidad, tratamiento de efluentes, evaluación de impactos ambientales y gestión de residuos.</p>
+                    </div>
+
+                    <!-- Proyecto 1 -->
+                    <div class="accordion-item bg-slate-50 border border-slate-200 rounded-xl mb-4 overflow-hidden">
+                        <button class="w-full text-left px-6 py-4 font-bold text-slate-800 flex justify-between items-center hover:bg-slate-100 transition-colors focus:outline-none" onclick="toggleAccordion(this)">
+                            <span><span class="text-primary mr-2">Ejemplo 1:</span> Diseño de una Planta de Tratamiento de Aguas Residuales Industriales (PTARI) para el Sector Curtiembre.</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 chevron-icon"></i>
+                        </button>
+                        <div class="accordion-content px-6 bg-white border-t border-slate-100">
+                            <div class="space-y-4 text-sm text-slate-700">
+                                <div>
+                                    <h4 class="font-bold text-primary flex items-center gap-2"><i class="fa-solid fa-bullseye"></i> Justificación</h4>
+                                    <p class="mt-1"><strong>Justificación Legal y Ecológica:</strong> La industria de la curtiembre utiliza altos niveles de químicos peligrosos, especialmente Cromo Hexavalente, que están siendo descargados directamente en el alcantarillado público, contaminando los afluentes de la ciudad e incumpliendo la Ley de Medio Ambiente vigente. El diseño de una PTARI adecuada a este contexto se justifica por la necesidad imperiosa de mitigar el impacto ambiental tóxico, permitiendo a la empresa cumplir con las regulaciones de descargas líquidas, evitar clausuras y proteger la salud pública de los asentamientos aledaños.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-emerald-700 flex items-center gap-2"><i class="fa-solid fa-expand"></i> Alcances</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li>Muestreo y caracterización fisicoquímica de los efluentes crudos de la industria elegida.</li>
+                                        <li>Diseño de los procesos de tratamiento físico, químico (precipitación de cromo) y biológico.</li>
+                                        <li>Dimensionamiento de tanques y selección de equipos (bombas, aireadores, filtros prensa).</li>
+                                        <li>Elaboración del manual de operación y mantenimiento de la planta diseñada.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-rose-700 flex items-center gap-2"><i class="fa-solid fa-ban"></i> Límites</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li><strong>Ejecución:</strong> El proyecto se entregará a nivel de "Diseño de Ingeniería" (Planos y cálculos). No se contempla la construcción civil ni montaje mecánico de la planta.</li>
+                                        <li><strong>Reúso:</strong> El diseño asegura que el agua tratada cumpla con los límites máximos permisibles para descarga en red pública, pero NO se diseñará para alcanzar calidad de agua potable (no se usará ósmosis inversa por altos costos).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2 -->
+                    <div class="accordion-item bg-slate-50 border border-slate-200 rounded-xl overflow-hidden">
+                        <button class="w-full text-left px-6 py-4 font-bold text-slate-800 flex justify-between items-center hover:bg-slate-100 transition-colors focus:outline-none" onclick="toggleAccordion(this)">
+                            <span><span class="text-primary mr-2">Ejemplo 2:</span> Evaluación de Impacto Ambiental (EIA) de la Actividad Minera en la Cuenca Alta del Río Blanco.</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 chevron-icon"></i>
+                        </button>
+                        <div class="accordion-content px-6 bg-white border-t border-slate-100">
+                            <div class="space-y-4 text-sm text-slate-700">
+                                <div>
+                                    <h4 class="font-bold text-primary flex items-center gap-2"><i class="fa-solid fa-bullseye"></i> Justificación</h4>
+                                    <p class="mt-1"><strong>Justificación Teórica y Social:</strong> En la última década, la proliferación de cooperativas mineras en la cuenca del Río Blanco ha generado un deterioro visible de la flora y fauna piscícola, afectando directamente los medios de vida de las comunidades indígenas río abajo. Actualmente existe un vacío de información científica actualizada sobre la magnitud de la contaminación. Este proyecto se justifica porque proporcionará una línea base ambiental rigurosa e identificará cuantitativamente los impactos, sirviendo como herramienta técnica para que las autoridades competentes diseñen planes de remediación efectivos y políticas públicas de conservación.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-emerald-700 flex items-center gap-2"><i class="fa-solid fa-expand"></i> Alcances</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li>Diagnóstico del Estado Cero (Línea Base) evaluando factores hídricos, edáficos (suelo) y bióticos.</li>
+                                        <li>Identificación y valoración de impactos utilizando la Matriz de Leopold y matrices de convergencia.</li>
+                                        <li>Diseño de un Plan de Manejo Ambiental (PMA) con medidas de mitigación sugeridas.</li>
+                                        <li>Socialización de los resultados mediante encuestas y entrevistas a 50 líderes de comunidades locales.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-rose-700 flex items-center gap-2"><i class="fa-solid fa-ban"></i> Límites</h4>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li><strong>Espacial:</strong> La evaluación se circunscribe estrictamente al tramo del "Río Blanco" delimitado entre la cota 3000 y la cota 2500 msnm. No se evaluarán afluentes tributarios de otras zonas.</li>
+                                        <li><strong>Remediación Física:</strong> El documento propondrá el Plan de Manejo, pero el tesista NO ejecutará tareas de reforestación ni limpieza de pasivos ambientales en el sitio.</li>
+                                        <li><strong>Temporales:</strong> El muestreo de agua se realizará únicamente en la época de estiaje (agosto - octubre), no se consideran variaciones de época de lluvias debido a tiempos de graduación.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="mb-2"><strong>Recurso de Apoyo - Taller de Grado</strong></p>
+            <p class="text-sm">Recuerda: Un proyecto bien delimitado es un proyecto terminado. Consulta con tu tutor si tienes dudas sobre la viabilidad de tus alcances.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript para la interactividad de Pestañas y Acordeones -->
+    <script>
+        // Lógica de Pestañas (Tabs)
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remover estado activo de todos los botones
+                tabBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-primary', 'text-white', 'shadow-md');
+                    b.classList.add('bg-white', 'text-slate-600', 'hover:bg-slate-100');
+                });
+                
+                // Ocultar todos los contenidos
+                tabContents.forEach(c => c.classList.remove('active'));
+
+                // Activar boton clickeado
+                btn.classList.remove('bg-white', 'text-slate-600', 'hover:bg-slate-100');
+                btn.classList.add('active', 'bg-primary', 'text-white', 'shadow-md');
+
+                // Mostrar contenido asociado
+                const targetId = btn.getAttribute('data-tab');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // Lógica de Acordeón
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            
+            // Si queremos que solo se abra uno a la vez en toda la página (opcional)
+            /*
+            const allItems = document.querySelectorAll('.accordion-item');
+            allItems.forEach(i => {
+                if(i !== item) i.classList.remove('active');
+            });
+            */
+
+            item.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Grado - Normas APA 7ma Edición</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Sangría francesa para las referencias APA */
+        .apa-reference {
+            padding-left: 2.5rem;
+            text-indent: -2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            background-color: #1e293b;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.875rem;
+            white-space: nowrap;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
+
+    <!-- Navegación Sticky -->
+    <nav class="bg-brand-900 text-white fixed w-full z-50 top-0 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-graduation-cap text-2xl text-brand-500"></i>
+                    <span class="font-bold text-xl tracking-tight">Taller de Grado</span>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#inicio" class="hover:text-brand-500 transition-colors font-medium">Inicio</a>
+                    <a href="#citas" class="hover:text-brand-500 transition-colors font-medium">Citas (Texto)</a>
+                    <a href="#referencias" class="hover:text-brand-500 transition-colors font-medium">Referencias</a>
+                    <a href="#ejemplos" class="bg-brand-500 text-white px-4 py-2 rounded-full hover:bg-brand-700 transition-colors font-medium">Ejemplos por Carrera</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header id="inicio" class="pt-24 pb-12 md:pt-32 md:pb-20 bg-gradient-to-br from-brand-900 via-brand-700 to-brand-500 text-white shadow-inner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Dominando las Normas APA 7<sup class="text-2xl">ma</sup> Edición</h1>
+            <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto">Guía metodológica para proyectos de investigación en Ingeniería.</p>
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl max-w-4xl mx-auto text-left flex gap-4 items-start shadow-xl">
+                <div class="bg-brand-500 p-3 rounded-full shrink-0">
+                    <i class="fa-solid fa-chalkboard-user text-white text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-2">Mensaje del Docente</h3>
+                    <p class="text-brand-50">¡Bienvenidos, futuros ingenieros! En la investigación científica y tecnológica, el rigor es tan importante como la innovación. Citar y referenciar correctamente no solo evita el plagio, sino que da respaldo técnico y validez a sus prototipos, sistemas y diseños. Esta guía está diseñada específicamente para ustedes.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+        <!-- Sección Citas -->
+        <section id="citas" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4"><i class="fa-solid fa-quote-right text-brand-500 mr-3"></i>Citas en el Texto</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Una cita es la idea que extraemos de un documento de manera textual o parafraseada. El sistema APA utiliza el formato <strong>Autor-Fecha</strong>.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Citas Directas -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <h3 class="text-xl font-bold text-brand-700 mb-4 border-b pb-2">1. Citas Directas (Textuales)</h3>
+                    <p class="mb-4 text-gray-600">Reproducen exactamente las palabras del autor. Deben incluir autor, año y <strong>página</strong>.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-brand-500">
+                            <h4 class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-2">Menos de 40 palabras</h4>
+                            <p class="text-gray-800">Se incorporan en el texto y se encierran entre comillas dobles.</p>
+                            <div class="mt-2 text-sm italic text-gray-600 font-serif">
+                                "... el algoritmo genético demostró converger en un tiempo óptimo" <span class="font-bold not-italic tooltip relative inline-block text-brand-700 cursor-help">(Torres, 2022, p. 15)<span class="tooltip-text">Formato: (Apellido, Año, p. #)</span></span>.
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-brand-700">
+                            <h4 class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-2">40 palabras o más (En bloque)</h4>
+                            <p class="text-gray-800 mb-2">Se escriben en un párrafo aparte, sin comillas, con sangría de 1.27 cm en todo el bloque.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Citas Indirectas -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <h3 class="text-xl font-bold text-brand-700 mb-4 border-b pb-2">2. Citas Indirectas (Parafraseo)</h3>
+                    <p class="mb-4 text-gray-600">Expresas las ideas del autor con tus propias palabras. Solo es obligatorio el <strong>autor</strong> y el <strong>año</strong>, aunque la página es sugerida si el texto es extenso.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500">
+                            <h4 class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-2">Cita Narrativa (Énfasis en el autor)</h4>
+                            <div class="text-sm italic text-gray-600 font-serif">
+                                Según <span class="font-bold not-italic text-brand-700">Gómez (2021)</span>, la implementación de redes neuronales requiere una vasta limpieza de datos previa al entrenamiento del modelo.
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-emerald-700">
+                            <h4 class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-2">Cita Parentética (Énfasis en la idea)</h4>
+                            <div class="text-sm italic text-gray-600 font-serif">
+                                La limpieza de datos es el paso más crucial y demandante en tiempo antes de entrenar redes neuronales <span class="font-bold not-italic text-brand-700">(Gómez, 2021)</span>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-gray-200">
+
+        <!-- Sección Referencias -->
+        <section id="referencias" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4"><i class="fa-solid fa-list-ul text-brand-500 mr-3"></i>Referencias Bibliográficas</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Todo trabajo citado en el texto debe aparecer en la lista de referencias y viceversa. Se ordenan alfabéticamente y utilizan <strong>sangría francesa</strong> de 1.27 cm.</p>
+            </div>
+
+            <!-- Anatomía de una Referencia -->
+            <div class="bg-brand-900 text-white rounded-2xl p-6 md:p-10 mb-8 shadow-xl">
+                <h3 class="text-xl font-bold mb-6 text-center">Los 4 elementos esenciales de cualquier referencia</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+                        <i class="fa-solid fa-user text-2xl text-brand-100 mb-2"></i>
+                        <h4 class="font-bold text-lg">1. ¿Quién?</h4>
+                        <p class="text-sm text-brand-100">Autor(es) o Institución</p>
+                    </div>
+                    <div class="p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+                        <i class="fa-solid fa-calendar-days text-2xl text-brand-100 mb-2"></i>
+                        <h4 class="font-bold text-lg">2. ¿Cuándo?</h4>
+                        <p class="text-sm text-brand-100">Fecha de publicación</p>
+                    </div>
+                    <div class="p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+                        <i class="fa-solid fa-book-open text-2xl text-brand-100 mb-2"></i>
+                        <h4 class="font-bold text-lg">3. ¿Qué?</h4>
+                        <p class="text-sm text-brand-100">Título del trabajo</p>
+                    </div>
+                    <div class="p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+                        <i class="fa-solid fa-globe text-2xl text-brand-100 mb-2"></i>
+                        <h4 class="font-bold text-lg">4. ¿Dónde?</h4>
+                        <p class="text-sm text-brand-100">Fuente (Editorial, URL, DOI)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fórmulas -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm">
+                    <h4 class="font-bold flex items-center gap-2 mb-3 text-gray-800"><i class="fa-solid fa-book text-brand-500"></i> Libro Impreso / Digital</h4>
+                    <p class="text-sm text-gray-500 mb-3 font-mono bg-gray-100 p-2 rounded">Apellido, A. A. (Año). <em>Título del libro en cursiva</em>. Editorial. DOI o URL</p>
+                </div>
+                <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm">
+                    <h4 class="font-bold flex items-center gap-2 mb-3 text-gray-800"><i class="fa-regular fa-file-lines text-brand-500"></i> Artículo de Revista (Journal)</h4>
+                    <p class="text-sm text-gray-500 mb-3 font-mono bg-gray-100 p-2 rounded">Apellido, A. A. (Año). Título del artículo. <em>Nombre de la Revista, Volumen</em>(Número), pp-pp. DOI</p>
+                </div>
+                <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm">
+                    <h4 class="font-bold flex items-center gap-2 mb-3 text-gray-800"><i class="fa-solid fa-globe text-brand-500"></i> Página Web</h4>
+                    <p class="text-sm text-gray-500 mb-3 font-mono bg-gray-100 p-2 rounded">Apellido, A., o Institución. (Día de Mes de Año). <em>Título de la página</em>. Nombre del Sitio Web. URL</p>
+                </div>
+                <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm">
+                    <h4 class="font-bold flex items-center gap-2 mb-3 text-gray-800"><i class="fa-solid fa-graduation-cap text-brand-500"></i> Tesis o Trabajo de Grado</h4>
+                    <p class="text-sm text-gray-500 mb-3 font-mono bg-gray-100 p-2 rounded">Apellido, A. (Año). <em>Título de la tesis</em> [Tesis de licenciatura, Nombre de Institución]. Nombre del Archivo/Repositorio. URL</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-gray-200">
+
+        <!-- Sección Dinámica: Ejemplos por Carrera -->
+        <section id="ejemplos" class="scroll-mt-24 pb-12">
+            <div class="text-center mb-10">
+                <span class="bg-brand-100 text-brand-700 px-3 py-1 rounded-full text-sm font-bold tracking-wide uppercase">Zona Interactiva</span>
+                <h2 class="text-3xl font-bold text-gray-900 mt-4 mb-4">Ejemplos Prácticos Aplicados</h2>
+                <p class="text-lg text-gray-600">Selecciona tu carrera para ver cómo aplicar APA 7 en el contexto de tu perfil profesional.</p>
+            </div>
+
+            <!-- Pestañas de Navegación -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8 bg-white p-2 rounded-2xl shadow-sm border border-gray-200">
+                <button onclick="openTab(event, 'sistemas')" class="tab-btn active px-6 py-3 rounded-xl font-medium transition-all duration-300 bg-brand-500 text-white shadow-md">
+                    <i class="fa-solid fa-laptop-code mr-2"></i>Ing. de Sistemas
+                </button>
+                <button onclick="openTab(event, 'telecomunicaciones')" class="tab-btn px-6 py-3 rounded-xl font-medium text-gray-600 hover:bg-gray-100 transition-all duration-300">
+                    <i class="fa-solid fa-satellite-dish mr-2"></i>Ing. Telecomunicaciones
+                </button>
+                <button onclick="openTab(event, 'electromecanica')" class="tab-btn px-6 py-3 rounded-xl font-medium text-gray-600 hover:bg-gray-100 transition-all duration-300">
+                    <i class="fa-solid fa-cogs mr-2"></i>Ing. Electromecánica
+                </button>
+                <button onclick="openTab(event, 'ambiental')" class="tab-btn px-6 py-3 rounded-xl font-medium text-gray-600 hover:bg-gray-100 transition-all duration-300">
+                    <i class="fa-solid fa-leaf mr-2"></i>Ing. Ambiental
+                </button>
+            </div>
+
+            <!-- Contenido: Sistemas -->
+            <div id="sistemas" class="tab-content active bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+                <div class="flex items-center gap-4 mb-8 pb-4 border-b border-gray-100">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl shadow-inner">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Ingeniería de Sistemas</h3>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Ejemplo 1 -->
+                    <div>
+                        <h4 class="font-bold text-lg text-brand-700 mb-3 flex items-center gap-2"><span class="bg-brand-100 text-brand-700 w-6 h-6 flex items-center justify-center rounded-full text-sm">1</span> Cita de un Repositorio o Código Fuente (Software)</h4>
+                        <p class="text-gray-600 mb-3 text-sm">En sistemas, es común basar metodologías en arquitecturas preexistentes o librerías publicadas.</p>
+                        <div class="bg-gray-50 border-l-4 border-blue-500 p-5 rounded-r-lg">
+                            <p class="text-gray-700 font-serif italic mb-4">"El uso de contenedores para microservicios mejora el despliegue continuo, sin embargo, requiere una orquestación precisa para evitar caídas de los nodos workers" <span class="font-bold text-brand-700">(García y Lopera, 2023)</span>.</p>
+                            <div class="mt-4 pt-4 border-t border-gray-200">
+                                <p class="text-xs text-gray-500 uppercase tracking-wide mb-1 font-bold">Referencia en la lista final:</p>
+                                <p class="apa-reference font-serif text-gray-800">
+                                    <span class="tooltip text-blue-600 cursor-help border-b border-dashed border-blue-400">García, M., & Lopera, J.<span class="tooltip-text">Autores</span></span> 
+                                    <span class="tooltip text-green-600 cursor-help border-b border-dashed border-green-400">(2023).<span class="tooltip-text">Año de publicación</span></span> 
+                                    <span class="tooltip text-purple-600 cursor-help border-b border-dashed border-purple-400"><em>Orquestación de microservicios con Kubernetes</em><span class="tooltip-text">Título (en cursiva)</span></span> 
+                                    <span class="tooltip text-orange-600 cursor-help border-b border-dashed border-orange-400">[Código fuente].<span class="tooltip-text">Descripción del formato</span></span> 
+                                    <span class="tooltip text-gray-600 cursor-help border-b border-dashed border-gray-400">GitHub.<span class="tooltip-text">Nombre del sitio</span></span> 
+                                    <a href="#" class="text-brand-500 hover:underline">https://github.com/garcia/k8s-microservicios</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 2 -->
+                    <div>
+                        <h4 class="font-bold text-lg text-brand-700 mb-3 flex items-center gap-2"><span class="bg-brand-100 text-brand-700 w-6 h-6 flex items-center justify-center rounded-full text-sm">2</span> Cita Indirecta de un Artículo Científico (IEEE)</h4>
+                        <p class="text-gray-600 mb-3 text-sm">Al referirnos a avances en Inteligencia Artificial o bases de datos.</p>
+                        <div class="bg-gray-50 border-l-4 border-blue-500 p-5 rounded-r-lg">
+                            <p class="text-gray-700 font-serif italic mb-4">La latencia en bases de datos distribuidas tipo NoSQL se reduce drásticamente al implementar algoritmos de consenso como Raft, de acuerdo con las simulaciones realizadas por <span class="font-bold text-brand-700">Turing y Lovelace (2022)</span>.</p>
+                            <div class="mt-4 pt-4 border-t border-gray-200">
+                                <p class="text-xs text-gray-500 uppercase tracking-wide mb-1 font-bold">Referencia en la lista final:</p>
+                                <p class="apa-reference font-serif text-gray-800">
+                                    Turing, A., & Lovelace, A. (2022). Optimización de latencia en bases de datos NoSQL mediante algoritmos de consenso. <em>IEEE Transactions on Knowledge and Data Engineering, 34</em>(8), 1540-1555. https://doi.org/10.1109/TKDE.2022.1234567
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido: Telecomunicaciones -->
+            <div id="telecomunicaciones" class="tab-content bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+                 <div class="flex items-center gap-4 mb-8 pb-4 border-b border-gray-100">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-2xl shadow-inner">
+                        <i class="fa-solid fa-satellite-dish"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Ingeniería de Telecomunicaciones</h3>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Ejemplo 1 -->
+                    <div>
+                        <h4 class="font-bold text-lg text-brand-700 mb-3 flex items-center gap-2"><span class="bg-brand-100 text-brand-700 w-6 h-6 flex items-center justify-center rounded-full text-sm">1</span> Cita de un Estándar Técnico o Informe Institucional</h4>
+                        <p class="text-gray-600 mb-3 text-sm">En telecomunicaciones es vital referenciar normativas de la UIT, IEEE, o 3GPP.</p>
+                        <div class="bg-gray-50 border-l-4 border-purple-500 p-5 rounded-r-lg">
+                            <p class="text-gray-700 font-serif italic mb-4">Para garantizar la interoperabilidad de las redes de fibra óptica en despliegues metropolitanos, se deben respetar los rangos de atenuación establecidos oficialmente <span class="font-bold text-brand-700">(Unión Internacional de Telecomunicaciones [UIT], 2020)</span>.</p>
+                            <div class="mt-4 pt-4 border-t border-gray-200">
+                                <p class="text-xs text-gray-500 uppercase tracking-wide mb-1 font-bold">Referencia en la lista final:</p>
+                                <p class="apa-reference font-serif text-gray-800">
+                                    <span class="tooltip text-blue-600 cursor-help border-b border-dashed border-blue-400">Unión Internacional de Telecomunicaciones.<span class="tooltip-text">Autor institucional</span></span> 
+                                    (2020). 
+                                    <span class="tooltip text-purple-600 cursor-help border-b border-dashed border-purple-400"><em>Características de los cables de fibra óptica monomodo</em><span class="tooltip-text">Título del informe en cursiva</span></span> 
+                                    (Recomendación UIT-T G.652). 
+                                    <a href="#" class="text-brand-500 hover:underline">https://www.itu.int/rec/T-REC-G.652</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 2 -->
+                    <div>
+                        <h4 class="font-bold text-lg text-brand-700 mb-3 flex items-center gap-2"><span class="bg-brand-100 text-brand-700 w-6 h-6 flex items-center justify-center rounded-full text-sm">2</span> Cita Textual de un Libro de Ingeniería</h4>
+                        <p class="text-gray-600 mb-3 text-sm">Para fundamentar el marco teórico sobre propagación de ondas y antenas.</p>
+                        <div class="bg-gray-50 border-l-4 border-purple-500 p-5 rounded-r-lg">
+                            <p class="text-gray-700 font-serif italic mb-4">"El ruido térmico, inherente a todos los sistemas de comunicación debido a la agitación aleatoria de los electrones, determina el límite absoluto de sensibilidad del receptor" <span class="font-bold text-brand-700">(Tomasi, 2003, p. 112)</span>.</p>
+                            <div class="mt-4 pt-4 border-t border-gray-200">
+                                <p class="text-xs text-gray-500 uppercase tracking-wide mb-1 font-bold">Referencia en la lista final:</p>
+                                <p class="apa-reference font-serif text-gray-800">
+                                    Tomasi, W. (2003). <em>Sistemas de comunicaciones electrónicas</em> (4.ª ed.). Pearson Educación.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido: Electromecánica -->
+            <div id="electromecanica" class="tab-content bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+                 <div class="flex items-center gap-4 mb-8 pb-4 border-b border-gray-100">
+                    <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-2xl shadow-inner">
+                        <i class="fa-solid fa-cogs"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Ingeniería Electromecánica</h3>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Ejemplo 1 -->
+                    <div>
+                        <h4 class="font-bold text-lg text-brand-700 mb-3 flex items-center gap-2"><span class="bg-brand-100 text-brand-700 w-6 h-6 flex items-center justify-center rounded-full text-sm">1</span> Cita de un Manual de Fabricante o Ficha Técnica</h4>
+                        <p class="text-gray-600 mb-3 text-sm">En el diseño de sistemas, es común recurrir a las especificaciones dadas por las empresas fabricantes.</p>
+                        <div class="bg-gray-50 border-l-4 border-orange-500 p-5 rounded-r-lg">
+                            <p class="text-gray-700 font-serif italic mb-4">El torque máximo admisible para los motores paso a paso de la serie NEMA 23, operando a una corriente nominal de 2.8A, no debe exceder los 1.26 Nm bajo carga continua para evitar daños térmicos en el devanado <span class="font-bold text-brand-700">(Siemens AG, 2021)</span>.</p>
+                            <div class="mt-4 pt-4 border-t border-gray-200">
+                                <p class="text-xs text-gray-500 uppercase tracking-wide mb-1 font-bold">Referencia en la lista final:</p>
+                                <p class="apa-reference font-serif text-gray-800">
+                                    Siemens AG. (2021). <em>Manual de usuario para motores paso a paso de grado industrial: Serie NEMA 23</em> [Ficha técnica]. División de Automatización y Control de Movimiento. <a href="#" class="text-brand-500 hover:underline">https://support.industry.siemens.com/manual-nema23</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 2 -->
+                    <div>
+                        <h4 class="font-bold text-lg text-brand-700 mb-3 flex items-center gap-2"><span class="bg-brand-100 text-brand-700 w-6 h-6 flex items-center justify-center rounded-full text-sm">2</span> Cita Directa en Bloque de un Artículo de Termodinámica</h4>
+                        <p class="text-gray-600 mb-3 text-sm">Cuando una definición de más de 40 palabras es crucial para el marco teórico.</p>
+                        <div class="bg-gray-50 border-l-4 border-orange-500 p-5 rounded-r-lg">
+                            <p class="text-gray-700 font-serif mb-2 text-sm">Como explican <span class="font-bold text-brand-700">Moran et al. (2014)</span> respecto a los ciclos de potencia a gas:</p>
+                            <blockquote class="ml-10 text-gray-600 italic border-l-2 border-gray-300 pl-4 py-2 text-sm font-serif mb-4">
+                                En los motores de combustión interna, el fluido de trabajo experimenta reacciones químicas que cambian su composición física sustancialmente. Como resultado de esto, un sistema cerrado real que siga estos procesos físicos no puede operar en un ciclo termodinámico perfecto, requiriendo un análisis a través de un ciclo de aire estándar equivalente (p. 392).
+                            </blockquote>
+                            <div class="mt-4 pt-4 border-t border-gray-200">
+                                <p class="text-xs text-gray-500 uppercase tracking-wide mb-1 font-bold">Referencia en la lista final:</p>
+                                <p class="apa-reference font-serif text-gray-800">
+                                    <span class="tooltip text-blue-600 cursor-help border-b border-dashed border-blue-400">Moran, M. J., Shapiro, H. N., Boettner, D. D., & Bailey, M. B.<span class="tooltip-text">Múltiples autores separados por '&'</span></span> (2014). <em>Fundamentos de termodinámica técnica</em> (8.ª ed.). Editorial Reverté.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido: Ambiental -->
+            <div id="ambiental" class="tab-content bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+                 <div class="flex items-center gap-4 mb-8 pb-4 border-b border-gray-100">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-2xl shadow-inner">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Ingeniería Ambiental</h3>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Ejemplo 1 -->
+                    <div>
+                        <h4 class="font-bold text-lg text-brand-700 mb-3 flex items-center gap-2"><span class="bg-brand-100 text-brand-700 w-6 h-6 flex items-center justify-center rounded-full text-sm">1</span> Cita de un Informe Gubernamental / Institución (Autor Corporativo)</h4>
+                        <p class="text-gray-600 mb-3 text-sm">Los ingenieros ambientales a menudo consultan políticas públicas e informes globales de ministerios o de la ONU.</p>
+                        <div class="bg-gray-50 border-l-4 border-green-500 p-5 rounded-r-lg">
+                            <p class="text-gray-700 font-serif italic mb-4">Las proyecciones indican que el tratamiento biológico de aguas residuales mediante humedales artificiales reduce la demanda bioquímica de oxígeno (DBO) hasta en un 85% en ecosistemas andinos <span class="font-bold text-brand-700">(Ministerio de Medio Ambiente y Agua [MMAyA], 2022)</span>.</p>
+                            <p class="text-sm text-gray-500 mb-4 ml-2"><i class="fa-solid fa-info-circle text-brand-500 mr-1"></i> Nota: En la primera cita se coloca el nombre completo y la sigla entre corchetes. En las siguientes citas, solo se usa la sigla: <strong>(MMAyA, 2022)</strong>.</p>
+                            
+                            <div class="mt-4 pt-4 border-t border-gray-200">
+                                <p class="text-xs text-gray-500 uppercase tracking-wide mb-1 font-bold">Referencia en la lista final:</p>
+                                <p class="apa-reference font-serif text-gray-800">
+                                    <span class="tooltip text-blue-600 cursor-help border-b border-dashed border-blue-400">Ministerio de Medio Ambiente y Agua.<span class="tooltip-text">Nombre completo sin la sigla</span></span> (2022). <em>Guía técnica para la implementación de plantas de tratamiento de aguas residuales</em>. Estado Plurinacional de Bolivia. <a href="#" class="text-brand-500 hover:underline">https://www.mmaya.gob.bo/documentos/guia-ptar</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 2 -->
+                    <div>
+                        <h4 class="font-bold text-lg text-brand-700 mb-3 flex items-center gap-2"><span class="bg-brand-100 text-brand-700 w-6 h-6 flex items-center justify-center rounded-full text-sm">2</span> Cita de un Artículo Científico en Revista Indexada</h4>
+                        <p class="text-gray-600 mb-3 text-sm">Para respaldar la metodología de una investigación sobre remediación de suelos o contaminación.</p>
+                        <div class="bg-gray-50 border-l-4 border-green-500 p-5 rounded-r-lg">
+                            <p class="text-gray-700 font-serif italic mb-4">Investigaciones recientes sugieren que el uso de biocarbón, combinado con consorcios microbianos específicos, acelera la fitorremediación de suelos contaminados por metales pesados provenientes de la actividad minera <span class="font-bold text-brand-700">(Rodríguez-Espinosa et al., 2023)</span>.</p>
+                            <p class="text-sm text-gray-500 mb-4 ml-2"><i class="fa-solid fa-info-circle text-brand-500 mr-1"></i> Nota: APA 7 exige el uso de "et al." desde la primera cita cuando hay 3 o más autores en la fuente.</p>
+
+                            <div class="mt-4 pt-4 border-t border-gray-200">
+                                <p class="text-xs text-gray-500 uppercase tracking-wide mb-1 font-bold">Referencia en la lista final:</p>
+                                <p class="apa-reference font-serif text-gray-800">
+                                    Rodríguez-Espinosa, T., Mendoza, L. C., & Fernández, R. (2023). Estrategias de fitorremediación con biocarbón en relaves mineros sudamericanos. <em>Journal of Environmental Management, 315</em>, Artículo 115123. https://doi.org/10.1016/j.jenvman.2023.115123
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 text-white py-10 mt-12 border-t-4 border-brand-500">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <i class="fa-solid fa-book-journal-whills text-4xl mb-4 text-brand-100"></i>
+            <h3 class="text-xl font-bold mb-2">Taller de Grado I</h3>
+            <p class="text-brand-100 mb-6">Metodología de la Investigación Aplicada</p>
+            <p class="text-sm text-brand-50/70 max-w-md mx-auto">Material educativo desarrollado en base al Manual de Citas y Referencias Bibliográficas APA 7ma Edición. </p>
+        </div>
+    </footer>
+
+    <!-- Lógica JS para las pestañas -->
+    <script>
+        function openTab(evt, careerName) {
+            // Ocultar todo el contenido de las pestañas
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            // Eliminar estilos activos de todos los botones
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                // Quitar clases de activo (bg-brand-500, text-white, shadow-md)
+                tablinks[i].classList.remove("bg-brand-500", "text-white", "shadow-md");
+                // Asegurar las clases de inactivo (text-gray-600, hover:bg-gray-100)
+                tablinks[i].classList.add("text-gray-600", "hover:bg-gray-100");
+            }
+
+            // Mostrar el contenido actual y añadir la clase activa al botón clickeado
+            document.getElementById(careerName).classList.add("active");
+            
+            // Transformar el botón clickeado al estado activo
+            evt.currentTarget.classList.remove("text-gray-600", "hover:bg-gray-100");
+            evt.currentTarget.classList.add("bg-brand-500", "text-white", "shadow-md");
+        }
+    </script>
+</body>
+</html>

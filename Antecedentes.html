@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Grado - Elaboración de Antecedentes</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1e3a8a', // blue-900
+                        secondary: '#2563eb', // blue-600
+                        accent: '#f59e0b', // amber-500
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .tab-content { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #1e3a8a, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-200 selection:text-blue-900">
+
+    <!-- Navigation Menu -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-200 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fa-solid fa-graduation-cap text-primary text-2xl mr-2"></i>
+                    <span class="font-bold text-xl text-primary tracking-tight">Taller de Grado</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-slate-600 hover:text-primary font-medium transition-colors">Inicio</a>
+                    <a href="#conceptos" class="text-slate-600 hover:text-primary font-medium transition-colors">Conceptos</a>
+                    <a href="#metodologia" class="text-slate-600 hover:text-primary font-medium transition-colors">Metodología</a>
+                    <a href="#ejemplos" class="bg-primary text-white px-5 py-2 rounded-full font-medium hover:bg-secondary transition-colors shadow-md">Ver Ejemplos</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-primary focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#inicio" class="block px-3 py-2 text-slate-600 hover:text-primary font-medium">Inicio</a>
+                <a href="#conceptos" class="block px-3 py-2 text-slate-600 hover:text-primary font-medium">Conceptos</a>
+                <a href="#metodologia" class="block px-3 py-2 text-slate-600 hover:text-primary font-medium">Metodología</a>
+                <a href="#ejemplos" class="block px-3 py-2 text-primary font-bold">Ver Ejemplos</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
+        <div class="md:w-1/2 mb-12 md:mb-0 pr-0 md:pr-12">
+            <div class="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-secondary font-semibold text-sm mb-6 border border-blue-200">
+                Módulo Metodológico Universitario
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-slate-900">
+                Domina la construcción de los <span class="gradient-text">Antecedentes de Investigación</span>
+            </h1>
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                Aprende a fundamentar tu Tesis de Grado identificando el "Estado del Arte". Esta guía interactiva está diseñada exclusivamente para estudiantes de Ingeniería: Sistemas, Telecomunicaciones, Electromecánica y Ambiental.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#metodologia" class="px-8 py-3 text-center bg-primary text-white font-semibold rounded-lg shadow-lg hover:bg-secondary hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+                    Metodología Paso a Paso
+                </a>
+                <a href="#ejemplos" class="px-8 py-3 text-center bg-white text-slate-700 font-semibold rounded-lg shadow border border-slate-200 hover:bg-slate-50 transition-all">
+                    Explorar Ejemplos <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+        <div class="md:w-1/2 relative">
+            <div class="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-50 rounded-3xl transform rotate-3 scale-105 -z-10"></div>
+            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Investigación en Ingeniería" class="rounded-3xl shadow-2xl border-4 border-white object-cover h-96 w-full">
+            <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl flex items-center gap-4 border border-slate-100">
+                <div class="bg-green-100 p-3 rounded-full text-green-600">
+                    <i class="fa-solid fa-check-double text-xl"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-500 uppercase font-bold">Avalado por</p>
+                    <p class="font-bold text-slate-800">Normas APA 7ma Ed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conceptos Section -->
+    <section id="conceptos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">¿Qué son los Antecedentes?</h2>
+                <div class="w-24 h-1 bg-accent mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600 text-lg">
+                    Según Roberto Hernández Sampieri, los antecedentes son la revisión de investigaciones previas que se han realizado sobre el tema o problema que has decidido investigar. Responden a la pregunta: <em>¿Qué se sabe hasta ahora de esto?</em>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Concept Card 1 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-lg transition-shadow">
+                    <div class="bg-blue-100 w-14 h-14 rounded-xl flex items-center justify-center text-primary text-2xl mb-6">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">El Estado del Arte</h3>
+                    <p class="text-slate-600">Representan el límite del conocimiento actual. Te impiden "reinventar la rueda" y te muestran qué metodologías han sido exitosas o han fallado en problemas similares a tu tesis.</p>
+                </div>
+                <!-- Concept Card 2 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-lg transition-shadow">
+                    <div class="bg-amber-100 w-14 h-14 rounded-xl flex items-center justify-center text-accent text-2xl mb-6">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">El Vacío de Conocimiento</h3>
+                    <p class="text-slate-600">Al analizar lo que otros han hecho, podrás justificar tu proyecto identificando qué falta por investigar o resolver (brecha o <i>gap</i> de investigación) en tu contexto específico.</p>
+                </div>
+                <!-- Concept Card 3 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-lg transition-shadow">
+                    <div class="bg-indigo-100 w-14 h-14 rounded-xl flex items-center justify-center text-indigo-600 text-2xl mb-6">
+                        <i class="fa-solid fa-file-contract"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">Estructura Base</h3>
+                    <p class="text-slate-600">Un buen antecedente no es un "copiar y pegar" del resumen de otro documento. Es una síntesis analítica que extrae: Autor, Año, Objetivo, Metodología, Resultados y <b>el aporte a tu trabajo</b>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metodología Section -->
+    <section id="metodologia" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Background Decoration -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-blue-800 opacity-20 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-accent opacity-20 blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">Metodología de Redacción</h2>
+                <div class="w-24 h-1 bg-accent mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-300 text-lg">
+                    Construir antecedentes requiere un proceso estructurado. Sigue estos 4 pasos (Fase Heurística y Hermenéutica) para redactar párrafos con rigor académico e ingenieril.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="relative">
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 h-full">
+                        <div class="text-5xl font-black text-slate-700 absolute -top-4 -right-2">01</div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-300">Búsqueda (Heurística)</h3>
+                        <p class="text-slate-400 text-sm">Ingresa a bases de datos científicas (IEEE Xplore, Scopus, Google Académico). Busca artículos, tesis y patentes de los últimos 5 años usando palabras clave booleanas (AND, OR).</p>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative">
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 h-full">
+                        <div class="text-5xl font-black text-slate-700 absolute -top-4 -right-2">02</div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-300">Filtro y Selección</h3>
+                        <p class="text-slate-400 text-sm">Lee los resúmenes (Abstracts). Selecciona únicamente aquellos trabajos que tengan una similitud metodológica, tecnológica o de variable de estudio con tu Tesis de Grado.</p>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative">
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 h-full">
+                        <div class="text-5xl font-black text-slate-700 absolute -top-4 -right-2">03</div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-300">Extracción de Datos</h3>
+                        <p class="text-slate-400 text-sm">Ficha el documento. Extrae: Apellido del autor, Año de publicación, Título, Objetivo general, Metodología (instrumentos/algoritmos), y la principal conclusión o resultado.</p>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="relative">
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 h-full border-b-4 border-b-accent">
+                        <div class="text-5xl font-black text-slate-700 absolute -top-4 -right-2">04</div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-300">Redacción y Aporte</h3>
+                        <p class="text-slate-400 text-sm">Une los datos en un párrafo coherente (usando conectores lógicos). <b>Lo más importante:</b> Al final del párrafo, redacta explícitamente de qué manera ese estudio ayuda o sirve de base a tu propia investigación.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ejemplos Prácticos Dinámicos -->
+    <section id="ejemplos" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-secondary font-bold tracking-wider uppercase text-sm">Laboratorio de Redacción</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2 mb-4">Ejemplos por Especialidad</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600">
+                    Selecciona tu carrera de ingeniería para ver cómo se estructuran correctamente dos antecedentes (uno internacional y uno nacional/regional) para un tema de Tesis de Grado.
+                </p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="tabs-nav">
+                <button onclick="openTab('sistemas')" class="tab-btn active px-6 py-3 rounded-full text-sm font-bold transition-all bg-primary text-white shadow-md" data-target="sistemas">
+                    <i class="fa-solid fa-laptop-code mr-2"></i> Ing. de Sistemas
+                </button>
+                <button onclick="openTab('telecom')" class="tab-btn px-6 py-3 rounded-full text-sm font-bold transition-all bg-white text-slate-600 hover:bg-blue-50 border border-slate-200" data-target="telecom">
+                    <i class="fa-solid fa-satellite-dish mr-2"></i> Ing. de Telecomunicaciones
+                </button>
+                <button onclick="openTab('electromecanica')" class="tab-btn px-6 py-3 rounded-full text-sm font-bold transition-all bg-white text-slate-600 hover:bg-blue-50 border border-slate-200" data-target="electromecanica">
+                    <i class="fa-solid fa-gears mr-2"></i> Ing. Electromecánica
+                </button>
+                <button onclick="openTab('ambiental')" class="tab-btn px-6 py-3 rounded-full text-sm font-bold transition-all bg-white text-slate-600 hover:bg-blue-50 border border-slate-200" data-target="ambiental">
+                    <i class="fa-solid fa-leaf mr-2"></i> Ing. Ambiental
+                </button>
+            </div>
+
+            <!-- Tab Contents Container -->
+            <div class="bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-slate-100">
+                
+                <!-- ================= S I S T E M A S ================= -->
+                <div id="sistemas" class="tab-content active">
+                    <div class="flex items-center gap-4 mb-8 border-b pb-4">
+                        <div class="bg-blue-100 p-4 rounded-full text-blue-700 text-2xl">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">Ingeniería de Sistemas</h3>
+                            <p class="text-slate-500">Enfoque en desarrollo de software, Inteligencia Artificial y gestión de datos.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <!-- Ejemplo 1 -->
+                        <div class="bg-slate-50 rounded-2xl p-6 border-l-4 border-blue-500">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Tema de Tesis del Estudiante:</h4>
+                            <p class="text-slate-700 italic mb-4">"Modelo de Machine Learning para predecir la deserción estudiantil universitaria temprana."</p>
+                            
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm relative">
+                                <span class="absolute top-0 right-0 bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">Antecedente Internacional</span>
+                                <p class="text-slate-800 leading-relaxed text-justify mt-2">
+                                    <span class="bg-yellow-100 px-1 rounded font-semibold" title="Autor y Año">Martínez et al. (2022)</span> desarrollaron una investigación titulada <i>"Aplicación de redes neuronales artificiales para la retención académica"</i> en la Universidad de Antioquia, Colombia. 
+                                    <span class="bg-green-100 px-1 rounded font-semibold" title="Objetivo">El objetivo principal fue</span> desarrollar un modelo predictivo capaz de identificar alumnos en riesgo de abandono durante el primer semestre. 
+                                    <span class="bg-purple-100 px-1 rounded font-semibold" title="Metodología">La metodología empleada</span> se basó en el proceso KDD (Knowledge Discovery in Databases) utilizando algoritmos de Random Forest y perceptrón multicapa sobre una muestra histórica de 5,000 registros académicos. 
+                                    <span class="bg-blue-100 px-1 rounded font-semibold" title="Resultados">Los resultados demostraron</span> que el modelo de Random Forest obtuvo una precisión del 89%, identificando el nivel socioeconómico y las notas del primer parcial como variables determinantes. 
+                                    <span class="bg-red-100 px-1 rounded font-semibold" title="Aporte a la investigación actual">El presente antecedente sirve de guía metodológica para este proyecto, ya que justifica la elección del algoritmo Random Forest frente a otros modelos y proporciona un listado validado de variables predictoras que serán adaptadas a nuestro contexto local.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Ejemplo 2 -->
+                        <div class="bg-slate-50 rounded-2xl p-6 border-l-4 border-blue-500">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Tema de Tesis del Estudiante:</h4>
+                            <p class="text-slate-700 italic mb-4">"Sistema de trazabilidad agrícola basado en tecnología Blockchain para productores de quinua."</p>
+                            
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm relative">
+                                <span class="absolute top-0 right-0 bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">Antecedente Nacional</span>
+                                <p class="text-slate-800 leading-relaxed text-justify mt-2">
+                                    A nivel nacional, <span class="bg-yellow-100 px-1 rounded font-semibold">Gómez y Quiroga (2023)</span> elaboraron la tesis de grado <i>"Prototipo de red Blockchain para la certificación de origen de café de exportación"</i>. 
+                                    <span class="bg-green-100 px-1 rounded font-semibold">El estudio tuvo como propósito</span> implementar una arquitectura de contratos inteligentes (Smart Contracts) para transparentar la cadena de suministro del café. 
+                                    <span class="bg-purple-100 px-1 rounded font-semibold">La investigación fue de tipo aplicada</span>, empleando la plataforma Hyperledger Fabric por su característica permisionada, realizando pruebas de carga con la herramienta Caliper. 
+                                    <span class="bg-blue-100 px-1 rounded font-semibold">Se concluyó que</span> la arquitectura distribuida redujo el tiempo de verificación de certificaciones en un 75% en comparación con la base de datos centralizada tradicional. 
+                                    <span class="bg-red-100 px-1 rounded font-semibold">Este trabajo es de suma relevancia para el desarrollo de nuestro proyecto porque valida empíricamente que Hyperledger Fabric es una tecnología óptima para el sector agroindustrial nacional, y su diseño de contratos inteligentes será tomado como referencia arquitectónica para el caso de la quinua.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= T E L E C O M U N I C A C I O N E S ================= -->
+                <div id="telecom" class="tab-content">
+                    <div class="flex items-center gap-4 mb-8 border-b pb-4">
+                        <div class="bg-indigo-100 p-4 rounded-full text-indigo-700 text-2xl">
+                            <i class="fa-solid fa-satellite-dish"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">Ingeniería de Telecomunicaciones</h3>
+                            <p class="text-slate-500">Enfoque en redes, despliegue de conectividad, IoT y protocolos de comunicación.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <!-- Ejemplo 1 -->
+                        <div class="bg-slate-50 rounded-2xl p-6 border-l-4 border-indigo-500">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Tema de Tesis del Estudiante:</h4>
+                            <p class="text-slate-700 italic mb-4">"Diseño de una red inalámbrica de sensores (WSN) bajo el protocolo LoRaWAN para el monitoreo de calidad del aire urbano."</p>
+                            
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm relative">
+                                <span class="absolute top-0 right-0 bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">Antecedente Internacional</span>
+                                <p class="text-slate-800 leading-relaxed text-justify mt-2">
+                                    En el ámbito de las redes LPWAN, <span class="bg-yellow-100 px-1 rounded font-semibold">Fernández y Ruiz (2021)</span> presentaron la investigación <i>"Evaluación de cobertura del protocolo LoRaWAN en ambientes urbanos de alta densidad"</i> publicada en la revista IEEE Latin America. 
+                                    <span class="bg-green-100 px-1 rounded font-semibold">Su objetivo fue</span> determinar la atenuación de señal y el alcance máximo efectivo de gateways LoRa en una topografía montañosa urbana. 
+                                    <span class="bg-purple-100 px-1 rounded font-semibold">Emplearon un diseño experimental cuantitativo</span>, ubicando nodos transmisores en diferentes altitudes y midiendo el RSSI (Received Signal Strength Indicator) y la relación señal a ruido (SNR). 
+                                    <span class="bg-blue-100 px-1 rounded font-semibold">Los resultados evidenciaron</span> que, en zonas con alta densidad de edificios, el alcance máximo confiable con factor de propagación SF12 se redujo de 15 km a 3.2 km, sufriendo una alta pérdida por difracción. 
+                                    <span class="bg-red-100 px-1 rounded font-semibold">Este antecedente aporta directamente al presente proyecto al proporcionar los parámetros de atenuación reales necesarios para realizar las simulaciones de cobertura en el software Radio Mobile, permitiendo un cálculo preciso en la distribución de los gateways.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Ejemplo 2 -->
+                        <div class="bg-slate-50 rounded-2xl p-6 border-l-4 border-indigo-500">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Tema de Tesis del Estudiante:</h4>
+                            <p class="text-slate-700 italic mb-4">"Análisis de vulnerabilidades de seguridad en infraestructuras de telemedicina IoT mediante pruebas de penetración."</p>
+                            
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm relative">
+                                <span class="absolute top-0 right-0 bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">Antecedente Nacional</span>
+                                <p class="text-slate-800 leading-relaxed text-justify mt-2">
+                                    <span class="bg-yellow-100 px-1 rounded font-semibold">Salinas (2022)</span> en su tesis de pregrado titulada <i>"Auditoría de seguridad en redes hospitalarias con dispositivos biomédicos conectados"</i>. 
+                                    <span class="bg-green-100 px-1 rounded font-semibold">Se planteó como objetivo</span> identificar brechas de seguridad informática en el tráfico de datos generado por monitores de signos vitales. 
+                                    <span class="bg-purple-100 px-1 rounded font-semibold">Se utilizó la metodología de Hacking Ético (OSSTMM)</span>, realizando escaneo de puertos y análisis de tráfico (Sniffing) con Wireshark en un entorno controlado (Sandbox). 
+                                    <span class="bg-blue-100 px-1 rounded font-semibold">La conclusión principal demostró</span> que el 80% de los equipos transmitían información mediante protocolos no encriptados (MQTT sin TLS), exponiendo datos sensibles a ataques de intermediario (Man-in-the-Middle). 
+                                    <span class="bg-red-100 px-1 rounded font-semibold">El trabajo de Salinas es un pilar para la investigación actual, puesto que brinda una base de vulnerabilidades conocidas a nivel local y justifica la necesidad de implementar criptografía de curva elíptica (ECC) como solución propuesta en nuestra tesis.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= E L E C T R O M E C A N I C A ================= -->
+                <div id="electromecanica" class="tab-content">
+                    <div class="flex items-center gap-4 mb-8 border-b pb-4">
+                        <div class="bg-orange-100 p-4 rounded-full text-orange-600 text-2xl">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">Ingeniería Electromecánica</h3>
+                            <p class="text-slate-500">Enfoque en automatización industrial, termodinámica y mantenimiento predictivo.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <!-- Ejemplo 1 -->
+                        <div class="bg-slate-50 rounded-2xl p-6 border-l-4 border-orange-500">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Tema de Tesis del Estudiante:</h4>
+                            <p class="text-slate-700 italic mb-4">"Plan de mantenimiento predictivo mediante análisis termográfico y de vibraciones en motores trifásicos de una planta embotelladora."</p>
+                            
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm relative">
+                                <span class="absolute top-0 right-0 bg-orange-100 text-orange-800 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">Antecedente Internacional</span>
+                                <p class="text-slate-800 leading-relaxed text-justify mt-2">
+                                    <span class="bg-yellow-100 px-1 rounded font-semibold">Ramírez y Vargas (2021)</span> realizaron un estudio titulado <i>"Implementación de técnicas predictivas en sistemas de bombeo de la industria cervecera"</i> en el Instituto Politécnico Nacional, México. 
+                                    <span class="bg-green-100 px-1 rounded font-semibold">Su objetivo central fue</span> reducir el tiempo de paradas no programadas (downtime) mediante el monitoreo de condición (CBM). 
+                                    <span class="bg-purple-100 px-1 rounded font-semibold">Metodológicamente, se realizó un estudio descriptivo-aplicado</span> que integró rutinas de recolección de espectros de vibración y termogramas, aplicando la norma ISO 10816 para la evaluación de severidad vibratoria. 
+                                    <span class="bg-blue-100 px-1 rounded font-semibold">Los resultados obtenidos demostraron</span> que se logró una disminución del 35% en fallos catastróficos de rodamientos al detectar desalineaciones incipientes y problemas de lubricación en etapas tempranas. 
+                                    <span class="bg-red-100 px-1 rounded font-semibold">La investigación mencionada sustenta teórica y normativamente nuestro trabajo de grado, ya que adoptaremos los límites de severidad de la norma ISO 10816 empleados por los autores para parametrizar el software de análisis de nuestro propio equipo de medición.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Ejemplo 2 -->
+                        <div class="bg-slate-50 rounded-2xl p-6 border-l-4 border-orange-500">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Tema de Tesis del Estudiante:</h4>
+                            <p class="text-slate-700 italic mb-4">"Diseño y dimensionamiento de un sistema fotovoltaico aislado para el accionamiento de una bomba centrífuga en riego agrícola."</p>
+                            
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm relative">
+                                <span class="absolute top-0 right-0 bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">Antecedente Nacional</span>
+                                <p class="text-slate-800 leading-relaxed text-justify mt-2">
+                                    A nivel local, <span class="bg-yellow-100 px-1 rounded font-semibold">Condori (2023)</span> elaboró el proyecto <i>"Dimensionamiento técnico-económico de sistemas de bombeo solar para comunidades altiplánicas"</i>. 
+                                    <span class="bg-green-100 px-1 rounded font-semibold">La finalidad del estudio fue</span> establecer una metodología estandarizada para calcular arreglos de paneles solares considerando la irradiación específica de la zona andina. 
+                                    <span class="bg-purple-100 px-1 rounded font-semibold">El diseño de investigación fue de tipo proyectivo y matemático</span>, basándose en el cálculo de la energía requerida (carga dinámica total) y el uso de variadores de frecuencia solares (VFD) para evitar bancos de baterías. 
+                                    <span class="bg-blue-100 px-1 rounded font-semibold">El autor concluyó que</span> los sistemas de bombeo directo (sin baterías) incrementan la viabilidad financiera del proyecto con un retorno de inversión de 4 años, frente al bombeo tradicional con generadores a diésel. 
+                                    <span class="bg-red-100 px-1 rounded font-semibold">Esta tesis es fundamental para nuestro desarrollo porque provee los coeficientes de pérdida de eficiencia por temperatura (Derating factor) precisos para nuestra latitud geográfica, permitiendo un cálculo de los paneles solares mucho más realista.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= A M B I E N T A L ================= -->
+                <div id="ambiental" class="tab-content">
+                    <div class="flex items-center gap-4 mb-8 border-b pb-4">
+                        <div class="bg-green-100 p-4 rounded-full text-green-700 text-2xl">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">Ingeniería Ambiental</h3>
+                            <p class="text-slate-500">Enfoque en tratamiento de aguas, biorremediación y gestión de impactos ecológicos.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <!-- Ejemplo 1 -->
+                        <div class="bg-slate-50 rounded-2xl p-6 border-l-4 border-green-500">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Tema de Tesis del Estudiante:</h4>
+                            <p class="text-slate-700 italic mb-4">"Evaluación de la eficiencia de coagulantes naturales (Moringa oleifera) vs. coagulantes químicos en el tratamiento de aguas residuales textiles."</p>
+                            
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm relative">
+                                <span class="absolute top-0 right-0 bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">Antecedente Internacional</span>
+                                <p class="text-slate-800 leading-relaxed text-justify mt-2">
+                                    En relación con el uso de biopolímeros, <span class="bg-yellow-100 px-1 rounded font-semibold">Almeida y Costa (2020)</span> publicaron en la Revista de Ingeniería Sanitaria el artículo <i>"Remoción de turbidez y colorante índigo usando semillas de Moringa como bio-coagulante"</i> en Brasil. 
+                                    <span class="bg-green-100 px-1 rounded font-semibold">El objetivo radicó en</span> evaluar la capacidad de clarificación de efluentes de la industria de los jeans empleando polvo de semilla extraído en laboratorio. 
+                                    <span class="bg-purple-100 px-1 rounded font-semibold">Su método fue experimental a nivel laboratorio</span>, utilizando la prueba de jarras (Jar Test) para determinar la dosis óptima, y midiendo parámetros fisicoquímicos iniciales y finales (Demanda Química de Oxígeno, pH y Color). 
+                                    <span class="bg-blue-100 px-1 rounded font-semibold">Los investigadores lograron</span> una remoción del 92% de turbidez y un 85% de reducción de color con una dosis de 50 mg/L, demostrando un rendimiento competitivo frente al sulfato de aluminio, con la ventaja de generar lodos biodegradables. 
+                                    <span class="bg-red-100 px-1 rounded font-semibold">Dicho estudio aporta a la presente investigación la técnica precisa de preparación y activación del extracto de semilla de Moringa, lo cual nos ahorrará tiempo en la fase de calibración de nuestro propio diseño experimental.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Ejemplo 2 -->
+                        <div class="bg-slate-50 rounded-2xl p-6 border-l-4 border-green-500">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Tema de Tesis del Estudiante:</h4>
+                            <p class="text-slate-700 italic mb-4">"Biorremediación de suelos impactados por hidrocarburos mediante la técnica de Landfarming adicionando compostaje municipal."</p>
+                            
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm relative">
+                                <span class="absolute top-0 right-0 bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">Antecedente Nacional</span>
+                                <p class="text-slate-800 leading-relaxed text-justify mt-2">
+                                    <span class="bg-yellow-100 px-1 rounded font-semibold">Mamani (2022)</span> desarrolló su investigación de grado denominada <i>"Aplicación de compost de residuos orgánicos urbanos para la recuperación de pasivos ambientales petroleros"</i>. 
+                                    <span class="bg-green-100 px-1 rounded font-semibold">El estudio buscaba</span> determinar la tasa de degradación de Hidrocarburos Totales de Petróleo (TPH) estimulando la actividad microbiana nativa mediante la bioaumentación. 
+                                    <span class="bg-purple-100 px-1 rounded font-semibold">La investigación cuasi-experimental incluyó</span> la preparación de celdas de tratamiento controlando humedad, oxigenación (volteo mecánico) y relación Carbono/Nitrógeno (C:N) durante 90 días. 
+                                    <span class="bg-blue-100 px-1 rounded font-semibold">Los resultados arrojaron</span> que la adición de 20% de compost incrementó la velocidad de degradación en un 40% respecto a la atenuación natural, bajando las concentraciones de TPH por debajo del límite permisible de la ley ambiental. 
+                                    <span class="bg-red-100 px-1 rounded font-semibold">Este documento sirve como pilar fundamental de nuestra tesis porque establece los intervalos óptimos de humedad (40-50%) y aireación que garantizan el crecimiento bacteriano degradador bajo nuestras condiciones climáticas locales.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Legend -->
+            <div class="mt-6 flex flex-wrap gap-4 justify-center text-sm bg-white p-4 rounded-xl shadow-sm border border-slate-200 inline-block mx-auto">
+                <span class="flex items-center"><span class="w-3 h-3 bg-yellow-200 rounded-full mr-2"></span> Autor y Año</span>
+                <span class="flex items-center"><span class="w-3 h-3 bg-green-200 rounded-full mr-2"></span> Objetivo</span>
+                <span class="flex items-center"><span class="w-3 h-3 bg-purple-200 rounded-full mr-2"></span> Metodología</span>
+                <span class="flex items-center"><span class="w-3 h-3 bg-blue-200 rounded-full mr-2"></span> Resultados</span>
+                <span class="flex items-center"><span class="w-3 h-3 bg-red-200 rounded-full mr-2 text-red-700 font-bold"></span> Aporte (¡Lo más importante!)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <div class="flex items-center mb-2">
+                    <i class="fa-solid fa-book-open text-primary text-2xl mr-2"></i>
+                    <span class="font-bold text-xl text-white">Taller de Grado</span>
+                </div>
+                <p class="text-sm">Módulo Interactivo de Metodología de Investigación.</p>
+            </div>
+            <div class="text-sm text-center md:text-right">
+                <p>Basado en normas APA 7ma Edición y la metodología de H. Sampieri.</p>
+                <p class="mt-2 text-slate-500">Desarrollado para estudiantes de Ingeniería.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript para Interacciones -->
+    <script>
+        // Navbar styling on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-md');
+                nav.classList.replace('bg-white/90', 'bg-white/95');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.replace('bg-white/95', 'bg-white/90');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Tabs Logic
+        function openTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active classes from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-white', 'shadow-md');
+                btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+
+            // Add active classes to selected button
+            const activeBtn = document.querySelector(`.tab-btn[data-target="${tabId}"]`);
+            activeBtn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            activeBtn.classList.add('bg-primary', 'text-white', 'shadow-md');
+        }
+    </script>
+</body>
+</html>

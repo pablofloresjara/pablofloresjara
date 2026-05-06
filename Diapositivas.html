@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Grado I - Presentación de Perfil de Tesis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .slide-container { aspect-ratio: 16/9; background: white; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .slide-bad { border: 4px solid #ef4444; }
+        .slide-good { border: 4px solid #22c55e; }
+        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .gradient-text { background: linear-gradient(to right, #2563eb, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-graduation-cap text-3xl text-blue-600"></i>
+                <div>
+                    <h1 class="text-xl font-bold text-slate-900">Taller de Grado I</h1>
+                    <p class="text-sm text-slate-500">Metodología de la Investigación</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex gap-6 font-semibold text-slate-600">
+                <a href="#guias" class="hover:text-blue-600 transition">Guía General</a>
+                <a href="#estructura" class="hover:text-blue-600 transition">Estructura</a>
+                <a href="#ejemplos" class="hover:text-blue-600 transition">Ejemplos por Carrera</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-50 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
+            <div class="md:w-1/2">
+                <h2 class="text-4xl font-bold leading-tight mb-4 text-slate-900">
+                    Defiende tu Perfil de Tesis con <span class="gradient-text">Excelencia</span>
+                </h2>
+                <p class="text-lg text-slate-600 mb-6">
+                    Una presentación mal elaborada puede destruir la exposición de cualquiera. Aprende a crear diapositivas de alto impacto visual y académico para tu defensa de Perfil de Grado en Ingeniería.
+                </p>
+                <a href="#ejemplos" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-lg inline-flex items-center gap-2">
+                    Ver Ejemplos Prácticos <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-full max-w-md bg-gray-200 aspect-video rounded-xl flex items-center justify-center border-4 border-dashed border-gray-300 text-gray-500 font-medium">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buenas y Malas Prácticas -->
+    <section id="guias" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Reglas de Oro del Diseño de Diapositivas</h2>
+                <p class="text-slate-500 mt-2">Basado en directrices metodológicas y la psicología de la atención (Regla de los 30 segundos).</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Malas Prácticas -->
+                <div class="bg-red-50 rounded-xl p-6 border border-red-100">
+                    <h3 class="text-xl font-bold text-red-700 mb-4 flex items-center gap-2">
+                        <i class="fas fa-times-circle"></i> Malas Prácticas (Lo que NO debes hacer)
+                    </h3>
+                    <ul class="space-y-3 text-red-900">
+                        <li class="flex items-start gap-2"><i class="fas fa-ban mt-1 text-red-500"></i> <strong>Saturación de texto:</strong> Párrafos enteros copiados de tu documento Word. Las diapositivas no son un teleprompter.</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-ban mt-1 text-red-500"></i> <strong>Colores incorrectos:</strong> Fondos oscuros con letras oscuras, texturas complejas o combinación de múltiples colores (policromías).</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-ban mt-1 text-red-500"></i> <strong>Gráficos ilegibles:</strong> Gráficos de barras con más de 7 elementos, tablas gigantes con datos diminutos.</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-ban mt-1 text-red-500"></i> <strong>Leer la diapositiva:</strong> Mirar a la pantalla y dar la espalda al jurado. Daña la profesionalidad del expositor.</li>
+                    </ul>
+                </div>
+
+                <!-- Buenas Prácticas -->
+                <div class="bg-green-50 rounded-xl p-6 border border-green-100">
+                    <h3 class="text-xl font-bold text-green-700 mb-4 flex items-center gap-2">
+                        <i class="fas fa-check-circle"></i> Buenas Prácticas (Lo que SÍ debes hacer)
+                    </h3>
+                    <ul class="space-y-3 text-green-900">
+                        <li class="flex items-start gap-2"><i class="fas fa-check mt-1 text-green-500"></i> <strong>Síntesis visual:</strong> Usa esquemas, mapas mentales, diagramas de flujo y viñetas cortas. Letra tamaño 24 pt mínimo.</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check mt-1 text-green-500"></i> <strong>Contraste adecuado:</strong> Letras blancas sobre fondo azul/oscuro, o letras oscuras sobre fondo blanco/pastel.</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check mt-1 text-green-500"></i> <strong>Apoyo visual:</strong> Usa la diapositiva como hilo conductor. Todo elemento visual debe ser explicado en menos de 30 segundos.</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check mt-1 text-green-500"></i> <strong>Uso de puntero:</strong> Señala elementos específicos en gráficas sin tapar la pantalla. Coherencia entre lo que dices y muestras.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estructura -->
+    <section id="estructura" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-10">Estructura del Perfil de Tesis (10-15 min)</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+                <div class="bg-white p-4 rounded-lg shadow border-t-4 border-blue-500">
+                    <div class="text-2xl font-bold text-blue-500 mb-2">1</div>
+                    <h4 class="font-bold text-slate-800">Título e Introducción</h4>
+                    <p class="text-xs text-slate-500 mt-2">Presentación del tema y el tesista.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow border-t-4 border-blue-500">
+                    <div class="text-2xl font-bold text-blue-500 mb-2">2</div>
+                    <h4 class="font-bold text-slate-800">Problema</h4>
+                    <p class="text-xs text-slate-500 mt-2">Árbol de problemas, formulación clara.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow border-t-4 border-blue-500">
+                    <div class="text-2xl font-bold text-blue-500 mb-2">3</div>
+                    <h4 class="font-bold text-slate-800">Objetivos</h4>
+                    <p class="text-xs text-slate-500 mt-2">General y Específicos. Claros y medibles.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow border-t-4 border-blue-500">
+                    <div class="text-2xl font-bold text-blue-500 mb-2">4</div>
+                    <h4 class="font-bold text-slate-800">Justificación</h4>
+                    <p class="text-xs text-slate-500 mt-2">Técnica, económica y social.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow border-t-4 border-blue-500">
+                    <div class="text-2xl font-bold text-blue-500 mb-2">5</div>
+                    <h4 class="font-bold text-slate-800">Metodología</h4>
+                    <p class="text-xs text-slate-500 mt-2">Tipo de estudio, técnicas, herramientas.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow border-t-4 border-blue-500">
+                    <div class="text-2xl font-bold text-blue-500 mb-2">6</div>
+                    <h4 class="font-bold text-slate-800">Cronograma</h4>
+                    <p class="text-xs text-slate-500 mt-2">Diagrama de Gantt simplificado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ejemplos Interactivos por Carrera -->
+    <section id="ejemplos" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-2">Ejemplos Prácticos por Carrera</h2>
+            <p class="text-center text-slate-500 mb-10">Selecciona tu carrera para ver ejemplos comparativos de diapositivas.</p>
+
+            <!-- Tabs Navigation -->
+            <div class="flex flex-wrap border-b border-gray-200 mb-8" role="tablist">
+                <button class="tab-btn flex-1 py-4 px-1 text-center font-semibold text-blue-600 border-b-2 border-blue-600 bg-blue-50 transition" data-target="tab-sistemas">
+                    <i class="fas fa-laptop-code block mb-1 text-xl"></i> Ing. de Sistemas
+                </button>
+                <button class="tab-btn flex-1 py-4 px-1 text-center font-semibold text-gray-500 hover:text-blue-600 transition" data-target="tab-telecom">
+                    <i class="fas fa-satellite-dish block mb-1 text-xl"></i> Ing. Telecomunicaciones
+                </button>
+                <button class="tab-btn flex-1 py-4 px-1 text-center font-semibold text-gray-500 hover:text-blue-600 transition" data-target="tab-electromecanica">
+                    <i class="fas fa-cogs block mb-1 text-xl"></i> Ing. Electromecánica
+                </button>
+                <button class="tab-btn flex-1 py-4 px-1 text-center font-semibold text-gray-500 hover:text-blue-600 transition" data-target="tab-ambiental">
+                    <i class="fas fa-leaf block mb-1 text-xl"></i> Ing. Ambiental
+                </button>
+            </div>
+
+            <!-- Tab Content: Sistemas -->
+            <div id="tab-sistemas" class="tab-content active space-y-12">
+                <!-- Ejemplo 1: Problema -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">1. Planteamiento del Problema (Sistemas)</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <div class="slide-container slide-bad p-6 flex flex-col justify-center relative">
+                                <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">INCORRECTO</span>
+                                <h4 class="text-lg font-bold mb-2 text-center underline">Planteamiento del Problema</h4>
+                                <p class="text-[10px] leading-tight text-justify">Actualmente la empresa XYZ tiene un problema grave en el manejo de su inventario porque utilizan cuadernos y hojas de Excel dispersas en diferentes computadoras. Esto ocasiona que los empleados tarden mucho tiempo en encontrar los productos, además de que muchas veces se pierde información importante y no hay respaldos. Los clientes se quejan de la demora en la atención. Debido a la falta de un sistema informático centralizado, la toma de decisiones gerenciales es lenta y a menudo basada en datos incorrectos o desactualizados. Por tanto, es imperativo desarrollar un sistema web responsivo usando React y Node.js para solucionar estos percances logísticos...</p>
+                            </div>
+                            <p class="text-sm mt-2 text-red-600"><i class="fas fa-times"></i> Demasiado texto. Letra minúscula. Aburrido de leer.</p>
+                        </div>
+                        <div>
+                            <div class="slide-container slide-good p-6 flex flex-col items-center justify-center relative bg-blue-900 text-white">
+                                <span class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">CORRECTO</span>
+                                <h4 class="text-2xl font-bold mb-6 text-yellow-400">Problema Principal</h4>
+                                <div class="flex items-center gap-6 w-full px-8">
+                                    <div class="flex-1 text-center bg-blue-800 p-4 rounded-lg">
+                                        <i class="fas fa-file-excel text-4xl mb-2 text-green-400"></i>
+                                        <p class="text-sm font-semibold">Gestión Manual<br>(Excel/Papel)</p>
+                                    </div>
+                                    <i class="fas fa-arrow-right text-2xl"></i>
+                                    <div class="flex-1 text-center bg-blue-800 p-4 rounded-lg">
+                                        <i class="fas fa-clock text-4xl mb-2 text-red-400"></i>
+                                        <p class="text-sm font-semibold">Pérdida de Tiempo<br>y Datos</p>
+                                    </div>
+                                    <i class="fas fa-arrow-right text-2xl"></i>
+                                    <div class="flex-1 text-center bg-red-600 p-4 rounded-lg">
+                                        <i class="fas fa-users-slash text-4xl mb-2"></i>
+                                        <p class="text-sm font-bold">Insatisfacción<br>del Cliente</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-sm mt-2 text-green-600"><i class="fas fa-check"></i> Regla de oro: Letras blancas fondo oscuro. Gráficos de causa-efecto claros. Te permite explicar fluidamente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 2: Arquitectura -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">2. Alcance / Arquitectura Propuesta (Sistemas)</h3>
+                    <div class="bg-gray-100 p-6 rounded-xl">
+                        <div class="flex items-center justify-center mb-4 text-gray-500 border-2 border-dashed border-gray-400 bg-white p-10 h-64">
+                            
+                        </div>
+                        <p class="text-sm text-slate-700"><strong>El consejo del docente:</strong> En sistemas, tu alcance debe ser visual. No listes las tecnologías en viñetas, dibuja cómo se comunican. Usa iconos (React, AWS, BD) para que el jurado entienda la topología de tu software de un vistazo.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 3: Cronograma -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">3. Cronograma de Desarrollo (Sistemas)</h3>
+                    <div class="slide-container slide-good p-6 flex flex-col relative bg-white">
+                        <span class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">CORRECTO</span>
+                        <h4 class="text-xl font-bold mb-4 text-slate-800">Cronograma de Ejecución (Metodología Scrum)</h4>
+                        <div class="w-full h-full border rounded">
+                            <table class="w-full text-xs text-left">
+                                <thead class="bg-gray-100">
+                                    <tr><th class="p-2 border">Fase / Mes</th><th class="p-2 border">Mes 1</th><th class="p-2 border">Mes 2</th><th class="p-2 border">Mes 3</th><th class="p-2 border">Mes 4</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="p-2 border font-semibold">Análisis de Req.</td><td class="bg-blue-400 border"></td><td class="border"></td><td class="border"></td><td class="border"></td></tr>
+                                    <tr><td class="p-2 border font-semibold">Diseño UI/UX</td><td class="border"></td><td class="bg-blue-400 border"></td><td class="border"></td><td class="border"></td></tr>
+                                    <tr><td class="p-2 border font-semibold">Desarrollo (Sprints)</td><td class="border"></td><td class="bg-blue-400 border"></td><td class="bg-blue-400 border"></td><td class="border"></td></tr>
+                                    <tr><td class="p-2 border font-semibold">Pruebas e Implem.</td><td class="border"></td><td class="border"></td><td class="border"></td><td class="bg-blue-400 border"></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p class="text-sm mt-2 text-slate-600">Un diagrama de Gantt simplificado. Muestra bloques grandes de tiempo, no tareas diarias que no se leen desde lejos.</p>
+                </div>
+            </div>
+
+            <!-- Tab Content: Telecomunicaciones -->
+            <div id="tab-telecom" class="tab-content space-y-12">
+                <!-- Ejemplo 1 -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">1. Diseño de Topología (Telecomunicaciones)</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <div class="slide-container slide-bad p-6 flex flex-col justify-center relative bg-white">
+                                <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">INCORRECTO</span>
+                                <h4 class="text-lg font-bold mb-4 text-center">Equipos Propuestos</h4>
+                                <ul class="text-sm list-disc pl-5 space-y-2">
+                                    <li>1 Router Core Cisco Catalyst 8000</li>
+                                    <li>3 Switches de Distribución Capa 3</li>
+                                    <li>15 Access Points WiFi 6 para cobertura indoor</li>
+                                    <li>Fibra óptica monomodo para el backbone</li>
+                                    <li>Firewall Fortinet para seguridad perimetral</li>
+                                </ul>
+                            </div>
+                            <p class="text-sm mt-2 text-red-600"><i class="fas fa-times"></i> Es una lista de supermercado. No demuestra habilidad de ingeniería.</p>
+                        </div>
+                        <div>
+                            <div class="slide-container slide-good p-6 flex flex-col items-center relative bg-white">
+                                <span class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">CORRECTO</span>
+                                <h4 class="text-xl font-bold mb-4">Topología de Red Propuesta</h4>
+                                <div class="w-full flex justify-center text-gray-500 border-2 border-dashed border-gray-300 p-8 h-48 items-center bg-blue-50">
+                                    
+                                </div>
+                            </div>
+                            <p class="text-sm mt-2 text-green-600"><i class="fas fa-check"></i> Usa software como Visio o Packet Tracer. El jurado quiere ver cómo se interconectan los nodos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 2 -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">2. Justificación Técnica (Telecomunicaciones)</h3>
+                    <div class="slide-container slide-good p-6 flex flex-col relative bg-white">
+                        <span class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">CORRECTO</span>
+                        <h4 class="text-xl font-bold mb-4 text-center text-blue-800">Atenuación de Señal Actual vs Propuesta</h4>
+                        <div class="flex h-full items-end justify-center gap-8 pb-4">
+                            <div class="flex flex-col items-center">
+                                <div class="bg-red-500 w-16 h-32 rounded-t flex items-center justify-center text-white font-bold">-85 dBm</div>
+                                <span class="text-sm font-semibold mt-2">Red Actual</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="bg-green-500 w-16 h-12 rounded-t flex items-center justify-center text-white font-bold">-45 dBm</div>
+                                <span class="text-sm font-semibold mt-2">Red Propuesta (Fibra)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm mt-2 text-slate-700"><strong>El consejo del docente:</strong> "Nunca hacer un gráfico con más de 7 barras". En lugar de una tabla de Excel con mil números de potencia de señal, muestra un gráfico comparativo del "Antes vs Después" (Hipótesis visual).</p>
+                </div>
+
+                <!-- Ejemplo 3 -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">3. Metodología (Telecomunicaciones)</h3>
+                    <div class="slide-container slide-good p-6 flex items-center justify-center relative bg-white">
+                         <span class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">CORRECTO</span>
+                         <div class="flex items-center gap-4 w-full">
+                             <div class="bg-blue-100 border-2 border-blue-400 p-3 rounded text-center flex-1">
+                                 <i class="fas fa-search block text-2xl text-blue-600 mb-2"></i>
+                                 <b class="text-sm">1. Site Survey</b>
+                             </div>
+                             <i class="fas fa-chevron-right text-gray-400"></i>
+                             <div class="bg-blue-100 border-2 border-blue-400 p-3 rounded text-center flex-1">
+                                 <i class="fas fa-drafting-compass block text-2xl text-blue-600 mb-2"></i>
+                                 <b class="text-sm">2. Diseño Lógico</b>
+                             </div>
+                             <i class="fas fa-chevron-right text-gray-400"></i>
+                             <div class="bg-blue-100 border-2 border-blue-400 p-3 rounded text-center flex-1">
+                                 <i class="fas fa-laptop-code block text-2xl text-blue-600 mb-2"></i>
+                                 <b class="text-sm">3. Simulación</b>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Electromecánica -->
+            <div id="tab-electromecanica" class="tab-content space-y-12">
+                 <!-- Ejemplo 1 -->
+                 <div>
+                    <h3 class="text-2xl font-bold mb-4">1. Objetivos Específicos (Electromecánica)</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <div class="slide-container slide-bad p-6 flex flex-col justify-center relative bg-white">
+                                <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">INCORRECTO</span>
+                                <h4 class="text-lg font-bold mb-4 text-center">Objetivos Específicos</h4>
+                                <ol class="text-sm list-decimal pl-5 space-y-2">
+                                    <li>Realizar un diagnóstico de la máquina de extrusión.</li>
+                                    <li>Calcular las cargas térmicas del sistema.</li>
+                                    <li>Diseñar los planos mecánicos del reductor usando AutoCAD.</li>
+                                    <li>Seleccionar los motores eléctricos trifásicos.</li>
+                                    <li>Elaborar el presupuesto del proyecto.</li>
+                                </ol>
+                            </div>
+                            <p class="text-sm mt-2 text-red-600"><i class="fas fa-times"></i> Texto aburrido. Los verbos en infinitivo están bien, pero visualmente no atrapa.</p>
+                        </div>
+                        <div>
+                            <div class="slide-container slide-good p-6 flex flex-col items-center justify-center relative bg-slate-800 text-white">
+                                <span class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">CORRECTO</span>
+                                <h4 class="text-xl font-bold mb-4 text-cyan-400">Objetivos Específicos</h4>
+                                <div class="grid grid-cols-2 gap-4 w-full px-4">
+                                    <div class="bg-slate-700 p-3 rounded flex items-center gap-3 border-l-4 border-cyan-500">
+                                        <i class="fas fa-stethoscope text-2xl text-cyan-400"></i>
+                                        <span class="text-xs font-semibold">1. Diagnosticar Estado Actual</span>
+                                    </div>
+                                    <div class="bg-slate-700 p-3 rounded flex items-center gap-3 border-l-4 border-cyan-500">
+                                        <i class="fas fa-calculator text-2xl text-cyan-400"></i>
+                                        <span class="text-xs font-semibold">2. Dimensionar Cargas Térmicas</span>
+                                    </div>
+                                    <div class="bg-slate-700 p-3 rounded flex items-center gap-3 border-l-4 border-cyan-500">
+                                        <i class="fas fa-drafting-compass text-2xl text-cyan-400"></i>
+                                        <span class="text-xs font-semibold">3. Diseñar Planos (CAD)</span>
+                                    </div>
+                                    <div class="bg-slate-700 p-3 rounded flex items-center gap-3 border-l-4 border-cyan-500">
+                                        <i class="fas fa-bolt text-2xl text-cyan-400"></i>
+                                        <span class="text-xs font-semibold">4. Seleccionar Accionamientos</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-sm mt-2 text-green-600"><i class="fas fa-check"></i> Diseño en cuadrícula con íconos. Facilita la retención visual del jurado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 2 -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">2. Alcance del Diseño (Electromecánica)</h3>
+                    <div class="bg-gray-100 p-6 rounded-xl border border-gray-200">
+                        <div class="flex items-center justify-center mb-4 text-gray-500 border-2 border-dashed border-gray-400 bg-white p-10 h-64">
+                            
+                        </div>
+                        <p class="text-sm text-slate-700"><strong>El consejo del docente:</strong> Si tu tesis es el diseño de una máquina, ¡muéstrala! Usa renders preliminares de SolidWorks o Inventor (incluso si son conceptuales para el perfil). Un render vale más que mil palabras de especificación.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 3 -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">3. Esquema de Automatización (Electromecánica)</h3>
+                    <div class="slide-container slide-good p-6 flex flex-col relative bg-white justify-center items-center">
+                        <span class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">CORRECTO</span>
+                        <h4 class="text-xl font-bold mb-6 text-center text-slate-800">Pirámide de Automatización del Proyecto</h4>
+                        <div class="w-2/3 flex flex-col items-center">
+                            <div class="w-1/2 bg-purple-500 text-white text-center py-2 mb-1 rounded-t-lg text-xs font-bold">Nivel SCADA (Monitoreo)</div>
+                            <div class="w-3/4 bg-blue-500 text-white text-center py-3 mb-1 text-xs font-bold">Nivel de Control (PLC Siemens S7-1200)</div>
+                            <div class="w-full bg-green-500 text-white text-center py-4 rounded-b-lg text-xs font-bold">Nivel de Campo (Sensores, Actuadores, Variadores)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Ambiental -->
+            <div id="tab-ambiental" class="tab-content space-y-12">
+                 <!-- Ejemplo 1 -->
+                 <div>
+                    <h3 class="text-2xl font-bold mb-4">1. Localización del Problema (Ambiental)</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <div class="slide-container slide-bad p-6 flex flex-col justify-center relative bg-white">
+                                <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">INCORRECTO</span>
+                                <h4 class="text-lg font-bold mb-4 text-center">Área de Estudio</h4>
+                                <p class="text-sm text-justify">El proyecto se desarrollará en la cuenca del Río Rocha, en las coordenadas Latitud: -17.3935 y Longitud: -66.1570, atravesando los municipios de Sacaba, Cercado y Quillacollo. El tramo específico de estudio comprende 15 kilómetros desde el puente X hasta el puente Y, abarcando una superficie de influencia de 20 hectáreas donde se evidencian descargas de aguas residuales industriales.</p>
+                            </div>
+                            <p class="text-sm mt-2 text-red-600"><i class="fas fa-times"></i> Leer coordenadas a un jurado es inútil y hace perder la atención rápidamente.</p>
+                        </div>
+                        <div>
+                            <div class="slide-container slide-good p-6 flex flex-col items-center relative bg-white">
+                                <span class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">CORRECTO</span>
+                                <h4 class="text-xl font-bold mb-2 text-center text-green-800">Área de Intervención Geográfica</h4>
+                                <div class="w-full h-40 flex items-center justify-center text-gray-500 border-2 border-dashed border-gray-300 bg-gray-100">
+                                    
+                                </div>
+                            </div>
+                            <p class="text-sm mt-2 text-green-600"><i class="fas fa-check"></i> Uso de Mapas (GIS/Google Earth). El jurado debe ubicarse espacialmente de inmediato.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 2 -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">2. Justificación (Ambiental)</h3>
+                    <div class="slide-container slide-good p-6 flex flex-col relative bg-green-900 text-white">
+                        <span class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">CORRECTO</span>
+                        <h4 class="text-xl font-bold mb-6 text-center text-yellow-300">¿Por qué es necesario este proyecto?</h4>
+                        <div class="grid grid-cols-3 gap-6 text-center px-4">
+                            <div>
+                                <i class="fas fa-balance-scale text-4xl mb-3 text-white"></i>
+                                <h5 class="font-bold text-sm text-green-300 mb-1">Normativa</h5>
+                                <p class="text-[10px]">Cumplimiento de la Ley 1333 y Límites Permisibles.</p>
+                            </div>
+                            <div>
+                                <i class="fas fa-heartbeat text-4xl mb-3 text-white"></i>
+                                <h5 class="font-bold text-sm text-green-300 mb-1">Salud Pública</h5>
+                                <p class="text-[10px]">Reducción de enfermedades hídricas en la comunidad local.</p>
+                            </div>
+                            <div>
+                                <i class="fas fa-seedling text-4xl mb-3 text-white"></i>
+                                <h5 class="font-bold text-sm text-green-300 mb-1">Ecológica</h5>
+                                <p class="text-[10px]">Restauración del ecosistema acuático (flora y fauna).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 3 -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">3. Proceso Propuesto (Metodología / Diseño)</h3>
+                    <div class="bg-gray-100 p-6 rounded-xl border border-gray-200">
+                        <div class="flex flex-col items-center justify-center mb-4 text-gray-500 border-2 border-dashed border-gray-400 bg-white p-10 h-64 relative">
+                            
+                        </div>
+                        <p class="text-sm text-slate-700"><strong>El consejo del docente:</strong> Si diseñas procesos ambientales (como una PTAR o sistema de filtrado de aire), tu metodología debe mostrar un "Diagrama de Flujo del Proceso" (Process Flow Diagram). No lo relates, muéstralo etapa por etapa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="mb-2"><i class="fas fa-book-reader mr-2"></i><strong>Taller de Grado I</strong> - Material Académico para la Elaboración de Perfiles de Tesis.</p>
+            <p class="text-sm text-slate-500">Basado en las directrices metodológicas de "Cómo elaborar una Tesis" y la "Regla de los 30 segundos" para atención visual.</p>
+        </div>
+    </footer>
+
+    <!-- Script para los Tabs -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remover estado activo de todos los tabs
+                    tabs.forEach(t => {
+                        t.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600', 'bg-blue-50');
+                        t.classList.add('text-gray-500');
+                    });
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    // Activar el tab actual
+                    tab.classList.remove('text-gray-500');
+                    tab.classList.add('text-blue-600', 'border-b-2', 'border-blue-600', 'bg-blue-50');
+                    
+                    const targetId = tab.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
